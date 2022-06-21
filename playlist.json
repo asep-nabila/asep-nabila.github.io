@@ -1,0 +1,20 @@
+playlist = [
+	{
+		"title": "Baby I'm Yours",
+		"artis": "Arctic Monkeys",
+		"explicit": false,
+		"file": "Arctic Monkeys - Baby I'm Yours.mp3"
+	},
+	{
+		"title": "Stop The World I Wanna Get Off With You",
+		"artis": "Arctic Monkeys",
+		"explicit": true,
+		"file": "Arctic Monkeys - Stop The World I Wanna Get Off With You.mp3"
+	},
+	{
+		"title": "Prism",
+		"artis": "AmPm feat. Miyuna",
+		"explicit": false,
+		"file": "AmPm feat. Miyuna - Prism.mp3"
+	}
+]
