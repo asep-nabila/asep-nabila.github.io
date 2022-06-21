@@ -50,7 +50,8 @@
 	body{
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
-		background-color: #f5f5e9;;
+		background-color: #f5f5e9;
+		background-image: url("img/bg-base.png");
 	}
 	
 	.greatings {
@@ -86,10 +87,10 @@
 	
 	.bg-invitation{
 		min-height: 100vh;
-		background: url("img/bg-invitation.png") no-repeat center/100% 100%;
+		//background: url("img/bg-invitation.png") no-repeat center/100% 100%;
 	}
 	.bg-invitation>.row{
-		padding: 2.5rem 0!important;;
+		//padding: 2.5rem 0!important;;
 	}
 	#player-elem{
 		opacity: 0.5;
@@ -149,6 +150,44 @@
 		max-width: 90%;
 		margin-bottom: -0.3rem;
 	}
+	.background-responsive>.section-top>div,.background-responsive>.section-bottom>div{
+		//height: 3rem;
+	}
+	.background-responsive>.section-top>.section-left{
+		background-color: #123002;
+	}
+	.background-responsive>.section-top>.section-center{
+		background-color: #125522;
+	}
+	.background-responsive>.section-top>.section-right{
+		background-color: #442232;
+	}
+	
+	.background-responsive>.section-middle>.section-left{
+		background-repeat: repeat-y;
+		background-position: left top;
+		background-size: 50% auto;
+		background-image: url("img/bg-menu/left.png");
+	}
+	.background-responsive>.section-middle>.section-center{
+		//background-color: #dfdfdf;
+	}
+	.background-responsive>.section-middle>.section-right{
+		background-repeat: repeat-y;
+		background-position: right top;
+		background-size: 50% auto;
+		background-image: url("img/bg-menu/right.png");
+	}
+	
+	.background-responsive>.section-bottom>.section-left{
+		background-color: #123212;
+	}
+	.background-responsive>.section-bottom>.section-center{
+		background-color: #225522;
+	}
+	.background-responsive>.section-bottom>.section-right{
+		background-color: #542232;
+	}
 	</style>
   </head>
   <body>
@@ -188,93 +227,202 @@
 		</div>
 	</nav>
 	
-	<div id="beranda" class="xhidden container bg-invitation">
-		<div class="row">
-			<div class="col-12 text-center">
-				{GROOM_FULLNAME} & {BRIDE_FULLNAME}
-			</div>
+	<div id="beranda" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
 		</div>
-	</div>
-	
-	<div id="mempelai" class="xhidden container bg-invitation">
-		<div class="row">
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-		</div>
-	</div>
-	
-	<div id="acara" class="xhidden container bg-invitation">
-		<div class="row">
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-		</div>
-	</div>
-	
-	<div id="galeri" class="xhidden container bg-invitation">
-		<div class="row">
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-		</div>
-	</div>
-	
-	<div id="ucapan" class="xhidden container bg-invitation">
-		<div class="row">
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-			<div class="col-sm">
-				One of three columns
-			</div>
-		</div>
-	</div>
-	
-	<div id="footer" style="background-color:#f9f9e1;box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="xhidden container pt-5 pb-5">
-		<nav style="background:none!important;margin-bottom:9rem;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pb-5 pe-2 bg-body">
-			<div class="row">
-				<div class="col-12 text-center mb-2">
-					<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-12 text-center">
+							{GROOM_FULLNAME} & {BRIDE_FULLNAME}
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-12">
-					<div id="qrbukutamu"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+	</div>
+	
+	
+	<div id="mempelai" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							<p>One of three columns</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-12 text-center mt-2">
-					<h4><span id="qr-name">{GROOM_FULLNAME}</span></h4>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="acara" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							<p>One of three columns</p>
+						</div>
+					</div>
 				</div>
-			<div class="row">
 			</div>
-				<div class="col-12 text-center">
-					<h6><span id="qr-domisili">KOPO</span></h6>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="galeri" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							<p>One of three columns</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</nav>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="ucapan" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							<p>One of three columns</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="ucapan" class="xhidden container-fluid background-responsive">
+		<div class="row section-top">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center">
+				<div id="footer" style="background-color:#f9f9e1;box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="container-fluid pt-5 pb-2">
+					<nav style="background:none!important;margin-bottom:9rem;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pb-5 pe-2 bg-body">
+						<div class="row">
+							<div class="col-12 text-center mb-2">
+								<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="qrbukutamu"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 text-center mt-2">
+								<h4><span id="qr-name">{GROOM_FULLNAME}</span></h4>
+							</div>
+						<div class="row">
+						</div>
+							<div class="col-12 text-center">
+								<h6><span id="qr-domisili">KOPO</span></h6>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<div class="col-2 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-2 section-left"></div>
+			<div class="col-8 section-center"></div>
+			<div class="col-2 section-right"></div>
+		</div>
 	</div>
 	
 	<script src="config.js"></script>
