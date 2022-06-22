@@ -149,8 +149,12 @@ const showInvitation = function(){
 }
 
 const generateQrBukuTamu = function(){
+	let qrbukutamudata = {
+		"A": kepada,
+		"D": dari
+	};
 	$('#qrbukutamu').kjua({
-		text: 'https://maunklana.github.io/bukutamu/?addattender='+encodeURIComponent(btoa(kepada))+'&from='+encodeURIComponent(btoa(dari)),
+		text: JSON.stringify(qrbukutamudata),
 		size: 200,
 		render: 'svg',
 		crisp: true,
