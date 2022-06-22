@@ -158,7 +158,7 @@ const generateQrBukuTamu = function(){
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: kepada+"||"dari+"||"+btoa(JSON.stringify(qrbukutamudata)),
+		text: kepada+"||"dari+"\n"+btoa(JSON.stringify(qrbukutamudata)),
 		size: 200,
 		render: 'svg',
 		crisp: true,
