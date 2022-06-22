@@ -177,19 +177,24 @@ const generateQrBukuTamu = function(){
 }
 
 const swalConfirmBackSound = function(){
-	Swal.fire({
-		title: '',
-		html: '<h1><i class="bi bi-volume-up-fill"></i></h1>Nyalakan backsound?',
-		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		showCancelButton: true,
-		confirmButtonText: 'Ya, nyalakan',
-		cancelButtonText: 'Tidak',
-		reverseButtons: true,
-	}).then((result) => {					
-		if (result.isConfirmed) {
-			players.audio.play();
-		}
-	})
+	if(typeof localStorage.backsound == "undefined" || localStorage.backsound == true){
+		Swal.fire({
+			title: '',
+			html: '<h1><i class="bi bi-volume-up-fill"></i></h1>Nyalakan backsound?',
+			confirmButtonColor: '#991188', //Warna kesukaan Nabila
+			showCancelButton: true,
+			confirmButtonText: 'Ya, nyalakan',
+			cancelButtonText: 'Tidak',
+			reverseButtons: true,
+		}).then((result) => {					
+			if (result.isConfirmed) {
+				players.audio.play();
+				localStorage.backsound = true;
+			}else{
+				localStorage.backsound = false;
+			}
+		});
+	}
 }
 
 const swallAskFrom = function(){
