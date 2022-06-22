@@ -149,16 +149,18 @@ const showInvitation = function(){
 }
 
 const generateQrBukuTamu = function(){
-	let qrbukutamudata = {
+	let bukutamudata = {
 		"A": kepada,
 		"D": dari,
 		"X": Math.random()
 	};
 	
+	let qrstrbukutamu = btoa(JSON.stringify(bukutamudata));
+	
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: "BUKU TAMU ASEP & NABILA\n"+kepada+"||"+dari+"\n"+btoa(JSON.stringify(qrbukutamudata)),
+		text: `BUKU TAMU ${config.groom.firstname} & ${config.bride.firstname} : ${qrstrbukutamu}`,
 		size: 200,
 		render: 'svg',
 		crisp: true,
