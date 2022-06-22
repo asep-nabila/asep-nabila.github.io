@@ -140,6 +140,8 @@ const showEnvelope = function(){
 	})
 }
 const showInvitation = function(){
+	$("body").css("background-image", 'url('+$("body").data("background")+')');
+	
 	$('.xhidden').each(function() {
 		$(this).addClass('animate__animated animate__slideInUp');
 		$(this).css('visibility', 'visible');
