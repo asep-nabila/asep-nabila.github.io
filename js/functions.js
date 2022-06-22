@@ -160,7 +160,7 @@ const generateQrBukuTamu = function(){
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: `BUKU TAMU ${config.groom.firstname} & ${config.bride.firstname} : ${qrstrbukutamu}`,
+		text: `BUKUTAMU-${config.groom.firstname}&${config.bride.firstname} : ${qrstrbukutamu}`,
 		size: 200,
 		render: 'svg',
 		crisp: true,
