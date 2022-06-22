@@ -153,6 +153,9 @@ const generateQrBukuTamu = function(){
 		"A": kepada,
 		"D": dari
 	};
+	
+	$('#qrbukutamu').empty();
+	
 	$('#qrbukutamu').kjua({
 		text: JSON.stringify(qrbukutamudata),
 		size: 200,
