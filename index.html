@@ -53,6 +53,15 @@
 		background-color: #f5f5e9;
 	}
 	
+	.inlineinput{
+		border: none !important;
+		outline: none !important;
+		margin: 0px !important;
+		padding: 0px !important;
+		text-transform: uppercase;
+		background: none;
+	}
+	
 	.greatings {
 		color : #DDD;
 		margin: 0.5rem auto;
@@ -504,41 +513,23 @@
 			nextsongs();
 		});
 		
-		//$('#qr-kepada,#qr-dari').click(function(){
-		//	let origstring = $(this).text();
-		//	$(this).prop('contenteditable', true);
-		//	$(this).bind('blur keyup',function(e) {  
-		//		if (e.type === 'blur' || e.keyCode === 13) {
-		//			generateQrBukuTamu();
-		//			$(this).off('blur keyup');
-		//		}
-		//		if(e.keyCode === 27){
-		//			$(this).text(origstring);
-		//			$(this).off('blur keyup');
-		//		}
-		//		
-		//		$(this).prop('contenteditable', false);
-		//	});  
-		//});
-		
 		$("#qr-kepada, #qr-dari").each(function(){
-			$(this).on("click focus", function(){				
-				let totalWidth = $(this).width();
-				totalWidth += parseInt($(this).css("padding-left"), 10) + parseInt($(this).css("padding-right"), 10); //Total Padding Width
-				totalWidth += parseInt($(this).css("margin-left"), 10) + parseInt($(this).css("margin-right"), 10); //Total Margin Width
-				totalWidth += parseInt($(this).css("borderLeftWidth"), 10) + parseInt($(this).css("borderRightWidth"), 10); //Total Border Width
+			$(this).on("click focus", function(){
+				$(this).css("visibility", "hidden");
 				
-				let totalHeight = $(this).height();
+				let totalWidth = $(this).parents("div").width();
+				totalWidth += parseInt($(this).parents("div").css("padding-left"), 10) + parseInt($(this).parents("div").css("padding-right"), 10); //Total Padding Width
+				totalWidth += parseInt($(this).parents("div").css("margin-left"), 10) + parseInt($(this).parents("div").css("margin-right"), 10); //Total Margin Width
+				totalWidth += parseInt($(this).parents("div").css("borderLeftWidth"), 10) + parseInt($(this).parents("div").css("borderRightWidth"), 10); //Total Border Width
+				
+				let totalHeight = $(this).height()+10;
 				totalHeight += parseInt($(this).css("padding-top"), 10) + parseInt($(this).css("padding-bottom"), 10); //Total Padding Width
 				totalHeight += parseInt($(this).css("margin-top"), 10) + parseInt($(this).css("margin-bottom"), 10); //Total Margin Width
 				totalHeight += parseInt($(this).css("borderTopWidth"), 10) + parseInt($(this).css("borderBottomWidth"), 10); //Total Border Width
 				
-				console.log($(this).offset().top+" - "+$(window).scrollTop());
-				console.log($(this).offset().top-$(window).scrollTop());
-				
 				let inlinedit = $('<input></input>').css({
-					"top" : $(this).offset().top-$(window).scrollTop(),
-					"left" : $(this).offset().left,
+					"top" : $(this).parents("div").offset().top-$(window).scrollTop(),
+					"left" : $(this).parents("div").offset().left,
 					"height" : totalHeight-5,
 					"width" : totalWidth-1,
 					"position" : "fixed",
@@ -546,10 +537,12 @@
 				})
 				.val($(this).text())
 				.data("elemid", $(this).attr("id"))
-				.addClass("inputsimple");
+				.css('font-size', $(this).parent().css('font-size'))
+				.addClass("inlineinput");
 				
 				inlinedit.keyup(function(e){
 					if(e.keyCode === 27){
+						$("#"+$(this).data("elemid")).css("visibility", "visible");
 						$(this).remove();
 					}
 				});
@@ -557,6 +550,7 @@
 				inlinedit.focusout(function() {
 					$("#"+$(this).data("elemid")).text($(this).val());
 					generateQrBukuTamu();
+					$("#"+$(this).data("elemid")).css("visibility", "visible");
 					$(this).remove();
 				});
 				
@@ -564,6 +558,7 @@
 					if(e.which == 13 || e.which == 27){
 						$("#"+$(this).data("elemid")).text($(this).val());
 						generateQrBukuTamu();
+						$("#"+$(this).data("elemid")).css("visibility", "visible");
 						$(this).remove();
 					}
 				});
@@ -573,6 +568,7 @@
 				inlinedit.focus();
 				
 				$(window).scroll(function(){
+					$("#"+$(this).data("elemid")).css("visibility", "visible");
 					inlinedit.remove();
 				});
 			});
