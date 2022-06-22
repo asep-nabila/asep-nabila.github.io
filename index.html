@@ -598,10 +598,23 @@
 		
 		$("#edit-attenderdata").click(function(){
 			Swal.fire({
-				title: 'Multiple inputs',
+				title: 'Ubah data tamu',
 				html:
-					'<input id="swal-input1" class="swal2-input">' +
-					'<input id="swal-input2" class="swal2-input">',
+					'<div class="mt-1 row">' +
+					'<label for="attenderdata-kepada" class="col-sm-4 col-form-label">Nama</label>' +
+					'<div class="col-sm-8">' +
+					'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control">' +
+					'</div>' +
+					'</div>' +
+					'<div class="mb-1 row">' +
+					'<label for="attenderdata-dari" class="col-sm-4 col-form-label">Domisili</label>' +
+					'<div class="col-sm-8">' +
+					'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control">' +
+					'</div>' +
+					'</div>',
+				showCancelButton: true,
+				width: 'auto',
+				reverseButtons: true,
 				preConfirm: function () {
 					return new Promise(function (resolve) {
 						// Validate input
