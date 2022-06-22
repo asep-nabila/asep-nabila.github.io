@@ -51,7 +51,6 @@
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
 		background-color: #f5f5e9;
-		background-image: url("img/bg-base.png");
 	}
 	
 	.greatings {
@@ -190,7 +189,7 @@
 	}
 	</style>
   </head>
-  <body>
+  <body data-background="img/bg-base.png">
 	<nav style="position:fixed;margin-bottom:4.5rem;" class="xhidden navbar navbar-expand fixed-bottom">
 		<div class="container">
 			<div id="player-elem" class="row text-center w-100">
@@ -432,6 +431,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 	<script src="calamansi/calamansi.min.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/template.js"></script>
@@ -493,6 +494,7 @@
 		$("#nextsongs").on('click', function(event) {
 			nextsongs();
 		});
+		$("body").css("background-image", `url($("body").data("data-background"))`);  
 	});
 	</script>
   </body>
