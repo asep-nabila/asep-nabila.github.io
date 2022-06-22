@@ -404,12 +404,12 @@
 						</div>
 						<div class="row">
 							<div class="col-12 text-center mt-2">
-								<h4><span id="qr-name">{GROOM_FULLNAME}</span></h4>
+								<h4><span id="qr-kepada"></span></h4>
 							</div>
 						<div class="row">
 						</div>
 							<div class="col-12 text-center">
-								<h6><span id="qr-domisili">KOPO</span></h6>
+								<h6><span id="qr-dari"></span></h6>
 							</div>
 						</div>
 					</nav>
@@ -502,6 +502,23 @@
 		
 		$("#nextsongs").on('click', function(event) {
 			nextsongs();
+		});
+		
+		$('#qr-kepada,#qr-dari').click(function(){
+			let origstring = $(this).text();
+			$(this).prop('contenteditable', true);
+			$(this).bind('blur keyup',function(e) {  
+				if (e.type === 'blur' || e.keyCode === 13) {
+					generateQrBukuTamu();
+					$(this).off('blur keyup');
+				}
+				if(e.keyCode === 27){
+					$(this).text(origstring);
+					$(this).off('blur keyup');
+				}
+				
+				$(this).prop('contenteditable', false);
+			});  
 		});
 	});
 	</script>

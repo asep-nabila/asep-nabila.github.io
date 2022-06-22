@@ -151,6 +151,16 @@ const showInvitation = function(){
 }
 
 const generateQrBukuTamu = function(){
+	if($('#qr-kepada').text() !== ""){
+		kepada = $('#qr-kepada').text();
+	}
+	if($('#qr-dari').text() !== ""){
+		dari = $('#qr-dari').text();
+	}
+	
+	localStorage.kepada = kepada;
+	localStorage.dari = dari;
+	
 	let bukutamudata = {
 		"A": kepada,
 		"D": dari,
@@ -172,8 +182,8 @@ const generateQrBukuTamu = function(){
 		back: '#f9f9e1'
 	});
 	
-	$('#qr-name').text(kepada.toUpperCase());
-	$('#qr-domisili').text(dari.toUpperCase());
+	$('#qr-kepada').text(kepada.toUpperCase());
+	$('#qr-dari').text(dari.toUpperCase());
 }
 
 const swalConfirmBackSound = function(){
