@@ -439,12 +439,20 @@
 	<script src="playlist.json"></script>
 	
 	<script>
-	let group,receiverhtml;
+	let kepada,dari,group,receiverhtml;
+
+	if(typeof localStorage.kepada != "undefined" || localStorage.kepada != ''){
+		kepada = localStorage.kepada;
+	}
+
+	if(typeof localStorage.dari != "undefined" || localStorage.dari != ''){
+		dari = localStorage.dari;
+	}
 	
-	if(queryParams.to !== null && queryParams.to !== ""){
+	if(queryParams.to !== null || queryParams.to !== ""){
 		kepada = encodeHTML(queryParams.to);
 	}
-	if(queryParams.group !== null && queryParams.group !== ""){
+	if(queryParams.group !== null || queryParams.group !== ""){
 		group = encodeHTML(queryParams.group);
 	}
 	

@@ -37,13 +37,3 @@ class Config {
 
 const config = new Config(theConfigs);
 config.initializing();
-
-let kepada,dari;
-
-if(typeof localStorage.kepada != "undefined" || localStorage.kepada != ''){
-	let kepada = localStorage.kepada;
-}
-
-if(typeof localStorage.dari != "undefined" || localStorage.dari != ''){
-	let dari = localStorage.dari;
-}
