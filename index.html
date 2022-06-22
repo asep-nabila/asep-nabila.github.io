@@ -579,6 +579,55 @@
 				});
 			});
 		}
+		
+		$("#reset-attenderdata").click(function(){
+			Swal.fire({
+				html: '<h1><i class="bi bi-arrow-clockwise"></i></h1>Reset data tamu?',
+				confirmButtonColor: '#991188', //Warna kesukaan Nabila
+				showCancelButton: true,
+				confirmButtonText: 'Ya, reset',
+				cancelButtonText: 'Tidak',
+				reverseButtons: true,
+			}).then((result) => {
+				if (result.isConfirmed) {
+					localStorage.clear();
+					location.reload();
+				}
+			})
+		});
+		
+		$("#edit-attenderdata").click(function(){
+			Swal.fire({
+				title: 'Multiple inputs',
+				html:
+					'<input id="swal-input1" class="swal2-input">' +
+					'<input id="swal-input2" class="swal2-input">',
+				preConfirm: function () {
+					return new Promise(function (resolve) {
+						// Validate input
+						if ($('#swal-input1').val() == '' || $('#swal-input2').val() == '') {
+							swal.showValidationMessage("Enter a value in both fields"); // Show error when validation fails.
+							swal.enableConfirmButton(); // Enable the confirm button again.
+						} else {
+							swal.resetValidationMessage(); // Reset the validation message.
+							resolve([
+								$('#swal-input1').val(),
+								$('#swal-input2').val()
+							]);
+						}
+					})
+				},
+				onOpen: function () {
+					$('#swal-input1').focus()
+				}
+			}).then(function (result) {
+				// If validation fails, the value is undefined. Break out here.
+				if (typeof(result.value) == 'undefined') {
+					return false;
+				}
+				swal(JSON.stringify(result))
+			}).catch(swal.noop)
+		});
 	});
 	</script>
   </body>
