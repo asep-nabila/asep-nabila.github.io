@@ -136,7 +136,7 @@ const showEnvelope = function(){
 			swallAskName(swallAskFrom);
 		}else{
 			localStorage.kepada = kepada;
-			if(typeof kepada == 'undefined' || kepada == ''){
+			if(typeof dari == 'undefined' || dari == ''){
 				swallAskFrom();
 			}else{
 				generateQrBukuTamu();
