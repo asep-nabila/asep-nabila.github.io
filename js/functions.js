@@ -151,13 +151,14 @@ const showInvitation = function(){
 const generateQrBukuTamu = function(){
 	let qrbukutamudata = {
 		"A": kepada,
-		"D": dari
+		"D": dari,
+		"X": Math.random()
 	};
 	
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: JSON.stringify(qrbukutamudata),
+		text: kepada+"/"dari+"/"+btoa(JSON.stringify(qrbukutamudata)),
 		size: 200,
 		render: 'svg',
 		crisp: true,
