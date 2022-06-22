@@ -136,12 +136,7 @@ const showEnvelope = function(){
 			swallAskName(swallAskFrom);
 		}else{
 			localStorage.kepada = kepada;
-			if(typeof dari == 'undefined' || dari == ''){
-				swallAskFrom();
-			}else{
-				generateQrBukuTamu();
-				swalConfirmBackSound();
-			}
+			swallAskFrom();
 		}
 	})
 }
@@ -198,39 +193,44 @@ const swalConfirmBackSound = function(){
 }
 
 const swallAskFrom = function(){
-	Swal.fire({
-		html: '<span style="color:white;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>',
-		input: 'text',
-		inputAttributes: {
-			autocapitalize: 'off'
-		},
-		color: "white",
-		showCancelButton: false,
-		confirmButtonText: 'Lanjut',
-		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		background: 'transparent',
-		backdrop: `
-		linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("img/bg-landing.jpg")
-		no-repeat center/auto 100%
-		`,
-		allowOutsideClick: false,
-		allowEscapeKey: false,
-		inputValidator: (value) => {
-			if (!value) {
-				return 'Mohon masukkan domisili!'
+	if(typeof dari == 'undefined' || dari == ''){
+		Swal.fire({
+			html: '<span style="color:white;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>',
+			input: 'text',
+			inputAttributes: {
+				autocapitalize: 'off'
+			},
+			color: "white",
+			showCancelButton: false,
+			confirmButtonText: 'Lanjut',
+			confirmButtonColor: '#991188', //Warna kesukaan Nabila
+			background: 'transparent',
+			backdrop: `
+			linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+			url("img/bg-landing.jpg")
+			no-repeat center/auto 100%
+			`,
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+			inputValidator: (value) => {
+				if (!value) {
+					return 'Mohon masukkan domisili!'
+				}
 			}
-		}
-	}).then((result) => {
-		if (result.isConfirmed) {
-			dari = result.value;
-			localStorage.dari = dari;
-			if(typeof dari !== 'undefined' || dari !== ''){
-				generateQrBukuTamu();
-				swalConfirmBackSound();
+		}).then((result) => {
+			if (result.isConfirmed) {
+				dari = result.value;
+				localStorage.dari = dari;
+				if(typeof dari !== 'undefined' || dari !== ''){
+					generateQrBukuTamu();
+					swalConfirmBackSound();
+				}
 			}
-		}
-	});
+		});
+	}else{
+		generateQrBukuTamu();
+		swalConfirmBackSound();
+	}
 }
 
 const swallAskName = function(functiontoCall){
