@@ -412,13 +412,17 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12 text-center mt-2">
+							<div class="col-12 text-center mt-2" style="white-space: nowrap;">
 								<h4><span id="qr-kepada"></span></h4>
 							</div>
-						<div class="row">
-						</div>
-							<div class="col-12 text-center">
+							<div class="col-12 text-center" style="white-space: nowrap;">
 								<h6><span id="qr-dari"></span></h6>
+							</div>
+							<div class="col-12 text-center" style="white-space: nowrap;">
+								<small class="change-attenderdata">
+									<button id="reset-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> reset</button>
+									<button id="edit-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil-fill"></i> edit</button>
+								</small> 
 							</div>
 						</div>
 					</nav>
@@ -513,66 +517,68 @@
 			nextsongs();
 		});
 		
-		$("#qr-kepada, #qr-dari").each(function(){
-			$(this).on("click focus", function(){
-				$(this).css("visibility", "hidden");
-				
-				let totalWidth = $(this).parents("div").width();
-				totalWidth += parseInt($(this).parents("div").css("padding-left"), 10) + parseInt($(this).parents("div").css("padding-right"), 10); //Total Padding Width
-				totalWidth += parseInt($(this).parents("div").css("margin-left"), 10) + parseInt($(this).parents("div").css("margin-right"), 10); //Total Margin Width
-				totalWidth += parseInt($(this).parents("div").css("borderLeftWidth"), 10) + parseInt($(this).parents("div").css("borderRightWidth"), 10); //Total Border Width
-				
-				let totalHeight = $(this).height()+10;
-				totalHeight += parseInt($(this).css("padding-top"), 10) + parseInt($(this).css("padding-bottom"), 10); //Total Padding Width
-				totalHeight += parseInt($(this).css("margin-top"), 10) + parseInt($(this).css("margin-bottom"), 10); //Total Margin Width
-				totalHeight += parseInt($(this).css("borderTopWidth"), 10) + parseInt($(this).css("borderBottomWidth"), 10); //Total Border Width
-				
-				let inlinedit = $('<input></input>').css({
-					"top" : $(this).parents("div").offset().top-$(window).scrollTop(),
-					"left" : $(this).parents("div").offset().left,
-					"height" : totalHeight-5,
-					"width" : totalWidth-1,
-					"position" : "fixed",
-					"text-align" : "center"
-				})
-				.val($(this).text())
-				.data("elemid", $(this).attr("id"))
-				.css('font-size', $(this).parent().css('font-size'))
-				.addClass("inlineinput");
-				
-				inlinedit.keyup(function(e){
-					if(e.keyCode === 27){
-						$("#"+$(this).data("elemid")).css("visibility", "visible");
-						$(this).remove();
-					}
-				});
-		
-				inlinedit.focusout(function() {
-					$("#"+$(this).data("elemid")).text($(this).val());
-					generateQrBukuTamu();
-					$("#"+$(this).data("elemid")).css("visibility", "visible");
-					$(this).remove();
-				});
-				
-				inlinedit.keypress(function(e){
-					if(e.which == 13 || e.which == 27){
+		if($("body").width()>1024){
+			$("#qr-kepada, #qr-dari").each(function(){
+				$(this).on("click focus", function(){
+					$(this).css("visibility", "hidden");
+					
+					let totalWidth = $(this).parents("div").width();
+					totalWidth += parseInt($(this).parents("div").css("padding-left"), 10) + parseInt($(this).parents("div").css("padding-right"), 10); //Total Padding Width
+					totalWidth += parseInt($(this).parents("div").css("margin-left"), 10) + parseInt($(this).parents("div").css("margin-right"), 10); //Total Margin Width
+					totalWidth += parseInt($(this).parents("div").css("borderLeftWidth"), 10) + parseInt($(this).parents("div").css("borderRightWidth"), 10); //Total Border Width
+					
+					let totalHeight = $(this).height()+10;
+					totalHeight += parseInt($(this).css("padding-top"), 10) + parseInt($(this).css("padding-bottom"), 10); //Total Padding Width
+					totalHeight += parseInt($(this).css("margin-top"), 10) + parseInt($(this).css("margin-bottom"), 10); //Total Margin Width
+					totalHeight += parseInt($(this).css("borderTopWidth"), 10) + parseInt($(this).css("borderBottomWidth"), 10); //Total Border Width
+					
+					let inlinedit = $('<input></input>').css({
+						"top" : $(this).parents("div").offset().top-$(window).scrollTop(),
+						"left" : $(this).parents("div").offset().left,
+						"height" : totalHeight-5,
+						"width" : totalWidth-1,
+						"position" : "fixed",
+						"text-align" : "center"
+					})
+					.val($(this).text())
+					.data("elemid", $(this).attr("id"))
+					.css('font-size', $(this).parent().css('font-size'))
+					.addClass("inlineinput");
+					
+					inlinedit.keyup(function(e){
+						if(e.keyCode === 27){
+							$("#"+$(this).data("elemid")).css("visibility", "visible");
+							$(this).remove();
+						}
+					});
+			
+					inlinedit.focusout(function() {
 						$("#"+$(this).data("elemid")).text($(this).val());
 						generateQrBukuTamu();
 						$("#"+$(this).data("elemid")).css("visibility", "visible");
 						$(this).remove();
-					}
-				});
-				
-				$("body").append(inlinedit);
-				
-				inlinedit.focus();
-				
-				$(window).scroll(function(){
-					$("#"+$(this).data("elemid")).css("visibility", "visible");
-					inlinedit.remove();
+					});
+					
+					inlinedit.keypress(function(e){
+						if(e.which == 13 || e.which == 27){
+							$("#"+$(this).data("elemid")).text($(this).val());
+							generateQrBukuTamu();
+							$("#"+$(this).data("elemid")).css("visibility", "visible");
+							$(this).remove();
+						}
+					});
+					
+					$("body").append(inlinedit);
+					
+					inlinedit.focus();
+					
+					$(window).scroll(function(){
+						$("#"+$(this).data("elemid")).css("visibility", "visible");
+						inlinedit.remove();
+					});
 				});
 			});
-		});
+		}
 	});
 	</script>
   </body>
