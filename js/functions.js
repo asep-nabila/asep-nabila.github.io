@@ -158,7 +158,7 @@ const generateQrBukuTamu = function(){
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: "BUKU TAMU ASEP & NABILA\n"+kepada+"||"dari+"\n"+btoa(JSON.stringify(qrbukutamudata)),
+		text: "BUKU TAMU ASEP & NABILA\n"+kepada+"||"+dari+"\n"+btoa(JSON.stringify(qrbukutamudata)),
 		size: 200,
 		render: 'svg',
 		crisp: true,
