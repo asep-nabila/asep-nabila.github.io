@@ -135,11 +135,18 @@ const showEnvelope = function(){
 		if(typeof kepada == 'undefined' || kepada == ''){
 			swallAskName(swallAskFrom);
 		}else{
-			swallAskFrom();
+			localStorage.kepada = kepada;
+			if(typeof kepada == 'undefined' || kepada == ''){
+				swallAskFrom();
+			}else{
+				generateQrBukuTamu();
+				swalConfirmBackSound();
+			}
 		}
 	})
 }
 const showInvitation = function(){
+	window.history.pushState('', '', window.location.pathname);
 	$("body").css("background-image", 'url('+$("body").data("background")+')');
 	
 	$('.xhidden').each(function() {
@@ -217,6 +224,7 @@ const swallAskFrom = function(){
 	}).then((result) => {
 		if (result.isConfirmed) {
 			dari = result.value;
+			localStorage.dari = dari;
 			if(typeof dari !== 'undefined' || dari !== ''){
 				generateQrBukuTamu();
 				swalConfirmBackSound();
