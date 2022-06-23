@@ -179,7 +179,7 @@ const generateQrBukuTamu = function(){
 		minVersion: 4,
 		quiet: 1,
 		ecLevel: 'H',
-		back: '#f9f9e1'
+		back: 'rgba(255,255,255,0.5)'
 	});
 	
 	$('#qr-kepada').text(kepada.toUpperCase());
