@@ -657,6 +657,9 @@
 			}).catch(swal.noop)
 		});
 		
+		$.qrCodeReader.jsQRpath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/jsQR/jsQR.min.js";
+		$.qrCodeReader.beepPath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3";
+	
 		$("#scan-attenderqrcode").qrCodeReader({
 			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\s:\s[\w]{32,}/,
 			audioFeedback: true,
