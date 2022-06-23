@@ -598,22 +598,24 @@
 		
 		$("#edit-attenderdata").click(function(){
 			Swal.fire({
-				title: 'Ubah data tamu',
 				html:
-					'<div class="mt-1 row">' +
+					'<div style="max-width:25rem;">' +
+					'<h1><i class="bi bi-person-bounding-box"></i></h1>Ubah data tamu?' +
+					'<div class="mt-2 text-start row">' +
 					'<label for="attenderdata-kepada" class="col-sm-4 col-form-label">Nama</label>' +
 					'<div class="col-sm-8">' +
 					'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control">' +
 					'</div>' +
 					'</div>' +
-					'<div class="mb-1 row">' +
+					'<div class="mb-1 text-start row">' +
 					'<label for="attenderdata-dari" class="col-sm-4 col-form-label">Domisili</label>' +
 					'<div class="col-sm-8">' +
 					'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control">' +
 					'</div>' +
+					'</div>' +
 					'</div>',
 				showCancelButton: true,
-				width: 'auto',
+				width: '25rem',
 				reverseButtons: true,
 				preConfirm: function () {
 					return new Promise(function (resolve) {
@@ -624,23 +626,26 @@
 						} else {
 							swal.resetValidationMessage(); // Reset the validation message.
 							resolve([
-								$('#swal-input1').val(),
-								$('#swal-input2').val()
+								$('#attenderdata-kepada').val(),
+								$('#attenderdata-dari').val()
 							]);
 						}
 					})
 				},
-				onOpen: function () {
+				didOpen: (popupedit) => {
+					console.log($(popupedit));
+					console.log($(popupedit).children(".swal2-html-container")[0]);
+					$($(popupedit).children(".swal2-html-container")[0]).css("overflow-x","hidden");
 					$('#attenderdata-kepada').val($('#qr-kepada').text());
 					$('#attenderdata-dari').val($('#qr-dari').text());
 					$('#attenderdata-kepada').focus()
 				}
 			}).then(function (result) {
-				// If validation fails, the value is undefined. Break out here.
-				if (typeof(result.value) == 'undefined') {
-					return false;
+				if (result.isConfirmed) {
+					$("#qr-kepada").text($('#attenderdata-kepada').val());
+					$("#qr-dari").text($('#attenderdata-dari').val());
+					generateQrBukuTamu();
 				}
-				swal(JSON.stringify(result))
 			}).catch(swal.noop)
 		});
 	});
