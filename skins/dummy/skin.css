@@ -1,0 +1,123 @@
+.calamansi-skin--dummy {
+    border: 2px solid black;
+}
+
+.calamansi-skin--dummy .clmns--playback-bar {
+    position: relative;
+    height: 1rem;
+    background-color: #eee;
+    border: 1px solid #000;
+    margin: 1rem 1rem;
+}
+.calamansi-skin--dummy .clmns--playback-load {
+    height: 100%;
+    width: 100%;
+    background-color: #ddd;
+}
+.calamansi-skin--dummy .clmns--playback-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #13abea;
+}
+
+.calamansi-skin--dummy .clmns--volume-container {
+    margin: 1rem 1rem;
+}
+.calamansi-skin--dummy .clmns--volume-bar {
+    display: inline-block;
+    position: relative;
+    width: 5rem;
+    height: 1rem;
+    background-color: #eee;
+    border: 1px solid #000;
+}
+.calamansi-skin--dummy .clmns--volume-value {
+    height: 100%;
+    width: 100%;
+    background-color: #13abea;
+}
+
+/* Track info */
+.calamansi-skin--dummy .clmns--album-cover,
+.calamansi-skin--dummy .clmns--track-name,
+.calamansi-skin--dummy .clmns--track-links,
+.calamansi-skin--dummy .clmns--controls,
+.calamansi-skin--dummy .clmns--track-playback-info
+{
+    text-align: center;
+}
+
+.calamansi-skin--dummy .clmns--track-info--albumCover {
+    max-width: 300px;
+}
+.calamansi-skin--dummy .clmns--track-name {
+    font-weight: 700;
+}
+
+.calamansi-skin--dummy .clmns--controls {
+    margin: 1rem 0;
+}
+.calamansi-skin--dummy .clmns--control {
+    font-size: 2rem;
+    margin: 0 .25rem;
+}
+
+.calamansi-skin--dummy .clmns--states {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.calamansi-skin--dummy .clmns--playback-speed-container {
+    margin: 1rem 1rem;
+    font-size: 1rem;
+}
+
+/* Playlists */
+.calamansi-skin--dummy .clmns--playlists-select-container {
+    margin: 1rem 1rem;
+    font-size: 1rem;
+}
+.calamansi-skin--dummy .clmns--playlists {
+    width: 100%;
+}
+
+/* Playlist */
+.calamansi-skin--dummy .clmns--playlist-container {
+    width: 100%;
+    overflow: auto;
+}
+.calamansi-skin--dummy .clmns--playlist {
+    width: 100%;
+}
+
+.calamansi-skin--dummy .clmns--playlist th {
+    text-align: left;
+}
+
+.calamansi-skin--dummy .clmns--playlist .clmns--playlist-item.clmns--template {
+    display: none;
+}
+
+.calamansi-skin--dummy div.clmns--playlist .clmns--playlist-item {
+    display: flex;
+}
+
+.calamansi-skin--dummy .clmns--playlist-item {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.calamansi-skin--dummy div.clmns--playlist .clmns--playlist-item--name {
+    flex: 1;
+}
+
+.calamansi-skin--dummy .clmns--playlist-item.clmns--active {
+    background-color: rgb(185, 217, 231);
+}
