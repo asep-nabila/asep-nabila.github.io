@@ -1,6 +1,6 @@
 [submodule "qrcode-reader"]
 	path = qrcode-reader
-	url = https://github.com/mauntrelio/qrcode-reader.git
+	url = https://github.com/asep-nabila/qrcode-reader.git
 [submodule "calamansi-js"]
 	path = calamansi-js
-	url = https://github.com/voerro/calamansi-js.git
+	url = https://github.com/asep-nabila/calamansi-js.git
