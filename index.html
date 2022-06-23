@@ -618,8 +618,8 @@
 				preConfirm: function () {
 					return new Promise(function (resolve) {
 						// Validate input
-						if ($('#swal-input1').val() == '' || $('#swal-input2').val() == '') {
-							swal.showValidationMessage("Enter a value in both fields"); // Show error when validation fails.
+						if ($('#attenderdata-kepada').val() == '' || $('#attenderdata-dari').val() == '') {
+							swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
 							swal.enableConfirmButton(); // Enable the confirm button again.
 						} else {
 							swal.resetValidationMessage(); // Reset the validation message.
@@ -631,7 +631,9 @@
 					})
 				},
 				onOpen: function () {
-					$('#swal-input1').focus()
+					$('#attenderdata-kepada').val($('#qr-kepada').text());
+					$('#attenderdata-dari').val($('#qr-dari').text());
+					$('#attenderdata-kepada').focus()
 				}
 			}).then(function (result) {
 				// If validation fails, the value is undefined. Break out here.
