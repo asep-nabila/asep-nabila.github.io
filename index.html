@@ -458,6 +458,7 @@
 	</div>
 	
 	<script src="config.js"></script>
+	<script src="js/constructor.js"></script>
 	<script src="https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" type="text/javascript"></script>
@@ -677,7 +678,7 @@
 		$.qrCodeReader.beepPath = "qrcode-reader/dist/audio/beep.mp3";
 	
 		$("#scan-attenderqrcode").qrCodeReader({
-			qrcodeRegexp: /BUKUTAMU-TAMU-Asep&Nabila\s:\s[\w]{32,}/,
+			qrcodeRegexp: `/BUKUTAMU-TAMU-${config.groom.firstname}&${config.bride.firstname}\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/`,
 			audioFeedback: true,
 			callback: function(code) {
 				alert(code);

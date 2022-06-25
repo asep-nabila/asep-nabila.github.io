@@ -1,11 +1,15 @@
 let theConfigs = {
 	"groom" : {
 		"fullname": "Asep Maulana Nuriman",
-		"nickname" : "Maunklana"
+		"nickname": "Maunklana",
+		"father": "Ace Sunarya (alm)",
+		"mother": "Atikah (alm)"
 	},
 	"bride" : {
 		"fullname": "Nabila Dea Santika",
-		"nickname": "Dila"
+		"nickname": "Dila",
+		"father": "Dudek Junaedi",
+		"mother": "Nia Kurniawati"
 	}
 };
 
