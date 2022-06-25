@@ -340,3 +340,76 @@ const getComment = function() {
     });
   });
 }
+
+/*
+
+const getCommentsUrl = function(){
+	let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
+	return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+}
+
+let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
+return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+
+$('#messagesfromvisitor').scroll(function() {
+    if($(this).scrollTop() == $(this).height() - $(this).height()) {
+        
+    }
+});
+
+let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
+let getComments = `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+$.getJSON( getComments , function( data ) { console.log(data) });
+
+let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
+			// options
+			path: function() {
+				
+			},
+			history: false,
+			responseBody: 'json',
+			append: '.post',
+			fetchOptions: function() {
+			  return {
+				method: 'GET',
+				mode: 'cors',
+				cache: 'no-cache',
+				credentials: 'same-origin',
+				headers: {
+				  'Content-Type': 'application/json'
+				}
+			  };
+			},
+			status: '.scroll-status'
+		});
+		
+		$isMessagesVisitor.on( 'request.infiniteScroll', function( event, path, fetchPromise ) {
+		  console.log(`Loading page: ${path}`);
+		});
+		
+		$isMessagesVisitor.on( 'load.infiniteScroll', function( event, body ) {
+			// compile body data into HTML
+			let isMessagesVisitorItemsHTML = body.data.map( isMessagesVisitorGetItemHTML ).join('');
+			// convert HTML string into elements
+			let $isMessagesVisitorItemsHTMLItems =  $( isMessagesVisitorItemsHTML );
+			// append item elements
+			$isMessagesVisitor.infiniteScroll( 'appendItems', $isMessagesVisitorItemsHTMLItems );
+		});
+
+		// load initial page
+		$isMessagesVisitor.infiniteScroll('loadNextPage');
+
+		//------------------//
+
+		function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
+			return `<div class="card">
+				<h5 class="card-header">${timestamp}</h5>
+				<div class="card-body">
+					<h5 class="card-title">${name}</h5>
+					<p class="card-text">${message}</p>
+					<small>${colleague} | ${attend}</small>
+				</div>
+			</div>`;
+		}
+		
+*/
