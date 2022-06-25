@@ -90,6 +90,27 @@ async function getVisitorIP() {
 }
 getVisitorIP();
 
+
+// Initialize the agent at application startup.
+const fpPromise = import('https://fpcdn.io/v3/OS3SLXNyklDNGY2qQcMy').then(FingerprintJS => FingerprintJS.load());
+let visitorId = '';
+async function getVisitorId() {
+	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
+		visitorId = localStorage.visitorId;
+	}else{
+		// Get the visitor identifier when you need it.
+		fpPromise.then(fp => fp.get()).then(result => {
+			// This is the visitor identifier:
+			visitorId = result.visitorId;
+			// save it on localStorage
+			localStorage.visitorId = visitorId;
+		}).catch(error => {
+			getVisitorId();
+		});
+	}
+}
+getVisitorId();
+
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	$("#calamansiplaycontroler").empty();

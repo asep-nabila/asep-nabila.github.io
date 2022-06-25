@@ -457,21 +457,6 @@
 		</div>
 	</div>
 	
-	<script>
-	  // Initialize the agent at application startup.
-	  const fpPromise = import('https://fpcdn.io/v3/OS3SLXNyklDNGY2qQcMy')
-		.then(FingerprintJS => FingerprintJS.load())
-
-	  // Get the visitor identifier when you need it.
-	  fpPromise
-		.then(fp => fp.get())
-		.then(result => {
-		  // This is the visitor identifier:
-		  const visitorId = result.visitorId
-		  console.log(visitorId)
-		})
-	</script>
-	
 	<script src="config.js"></script>
 	<script src="https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
