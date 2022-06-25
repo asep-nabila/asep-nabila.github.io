@@ -729,9 +729,9 @@
 				grecaptcha.ready(function() {
 					grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
 						let getCommentsParams = new getData({ "action":"getComments", "page":getCommentsPageIndex, "grespon":token}); 
-						return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams}`;
+						return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
 					});
-			  });
+				});
 			},
 			history: false,
 			responseBody: 'json',
