@@ -676,9 +676,10 @@
 		
 		$.qrCodeReader.jsQRpath = "qrcode-reader/dist/js/jsQR/jsQR.min.js";
 		$.qrCodeReader.beepPath = "qrcode-reader/dist/audio/beep.mp3";
-	
+		
+		qrcodeRegex = `/BUKUTAMU-TAMU-${config.groom.firstname}&${config.bride.firstname}\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/`;
 		$("#scan-attenderqrcode").qrCodeReader({
-			qrcodeRegexp: `/BUKUTAMU-TAMU-${config.groom.firstname}&${config.bride.firstname}\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/`,
+			qrcodeRegexp: qrcodeRegex,
 			audioFeedback: true,
 			callback: function(code) {
 				alert(code);
