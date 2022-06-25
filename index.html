@@ -403,6 +403,22 @@
 							One of three columns
 						</div>
 					</div>
+					<div class="row">
+						<div id="messagesfromvisitor" class="col-sm-12">
+							No data . . .
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+						<div class="col-sm">
+							One of three columns
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-2 section-right"></div>
@@ -483,6 +499,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/template.js"></script>
 	<script src="playlist.json"></script>
+	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
 	
 	<script>
 	let kepada,dari,group,receiverhtml;
@@ -693,6 +710,13 @@
 			callback: function(code) {
 				alert(code);
 			}
+		});
+		
+		$('#messagesfromvisitor').infiniteScroll({
+			// options
+			path: '.pagination__next',
+			append: '.post',
+			history: false,
 		});
 	});
 	</script>
