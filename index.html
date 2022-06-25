@@ -725,7 +725,13 @@
 		let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
 			// options
 			path: function() {
-				return `${appScriptBaseUrl}${deploymentId}/exec?action=getComments&page=${this.pageIndex}`;
+				let getCommentsPageIndex = this.pageIndex;
+				grecaptcha.ready(function() {
+					grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+						let getCommentsParams = new getData({ "action":"getComments", "page":getCommentsPageIndex, "grespon":token}); 
+						return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams}`;
+					});
+			  });
 			},
 			history: false,
 			responseBody: 'json',

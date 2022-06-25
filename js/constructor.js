@@ -16,4 +16,7 @@ class getData {
 		this["visitorIP"] = visitorIP;
 		this["visitorId"] = visitorId;
 	}
+	params(){
+		return $.param(this);
+	}
 }
