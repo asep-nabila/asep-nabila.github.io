@@ -76,6 +76,20 @@ const addURLParameter = function(key, value) {
 	window.history.pushState('', '', document.location.pathname+'?'+params);
 }
 
+let visitorIP = '';
+async function getVisitorIP() {
+    let response = await fetch('https://ifconfig.me/ip');
+    if (response.status === 200) {
+        visitorIP = await response.text();
+		setTimeout(function () {
+			getVisitorIP();
+		}, (Math.floor((Math.random()*100)+1)*1000)+100000);
+    }else{
+		getVisitorIP();
+	}
+}
+getVisitorIP();
+
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	$("#calamansiplaycontroler").empty();
