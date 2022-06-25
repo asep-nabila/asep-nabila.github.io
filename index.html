@@ -404,8 +404,18 @@
 						</div>
 					</div>
 					<div class="row">
-						<div id="messagesfromvisitor" class="col-sm-12">
-							No data . . .
+						<div id="messagesfromvisitor" class="col-sm-12"></div>
+						<div class="col-sm-12">
+							<div class="page-load-status">
+							  <div class="loader-ellips infinite-scroll-request">
+								<span class="loader-ellips__dot"></span>
+								<span class="loader-ellips__dot"></span>
+								<span class="loader-ellips__dot"></span>
+								<span class="loader-ellips__dot"></span>
+							  </div>
+							  <p class="infinite-scroll-last">End of content</p>
+							  <p class="infinite-scroll-error">No more pages to load</p>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -712,12 +722,53 @@
 			}
 		});
 		
-		$('#messagesfromvisitor').infiniteScroll({
+		let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
 			// options
-			path: '.pagination__next',
-			append: '.post',
+			path: function() {
+				return `${appScriptBaseUrl}${deploymentId}/exec?action=getComments&page=${this.pageIndex}`;
+			},
 			history: false,
+			responseBody: 'json',
+			append: '.post',
+			fetchOptions: function() {
+			  return {
+				method: 'GET',
+				mode: 'cors',
+				cache: 'no-cache',
+				credentials: 'same-origin',
+				headers: {
+				  'Content-Type': 'application/json'
+				}
+			  };
+			},
+			status: '.scroll-status'
 		});
+		
+		$isMessagesVisitor.on( 'load.infiniteScroll', function( event, body ) {
+			// compile body data into HTML
+			let isMessagesVisitorItemsHTML = body.data.map( isMessagesVisitorGetItemHTML ).join('');
+			// convert HTML string into elements
+			let $isMessagesVisitorItemsHTMLItems =  $( isMessagesVisitorItemsHTML );
+			// append item elements
+			$isMessagesVisitor.infiniteScroll( 'appendItems', $isMessagesVisitorItemsHTMLItems );
+		});
+
+		// load initial page
+		$isMessagesVisitor.infiniteScroll('loadNextPage');
+
+		//------------------//
+
+		function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
+			return `<div class="card">
+				<h5 class="card-header">${timestamp}</h5>
+				<div class="card-body">
+					<h5 class="card-title">${name}</h5>
+					<p class="card-text">${message}</p>
+					<small>${colleague} | ${attend}</small>
+				</div>
+			</div>`;
+		}
+
 	});
 	</script>
   </body>

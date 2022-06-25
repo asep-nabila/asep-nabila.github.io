@@ -41,3 +41,6 @@ class Config {
 
 const config = new Config(theConfigs);
 config.initializing();
+
+const appScriptBaseUrl = 'https://script.google.com/macros/s/';
+const deploymentId = 'AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic';
