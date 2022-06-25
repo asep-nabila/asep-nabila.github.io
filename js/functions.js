@@ -135,7 +135,7 @@ const showEnvelope = function(){
 		if(typeof kepada == 'undefined' || kepada == ''){
 			swallAskName(swallAskFrom);
 		}else{
-			localStorage.kepada = kepada;
+			localStorage.kepada = kepada.toUpperCase();
 			swallAskFrom();
 		}
 	})
@@ -152,10 +152,10 @@ const showInvitation = function(){
 
 const generateQrBukuTamu = function(){
 	if($('#qr-kepada').text() !== ""){
-		kepada = $('#qr-kepada').text();
+		kepada = $('#qr-kepada').text().toUpperCase();
 	}
 	if($('#qr-dari').text() !== ""){
-		dari = $('#qr-dari').text();
+		dari = $('#qr-dari').text().toUpperCase();
 	}
 	
 	localStorage.kepada = kepada;
@@ -234,9 +234,9 @@ const swallAskFrom = function(){
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {
-				dari = result.value;
+				dari = result.value.toUpperCase();
 				localStorage.dari = dari;
-				if(typeof dari !== 'undefined' || dari !== ''){
+				if(typeof dari !== 'undefined' && dari !== ''){
 					generateQrBukuTamu();
 					swalConfirmBackSound();
 				}
@@ -274,11 +274,11 @@ const swallAskName = function(functiontoCall){
 		}
 	}).then((result) => {
 		if (result.isConfirmed) {
-			kepada = result.value;
+			kepada = result.value.toUpperCase();
 			if(typeof kepada == 'undefined'){
-				receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, group);
+				receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, encodeHTML(group));
 			}else{
-				receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, kepada);
+				receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, encodeHTML(kepada).toLowerCase());
 			}
 			
 			addURLParameter('to', kepada);
@@ -286,4 +286,22 @@ const swallAskName = function(functiontoCall){
 			functiontoCall();
 		}
 	});
+}
+
+const recaptchaSiteKey = '6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
+
+const submitComment = function() {
+  grecaptcha.ready(function() {
+    grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+		console.log(token);
+    });
+  });
+}
+
+const getComment = function() {
+  grecaptcha.ready(function() {
+    grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+		console.log(token);
+    });
+  });
 }
