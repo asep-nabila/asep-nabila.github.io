@@ -509,7 +509,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/template.js"></script>
 	<script src="playlist.json"></script>
-	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
 	
 	<script>
 	let kepada,dari,group,receiverhtml;
@@ -725,13 +725,8 @@
 		let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
 			// options
 			path: function() {
-				let getCommentsPageIndex = this.pageIndex;
-				grecaptcha.ready(function() {
-					grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-						let getCommentsParams = new getData({ "action":"getComments", "page":getCommentsPageIndex, "grespon":token}); 
-						return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
-					});
-				});
+				let getCommentsParams = new getData({ "action":"getComments", "page":this.pageIndex}); 
+				return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
 			},
 			history: false,
 			responseBody: 'json',
@@ -748,6 +743,10 @@
 			  };
 			},
 			status: '.scroll-status'
+		});
+		
+		$isMessagesVisitor.on( 'request.infiniteScroll', function( event, path, fetchPromise ) {
+		  console.log(`Loading page: ${path}`);
 		});
 		
 		$isMessagesVisitor.on( 'load.infiniteScroll', function( event, body ) {
