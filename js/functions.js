@@ -76,6 +76,17 @@ const addURLParameter = function(key, value) {
 	window.history.pushState('', '', document.location.pathname+'?'+params);
 }
 
+function capitalizing(string) {
+  var splitStr = string.toLowerCase().split(' ');
+   for (var i = 0; i < splitStr.length; i++) {
+       // You do not need to check if i is larger than splitStr length, as your for does that for you
+       // Assign it back to the array
+       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+   }
+   // Directly return the joined string
+   return splitStr.join(' '); 
+}
+
 let visitorIP = '';
 async function getVisitorIP() {
     let response = await fetch('https://ifconfig.me/ip');
@@ -192,6 +203,8 @@ const generateQrBukuTamu = function(){
 	if($('#qr-dari').text() !== ""){
 		dari = $('#qr-dari').text().toUpperCase();
 	}
+	
+	$("#messagesfromvisitor-name").val(capitalizing(kepada.toLowerCase()));
 	
 	localStorage.kepada = kepada;
 	localStorage.dari = dari;
