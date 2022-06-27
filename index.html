@@ -9,9 +9,10 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet"> 
+	<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -34,7 +35,6 @@
 		font-size:50%;
 	}
 	
-	}
 	html {
 		/* make sure we use up the whole viewport */
 		width: 100%;
@@ -104,13 +104,11 @@
 		display: block;
 	}
 	
-	.bg-invitation{
-		min-height: 100vh;
-		//background: url("img/bg-invitation.png") no-repeat center/100% 100%;
+	.btn-primary{
+		background-color:#991188 !important;
+		border-color:#ae199c !important;
 	}
-	.bg-invitation>.row{
-		//padding: 2.5rem 0!important;;
-	}
+	
 	#player-elem{
 		opacity: 0.5;
 	}
@@ -161,6 +159,15 @@
 		transform: rotate(359deg);
 	  }
 	}
+	.in-the-name-of-allah{
+		font-family: Arabic;
+	}
+	
+	.title-section{
+		font-family: 'Tangerine', cursive;
+		font-weight: 700;
+		font-size: 3rem;
+	}
 	
 	.marquee {
 		overflow: hidden;
@@ -169,42 +176,47 @@
 		max-width: 90%;
 		margin-bottom: -0.3rem;
 	}
-	.background-responsive>.section-top>div,.background-responsive>.section-bottom>div{
+	
+	.container-section>.section-middle{
+		min-height: 100vh;
+	}
+	
+	.container-section>.section-top>div,.container-section>.section-bottom>div{
 		//height: 3rem;
 	}
-	.background-responsive>.section-top>.section-left{
+	.container-section>.section-top>.section-left{
 		background-color: #123002;
 	}
-	.background-responsive>.section-top>.section-center{
+	.container-section>.section-top>.section-center{
 		background-color: #125522;
 	}
-	.background-responsive>.section-top>.section-right{
+	.container-section>.section-top>.section-right{
 		background-color: #442232;
 	}
 	
-	.background-responsive>.section-middle>.section-left{
+	.container-section>.section-middle>.section-left{
 		background-repeat: repeat-y;
 		background-position: left top;
 		background-size: 100% auto;
 		background-image: url("img/bg-menu/left.png");
 	}
-	.background-responsive>.section-middle>.section-center{
+	.container-section>.section-middle>.section-center{
 		//background-color: #dfdfdf;
 	}
-	.background-responsive>.section-middle>.section-right{
+	.container-section>.section-middle>.section-right{
 		background-repeat: repeat-y;
 		background-position: right top;
 		background-size: 100% auto;
 		background-image: url("img/bg-menu/right.png");
 	}
 	
-	.background-responsive>.section-bottom>.section-left{
+	.container-section>.section-bottom>.section-left{
 		background-color: #123212;
 	}
-	.background-responsive>.section-bottom>.section-center{
+	.container-section>.section-bottom>.section-center{
 		background-color: #225522;
 	}
-	.background-responsive>.section-bottom>.section-right{
+	.container-section>.section-bottom>.section-right{
 		background-color: #542232;
 	}
 	.receivername {
@@ -272,7 +284,7 @@
 		</div>
 	</nav>
 	
-	<div id="beranda" class="xhidden container-fluid background-responsive">
+	<div id="beranda" class="xhidden container-fluid container-section">
 		<div class="row section-top">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center"></div>
@@ -281,10 +293,34 @@
 		<div class="row section-middle">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="col-12 text-center">
-							{GROOM_FULLNAME} & {BRIDE_FULLNAME}
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h1 class="title-section">The Wedding Of</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<img class="swal2-image" src="img/asepdila.png" alt="Asep Maulana Nuriman (Maunklana) &amp; Nabila Dea Santika (Dila)" style="width: 400px; height: 400px;">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h1 style="font-family: 'Playball', cursive;">
+								<sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
+								<small>&amp;</small>
+								<sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
+							</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<a href="#acara" class="navigate-link btn btn-primary" type="button">Save the date</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							SABTU, 11 Maret 2023
 						</div>
 					</div>
 				</div>
@@ -299,7 +335,41 @@
 	</div>
 	
 	
-	<div id="mempelai" class="xhidden container-fluid background-responsive">
+	<div id="mempelai" class="xhidden container-fluid container-section">
+		<div class="row section-top">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center"></div>
+			<div class="col-1 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h1 class="in-the-name-of-allah">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+						</div>
+						<div class="col-sm">
+						</div>
+						<div class="col-sm">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center"></div>
+			<div class="col-1 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="acara" class="xhidden container-fluid container-section">
 		<div class="row section-top">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center"></div>
@@ -309,6 +379,47 @@
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center">
 				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h2 class="title-section">Indahnya Hari Yang Dinanti</h2>
+							<h5></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+						</div>
+						<div class="col-sm">
+						</div>
+						<div class="col-sm">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1 section-right"></div>
+		</div>
+		<div class="row section-bottom">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center"></div>
+			<div class="col-1 section-right"></div>
+		</div>
+	</div>
+	
+	<div id="galeri" class="xhidden container-fluid container-section">
+		<div class="row section-top">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center"></div>
+			<div class="col-1 section-right"></div>
+		</div>
+		<div class="row section-middle">
+			<div class="col-1 section-left"></div>
+			<div class="col-10 section-center">
+				<div class="container-fluid bg-invitation">
+					<div class="row">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h2 class="title-section">Galeri Foto</h2>
+							<h5>Tangkapan momen-momen berbahagia kedua mempelai</h5>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-sm">
 							One of three columns
@@ -331,7 +442,7 @@
 		</div>
 	</div>
 	
-	<div id="acara" class="xhidden container-fluid background-responsive">
+	<div id="ucapan" class="xhidden container-fluid container-section">
 		<div class="row section-top">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center"></div>
@@ -342,71 +453,9 @@
 			<div class="col-10 section-center">
 				<div class="container-fluid bg-invitation">
 					<div class="row">
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							One of three columns
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-	</div>
-	
-	<div id="galeri" class="xhidden container-fluid background-responsive">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
-					<div class="row">
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							<p>One of three columns</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-	</div>
-	
-	<div id="ucapan" class="xhidden container-fluid background-responsive">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
-					<div class="row">
-						<div class="col-sm">
+						<div class="col-sm text-center pb-3 mb-3 mt-3">
+							<h2 class="title-section">Ucapan & Doa</h2>
+							<h5>Berikan Ucapan & Doa untuk ke dua mempelai</h5>
 						</div>
 					</div>
 					<div class="row">
@@ -417,7 +466,7 @@
 							</div>
 							<div class="mb-3">
 							  <label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
-							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3">Ucapan & doa</textarea>
+							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa"></textarea>
 							</div>
 							<div class="mb-3">
 								<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
@@ -490,7 +539,7 @@
 		</div>
 	</div>
 	
-	<div class="xhidden container-fluid background-responsive">
+	<div class="xhidden container-fluid container-section">
 		<div class="row section-top">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center"></div>
@@ -616,7 +665,7 @@
 			showEnvelope();
 		}
 		
-		$('.nav-link').each(function() {
+		$('.nav-link, .navigate-link').each(function() {
 			$(this).on('click', function(event) {
 				event.preventDefault();
 				$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
