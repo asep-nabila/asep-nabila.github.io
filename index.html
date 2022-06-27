@@ -59,6 +59,18 @@
 	.form-control:focus {
 	  box-shadow: none !important;
 	}
+	.form-control:focus, .form-select:focus {
+	  border-color: #ae199c !important;
+	}
+	.form-select:focus {
+		box-shadow: 0 0 0 .25rem rgba(174,59,160,.25) !important;
+	}
+	
+	.btn-primary{
+		background-color:#991188 !important;
+		border-color:#ae199c !important;
+		--bs-btn-focus-shadow-rgb: 174, 59, 160 !important;
+	}
 	
 	.swal2-input{
 		text-transform: uppercase;
@@ -102,12 +114,6 @@
 	.navbotomfloating>li{
 		float: left;
 		display: block;
-	}
-	
-	.btn-primary{
-		background-color:#991188 !important;
-		border-color:#ae199c !important;
-		--bs-btn-focus-shadow-rgb: 174, 59, 160 !important;
 	}
 	
 	#player-elem{
@@ -498,32 +504,14 @@
 					<div class="row">
 						<div id="messagesfromvisitor" class="col-sm border-start border-end border-bottom rounded-bottom p-3 bg-light">
 							<div class="messagesfromvisitor-container">
-									<div class="card p-2">
-										<h6>Asep Maulana Nuriman <small class="fw-lighter"><span class="badge text-bg-secondary"><i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir</span></small></h6>
-										<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> 11 menit</small>
-										<p class="fw-light text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus quam sit amet bibendum venenatis. Nulla suscipit metus et augue. </p>
-										<small class="fw-lighter text-end lh-1">&bullet;</small>
-									</div>
-									<div class="card p-2">
-										<h6>Asep Maulana Nuriman <small class="fw-lighter"><span class="badge text-bg-secondary"><i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir</span></small></h6>
-										<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> 11 menit</small>
-										<p class="fw-light text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit ligula nulla, a feugiat lectus condimentum sit amet. Phasellus auctor mollis eros sed facilisis. Vivamus tempor et nibh nec condimentum. Proin facilisis velit in efficitur elementum. Quisque molestie hendrerit placerat. Fusce ultrices nisl in erat molestie tristique. Donec ac laoreet tortor. In sit amet mollis lectus. Nam urna ex, aliquam sed aliquet ac, interdum et lorem.</p>
-										<small class="fw-lighter text-end lh-1">&bullet;</small>
-									</div>
-									<div class="card p-2">
-										<h6>Asep Maulana Nuriman <small class="fw-lighter"><span class="badge text-bg-secondary"><i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir</span></small></h6>
-										<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> 12 menit</small>
-										<p class="fw-light text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit ligula nulla, a feugiat lectus condimentum sit amet. Phasellus auctor mollis eros sed facilisis. Vivamus tempor et nibh nec condimentum. Proin facilisis velit in efficitur elementum. Quisque molestie hendrerit placerat. Fusce ultrices nisl in erat molestie tristique. Donec ac laoreet tortor. In sit amet mollis lectus. Nam urna ex, aliquam sed aliquet ac, interdum et lorem. Aenean sed elit nec velit fringilla pulvinar. Mauris suscipit neque in sapien finibus porta. Cras ac tortor quis est fringilla sodales at sit amet neque. Curabitur pulvinar dolor erat, id mollis leo efficitur id. Nulla eget tincidunt diam, vel accumsan nibh. </p>
-										<small class="fw-lighter text-end lh-1">&bullet;</small>
-									</div>
 							</div>
 							<div class="messagesfromvisitor-loader d-flex justify-content-center d-none">
 								<div class="spinner-border" role="status">
 									<span class="visually-hidden">Loading...</span>
 								</div>
 							</div>
-							<p class="text-center d-none messagesfromvisitor-last">- Tidak ada pesan lagi -</p>
-							<p class="text-center d-none messagesfromvisitor-error">- Tidak ada pesan untuk ditampilkan -</p>
+							<p class="text-center pt-2 d-none messagesfromvisitor-last">- Tidak ada pesan lagi -</p>
+							<p class="text-center pt-2 d-none messagesfromvisitor-error">- Tidak ada pesan untuk ditampilkan -</p>
 						</div>
 					</div>
 					<div class="row">
@@ -801,6 +789,7 @@
 					'</div>',
 				showCancelButton: true,
 				width: '25rem',
+				confirmButtonColor: '#991188', //Warna kesukaan Nabila
 				reverseButtons: true,
 				preConfirm: function () {
 					return new Promise(function (resolve) {

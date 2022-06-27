@@ -10,6 +10,13 @@ let theConfigs = {
 		"nickname": "Dila",
 		"father": "Dudek Junaedi",
 		"mother": "Nia Kurniawati"
+	},
+	"receptiondate": "2023-03-11",
+	"receptiontime": "10:00",
+	"akadtime": "09:00",
+	"appscript" : {
+		"baseurl": 'https://script.google.com/macros/s/',
+		"deploymentid": 'AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic'
 	}
 };
 
@@ -41,6 +48,3 @@ class Config {
 
 const config = new Config(theConfigs);
 config.initializing();
-
-const appScriptBaseUrl = 'https://script.google.com/macros/s/';
-const deploymentId = 'AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic';

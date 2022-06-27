@@ -76,6 +76,41 @@ const addURLParameter = function(key, value) {
 	window.history.pushState('', '', document.location.pathname+'?'+params);
 }
 
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' detik';   
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' menit';   
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' jam';   
+    }
+
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' hari';   
+    }
+
+    else if (elapsed < msPerYear) {
+        return + Math.round(elapsed/msPerMonth) + ' bulan';   
+    }
+
+    else {
+        return Math.round(elapsed/msPerYear ) + ' tahun';   
+    }
+}
+
 function capitalizing(string) {
   var splitStr = string.toLowerCase().split(' ');
    for (var i = 0; i < splitStr.length; i++) {
@@ -354,15 +389,84 @@ const submitComment = function() {
   });
 }
 
-const getComment = function() {
-  grecaptcha.ready(function() {
-    grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-		console.log(token);
-    });
-  });
+const getOnlineComment = function(params = {}, functionCallbak) {
+	params["action"] = "getComments";
+	params["limit"] = "2";
+	if(typeof params["message"] !== "undefined") delete params["message"];
+	if(typeof params["name"] !== "undefined") delete params["name"];
+	
+	grecaptcha.ready(function() {
+		grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+			params["grespon"]=token;
+			getCommentsParams = new getData(params);
+			commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
+			$.getJSON( commentsUrl , function( response ) { 
+				if(response.statusCode = 1){
+					Object.keys(response.data).forEach(function(key) {
+						addtLocalComment(response.data[key]);
+					});
+					functionCallbak();
+				}else{
+					if(response.statusText == "Tidak ada pesan"){
+						$("#messagesfromvisitor>.messagesfromvisitor-last").toggleClass("d-none");
+					}else{
+						setTimeout(function() {
+							getOnlineComment(params);
+						}, 5000);
+					}
+				}
+			});
+		});
+	});
 }
 
+const drawComments = function(){
+	$commentPanel = $("#messagesfromvisitor>.messagesfromvisitor-container");
+	$commentsElement = $commentPanel.children();
+	$comments = getLocalComment();
+	if(Object.keys($comments).length<=0){
+		getOnlineComment({}, drawComments);
+	}else{
+		if(Object.keys($comments).length<=5) getOnlineComment($comments[Object.keys($comments)[Object.keys($comments).length - 1]], drawComments);
+	}
+	
+	if($commentPanel.children().length <= 0){
+		for (var key in $comments) {
+			if ($comments.hasOwnProperty(key)) {
+				$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
+			}
+		}
+	}else{
+		if($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"] == $($commentsElement[$commentsElement.length -1]).data("timestamp")){
+			$("#messagesfromvisitor>.messagesfromvisitor-last").toggleClass("d-none");
+		}else{
+			for (var key in $comments) {
+				if ($comments.hasOwnProperty(key)) {
+					if($comments[key]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp") && $comments[key]["timestamp"] > $($commentsElement[0]).data("timestamp")){
+						if($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp")){
+							$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
+						}
+						if($comments[Object.keys($comments)[0]]["timestamp"] > $($commentsElement[0]).data("timestamp")){
+							$commentPanel.prepend(isMessagesVisitorGetItemHTML($comments[key]));
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
 
+function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
+	let atimeago = timeDifference(+ new Date(), timestamp);
+	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
+	return `<div data-timestamp="${timestamp}" class="card p-2">
+			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
+				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> ${atimeago}</small>
+				<p class="fw-light text-justify">${message}</p>
+			<small class="fw-lighter text-end lh-1">&bullet;</small>
+		</div>`;
+}
 
 const getComments = function(timestamp = 0){
 	
@@ -389,7 +493,7 @@ const addtLocalComment = function(commentData){
 	
 	storedComment[commentData['timestamp']] = commentData;
 	
-	visitorMessages = Object.keys(storedComment).sort(function ( a, b ) { return b - a; }).reduce(
+	visitorMessages = Object.keys(storedComment).sort(function ( a, b ) { return a['timestamp'] - b['timestamp']; }).reduce(
 	  (obj, key) => { 
 		obj[key] = storedComment[key]; 
 		return obj;
@@ -406,11 +510,11 @@ const addtLocalComment = function(commentData){
 
 const getCommentsUrl = function(){
 	let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-	return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+	return `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
 }
 
 let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-return `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+return `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
 
 $('#messagesfromvisitor').scroll(function() {
     if($(this).scrollTop() == $(this).height() - $(this).height()) {
@@ -419,7 +523,7 @@ $('#messagesfromvisitor').scroll(function() {
 });
 
 let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-let getComments = `${appScriptBaseUrl}${deploymentId}/exec?${getCommentsParams.params()}`;
+let getComments = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
 $.getJSON( getComments , function( data ) { console.log(data) });
 
 let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
@@ -461,16 +565,5 @@ let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
 		$isMessagesVisitor.infiniteScroll('loadNextPage');
 
 		//------------------//
-
-		function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
-			return `<div class="card">
-				<h5 class="card-header">${timestamp}</h5>
-				<div class="card-body">
-					<h5 class="card-title">${name}</h5>
-					<p class="card-text">${message}</p>
-					<small>${colleague} | ${attend}</small>
-				</div>
-			</div>`;
-		}
 		
 */
