@@ -96,7 +96,9 @@ async function getVisitorIP() {
 			getVisitorIP();
 		}, (Math.floor((Math.random()*100)+1)*1000)+100000);
     }else{
-		getVisitorIP();
+		setTimeout(function() {
+			getVisitorIP();
+		}, 5000);
 	}
 }
 getVisitorIP();
@@ -104,7 +106,7 @@ getVisitorIP();
 
 // Initialize the agent at application startup.
 const fpPromise = import('https://fpcdn.io/v3/OS3SLXNyklDNGY2qQcMy').then(FingerprintJS => FingerprintJS.load());
-let visitorId = '';
+let visitorId = '', visitorIdRetryCount = 0;
 async function getVisitorId() {
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 		visitorId = localStorage.visitorId;
@@ -116,7 +118,13 @@ async function getVisitorId() {
 			// save it on localStorage
 			localStorage.visitorId = visitorId;
 		}).catch(error => {
-			getVisitorId();
+			if(visitorIdRetryCount<10){
+				setTimeout(function() {
+					getVisitorId();
+				}, 5000);
+			}else{
+				localStorage.visitorId = localStorage["randid"];
+			}
 		});
 	}
 }
