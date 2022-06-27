@@ -60,7 +60,7 @@
 	  box-shadow: none !important;
 	}
 	
-	.form-control,.swal2-input{
+	.swal2-input{
 		text-transform: uppercase;
 	}
 	
@@ -412,28 +412,31 @@
 					<div class="row">
 						<div id="messagesfromvisitor-submit-form" class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
 							<div class="mb-3">
-							  <label for="exampleFormControlInput1" class="form-label">Nama</label>
-							  <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+							  <label for="messagesfromvisitor-name" class="form-label">Nama</label>
+							  <input type="email" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama">
 							</div>
 							<div class="mb-3">
-							  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-							  <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+							  <label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
+							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3">Ucapan & doa</textarea>
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">Konfirmasi kehadiran</label>
-								<select class="form-select form-select-sm" aria-label="Default select example">
+								<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
+								<select id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example">
 									<option value="0" selected>Tidak hadir</option>
 									<option value="1">Hadir</option>
 								</select>
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">Kenalan/Teman</label>
-								<select class="form-select form-select-sm" aria-label="Default select example">
+								<label for="messagesfromvisitor-collage" class="form-label">Kenalan/Teman</label>
+								<select id="messagesfromvisitor-collage" class="form-select form-select-sm" aria-label="Default select example">
 									<option value="1" selected>Mempelelai pria</option>
 									<option value="2">Mempelelai wanita</option>
 									<option value="3">Orang tua mempelelai Pria</option>
 									<option value="4">Orang tua mempelelai Wanita</option>
 								</select>
+							</div>
+							<div class="d-grid gap-2">
+							  <button type="submit" class="btn btn-primary">Submit</button>
 							</div>
 						</div>
 					</div>
@@ -713,13 +716,13 @@
 					'<div class="mt-2 text-start row">' +
 					'<label for="attenderdata-kepada" class="col-sm-4 col-form-label">Nama</label>' +
 					'<div class="col-sm-8">' +
-					'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control">' +
+					'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control text-uppercase">' +
 					'</div>' +
 					'</div>' +
 					'<div class="mb-1 text-start row">' +
 					'<label for="attenderdata-dari" class="col-sm-4 col-form-label">Domisili</label>' +
 					'<div class="col-sm-8">' +
-					'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control">' +
+					'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control text-uppercase">' +
 					'</div>' +
 					'</div>' +
 					'</div>',
