@@ -341,6 +341,46 @@ const getComment = function() {
   });
 }
 
+
+
+const getComments = function(timestamp = 0){
+	
+}
+
+let visitorMessages = {};
+
+const getLocalComment = function(){
+	let storedComment = {};
+	if(Object.keys(visitorMessages).length<1){
+		if(typeof localStorage['visitorMessages'] !== 'undefined'){
+			storedComment = JSON.parse(localStorage.getItem("visitorMessages"));
+		}
+		if(Object.keys(storedComment).length>0){
+			visitorMessages = storedComment;
+		}
+	}
+	
+	return visitorMessages;
+}
+
+const addtLocalComment = function(commentData){
+	let storedComment = getLocalComment();
+	
+	storedComment[commentData['timestamp']] = commentData;
+	
+	visitorMessages = Object.keys(storedComment).sort(function ( a, b ) { return b - a; }).reduce(
+	  (obj, key) => { 
+		obj[key] = storedComment[key]; 
+		return obj;
+	  }, 
+	  {}
+	);
+	
+	localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
+	
+	return visitorMessages;
+}
+
 /*
 
 const getCommentsUrl = function(){
