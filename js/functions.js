@@ -1,3 +1,29 @@
+$(function() {
+	$.fn.isInViewport = function() {
+		var elementTop = $(this).offset().top;
+		var elementBottom = elementTop + $(this).outerHeight();
+
+		var viewportTop = $(window).scrollTop();
+		var viewportBottom = viewportTop + $(window).height();
+
+		return elementBottom > viewportTop && elementTop < viewportBottom;
+	};
+	
+	$(window).on('resize scroll', function() {
+		if ($('#messagesfromvisitor').isInViewport()) {
+			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length <= 0) drawComments();
+		}
+	});
+	
+	function drawCommentsOnScroll(){
+	   if($("#messagesfromvisitor").scrollTop() > $("#messagesfromvisitor>.messagesfromvisitor-container").height() - $("#messagesfromvisitor").height()-100) {
+			drawComments();
+	   }
+	}
+	$("#messagesfromvisitor")on('touchmove', drawCommentsOnScroll); // for mobile
+	$("#messagesfromvisitor").scroll(drawCommentsOnScroll);
+});
+
 const queryParams = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
@@ -237,6 +263,12 @@ const showInvitation = function(){
 		$(this).addClass('animate__animated animate__slideInUp');
 		$(this).css('visibility', 'visible');
 	});
+	
+	setTimeout(function() {
+		if ($('#messagesfromvisitor').isInViewport()) {
+			drawComments();
+		}
+	}, 1000);
 }
 
 const generateQrBukuTamu = function(){
@@ -390,31 +422,29 @@ const submitComment = function() {
 }
 
 const getOnlineComment = function(params = {}, functionCallbak) {
-	params["action"] = "getComments";
-	params["limit"] = "2";
-	if(typeof params["message"] !== "undefined") delete params["message"];
-	if(typeof params["name"] !== "undefined") delete params["name"];
-	
+	$commentLoader.toggleClass("d-none");
 	grecaptcha.ready(function() {
 		grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-			params["grespon"]=token;
-			getCommentsParams = new getData(params);
+			getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
 			commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-			$.getJSON( commentsUrl , function( response ) { 
-				if(response.statusCode = 1){
+			$.getJSON( commentsUrl , function( response ) {
+				if(response.statusCode == 1){
 					Object.keys(response.data).forEach(function(key) {
+						console.log(response.data[key]);
 						addtLocalComment(response.data[key]);
 					});
 					functionCallbak();
 				}else{
 					if(response.statusText == "Tidak ada pesan"){
-						$("#messagesfromvisitor>.messagesfromvisitor-last").toggleClass("d-none");
+						$("#messagesfromvisitor").off('touchmove scroll');
+						$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
 					}else{
 						setTimeout(function() {
 							getOnlineComment(params);
 						}, 5000);
 					}
 				}
+				$commentLoader.toggleClass("d-none");
 			});
 		});
 	});
@@ -422,27 +452,31 @@ const getOnlineComment = function(params = {}, functionCallbak) {
 
 const drawComments = function(){
 	$commentPanel = $("#messagesfromvisitor>.messagesfromvisitor-container");
+	$commentLoader = $($("#messagesfromvisitor>.messagesfromvisitor-loader")[0]);
+	
 	$commentsElement = $commentPanel.children();
 	$comments = getLocalComment();
 	if(Object.keys($comments).length<=0){
 		getOnlineComment({}, drawComments);
 	}else{
-		if(Object.keys($comments).length<=5) getOnlineComment($comments[Object.keys($comments)[Object.keys($comments).length - 1]], drawComments);
+		if($commentPanel.children(":not(.invisible)").length == Object.keys($comments).length) getOnlineComment($comments[Object.keys($comments)[Object.keys($comments).length - 1]], drawComments);
 	}
+	
+	let maxCommentDraw = 5, CommentCount = 0;
 	
 	if($commentPanel.children().length <= 0){
 		for (var key in $comments) {
+			if(CommentCount>=maxCommentDraw) break;
 			if ($comments.hasOwnProperty(key)) {
 				$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
+				CommentCount++;
 			}
 		}
 	}else{
-		if($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"] == $($commentsElement[$commentsElement.length -1]).data("timestamp")){
-			$("#messagesfromvisitor>.messagesfromvisitor-last").toggleClass("d-none");
-		}else{
+		if(parseInt($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"]) !== $($commentsElement[$commentsElement.length -1]).data("timestamp")){
 			for (var key in $comments) {
 				if ($comments.hasOwnProperty(key)) {
-					if($comments[key]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp") && $comments[key]["timestamp"] > $($commentsElement[0]).data("timestamp")){
+					if($comments[key]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp") || $comments[key]["timestamp"] > $($commentsElement[0]).data("timestamp")){
 						if($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp")){
 							$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
 						}
@@ -455,12 +489,19 @@ const drawComments = function(){
 		}
 	}
 	
+	
+	let time = 0;
+	$commentPanel.children(".invisible").each(function(){
+		let invisibleComment = $(this);
+		setTimeout( function(){ invisibleComment.removeClass("invisible"); }, time);
+		time += 500;
+	});
 }
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
 	let atimeago = timeDifference(+ new Date(), timestamp);
 	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
-	return `<div data-timestamp="${timestamp}" class="card p-2">
+	return `<div data-timestamp="${timestamp}" class="card p-2 invisible animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
 				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> ${atimeago}</small>
 				<p class="fw-light text-justify">${message}</p>
@@ -502,8 +543,6 @@ const addtLocalComment = function(commentData){
 	);
 	
 	localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
-	
-	return visitorMessages;
 }
 
 /*
