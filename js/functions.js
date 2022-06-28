@@ -20,8 +20,7 @@ $(function() {
 			drawComments();
 	   }
 	}
-	$("#messagesfromvisitor")on('touchmove', drawCommentsOnScroll); // for mobile
-	$("#messagesfromvisitor").scroll(drawCommentsOnScroll);
+	$("#messagesfromvisitor").on('touchmove scroll', function(){drawCommentsOnScroll();});
 });
 
 const queryParams = new Proxy(new URLSearchParams(window.location.search), {
@@ -422,7 +421,7 @@ const submitComment = function() {
 }
 
 const getOnlineComment = function(params = {}, functionCallbak) {
-	$commentLoader.toggleClass("d-none");
+	$commentLoader.removeClass("d-none");
 	grecaptcha.ready(function() {
 		grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
 			getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
@@ -444,7 +443,7 @@ const getOnlineComment = function(params = {}, functionCallbak) {
 						}, 5000);
 					}
 				}
-				$commentLoader.toggleClass("d-none");
+				$commentLoader.addClass("d-none");
 			});
 		});
 	});
