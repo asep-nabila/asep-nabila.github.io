@@ -137,14 +137,15 @@ function timeDifference(current, previous) {
 }
 
 function capitalizing(string) {
-  var splitStr = string.toLowerCase().split(' ');
-   for (var i = 0; i < splitStr.length; i++) {
-       // You do not need to check if i is larger than splitStr length, as your for does that for you
-       // Assign it back to the array
-       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-   }
-   // Directly return the joined string
-   return splitStr.join(' '); 
+	string = string.toLowerCase();
+	var splitStr = string.toLowerCase().split(' ');
+	for (var i = 0; i < splitStr.length; i++) {
+		// You do not need to check if i is larger than splitStr length, as your for does that for you
+		// Assign it back to the array
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+	}
+	// Directly return the joined string
+	return splitStr.join(' '); 
 }
 
 let visitorIP = '';
@@ -165,7 +166,7 @@ getVisitorIP();
 
 
 // Initialize the agent at application startup.
-const fpPromise = import('https://fpcdn.io/v3/OS3SLXNyklDNGY2qQcMy').then(FingerprintJS => FingerprintJS.load());
+const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
 let visitorId = '', visitorIdRetryCount = 0;
 async function getVisitorId() {
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
@@ -278,7 +279,7 @@ const generateQrBukuTamu = function(){
 		dari = $('#qr-dari').text().toUpperCase();
 	}
 	
-	$("#messagesfromvisitor-name").val(capitalizing(kepada.toLowerCase()));
+	$("#messagesfromvisitor-name").val(capitalizing(kepada));
 	
 	localStorage.kepada = kepada;
 	localStorage.dari = dari;
@@ -420,33 +421,46 @@ const submitComment = function() {
   });
 }
 
+let getOnlineCommentXhr, getOnlineCommentRetry=0;
+
 const getOnlineComment = function(params = {}, functionCallbak) {
-	$commentLoader.removeClass("d-none");
-	grecaptcha.ready(function() {
-		grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-			getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
-			commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-			$.getJSON( commentsUrl , function( response ) {
-				if(response.statusCode == 1){
-					Object.keys(response.data).forEach(function(key) {
-						console.log(response.data[key]);
-						addtLocalComment(response.data[key]);
-					});
-					functionCallbak();
-				}else{
-					if(response.statusText == "Tidak ada pesan"){
-						$("#messagesfromvisitor").off('touchmove scroll');
-						$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
+	if(typeof getOnlineCommentXhr == "undefined"){
+		$commentLoader.removeClass("d-none");
+		grecaptcha.ready(function() {
+			grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+				getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
+				commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
+				getOnlineCommentXhr = $.getJSON( commentsUrl , function( response ) {
+					if(response.statusCode == 1){
+						Object.keys(response.data).forEach(function(key) {
+							addtLocalComment(response.data[key]);
+						});
+						functionCallbak();
 					}else{
-						setTimeout(function() {
-							getOnlineComment(params);
-						}, 5000);
+						if(response.statusText == "Tidak ada pesan"){
+							$("#messagesfromvisitor").off('touchmove scroll');
+							if($commentPanel.children().length>0){
+								$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
+							}else{
+								$("#messagesfromvisitor>.messagesfromvisitor-empty").removeClass("d-none");
+							}
+						}else{
+							if(getOnlineCommentRetry<=10){
+								setTimeout(function() {
+									getOnlineCommentRetry++;
+									getOnlineComment(params);
+								}, 5000);
+							}else{
+								$("#messagesfromvisitor>.messagesfromvisitor-error").removeClass("d-none");
+							}
+						}
 					}
-				}
-				$commentLoader.addClass("d-none");
+					$commentLoader.addClass("d-none");
+					getOnlineCommentXhr = undefined;
+				});
 			});
 		});
-	});
+	}
 }
 
 const drawComments = function(){
@@ -492,7 +506,7 @@ const drawComments = function(){
 	let time = 0;
 	$commentPanel.children(".invisible").each(function(){
 		let invisibleComment = $(this);
-		setTimeout( function(){ invisibleComment.removeClass("invisible"); }, time);
+		setTimeout( function(){ invisibleComment.removeClass("d-none invisible"); }, time);
 		time += 500;
 	});
 }
@@ -500,17 +514,16 @@ const drawComments = function(){
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
 	let atimeago = timeDifference(+ new Date(), timestamp);
 	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
-	return `<div data-timestamp="${timestamp}" class="card p-2 invisible animate__animated animate__fadeInDown">
+	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
+	let iscoleagueof = (colleague == 2 ? 'mempelai wanita' : (colleague == 3 ? 'orang tua mempelai pria' : (colleague == 4 ? 'orang tua mempelai wanita' : 'mempelai pria')));
+	return `<div data-timestamp="${timestamp}" class="card p-2 invisible d-none animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
 				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> ${atimeago}</small>
 				<p class="fw-light text-justify">${message}</p>
-			<small class="fw-lighter text-end lh-1">&bullet;</small>
+			<small class="fw-lighter p2 text-end lh-1" style="color:#${colleaguecolor};" title="kenalan ${iscoleagueof}">&bullet;</small>
 		</div>`;
 }
 
-const getComments = function(timestamp = 0){
-	
-}
 
 let visitorMessages = {};
 
@@ -543,65 +556,3 @@ const addtLocalComment = function(commentData){
 	
 	localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
 }
-
-/*
-
-const getCommentsUrl = function(){
-	let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-	return `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-}
-
-let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-return `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-
-$('#messagesfromvisitor').scroll(function() {
-    if($(this).scrollTop() == $(this).height() - $(this).height()) {
-        
-    }
-});
-
-let getCommentsParams = new getData({ "action":"getComments", "page":1}); 
-let getComments = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-$.getJSON( getComments , function( data ) { console.log(data) });
-
-let $isMessagesVisitor = $('#messagesfromvisitor').infiniteScroll({
-			// options
-			path: function() {
-				
-			},
-			history: false,
-			responseBody: 'json',
-			append: '.post',
-			fetchOptions: function() {
-			  return {
-				method: 'GET',
-				mode: 'cors',
-				cache: 'no-cache',
-				credentials: 'same-origin',
-				headers: {
-				  'Content-Type': 'application/json'
-				}
-			  };
-			},
-			status: '.scroll-status'
-		});
-		
-		$isMessagesVisitor.on( 'request.infiniteScroll', function( event, path, fetchPromise ) {
-		  console.log(`Loading page: ${path}`);
-		});
-		
-		$isMessagesVisitor.on( 'load.infiniteScroll', function( event, body ) {
-			// compile body data into HTML
-			let isMessagesVisitorItemsHTML = body.data.map( isMessagesVisitorGetItemHTML ).join('');
-			// convert HTML string into elements
-			let $isMessagesVisitorItemsHTMLItems =  $( isMessagesVisitorItemsHTML );
-			// append item elements
-			$isMessagesVisitor.infiniteScroll( 'appendItems', $isMessagesVisitorItemsHTMLItems );
-		});
-
-		// load initial page
-		$isMessagesVisitor.infiniteScroll('loadNextPage');
-
-		//------------------//
-		
-*/
