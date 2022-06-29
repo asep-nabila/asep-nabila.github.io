@@ -6,12 +6,6 @@ playlist = [
 		"file": "Arctic Monkeys - Baby I'm Yours.mp3"
 	},
 	{
-		"title": "Stop The World I Wanna Get Off With You",
-		"artis": "Arctic Monkeys",
-		"explicit": true,
-		"file": "Arctic Monkeys - Stop The World I Wanna Get Off With You.mp3"
-	},
-	{
 		"title": "Menikahimu",
 		"artis": "Kahitna",
 		"explicit": false,
