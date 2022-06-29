@@ -24,6 +24,10 @@
 		visibility: hidden;
 	}
 	
+	a.clmns--control-pause{
+		padding: 0.4rem 0.6rem;
+	}
+	
 	.envelope {
 		color : white;
 		font-family: 'Playball', cursive;
@@ -116,12 +120,13 @@
 		display: block;
 	}
 	
-	#player-elem{
-		opacity: 0.5;
+	#player-elem>div>div>.music-controler{
+		opacity: 0.4;
 	}
-	#player-elem:hover{
+	#player-elem>div>div>.music-controler:hover{
 		opacity: 1;
 	}
+	
 	.music-controler{
 		font-size:1.5rem;
 	}
@@ -260,17 +265,20 @@
 	</script>
   </head>
   <body data-background="img/bg-base.png">
-	<nav style="position:fixed;margin-bottom:4.5rem;" class="xhidden navbar navbar-expand fixed-bottom">
-		<div class="container">
-			<div id="player-elem" class="row text-center w-100">
-				<div class="music-controler"> 
-					<span id="calamansiplaycontroler"></span>
-					&nbsp;
-					<a id="nextsongs" style="padding: .25rem .5rem;" class="btn btn-sm btn-outline-dark">	
-						<span><i class="bi bi-skip-forward-fill"></i></span>
-					</a>
+	<nav style="position:fixed;margin-bottom:4.2rem;" class="xhidden navbar navbar-expand fixed-bottom">
+		<div id="player-elem" class="container">
+			<div class="row" style="width: 100%">
+				<div class="col-6 align-bottom" style="display: flex; align-items: center; white-space: nowrap; transform: scale(0.9);">
+					<small class="d-none invisible animate__animated" style="padding: .25rem "><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
 				</div>
-				<small class="ms-2 me-2" style="display: inline-block;white-space: nowrap;"><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
+				<div class="col-6">
+					<div class="music-controler text-end" style="transform: scale(0.9);"> 
+						<span id="calamansiplaycontroler"></span>
+						<a id="nextsongs" class="btn btn-sm btn-outline-dark">	
+							<span><i class="bi bi-skip-forward-fill"></i></span>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
