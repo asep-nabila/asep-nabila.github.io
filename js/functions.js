@@ -35,40 +35,63 @@ $(function() {
 			$("#player-elem>div>div>small").addClass('d-none');
 			playercontrolertimeout = undefined;
 		}, 5000);
-	})
+	});
 	
-	$("#messagesfromvisitor-submit").on("click touchend", function(e){
+	$("#messagesfromvisitor-submit-form").on("submit", function(e){
 		e.preventDefault();
-		submitmessagebtn = $(this);
-		submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
-		submitmessagebtn.prop('disabled', true);
-		grecaptcha.ready(function() {
-			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
-				getInsertCommentsParams = new getData({}, {"action":"insertComments", "grespon":token});
-				
-				var settings = {
-					"url": `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getInsertCommentsParams.params()}`,
-					"method": "POST",
-					"timeout": 0,
-					"headers": {
-						"Content-Type": "application/x-www-form-urlencoded",
-					},
-					"redirect": "follow",
-					"data": JSON.stringify({
-						"name": $("#messagesfromvisitor-name").val(),
-						"message": $("#messagesfromvisitor-message").val(),
-						"attend": $("#messagesfromvisitor-confirmattender").val(),
-						"colleague": $("#messagesfromvisitor-collage").val()
-					})
-				};
+		submitedform = $(this);
+		$(this).validate({
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass("is-invalid");
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass("is-invalid");
+			},
+			errorClass: "invalid-feedback visible",
+			errorElement: "div",
+			rules: {
+				name: "required",
+				message: {
+					required: true,
+					minlength: 10
+				}
+			},
+			messages: {
+				name: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan nama',
+				message: {
+					required: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan ucapan & doa',
+					minlength: '<i class="bi bi-exclamation-circle"></i> Isikan minimal 10 karakter'
+				}
+			}
+		});
+		if($(this).valid()) {
+			submitmessagebtn = $(this).find("button[type=submit]");
+			submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
+			submitmessagebtn.prop('disabled', true);
+			
+			grecaptcha.ready(function() {
+				grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
+					getInsertCommentsParams = new getData({}, {"action":"insertComments", "grespon":token});
+					
+					var settings = {
+						"url": `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getInsertCommentsParams.params()}`,
+						"method": "POST",
+						"timeout": 0,
+						"headers": {
+							"Content-Type": "application/x-www-form-urlencoded",
+						},
+						"redirect": "follow",
+						"data": submitedform.serialize()
+					};
 
-				$.ajax(settings).done(function (response) {
-					console.log(response);
-					submitmessagebtn.html('submit');
-					submitmessagebtn.prop('disabled', false);
+					$.ajax(settings).done(function (response) {
+						console.log(response);
+						submitmessagebtn.html('submit');
+						submitmessagebtn.prop('disabled', false);
+					});
 				});
 			});
-		});
+		}
 	});
 });
 
@@ -479,7 +502,6 @@ const getOnlineMessages = function(params = {}, functionCallbak) {
 						functionCallbak();
 					}else{
 						if(response.statusText == "Tidak ada pesan"){
-							console.log(params.sort);
 							if(typeof params.sort == "undefined"){
 								$("#messagesfromvisitor").off('touchmove scroll');
 								if($messagesPanel.children().length>0){
@@ -499,8 +521,8 @@ const getOnlineMessages = function(params = {}, functionCallbak) {
 							}
 						}
 					}
-					$messagesLoader.addClass("d-none");
 					getOnlineMessagesXhr = undefined;
+					$messagesLoader.addClass("d-none");
 				});
 			});
 		});
@@ -517,7 +539,7 @@ const drawMessages = function(){
 		getOnlineMessages({}, drawMessages);
 	}else{
 		if($messagesPanel.children().length == 0) getOnlineMessages(Object.assign({}, {"sort":"newest"}, $messages[Object.keys($messages)[0]]), drawMessages);
-		if($messagesPanel.children(":not(.invisible)").length == Object.keys($messages).length) getOnlineMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
+		if($messagesPanel.children(":not(.d-none)").length == Object.keys($messages).length) getOnlineMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
 	}
 	
 	let maxMessagesDraw = 5, messagesCount = 0;
@@ -549,10 +571,8 @@ const drawMessages = function(){
 	
 	
 	let time = 0;
-	$messagesPanel.children(".invisible").each(function(){
-		let invisibleMessages = $(this);
-		setTimeout( function(){ invisibleMessages.removeClass("d-none invisible"); }, time);
-		time += 500;
+	$messagesPanel.children(".d-none").each(function(){
+		$(this).removeClass("d-none");
 	});
 }
 
@@ -564,7 +584,7 @@ function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, att
 	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
 	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
 	let iscoleagueof = (colleague == 2 ? 'mempelai wanita' : (colleague == 3 ? 'orang tua mempelai pria' : (colleague == 4 ? 'orang tua mempelai wanita' : 'mempelai pria')));
-	return `<div data-timestamp="${timestamp}" class="card p-2 invisible d-none animate__animated animate__fadeInDown">
+	return `<div data-timestamp="${timestamp}" class="card p-2 d-none animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
 				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> ${atimeago}</small>
 				<p class="fw-light text-justify">${message}</p>

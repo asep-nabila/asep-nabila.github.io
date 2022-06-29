@@ -478,34 +478,37 @@
 						</div>
 					</div>
 					<div class="row">
-						<div id="messagesfromvisitor-submit-form" class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
-							<div class="mb-3">
-							  <label for="messagesfromvisitor-name" class="form-label">Nama</label>
-							  <input type="text" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama" required>
-							</div>
-							<div class="mb-3">
-							  <label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
-							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa" required></textarea>
-							</div>
-							<div class="mb-3">
-								<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
-								<select id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example" required>
-									<option value="0" selected>Tidak hadir</option>
-									<option value="1">Hadir</option>
-								</select>
-							</div>
-							<div class="mb-3">
-								<label for="messagesfromvisitor-collage" class="form-label">Kenalan/Teman</label>
-								<select id="messagesfromvisitor-collage" class="form-select form-select-sm" aria-label="Default select example" required>
-									<option value="1">Mempelai pria</option>
-									<option value="2">Mempelai wanita</option>
-									<option value="3">Orang tua mempelai Pria</option>
-									<option value="4">Orang tua mempelai Wanita</option>
-								</select>
-							</div>
-							<div class="d-grid gap-2">
-								<button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Submit</button>
-							</div>
+						<div class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
+							<form id="messagesfromvisitor-submit-form" novalidate>
+								<div class="mb-3">
+									<label for="messagesfromvisitor-name" class="form-label">Nama</label>
+									<input name="name" type="text" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama" required>
+								</div>
+								<div class="mb-3">
+									<label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
+									<textarea name="message" class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa" required></textarea>
+								</div>
+								<div class="mb-3">
+									<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
+									<select name="attend" id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example" required>
+										<option value="0" selected>Tidak hadir</option>
+										<option value="2">Mungkin</option>
+										<option value="1">Hadir</option>
+									</select>
+								</div>
+								<div class="mb-3">
+									<label for="messagesfromvisitor-colleague" class="form-label">Kenalan/Teman</label>
+									<select name="colleague" id="messagesfromvisitor-colleague" class="form-select form-select-sm" aria-label="Default select example" required>
+										<option value="1">Mempelai pria</option>
+										<option value="2">Mempelai wanita</option>
+										<option value="3">Orang tua mempelai Pria</option>
+										<option value="4">Orang tua mempelai Wanita</option>
+									</select>
+								</div>
+								<div class="d-grid gap-2">
+									<button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Submit</button>
+								</div>
+							</form>
 						</div>
 					</div>
 					<div class="row">
@@ -627,6 +630,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 	<script src="calamansi-js/dist/calamansi.min.js"></script>
 	<script src="qrcode-reader/dist/js/qrcode-reader.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.4/dist/jquery.validate.min.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/template.js"></script>
 	<script src="playlist.json"></script>
