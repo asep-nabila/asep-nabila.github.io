@@ -36,6 +36,40 @@ $(function() {
 			playercontrolertimeout = undefined;
 		}, 5000);
 	})
+	
+	$("#messagesfromvisitor-submit").on("click touchend", function(e){
+		e.preventDefault();
+		submitmessagebtn = $(this);
+		submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
+		submitmessagebtn.prop('disabled', true);
+		grecaptcha.ready(function() {
+			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
+				getInsertCommentsParams = new getData({}, {"action":"insertComments", "grespon":token});
+				
+				var settings = {
+					"url": `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getInsertCommentsParams.params()}`,
+					"method": "POST",
+					"timeout": 0,
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					"redirect": "follow",
+					"data": JSON.stringify({
+						"name": $("#messagesfromvisitor-name").val(),
+						"message": $("#messagesfromvisitor-message").val(),
+						"attend": $("#messagesfromvisitor-confirmattender").val(),
+						"colleague": $("#messagesfromvisitor-collage").val()
+					})
+				};
+
+				$.ajax(settings).done(function (response) {
+					console.log(response);
+					submitmessagebtn.html('submit');
+					submitmessagebtn.prop('disabled', false);
+				});
+			});
+		});
+	});
 });
 
 const queryParams = new Proxy(new URLSearchParams(window.location.search), {
@@ -428,23 +462,13 @@ const swallAskName = function(functiontoCall){
 	});
 }
 
-const recaptchaSiteKey = '6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
-
-const submitComment = function() {
-  grecaptcha.ready(function() {
-    grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-		console.log(token);
-    });
-  });
-}
-
 let getOnlineCommentXhr, getOnlineCommentRetry=0;
 
 const getOnlineComment = function(params = {}, functionCallbak) {
 	if(typeof getOnlineCommentXhr == "undefined"){
 		$commentLoader.removeClass("d-none");
 		grecaptcha.ready(function() {
-			grecaptcha.execute(recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
 				getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
 				commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
 				getOnlineCommentXhr = $.getJSON( commentsUrl , function( response ) {
@@ -455,11 +479,14 @@ const getOnlineComment = function(params = {}, functionCallbak) {
 						functionCallbak();
 					}else{
 						if(response.statusText == "Tidak ada pesan"){
-							$("#messagesfromvisitor").off('touchmove scroll');
-							if($commentPanel.children().length>0){
-								$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
-							}else{
-								$("#messagesfromvisitor>.messagesfromvisitor-empty").removeClass("d-none");
+							console.log(params.sort);
+							if(typeof params.sort == "undefined"){
+								$("#messagesfromvisitor").off('touchmove scroll');
+								if($commentPanel.children().length>0){
+									$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
+								}else{
+									$("#messagesfromvisitor>.messagesfromvisitor-empty").removeClass("d-none");
+								}
 							}
 						}else{
 							if(getOnlineCommentRetry<=10){
@@ -489,6 +516,7 @@ const drawComments = function(){
 	if(Object.keys($comments).length<=0){
 		getOnlineComment({}, drawComments);
 	}else{
+		if($commentPanel.children().length == 0) getOnlineComment(Object.assign({}, {"sort":"newest"}, $comments[Object.keys($comments)[0]]), drawComments);
 		if($commentPanel.children(":not(.invisible)").length == Object.keys($comments).length) getOnlineComment($comments[Object.keys($comments)[Object.keys($comments).length - 1]], drawComments);
 	}
 	
@@ -529,6 +557,9 @@ const drawComments = function(){
 }
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
+	name = encodeHTML(name);
+	message = encodeHTML(message);
+	
 	let atimeago = timeDifference(+ new Date(), timestamp);
 	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
 	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
@@ -547,12 +578,12 @@ let visitorMessages = {};
 const getLocalComment = function(){
 	let storedComment = {};
 	if(Object.keys(visitorMessages).length<1){
-		if(typeof localStorage['visitorMessages'] !== 'undefined'){
-			storedComment = JSON.parse(localStorage.getItem("visitorMessages"));
-		}
-		if(Object.keys(storedComment).length>0){
-			visitorMessages = storedComment;
-		}
+		//if(typeof localStorage['visitorMessages'] !== 'undefined'){
+		//	storedComment = JSON.parse(localStorage.getItem("visitorMessages"));
+		//}
+		//if(Object.keys(storedComment).length>0){
+		//	visitorMessages = storedComment;
+		//}
 	}
 	
 	return visitorMessages;
@@ -571,5 +602,5 @@ const addtLocalComment = function(commentData){
 	  {}
 	);
 	
-	localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
+	//localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
 }

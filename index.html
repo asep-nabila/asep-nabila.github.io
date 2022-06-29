@@ -43,9 +43,8 @@
 		/* make sure we use up the whole viewport */
 		width: 100%;
 		min-height: 100vh;
-		/* for debugging, a red background lets us see any seams */
-		background-color: red;
 	}
+	
 	body {
 		/* make sure we use the full width but allow for more height */
 		width: 100%;
@@ -482,30 +481,30 @@
 						<div id="messagesfromvisitor-submit-form" class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
 							<div class="mb-3">
 							  <label for="messagesfromvisitor-name" class="form-label">Nama</label>
-							  <input type="email" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama">
+							  <input type="text" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama" required>
 							</div>
 							<div class="mb-3">
 							  <label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
-							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa"></textarea>
+							  <textarea class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa" required></textarea>
 							</div>
 							<div class="mb-3">
 								<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
-								<select id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example">
+								<select id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example" required>
 									<option value="0" selected>Tidak hadir</option>
 									<option value="1">Hadir</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label for="messagesfromvisitor-collage" class="form-label">Kenalan/Teman</label>
-								<select id="messagesfromvisitor-collage" class="form-select form-select-sm" aria-label="Default select example">
-									<option value="1" selected>Mempelai pria</option>
+								<select id="messagesfromvisitor-collage" class="form-select form-select-sm" aria-label="Default select example" required>
+									<option value="1">Mempelai pria</option>
 									<option value="2">Mempelai wanita</option>
 									<option value="3">Orang tua mempelai Pria</option>
 									<option value="4">Orang tua mempelai Wanita</option>
 								</select>
 							</div>
 							<div class="d-grid gap-2">
-							  <button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Submit</button>
+								<button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Submit</button>
 							</div>
 						</div>
 					</div>
