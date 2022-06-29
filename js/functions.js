@@ -28,18 +28,11 @@ $(function() {
 		
 		$playsbutton = $(this);
 		$playsbutton.css('opacity', '1');
-		$("#player-elem>div>div>small").removeClass('animate__fadeOut');
-		$("#player-elem>div>div>small").addClass('animate__fadeInLeft');
 		$("#player-elem>div>div>small").removeClass('d-none');
-		$("#player-elem>div>div>small").removeClass('invisible');
 		playercontrolertimeout = setTimeout(function(){
 			$playsbutton.css('opacity', '0.5');
-			$("#player-elem>div>div>small").removeClass('animate__fadeInLeft');
-			$("#player-elem>div>div>small").addClass('animate__fadeOut');
-			$("#player-elem>div>div>small").addClass('invisible');
-			window.setTimeout(function(){
-				$("#player-elem>div>div>small").addClass('d-none');
-			}, 1000);
+			$playsbutton.blur();
+			$("#player-elem>div>div>small").addClass('d-none');
 			playercontrolertimeout = undefined;
 		}, 5000);
 	})
