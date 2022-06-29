@@ -11,16 +11,16 @@ $(function() {
 	
 	$(window).on('resize scroll', function() {
 		if ($('#messagesfromvisitor').isInViewport()) {
-			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length <= 0) drawComments();
+			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length <= 0) drawMessages();
 		}
 	});
 	
-	function drawCommentsOnScroll(){
+	function drawMessagesOnScroll(){
 	   if($("#messagesfromvisitor").scrollTop() > $("#messagesfromvisitor>.messagesfromvisitor-container").height() - $("#messagesfromvisitor").height()-100) {
-			drawComments();
+			drawMessages();
 	   }
 	}
-	$("#messagesfromvisitor").on('touchmove scroll', function(){drawCommentsOnScroll();});
+	$("#messagesfromvisitor").on('touchmove scroll', function(){drawMessagesOnScroll();});
 	
 	let playercontrolertimeout;
 	$("#player-elem").on("click touchend", function(){
@@ -317,7 +317,7 @@ const showInvitation = function(){
 	
 	setTimeout(function() {
 		if ($('#messagesfromvisitor').isInViewport()) {
-			drawComments();
+			drawMessages();
 		}
 	}, 1000);
 }
@@ -395,9 +395,9 @@ const swallAskFrom = function(){
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
 			background: 'transparent',
 			backdrop: `
-			linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url("img/bg-landing.jpg")
-			no-repeat center/auto 100%
+				linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+				url("img/bg-landing.jpg")
+				no-repeat center/auto 100%
 			`,
 			allowOutsideClick: false,
 			allowEscapeKey: false,
@@ -462,19 +462,19 @@ const swallAskName = function(functiontoCall){
 	});
 }
 
-let getOnlineCommentXhr, getOnlineCommentRetry=0;
+let getOnlineMessagesXhr, getOnlineMessagesRetry=0;
 
-const getOnlineComment = function(params = {}, functionCallbak) {
-	if(typeof getOnlineCommentXhr == "undefined"){
-		$commentLoader.removeClass("d-none");
+const getOnlineMessages = function(params = {}, functionCallbak) {
+	if(typeof getOnlineMessagesXhr == "undefined"){
+		$messagesLoader.removeClass("d-none");
 		grecaptcha.ready(function() {
 			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
 				getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
 				commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-				getOnlineCommentXhr = $.getJSON( commentsUrl , function( response ) {
+				getOnlineMessagesXhr = $.getJSON( commentsUrl , function( response ) {
 					if(response.statusCode == 1){
 						Object.keys(response.data).forEach(function(key) {
-							addtLocalComment(response.data[key]);
+							saveMessages(response.data[key]);
 						});
 						functionCallbak();
 					}else{
@@ -482,7 +482,7 @@ const getOnlineComment = function(params = {}, functionCallbak) {
 							console.log(params.sort);
 							if(typeof params.sort == "undefined"){
 								$("#messagesfromvisitor").off('touchmove scroll');
-								if($commentPanel.children().length>0){
+								if($messagesPanel.children().length>0){
 									$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
 								}else{
 									$("#messagesfromvisitor>.messagesfromvisitor-empty").removeClass("d-none");
@@ -491,55 +491,55 @@ const getOnlineComment = function(params = {}, functionCallbak) {
 						}else{
 							if(getOnlineCommentRetry<=10){
 								setTimeout(function() {
-									getOnlineCommentRetry++;
-									getOnlineComment(params);
+									getOnlineMessagesRetry++;
+									getOnlineMessages(params);
 								}, 5000);
 							}else{
 								$("#messagesfromvisitor>.messagesfromvisitor-error").removeClass("d-none");
 							}
 						}
 					}
-					$commentLoader.addClass("d-none");
-					getOnlineCommentXhr = undefined;
+					$messagesLoader.addClass("d-none");
+					getOnlineMessagesXhr = undefined;
 				});
 			});
 		});
 	}
 }
 
-const drawComments = function(){
-	$commentPanel = $("#messagesfromvisitor>.messagesfromvisitor-container");
-	$commentLoader = $($("#messagesfromvisitor>.messagesfromvisitor-loader")[0]);
+const drawMessages = function(){
+	$messagesPanel = $("#messagesfromvisitor>.messagesfromvisitor-container");
+	$messagesLoader = $($("#messagesfromvisitor>.messagesfromvisitor-loader")[0]);
 	
-	$commentsElement = $commentPanel.children();
-	$comments = getLocalComment();
-	if(Object.keys($comments).length<=0){
-		getOnlineComment({}, drawComments);
+	$messagesElement = $messagesPanel.children();
+	$messages = getSavedMessages();
+	if(Object.keys($messages).length<=0){
+		getOnlineMessages({}, drawMessages);
 	}else{
-		if($commentPanel.children().length == 0) getOnlineComment(Object.assign({}, {"sort":"newest"}, $comments[Object.keys($comments)[0]]), drawComments);
-		if($commentPanel.children(":not(.invisible)").length == Object.keys($comments).length) getOnlineComment($comments[Object.keys($comments)[Object.keys($comments).length - 1]], drawComments);
+		if($messagesPanel.children().length == 0) getOnlineMessages(Object.assign({}, {"sort":"newest"}, $messages[Object.keys($messages)[0]]), drawMessages);
+		if($messagesPanel.children(":not(.invisible)").length == Object.keys($messages).length) getOnlineMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
 	}
 	
-	let maxCommentDraw = 5, CommentCount = 0;
+	let maxMessagesDraw = 5, messagesCount = 0;
 	
-	if($commentPanel.children().length <= 0){
-		for (var key in $comments) {
-			if(CommentCount>=maxCommentDraw) break;
-			if ($comments.hasOwnProperty(key)) {
-				$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
-				CommentCount++;
+	if($messagesPanel.children().length <= 0){
+		for (var key in $messages) {
+			if(messagesCount>=maxMessagesDraw) break;
+			if ($messages.hasOwnProperty(key)) {
+				$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[key]));
+				messagesCount++;
 			}
 		}
 	}else{
-		if(parseInt($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"]) !== $($commentsElement[$commentsElement.length -1]).data("timestamp")){
-			for (var key in $comments) {
-				if ($comments.hasOwnProperty(key)) {
-					if($comments[key]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp") || $comments[key]["timestamp"] > $($commentsElement[0]).data("timestamp")){
-						if($comments[Object.keys($comments)[Object.keys($comments).length - 1]]["timestamp"] < $($commentsElement[$commentsElement.length -1]).data("timestamp")){
-							$commentPanel.append(isMessagesVisitorGetItemHTML($comments[key]));
+		if(parseInt($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"]) !== $($messagesElement[$messagesElement.length -1]).data("timestamp")){
+			for (var key in $messages) {
+				if ($messages.hasOwnProperty(key)) {
+					if($messages[key]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp") || $messages[key]["timestamp"] > $($messagesElement[0]).data("timestamp")){
+						if($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp")){
+							$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[key]));
 						}
-						if($comments[Object.keys($comments)[0]]["timestamp"] > $($commentsElement[0]).data("timestamp")){
-							$commentPanel.prepend(isMessagesVisitorGetItemHTML($comments[key]));
+						if($messages[Object.keys($messages)[0]]["timestamp"] > $($messagesElement[0]).data("timestamp")){
+							$messagesPanel.prepend(isMessagesVisitorGetItemHTML($messages[key]));
 						}
 					}
 				}
@@ -549,9 +549,9 @@ const drawComments = function(){
 	
 	
 	let time = 0;
-	$commentPanel.children(".invisible").each(function(){
-		let invisibleComment = $(this);
-		setTimeout( function(){ invisibleComment.removeClass("d-none invisible"); }, time);
+	$messagesPanel.children(".invisible").each(function(){
+		let invisibleMessages = $(this);
+		setTimeout( function(){ invisibleMessages.removeClass("d-none invisible"); }, time);
 		time += 500;
 	});
 }
@@ -575,32 +575,28 @@ function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, att
 
 let visitorMessages = {};
 
-const getLocalComment = function(){
-	let storedComment = {};
-	if(Object.keys(visitorMessages).length<1){
-		//if(typeof localStorage['visitorMessages'] !== 'undefined'){
-		//	storedComment = JSON.parse(localStorage.getItem("visitorMessages"));
-		//}
-		//if(Object.keys(storedComment).length>0){
-		//	visitorMessages = storedComment;
-		//}
-	}
-	
-	return visitorMessages;
-}
-
-const addtLocalComment = function(commentData){
-	let storedComment = getLocalComment();
-	
-	storedComment[commentData['timestamp']] = commentData;
-	
-	visitorMessages = Object.keys(storedComment).sort(function ( a, b ) { return a['timestamp'] - b['timestamp']; }).reduce(
+const getSavedMessages = function(){
+	visitorMessages = Object.keys(visitorMessages).sort(function ( a, b ) { return b - a; }).reduce(
 	  (obj, key) => { 
-		obj[key] = storedComment[key]; 
+		obj[key] = visitorMessages[key]; 
 		return obj;
 	  }, 
 	  {}
 	);
 	
-	//localStorage.setItem("visitorMessages", JSON.stringify(visitorMessages));
+	return visitorMessages;
+}
+
+const saveMessages = function(messagesData){
+	let storedMessages = getSavedMessages();
+	
+	storedMessages[messagesData['timestamp']] = messagesData;
+	
+	visitorMessages = Object.keys(storedMessages).sort(function ( a, b ) { return b - a; }).reduce(
+	  (obj, key) => { 
+		obj[key] = storedMessages[key]; 
+		return obj;
+	  }, 
+	  {}
+	);
 }

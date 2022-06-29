@@ -38,7 +38,7 @@ class Config {
 		
 		configs.fingerprintjs.url = 'https://openfpcdn.io/fingerprintjs/v3';
 		if(typeof configs.fingerprintjs.publictoken != 'undefined'){
-			configs.fingerprintjs.url = `https://fpcdn.io/v3/'${configs.fingerprintjs.publictoken}`;
+			configs.fingerprintjs.url = `https://fpcdn.io/v3/${configs.fingerprintjs.publictoken}`;
 		}
 		
 		var dateObj = new Date(configs.events.date);
