@@ -23,7 +23,7 @@ $(function() {
 	$("#messagesfromvisitor").on('touchmove scroll', function(){drawCommentsOnScroll();});
 	
 	let playercontrolertimeout;
-	$("#player-elem>div>div>.music-controler").on("click touchend", function(){
+	$("#player-elem").on("click touchend", function(){
 		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
 		
 		$playsbutton = $(this);
