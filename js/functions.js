@@ -570,6 +570,8 @@ const drawMessages = function(){
 			}
 		}
 	}else{
+		$("#messagesfromvisitor>.messagesfromvisitor-empty").addClass("d-none");
+		
 		if(
 			parseInt($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"]) !== $($messagesElement[$messagesElement.length -1]).data("timestamp")
 			||
