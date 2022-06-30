@@ -491,6 +491,7 @@ const getOnlineMessages = function(params = {}, functionCallbak) {
 	if(typeof getOnlineMessagesXhr == "undefined"){
 		$messagesLoader.removeClass("d-none");
 		grecaptcha.ready(function() {
+			getOnlineMessagesXhr = "waiting grespon";
 			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
 				getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
 				commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
@@ -578,7 +579,7 @@ const drawMessages = function(){
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
 	name = encodeHTML(name);
-	message = encodeHTML(message);
+	message = encodeHTML(message).replace(/(?:\r\n|\r|\n)/g, '<br>');
 	
 	let atimeago = timeDifference(+ new Date(), timestamp);
 	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
