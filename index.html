@@ -640,16 +640,18 @@
 
 	if(typeof localStorage.kepada != "undefined" && localStorage.kepada != ''){
 		kepada = localStorage.kepada.toUpperCase();
-	}else{
-		if(queryParams.to !== null && queryParams.to !== ""){
-			kepada = encodeHTML(queryParams.to).toUpperCase();
-		}
 	}
 
 	if(typeof localStorage.dari != "undefined" && localStorage.dari != ''){
 		dari = localStorage.dari.toUpperCase();
 	}
-
+	
+	if(queryParams.to !== null && queryParams.to !== ""){
+		if(typeof kepada == "undefined"){
+			kepada = encodeHTML(queryParams.to).toUpperCase();
+		}
+	}
+	
 	if(queryParams.group !== null && queryParams.group !== ""){
 		group = encodeHTML(queryParams.group).toUpperCase();
 	}

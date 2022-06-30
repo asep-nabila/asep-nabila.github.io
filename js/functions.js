@@ -504,6 +504,7 @@ let getOnlineMessagesXhr, getOnlineMessagesRetry=0;
 
 const getOnlineMessages = function(params = {}, functionCallbak) {
 	if(typeof getOnlineMessagesXhr == "undefined"){
+		getOnlineMessagesXhr = "on going get message";
 		$messagesLoader.removeClass("d-none");
 		grecaptcha.ready(function() {
 			getOnlineMessagesXhr = "waiting grespon";
@@ -587,6 +588,10 @@ const drawMessages = function(){
 				}
 			}
 		}
+		
+		if(typeof refreshDateTimeout == "undefined"){
+			refreshDate();
+		}
 	}
 	
 	
@@ -596,26 +601,28 @@ const drawMessages = function(){
 	});
 }
 
-(function refreshDate() {
-    $("#messagesfromvisitor>.messagesfromvisitor-container").children();
-    if(character.style.left<newx) {
-        character.style.left += pxsecx;
-        character.style.top += pxsecy;
-        setTimeout(move, 1000);
-    }
-})();
+let refreshDateTimeout;
+const refreshDate = function() {
+    $("#messagesfromvisitor>.messagesfromvisitor-container").children().each(function(){
+		atimeago = timeDifference(+ new Date(), $(this).data("timestamp"));
+		$(this).find(".time").text(atimeago);
+	})
+    refreshDateTimeout = setTimeout(refreshDate, 10000);
+}
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
 	name = encodeHTML(name);
 	message = encodeHTML(message).replace(/(?:\r\n|\r|\n)/g, '<br>');
+	colleague = parseInt(colleague);
+	attend =  parseInt(attend);
 	
 	let atimeago = timeDifference(+ new Date(), timestamp);
-	let attender = (attend === true ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir');
+	let attender = (attend === 1 ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : (attend === 2 ? '<i class="bi bi-question-circle-fill"></i>&nbsp;&nbsp;mungkin hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir'));
 	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
 	let iscoleagueof = (colleague == 2 ? 'mempelai wanita' : (colleague == 3 ? 'orang tua mempelai pria' : (colleague == 4 ? 'orang tua mempelai wanita' : 'mempelai pria')));
 	return `<div data-timestamp="${timestamp}" class="card p-2 d-none animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
-				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> ${atimeago}</small>
+				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> <span class="time">${atimeago}</span></small>
 				<p class="fw-light text-justify">${message}</p>
 			<small class="fw-lighter p2 text-end lh-1" style="color:#${colleaguecolor};" title="kenalan ${iscoleagueof}">&bullet;</small>
 		</div>`;
