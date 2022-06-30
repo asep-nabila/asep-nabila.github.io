@@ -603,11 +603,11 @@ const drawMessages = function(){
 
 let refreshDateTimeout;
 const refreshDate = function() {
-    $("#messagesfromvisitor>.messagesfromvisitor-container").children().each(function(){
+    $("#messagesfromvisitor>.messagesfromvisitor-container").children("[data-timetype='detik'],[data-timetype='menit']").each(function(){
 		atimeago = timeDifference(+ new Date(), $(this).data("timestamp"));
 		$(this).find(".time").text(atimeago);
 	})
-    refreshDateTimeout = setTimeout(refreshDate, 10000);
+    refreshDateTimeout = setTimeout(refreshDate, 1000);
 }
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
@@ -620,7 +620,7 @@ function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, att
 	let attender = (attend === 1 ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : (attend === 2 ? '<i class="bi bi-question-circle-fill"></i>&nbsp;&nbsp;mungkin hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir'));
 	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
 	let iscoleagueof = (colleague == 2 ? 'mempelai wanita' : (colleague == 3 ? 'orang tua mempelai pria' : (colleague == 4 ? 'orang tua mempelai wanita' : 'mempelai pria')));
-	return `<div data-timestamp="${timestamp}" class="card p-2 d-none animate__animated animate__fadeInDown">
+	return `<div data-timetype="${atimeago.replace(/[^a-z]/gi, '')}"data-timestamp="${timestamp}" class="card p-2 d-none animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
 				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> <span class="time">${atimeago}</span></small>
 				<p class="fw-light text-justify">${message}</p>
