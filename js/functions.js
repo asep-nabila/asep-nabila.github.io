@@ -555,6 +555,8 @@ const drawMessages = function(){
 	if(Object.keys($messages).length<=0){
 		getOnlineMessages({}, drawMessages);
 	}else{
+		$("#messagesfromvisitor>.messagesfromvisitor-empty").addClass("d-none");
+		
 		if($messagesPanel.children().length == 0) getOnlineMessages(Object.assign({}, {"sort":"newest"}, $messages[Object.keys($messages)[0]]), drawMessages);
 		if($messagesPanel.children(":not(.d-none)").length == Object.keys($messages).length) getOnlineMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
 	}
@@ -619,14 +621,14 @@ function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, att
 	attend =  parseInt(attend);
 	
 	let atimeago = timeDifference(+ new Date(), timestamp);
-	let attender = (attend === 1 ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;hadir' : (attend === 2 ? '<i class="bi bi-question-circle-fill"></i>&nbsp;&nbsp;mungkin hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir'));
-	let colleaguecolor = (colleague == 2 ? 'ae199c' : (colleague == 3 ? '8a0079' : (colleague == 4 ? 'f23749' : '01ff88')));
+	let attender = (attend === 1 ? '<i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;akan hadir' : (attend === 2 ? '<i class="bi bi-question-circle-fill"></i>&nbsp;&nbsp;mungkin hadir' : '<i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;tidak hadir'));
+	let colleaguecolor = (colleague == 2 ? 'ae199c50' : (colleague == 3 ? 'ffd7004f' : (colleague == 4 ? 'f2374950' : '01ff8850')));
 	let iscoleagueof = (colleague == 2 ? 'mempelai wanita' : (colleague == 3 ? 'orang tua mempelai pria' : (colleague == 4 ? 'orang tua mempelai wanita' : 'mempelai pria')));
 	return `<div data-timetype="${atimeago.replace(/[^a-z]/gi, '')}"data-timestamp="${timestamp}" class="card p-2 d-none animate__animated animate__fadeInDown">
 			<h6>${name} <small class="fw-lighter"><span class="badge text-bg-secondary">${attender}</span></small></h6>
 				<small class="fw-lighter date-message"><i class="bi bi-alarm"></i> <span class="time">${atimeago}</span></small>
 				<p class="fw-light text-justify">${message}</p>
-			<small class="fw-lighter p2 text-end lh-1" style="color:#${colleaguecolor};" title="kenalan ${iscoleagueof}">&bullet;</small>
+				<div class="is-coleague-of fw-lighter p2 text-end lh-1" style="color:#${colleaguecolor}; white-space: nowrap;" title="kenalan ${iscoleagueof}"><small class="is-coleague-of-text animate__animated animate__fadeInLeft">kenalan ${iscoleagueof}</small> &bullet;</div>
 		</div>`;
 }
 
