@@ -65,7 +65,9 @@ $(function() {
 			}
 		});
 		if($(this).valid()) {
-			submitmessagebtn = $(this).find("button[type=submit]");
+			
+			submitmessageform = $(this);
+			submitmessagebtn = submitmessageform.find("button[type=submit]");
 			submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
 			submitmessagebtn.prop('disabled', true);
 			
@@ -86,6 +88,19 @@ $(function() {
 
 					$.ajax(settings).done(function (response) {
 						console.log(response);
+						if(response.statusCode == 1){
+							submitmessageform.trigger("reset");
+							submitmessageform.find("input[name=name]").val(capitalizing(kepada));
+							saveMessages(response.data);
+							drawMessages();
+						}else{
+							Swal.fire({
+								icon: 'error',
+								text: response.statusText,
+								confirmButtonColor: '#991188', //Warna kesukaan Nabila
+							});
+						}
+						
 						submitmessagebtn.html('submit');
 						submitmessagebtn.prop('disabled', false);
 					});
@@ -554,7 +569,11 @@ const drawMessages = function(){
 			}
 		}
 	}else{
-		if(parseInt($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"]) !== $($messagesElement[$messagesElement.length -1]).data("timestamp")){
+		if(
+			parseInt($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"]) !== $($messagesElement[$messagesElement.length -1]).data("timestamp")
+			||
+			parseInt($messages[Object.keys($messages)[0]]["timestamp"]) !== $($messagesElement[0]).data("timestamp")
+		){
 			for (var key in $messages) {
 				if ($messages.hasOwnProperty(key)) {
 					if($messages[key]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp") || $messages[key]["timestamp"] > $($messagesElement[0]).data("timestamp")){
@@ -576,6 +595,15 @@ const drawMessages = function(){
 		$(this).removeClass("d-none");
 	});
 }
+
+(function refreshDate() {
+    $("#messagesfromvisitor>.messagesfromvisitor-container").children();
+    if(character.style.left<newx) {
+        character.style.left += pxsecx;
+        character.style.top += pxsecy;
+        setTimeout(move, 1000);
+    }
+})();
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
 	name = encodeHTML(name);
