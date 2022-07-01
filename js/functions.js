@@ -516,7 +516,7 @@ const getNewestMessages = function({gotnewmessages = false} = {}){
 	}else{
 		let latestmessages=$messages[Object.keys($messages)[0]];
 		if(typeof latestmessages !== "undefined"){
-			loadNewMessages(Object.assign({}, {"functionrepeat":20000,"sort":"newest"}, latestmessages), getNewestMessages);
+			loadNewMessages(Object.assign({}, {"functionrepeat":10000,"sort":"newest"}, latestmessages), getNewestMessages);
 		}
 		
 		getNewestMessagesRunning = "Running...";
