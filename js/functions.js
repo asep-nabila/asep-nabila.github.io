@@ -573,6 +573,7 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 								}, 5000);
 							}else{
 								$("#messagesfromvisitor>.messagesfromvisitor-error").removeClass("d-none");
+								$("#messagesfromvisitor>.messagesfromvisitor-error").append(`<br/><span>${response.status}</span>`);
 							}
 						}
 					}
