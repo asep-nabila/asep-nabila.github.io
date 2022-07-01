@@ -566,7 +566,7 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 								}
 							}
 						}else{
-							if(getOnlineCommentRetry<=10){
+							if(loadNewMessagesRetry<=10){
 								setTimeout(function() {
 									loadNewMessagesRetry++;
 									loadNewMessages(params);
