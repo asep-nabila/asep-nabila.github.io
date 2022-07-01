@@ -566,14 +566,14 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 								}
 							}
 						}else{
-							if(loadNewMessagesRetry<=5){
+							if(loadNewMessagesRetry<=3){
 								setTimeout(function() {
 									loadNewMessagesRetry++;
 									loadNewMessages(params);
-								}, 5000);
+								}, 2000);
 							}else{
 								$("#messagesfromvisitor>.messagesfromvisitor-error").removeClass("d-none");
-								$("#messagesfromvisitor>.messagesfromvisitor-error").append(`<br/><span>${response.status}</span>`);
+								$("#messagesfromvisitor>.messagesfromvisitor-error").append(`<br/><span>${response.statusText}</span>`);
 							}
 						}
 					}
