@@ -583,7 +583,9 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 						setTimeout(functionCallbak, params.functionrepeat);
 					}
 					if(typeof getNewestMessagesRunning == "undefined"){
-						getNewestMessages();
+						if(response.statusText == "Tidak ada pesan" || response.statusCode == 1){
+							getNewestMessages();
+						}
 					}
 				});
 			});
