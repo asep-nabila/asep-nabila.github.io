@@ -92,7 +92,7 @@ $(function() {
 							submitmessageform.trigger("reset");
 							submitmessageform.find("input[name=name]").val(capitalizing(kepada));
 							saveMessages(response.data);
-							drawMessages();
+							drawMessages({loadnew : false});
 						}else{
 							Swal.fire({
 								icon: 'error',
@@ -107,6 +107,11 @@ $(function() {
 				});
 			});
 		}
+	});
+	
+	$(".messagesfromvisitor-gotnew").find("button").on("click", function(){
+		$(this).parent().addClass("d-none");
+		drawMessages({loadnew : false});
 	});
 });
 
@@ -246,7 +251,7 @@ async function getVisitorIP() {
     }else{
 		setTimeout(function() {
 			getVisitorIP();
-		}, 5000);
+		}, 60000);
 	}
 }
 getVisitorIP();
@@ -281,7 +286,7 @@ getVisitorId();
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	$("#calamansiplaycontroler").empty();
-	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="https://maunklana.github.io/maulink/asepdila/calamansi/skins/in-text/" data-source="https://maunklana.github.io/maulink/asepdila/music/'+p.file+'"></span>');
+	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="https://maunklana.github.io/maulink/asepdila/calamansi/skins/in-text/" data-source="music/'+p.file+'"></span>');
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	
 	if ($(".marquee").width() >= $("nav").width()/100*65) {
@@ -500,23 +505,56 @@ const swallAskName = function(functiontoCall){
 	});
 }
 
-let getOnlineMessagesXhr, getOnlineMessagesRetry=0;
+let getNewestMessagesRunning;
+const getNewestMessages = function({gotnewmessages = false} = {}){
+	$messages = getSavedMessages();
+	if(gotnewmessages){
+		 currentmessage = $("#messagesfromvisitor>.messagesfromvisitor-container").children();
+		 if($(currentmessage[0]).data("timestamp") < parseInt($messages[Object.keys($messages)[0]]["timestamp"])){
+			 $(".messagesfromvisitor-gotnew").removeClass("d-none");
+		 }
+	}else{
+		let latestmessages=$messages[Object.keys($messages)[0]];
+		if(typeof latestmessages !== "undefined"){
+			loadNewMessages(Object.assign({}, {"functionrepeat":20000,"sort":"newest"}, latestmessages), getNewestMessages);
+		}
+		
+		getNewestMessagesRunning = "Running...";
+	}
+}
 
-const getOnlineMessages = function(params = {}, functionCallbak) {
-	if(typeof getOnlineMessagesXhr == "undefined"){
-		getOnlineMessagesXhr = "on going get message";
-		$messagesLoader.removeClass("d-none");
+let loadNewMessagesXhr, loadNewMessagesRetry=0;
+
+const loadNewMessages = function(params = {}, functionCallbak) {
+	limitget = 5;
+	
+	if(typeof loadNewMessagesXhr == "undefined" || typeof params.functionrepeat !== "undefined"){
+		if(typeof params.functionrepeat == "undefined") loadNewMessagesXhr = "on going get message";
+		
+		if(typeof params.sort == "undefined") $messagesLoader.removeClass("d-none");
+		
 		grecaptcha.ready(function() {
-			getOnlineMessagesXhr = "waiting grespon";
+			if(typeof params.functionrepeat == "undefined") loadNewMessagesXhr = "waiting grespon";
 			grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
-				getCommentsParams = new getData(params, {"action":"getComments","limit":5,"grespon":token});
+				getCommentsParams = new getData(params, {"action":"getComments","limit":limitget,"grespon":token});
 				commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
-				getOnlineMessagesXhr = $.getJSON( commentsUrl , function( response ) {
+				$.getJSON( commentsUrl , function( response ) {
 					if(response.statusCode == 1){
 						Object.keys(response.data).forEach(function(key) {
 							saveMessages(response.data[key]);
 						});
-						functionCallbak();
+						
+						if(typeof params.sort == "undefined" && response.totalreturn<limitget){
+							$("#messagesfromvisitor").off('touchmove scroll');
+							$("#messagesfromvisitor>.messagesfromvisitor-last").removeClass("d-none");
+						}
+						
+						if(typeof params.functionrepeat !== "undefined"){
+							functionCallbak({gotnewmessages : true});
+						}else{
+							functionCallbak();
+						}
+						
 					}else{
 						if(response.statusText == "Tidak ada pesan"){
 							if(typeof params.sort == "undefined"){
@@ -530,35 +568,44 @@ const getOnlineMessages = function(params = {}, functionCallbak) {
 						}else{
 							if(getOnlineCommentRetry<=10){
 								setTimeout(function() {
-									getOnlineMessagesRetry++;
-									getOnlineMessages(params);
+									loadNewMessagesRetry++;
+									loadNewMessages(params);
 								}, 5000);
 							}else{
 								$("#messagesfromvisitor>.messagesfromvisitor-error").removeClass("d-none");
 							}
 						}
 					}
-					getOnlineMessagesXhr = undefined;
+					loadNewMessagesXhr = undefined;
 					$messagesLoader.addClass("d-none");
+					
+					if(typeof params.functionrepeat !== "undefined"){
+						setTimeout(functionCallbak, params.functionrepeat);
+					}
+					if(typeof getNewestMessagesRunning == "undefined"){
+						getNewestMessages();
+					}
 				});
 			});
 		});
 	}
 }
 
-const drawMessages = function(){
+const drawMessages = function({ sort = "oldest", loadnew = true} = {}){
 	$messagesPanel = $("#messagesfromvisitor>.messagesfromvisitor-container");
 	$messagesLoader = $($("#messagesfromvisitor>.messagesfromvisitor-loader")[0]);
 	
 	$messagesElement = $messagesPanel.children();
 	$messages = getSavedMessages();
 	if(Object.keys($messages).length<=0){
-		getOnlineMessages({}, drawMessages);
+		if(loadnew) loadNewMessages({}, drawMessages);
 	}else{
 		$("#messagesfromvisitor>.messagesfromvisitor-empty").addClass("d-none");
 		
-		if($messagesPanel.children().length == 0) getOnlineMessages(Object.assign({}, {"sort":"newest"}, $messages[Object.keys($messages)[0]]), drawMessages);
-		if($messagesPanel.children(":not(.d-none)").length == Object.keys($messages).length) getOnlineMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
+		if(sort == "newest") loadNewMessages(Object.assign({}, {"sort":"newest"}, $messages[Object.keys($messages)[0]]), drawMessages);
+		if($messagesPanel.children(":not(.d-none)").length == Object.keys($messages).length){
+			if(loadnew) loadNewMessages($messages[Object.keys($messages)[Object.keys($messages).length - 1]], drawMessages);
+		}
 	}
 	
 	let maxMessagesDraw = 5, messagesCount = 0;
@@ -594,7 +641,7 @@ const drawMessages = function(){
 		}
 		
 		if(typeof refreshDateTimeout == "undefined"){
-			refreshDate();
+			refreshDate({repeat : true});
 		}
 	}
 	
@@ -603,15 +650,22 @@ const drawMessages = function(){
 	$messagesPanel.children(".d-none").each(function(){
 		$(this).removeClass("d-none");
 	});
+	
+	refreshDate();
 }
 
 let refreshDateTimeout;
-const refreshDate = function() {
-    $("#messagesfromvisitor>.messagesfromvisitor-container").children("[data-timetype='detik'],[data-timetype='menit']").each(function(){
+const refreshDate = function({repeat = false} = {}) {
+	theElemMsg = $("#messagesfromvisitor>.messagesfromvisitor-container");
+	theElemMsgChild = (repeat ? theElemMsg.children("[data-timetype='detik'],[data-timetype='menit']") : theElemMsg.children(":not([data-timetype='detik']),:not([data-timetype='menit'])"))
+    theElemMsgChild.each(function(){
 		atimeago = timeDifference(+ new Date(), $(this).data("timestamp"));
 		$(this).find(".time").text(atimeago);
 	})
-    refreshDateTimeout = setTimeout(refreshDate, 1000);
+	
+	if(repeat){
+		refreshDateTimeout = setTimeout(refreshDate, 1000);
+	}
 }
 
 function isMessagesVisitorGetItemHTML({ timestamp, name, message, colleague, attend }) {
