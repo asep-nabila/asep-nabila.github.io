@@ -566,7 +566,7 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 								}
 							}
 						}else{
-							if(loadNewMessagesRetry<=10){
+							if(loadNewMessagesRetry<=5){
 								setTimeout(function() {
 									loadNewMessagesRetry++;
 									loadNewMessages(params);

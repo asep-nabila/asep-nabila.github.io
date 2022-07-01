@@ -66,13 +66,11 @@ class Config {
 			if(['groom','bride','events'].indexOf(conf) !== -1){
 				for (var key in this[conf]) {
 					if(typeof this[conf][key] == "string"){
-						console.log(`{${conf.toUpperCase()}_${key.toUpperCase()}}`);
 						let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}}`,"g");
 						document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key]);
 					}
 					if(typeof this[conf][key] == "Object"){
 						for (var keys in this[conf][key]) {
-							console.log(`{${conf.toUpperCase()}_${key.toUpperCase()}_${keys.toUpperCase()}}`);
 							let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}_${keys.toUpperCase()}}`,"g");
 							document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key][keys]);
 						}
