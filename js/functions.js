@@ -424,10 +424,10 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 					$.getJSON( commentsUrl ).done((response) => {
 						if(response.statusCode == 1){
 							$messages = getSavedMessages();
-							response.listtimestamp = [];
+							response.newlisttimestamp = [];
 							
 							Object.keys(response.data).forEach(function(key) {
-								response.listtimestamp.push(key);
+								response.newlisttimestamp.push(key);
 								saveMessages(response.data[key]);
 							});
 							
@@ -437,7 +437,7 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 							}
 							
 							if(typeof params.functionrepeat !== "undefined"){
-								if(response.listtimestamp.some((timestamp) => {return !$messages.includes(timestamp);})){
+								if(response.newlisttimestamp.some((timestamp) => {return !$messages.includes(timestamp);})){
 									functionCallbak({gotnewmessages : true});
 								}
 							}else{
