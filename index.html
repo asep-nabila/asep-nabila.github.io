@@ -202,6 +202,13 @@
 		margin-bottom: -0.3rem;
 	}
 	
+	.bg-top{
+		height: 8vw;
+		background-repeat: repeat-x;
+		background-position: top;
+		background-size: auto 100%;
+		background-image: url("img/bg-menu/top.png");
+	}
 	.container-section>.section-middle{
 		min-height: 100vh;
 	}
@@ -210,13 +217,13 @@
 		//height: 3rem;
 	}
 	.container-section>.section-top>.section-left{
-		background-color: #123002;
+		//background-color: #123002;
 	}
 	.container-section>.section-top>.section-center{
-		background-color: #125522;
+		//background-color: #125522;
 	}
 	.container-section>.section-top>.section-right{
-		background-color: #442232;
+		//background-color: #442232;
 	}
 	
 	.container-section>.section-middle>.section-left{
@@ -328,16 +335,16 @@
 	
 	<div id="beranda" class="xhidden container-fluid container-section">
 		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+			<div class="col-1 section-left bg-top"></div>
+			<div class="col-10 section-center bg-top"></div>
+			<div class="col-1 section-right bg-top"></div>
 		</div>
 		<div class="row section-middle">
 			<div class="col-1 section-left"></div>
 			<div class="col-10 section-center">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
+						<div class="col-sm text-center pb-3 pt-3 mt-3">
 							<h1 class="title-section">The Wedding Of</h1>
 						</div>
 					</div>
@@ -349,9 +356,9 @@
 					<div class="row">
 						<div class="col-sm text-center pb-3 mb-3 mt-3">
 							<h1 style="font-family: 'Playball', cursive;">
-								<sup style="font-size:3.5rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
+								<sup style="font-size:2.5rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
 								<small>&amp;</small>
-								<sub style="font-size:3.5rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
+								<sub style="font-size:2.5rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
 							</h1>
 						</div>
 					</div>
@@ -626,7 +633,12 @@
 						<small class="text-muted fw-lighter">Thanks for visiting our wedding page</small>
 						<br/>
 						<small class="text-muted fw-lighter">Regrads, {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}</small>
-						<br/><br/>
+						<br/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm text-center mt-3 b-3">
+						<img src="img/AxN-shadow.png" style="width: 10rem; height:auto;">
 						<br/><br/>
 						<br/><br/>
 						<br/><br/>
