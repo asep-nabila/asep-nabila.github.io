@@ -100,7 +100,7 @@ $(function() {
 								submitVisitorMessagesError.push(response.statusText);
 							}
 						}).fail((jqXHR, textStatus) => {
-							loadNewMessagesXhrErrors.push(`${textStatus}: Tidak dapat terhubung, pastikan perangkat terhubung dan Internet stabil.`);
+							submitVisitorMessagesError.push(`${textStatus}: Tidak dapat terhubung, pastikan perangkat terhubung dan Internet stabil.`);
 						}).always(() => {
 							if(submitVisitorMessagesError.length>0){
 								Swal.fire({

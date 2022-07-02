@@ -437,7 +437,7 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 							}
 							
 							if(typeof params.functionrepeat !== "undefined"){
-								if(response.newlisttimestamp.some((timestamp) => {return !$messages.includes(timestamp);})){
+								if(response.newlisttimestamp.some((timestamp) => {return !Object.keys($messages).includes(timestamp);})){
 									functionCallbak({gotnewmessages : true});
 								}
 							}else{
