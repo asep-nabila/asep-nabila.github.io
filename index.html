@@ -653,6 +653,10 @@
 	<script src="playlist.json"></script>
 	
 	<script>
+	if ("virtualKeyboard" in navigator) {
+		navigator.virtualKeyboard.overlaysContent = true;
+	}
+
 	let kepada,dari,group,receiverhtml;
 
 	if(typeof localStorage.kepada != "undefined" && localStorage.kepada != ''){
