@@ -102,11 +102,13 @@ $(function() {
 						}).fail((jqXHR, textStatus) => {
 							loadNewMessagesXhrErrors.push(`${textStatus}: Tidak dapat terhubung, pastikan perangkat terhubung dan Internet stabil.`);
 						}).always(() => {
-							Swal.fire({
-								icon: 'error',
-								text: submitVisitorMessagesError.join(),
-								confirmButtonColor: '#991188', //Warna kesukaan Nabila
-							});
+							if(submitVisitorMessagesError.length>0){
+								Swal.fire({
+									icon: 'error',
+									text: submitVisitorMessagesError.join(),
+									confirmButtonColor: '#991188', //Warna kesukaan Nabila
+								});
+							}
 							
 							submitmessagebtn.html('Kirim');
 							submitmessagebtn.prop('disabled', false);
