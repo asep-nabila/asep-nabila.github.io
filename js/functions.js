@@ -142,7 +142,7 @@ getVisitorIP();
 
 // Initialize the agent at application startup.
 const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
-let visitorId = '', visitorIdRetryCount = 0;
+let visitorId = '';
 async function getVisitorId() {
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 		visitorId = localStorage.visitorId;
@@ -154,13 +154,7 @@ async function getVisitorId() {
 			// save it on localStorage
 			localStorage.visitorId = visitorId;
 		}).catch(error => {
-			if(visitorIdRetryCount<3){
-				setTimeout(function() {
-					getVisitorId();
-				}, 1000);
-			}else{
-				localStorage.visitorId = localStorage["randid"];
-			}
+			localStorage.visitorId = localStorage["randid"];
 		});
 	}
 }
@@ -194,20 +188,25 @@ const nextsongs = function(){
 
 const showEnvelope = function(){
 	Swal.fire({
-		title: `<div class="row envelope"><h1><sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup><small>&</small><sub style="font-size:3.5rem" title="${config.bride.fullname} (${config.bride.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.bride.firstname}</sub></h1></div>`,
+		title: '' +
+			'<h1 class="envelope">' +
+				`<sup style="font-size:4rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup>` +
+				'<small>&</small>' + 
+				`<sub style="font-size:4rem" title="${config.bride.fullname} (${config.bride.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.bride.firstname}</sub>` +
+			'</h1>',
 		html: receiverhtml,
-		footer: '<small class="envelopefooter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
+		footer: '<small class="envelopefooter fw-lighter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
 		confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
 		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		width: '100%',
-		heightAuto: false,
+		width: 'auto',
+		height: '100%',
 		grow: 'fullscreen',
-		background: 'transparent',
-		backdrop: `
-		linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("img/bg-landing.jpg")
-		no-repeat center/auto 100%
-		`,
+		background: '#FFFFFF',
+		backdrop: '#643A5D',
+		customClass : {
+			popup: 'close-envelope-popup',
+			image: 'close-envelope-popup-img-bridegroom',
+		},
 		showClass: {
 			popup: '',// disable icon animation
 		},
@@ -220,7 +219,7 @@ const showEnvelope = function(){
 		allowEnterKey: false,
 		imageUrl: 'img/asepdila.png',
 		imageWidth: "auto",
-		imageHeight: 300,
+		imageHeight: 250,
 		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`
 	}).then((result) => {
 		showInvitation();

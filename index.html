@@ -40,16 +40,16 @@
 	}
 	
 	.envelope {
-		color : white;
+		color : #C79F6D;
 		font-family: 'Playball', cursive;
 	}
 	.envelope>h1 {
-		font-size:200%;
+		font-size:5rem;
 	}
 	.envelope>h1>small {
 		font-size:50%;
 	}
-	
+
 	html {
 		/* make sure we use up the whole viewport */
 		width: 100%;
@@ -99,18 +99,30 @@
 		background: none;
 	}
 	
+	.close-envelope-popup {
+		border: solid 0.3rem !important;
+		border-color: #C79F6D !important;
+	}
+	
+	.close-envelope-popup-img-bridegroom{
+		border-radius: 50%;
+		border: solid !important;
+		border-color: #C79F6D !important;
+		margin: 5rem auto 2.5rem auto!important;
+	}
+	
 	.greatings {
-		color : #DDD;
+		color : #404040;
 		margin: 0.5rem auto;
 	}
 	
 	.receivername {
-		color : #ffb353;
+		color : #404040;
 		margin: 1.5rem auto;
 	}
 	
 	.envelopefooter{
-		color : #ddd;
+		color : #404040;
 		font-size: 0.75rem;
 	}
 	#swal2-title{
@@ -119,9 +131,7 @@
 		padding-top:0px!important;
 		padding-bottom:0px!important;
 	}
-	.swal2-image{
-		margin: 0.25rem auto 0.25rem!important;
-	}
+	
 	.swal2-footer{
 		border-top: none !important;
 	}
@@ -211,48 +221,10 @@
 		background-size: auto 100%;
 		//background-image: url("img/bg-menu/top.png");
 	}
-	.container-section>.section-middle{
+	.container-section{
 		min-height: 100vh;
 	}
-	
-	.container-section>.section-top>div,.container-section>.section-bottom>div{
-		//height: 3rem;
-	}
-	.container-section>.section-top>.section-left{
-		//background-color: #123002;
-	}
-	.container-section>.section-top>.section-center{
-		//background-color: #125522;
-	}
-	.container-section>.section-top>.section-right{
-		//background-color: #442232;
-	}
-	
-	.container-section>.section-middle>.section-left{
-		background-repeat: repeat-y;
-		background-position: left top;
-		background-size: 100% auto;
-		//background-image: url("img/bg-menu/left.png");
-	}
-	.container-section>.section-middle>.section-center{
-		//background-color: #dfdfdf;
-	}
-	.container-section>.section-middle>.section-right{
-		background-repeat: repeat-y;
-		background-position: right top;
-		background-size: 100% auto;
-		//background-image: url("img/bg-menu/right.png");
-	}
-	
-	.container-section>.section-bottom>.section-left{
-		background-color: #123212;
-	}
-	.container-section>.section-bottom>.section-center{
-		background-color: #225522;
-	}
-	.container-section>.section-bottom>.section-right{
-		background-color: #542232;
-	}
+
 	.receivername {
 		text-transform: capitalize;
 	}
@@ -336,326 +308,220 @@
 	</nav>
 	
 	<div id="beranda" class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left bg-top"></div>
-			<div class="col-10 section-center bg-top"></div>
-			<div class="col-1 section-right bg-top"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-sm text-center pb-2 pt-2 mt-3">
-							<h1 class="title-section">The Wedding Of</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm text-center pb-2 mb-2 mt-2">
-							<img src="img/asepdila.png" alt="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" title="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" style="width: 100%; max-width: 18.5rem; height: auto;">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm text-center pb-2 mb-2 mt-2">
-							<h1 style="font-family: 'Playball', cursive;">
-								<sup style="font-size:2.5rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
-								<small>&amp;</small>
-								<sub style="font-size:2.5rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
-							</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm text-center pb-2 mb-2 mt-2">
-							{EVENTS_DAYS}, {EVENTS_DATEHUMAN}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
-							<a href="#acara" class="navigate-link btn btn-primary" type="button">Lihat detail acara</a>
-						</div>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-sm text-center pb-2 pt-2 mt-3">
+				<h1 class="title-section">The Wedding Of</h1>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col-sm text-center pb-2 mb-2 mt-2">
+				<img src="img/asepdila.png" alt="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" title="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" style="width: 100%; max-width: 18.5rem; height: auto;">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm text-center pb-2 mb-2 mt-2">
+				<h1 style="font-family: 'Playball', cursive;">
+					<sup style="font-size:2.5rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
+					<small>&amp;</small>
+					<sub style="font-size:2.5rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
+				</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm text-center pb-2 mb-2 mt-2">
+				{EVENTS_DAYS}, {EVENTS_DATEHUMAN}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm text-center pb-3 mb-3 mt-3">
+				<a href="#acara" class="navigate-link btn btn-primary" type="button">Lihat detail acara</a>
+			</div>
 		</div>
 	</div>
 	
 	
 	<div id="mempelai" class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<hr/>
 		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid">
-					<div class="row">
-						<hr/>
-					</div>
-					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
-							<h1 class="in-the-name-of-allah">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-sm text-center pb-3 mb-3 mt-3">
+				<h1 class="in-the-name-of-allah">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</h1>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
 		</div>
 	</div>
 	
 	<div id="acara" class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
-					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
-							<h2 class="title-section">Hari Yang Dinanti</h2>
-							<h5></h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-sm text-center pb-3 mb-3 mt-3">
+				<h2 class="title-section">Hari Yang Dinanti</h2>
+				<h5></h5>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
 		</div>
 	</div>
 	
 	<div id="galeri" class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
-					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
-							<h2 class="title-section">Galeri Foto</h2>
-							<h5>Tangkapan momen-momen berbahagia kedua mempelai</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							One of three columns
-						</div>
-						<div class="col-sm">
-							<p>One of three columns</p>
-						</div>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-sm text-center pb-3 mb-3 mt-3">
+				<h2 class="title-section">Galeri Foto</h2>
+				<h5>Tangkapan momen-momen berbahagia kedua mempelai</h5>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col-sm">
+				One of three columns
+			</div>
+			<div class="col-sm">
+				One of three columns
+			</div>
+			<div class="col-sm">
+				<p>One of three columns</p>
+			</div>
 		</div>
 	</div>
 	
-	<div id="ucapan" class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+	<div id="ucapan" class="xhidden container container-section">
+		<div class="row">
+			<div class="col-sm text-center pb-3 mb-3 mt-3">
+				<h2 class="title-section">Ucapan & Doa</h2>
+				<h5>Berikan Ucapan & Doa untuk ke dua mempelai</h5>
+			</div>
 		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center">
-				<div class="container-fluid bg-invitation">
-					<div class="row">
-						<div class="col-sm text-center pb-3 mb-3 mt-3">
-							<h2 class="title-section">Ucapan & Doa</h2>
-							<h5>Berikan Ucapan & Doa untuk ke dua mempelai</h5>
-						</div>
+		<div class="row">
+			<div class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
+				<form id="messagesfromvisitor-submit-form" novalidate>
+					<div class="mb-3">
+						<label for="messagesfromvisitor-name" class="form-label">Nama</label>
+						<input name="name" type="text" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama" required>
 					</div>
-					<div class="row">
-						<div class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
-							<form id="messagesfromvisitor-submit-form" novalidate>
-								<div class="mb-3">
-									<label for="messagesfromvisitor-name" class="form-label">Nama</label>
-									<input name="name" type="text" class="form-control form-control-sm" id="messagesfromvisitor-name" placeholder="Nama" required>
-								</div>
-								<div class="mb-3">
-									<label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
-									<textarea name="message" class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa" required></textarea>
-								</div>
-								<div class="mb-3">
-									<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
-									<select name="attend" id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example" required>
-										<option value="0" selected>Tidak hadir</option>
-										<option value="2">Mungkin</option>
-										<option value="1">Hadir</option>
-									</select>
-								</div>
-								<div class="mb-3">
-									<label for="messagesfromvisitor-colleague" class="form-label">Kenalan/Teman</label>
-									<select name="colleague" id="messagesfromvisitor-colleague" class="form-select form-select-sm" aria-label="Default select example" required>
-										<option value="1">Mempelai pria</option>
-										<option value="2">Mempelai wanita</option>
-										<option value="3">Orang tua mempelai Pria</option>
-										<option value="4">Orang tua mempelai Wanita</option>
-									</select>
-								</div>
-								<div class="d-grid gap-2">
-									<button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Kirim</button>
-								</div>
-							</form>
-						</div>
+					<div class="mb-3">
+						<label for="messagesfromvisitor-message" class="form-label">Ucapan & doa</label>
+						<textarea name="message" class="form-control form-control-sm" id="messagesfromvisitor-message" rows="3" placeholder="Ucapan & doa" required></textarea>
 					</div>
-					<div class="row">
-						<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3 bg-light">
-							<div class="text-center d-grid gap-2 animate__animated animate__fadeInDown d-none messagesfromvisitor-gotnew">
-								<button type="button" class="btn btn-outline-secondary btn-sm">Lihat pesan baru</button>
-							</div>
-							<div class="messagesfromvisitor-container">
-							</div>
-							<div class="messagesfromvisitor-loader pt-3 d-flex justify-content-center d-none">
-								<div class="spinner-border" role="status">
-									<span class="visually-hidden">Loading...</span>
-								</div>
-							</div>
-							<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-empty fw-lighter">Belum ada pesan, jadilah yang pertama memberi ucapan & doa</p>
-							<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-last fw-lighter">- Tidak ada pesan lagi -</p>
-							<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-error fw-lighter">- Terjadi kendala saat mengambil pesan -</p>
-						</div>
+					<div class="mb-3">
+						<label for="messagesfromvisitor-confirmattender" class="form-label">Konfirmasi kehadiran</label>
+						<select name="attend" id="messagesfromvisitor-confirmattender" class="form-select form-select-sm" aria-label="Default select example" required>
+							<option value="0" selected>Tidak hadir</option>
+							<option value="2">Mungkin</option>
+							<option value="1">Hadir</option>
+						</select>
 					</div>
-					<div class="row">
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
-						<div class="col-sm">
-						</div>
+					<div class="mb-3">
+						<label for="messagesfromvisitor-colleague" class="form-label">Kenalan/Teman</label>
+						<select name="colleague" id="messagesfromvisitor-colleague" class="form-select form-select-sm" aria-label="Default select example" required>
+							<option value="1">Mempelai pria</option>
+							<option value="2">Mempelai wanita</option>
+							<option value="3">Orang tua mempelai Pria</option>
+							<option value="4">Orang tua mempelai Wanita</option>
+						</select>
+					</div>
+					<div class="d-grid gap-2">
+						<button id="messagesfromvisitor-submit" type="submit" class="btn btn-primary">Kirim</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3 bg-light">
+				<div class="text-center d-grid gap-2 animate__animated animate__fadeInDown d-none messagesfromvisitor-gotnew">
+					<button type="button" class="btn btn-outline-secondary btn-sm">Lihat pesan baru</button>
+				</div>
+				<div class="messagesfromvisitor-container">
+				</div>
+				<div class="messagesfromvisitor-loader pt-3 d-flex justify-content-center d-none">
+					<div class="spinner-border" role="status">
+						<span class="visually-hidden">Loading...</span>
 					</div>
 				</div>
+				<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-empty fw-lighter">Belum ada pesan, jadilah yang pertama memberi ucapan & doa</p>
+				<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-last fw-lighter">- Tidak ada pesan lagi -</p>
+				<p class="text-center pt-3 pb-3 mt-3 mb-3 d-none messagesfromvisitor-error fw-lighter">- Terjadi kendala saat mengambil pesan -</p>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
+			<div class="col-sm">
+			</div>
 		</div>
 	</div>
 	
-	<div class="xhidden container-fluid container-section">
-		<div class="row section-top">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-2 section-right"></div>
-		</div>
-		<div class="row section-middle">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center mt-3">
-				<div class="row">
-					<div id="footer" style="background-color:rgba(255,255,255,0.5);box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="container-fluid pt-5 mb-2">
-						<nav style="background:none!important;margin-bottom:2rem;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pb-1 pe-2 bg-body">
-							<div class="row">
-								<div class="col-12 text-center mb-2">
-									<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12">
-									<div id="qrbukutamu"></div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12 text-center mt-2" style="white-space: nowrap;">
-									<h4><span id="qr-kepada"></span></h4>
-								</div>
-								<div class="col-12 text-center" style="white-space: nowrap;">
-									<h6><span id="qr-dari"></span></h6>
-								</div>
-								<div class="col-12 text-center" style="white-space: nowrap;">
-									<small class="change-attenderdata">
-										<button id="reset-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> reset</button>
-										<button id="edit-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil-fill"></i> edit</button>
-									</small>
-								</div>
-								<div class="col-12 mt-2 text-center" style="white-space: nowrap;">
-									<small>atau scan qr code di lokasi</small>
-								</div>
-								<div class="col-12 mt-2 text-center" style="white-space: nowrap;">
-									<button id="scan-attenderqrcode" type="button" class="btn btn-outline-secondary"><i class="bi bi-qr-code-scan"></i> scan</button>
-								</div>
-							</div>
-						</nav>
+	<div class="xhidden container container-section">
+		<div class="row">
+			<div id="footer" style="background-color:rgba(255,255,255,0.5);box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="container-fluid pt-5 mb-2">
+				<nav style="background:none!important;margin-bottom:2rem;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pb-1 pe-2 bg-body">
+					<div class="row">
+						<div class="col-12 text-center mb-2">
+							<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col text-center">
-						<br/>
-						<small class="text-muted fw-lighter">Build by Asep Maulana Nuriman (<a href="https://github.com/maunklana" class="text-muted" target="blank">maunklana</a>)<br/><br/>
-						this page is use <a href="https://github.com/twbs/bootstrap" class="text-muted" target="blank">Bootstrap</a> & <a href="https://jquery.com/" class="text-muted" target="blank">jquery</a>, hosted on <a href="https://pages.github.com/" class="text-muted" target="blank">Github Pages</a>, any data you submited is processed and stored on <a href="https://developers.google.com/apps-script/" class="text-muted" target="blank">Google Apps Script</a> & <a href="https://firebase.google.com/" class="text-muted" target="blank">Google Firebase</a><br/>
-						any other opensourced project used on this page can be show on this <a href="https://github.com/asep-nabila/asep-nabila.github.io" class="text-muted" target="blank">repository</a></small>
-						<br/>
-						<br/>
-						<small class="text-muted fw-lighter">Thanks for visiting our wedding page</small>
-						<br/>
-						<small class="text-muted fw-lighter">Regrads, {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}</small>
-						<br/>
+					<div class="row">
+						<div class="col-12">
+							<div id="qrbukutamu"></div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm text-center mt-3 b-3">
-						<img src="img/AxN-shadow.png" style="width: 10rem; height:auto;">
-						<br/><br/>
-						<br/><br/>
-						<br/><br/>
+					<div class="row">
+						<div class="col-12 text-center mt-2" style="white-space: nowrap;">
+							<h4><span id="qr-kepada"></span></h4>
+						</div>
+						<div class="col-12 text-center" style="white-space: nowrap;">
+							<h6><span id="qr-dari"></span></h6>
+						</div>
+						<div class="col-12 text-center" style="white-space: nowrap;">
+							<small class="change-attenderdata">
+								<button id="reset-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> reset</button>
+								<button id="edit-attenderdata" type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil-fill"></i> edit</button>
+							</small>
+						</div>
+						<div class="col-12 mt-2 text-center" style="white-space: nowrap;">
+							<small>atau scan qr code di lokasi</small>
+						</div>
+						<div class="col-12 mt-2 text-center" style="white-space: nowrap;">
+							<button id="scan-attenderqrcode" type="button" class="btn btn-outline-secondary"><i class="bi bi-qr-code-scan"></i> scan</button>
+						</div>
 					</div>
-				</div>
+				</nav>
 			</div>
-			<div class="col-1 section-right"></div>
 		</div>
-		<div class="row section-bottom">
-			<div class="col-1 section-left"></div>
-			<div class="col-10 section-center"></div>
-			<div class="col-1 section-right"></div>
+		<div class="row">
+			<div class="col text-center">
+				<br/>
+				<small class="text-muted fw-lighter">Build by Asep Maulana Nuriman (<a href="https://github.com/maunklana" class="text-muted" target="blank">maunklana</a>)<br/><br/>
+				this page is use <a href="https://github.com/twbs/bootstrap" class="text-muted" target="blank">Bootstrap</a> & <a href="https://jquery.com/" class="text-muted" target="blank">jquery</a>, hosted on <a href="https://pages.github.com/" class="text-muted" target="blank">Github Pages</a>, any data you submited is processed and stored on <a href="https://developers.google.com/apps-script/" class="text-muted" target="blank">Google Apps Script</a> & <a href="https://firebase.google.com/" class="text-muted" target="blank">Google Firebase</a><br/>
+				any other opensourced project used on this page can be show on this <a href="https://github.com/asep-nabila/asep-nabila.github.io" class="text-muted" target="blank">repository</a></small>
+				<br/>
+				<br/>
+				<small class="text-muted fw-lighter">Thanks for visiting our wedding page</small>
+				<br/>
+				<small class="text-muted fw-lighter">Regrads, {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}</small>
+				<br/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm text-center mt-3 b-3">
+				<img src="img/AxN-shadow.png" style="width: 10rem; height:auto;">
+				<br/><br/>
+				<br/><br/>
+				<br/><br/>
+			</div>
 		</div>
 	</div>
 	
