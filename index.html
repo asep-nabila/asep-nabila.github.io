@@ -102,6 +102,22 @@
 	.close-envelope-popup {
 		border: solid 0.3rem !important;
 		border-color: #C79F6D !important;
+		-webkit-mask-image:
+			 radial-gradient(circle at top left, transparent 0, transparent  20px, black 21px),
+			 radial-gradient(circle at top right, transparent 0, transparent  20px, black 21px),
+			 radial-gradient(circle at bottom left, transparent 0, transparent  20px, black 21px),
+			 radial-gradient(circle at bottom right, transparent 0, transparent  20px, black 21px);
+		-webkit-mask-position: top left, top right, bottom left, bottom right;
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-size: 50% 50%;
+		mask-image:
+			radial-gradient(circle at top left, transparent 0, transparent 20px, black 21px),
+			radial-gradient(circle at top right, transparent 0, transparent 20px, black 21px),
+			radial-gradient(circle at bottom left, transparent 0, transparent 20px, black 21px),
+			radial-gradient(circle at bottom right, transparent 0, transparent 20px, black 21px);
+		mask-position: top left, top right, bottom left, bottom right;
+		mask-repeat: no-repeat;
+		mask-size: 50% 50%;
 	}
 	
 	.close-envelope-popup-img-bridegroom{
