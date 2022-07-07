@@ -130,3 +130,8 @@ $(function() {
 		drawMessages({loadnew : false});
 	});
 });
+
+$( window ).on("load", function() {
+	getVisitorIP();
+	getVisitorId();
+});

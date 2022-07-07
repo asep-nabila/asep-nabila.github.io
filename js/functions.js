@@ -137,7 +137,7 @@ async function getVisitorIP() {
 		}, 60000);
 	}
 }
-getVisitorIP();
+
 
 
 // Initialize the agent at application startup.
@@ -158,7 +158,6 @@ async function getVisitorId() {
 		});
 	}
 }
-getVisitorId();
 
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
@@ -317,12 +316,12 @@ const swallAskFrom = function(){
 			showCancelButton: false,
 			confirmButtonText: 'Lanjut',
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
-			background: 'transparent',
-			backdrop: `
-				linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-				url("img/bg-landing.jpg")
-				no-repeat center/auto 100%
-			`,
+			background: '#FFFFFF',
+			backdrop: '#643A5D',
+			customClass : {
+				popup: 'close-envelope-popup',
+				image: 'close-envelope-popup-img-bridegroom',
+			},
 			allowOutsideClick: false,
 			allowEscapeKey: false,
 			inputValidator: (value) => {
@@ -357,12 +356,12 @@ const swallAskName = function(functiontoCall){
 		showCancelButton: false,
 		confirmButtonText: 'Lanjut',
 		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		background: 'transparent',
-		backdrop: `
-		linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("img/bg-landing.jpg")
-		no-repeat center/auto 100%
-		`,
+		background: '#FFFFFF',
+		backdrop: '#643A5D',
+		customClass : {
+			popup: 'close-envelope-popup',
+			image: 'close-envelope-popup-img-bridegroom',
+		},
 		allowOutsideClick: false,
 		allowEscapeKey: false,
 		inputValidator: (value) => {
