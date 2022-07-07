@@ -154,10 +154,10 @@ async function getVisitorId() {
 			// save it on localStorage
 			localStorage.visitorId = visitorId;
 		}).catch(error => {
-			if(visitorIdRetryCount<10){
+			if(visitorIdRetryCount<3){
 				setTimeout(function() {
 					getVisitorId();
-				}, 5000);
+				}, 1000);
 			}else{
 				localStorage.visitorId = localStorage["randid"];
 			}
