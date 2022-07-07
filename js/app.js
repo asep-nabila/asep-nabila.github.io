@@ -1,4 +1,8 @@
 $(function() {
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> ');
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
+	$('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">');
+	
 	$.fn.isInViewport = function() {
 		var elementTop = $(this).offset().top;
 		var elementBottom = elementTop + $(this).outerHeight();
@@ -135,5 +139,6 @@ $(function() {
 });
 
 $( window ).on("load", function() {
-	
+	$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">');
+	$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="(prefers-reduced-motion: no-preference)"/>');
 });
