@@ -270,6 +270,11 @@ const showInvitation = function(){
 		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
 		$("#playindicator").removeClass("rotating-spin");
 	});
+	
+	let recaptchaScript = document.createElement('script');
+    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
+    recaptchaScript.defer = true;
+    document.body.appendChild(recaptchaScript);
 }
 
 const generateQrBukuTamu = function(){
