@@ -24,8 +24,6 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="(prefers-reduced-motion: no-preference)"/>
-	<link rel="stylesheet" href="calamansi-js/dist/calamansi.min.css">
-	<link rel="stylesheet" href="qrcode-reader/dist/css/qrcode-reader.min.css">
 	<style>
 	.xhidden {
 		visibility: hidden;
@@ -537,9 +535,6 @@
 		</div>
 	</div>
 	
-	<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet"> 
-	<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">
-	
 	<script src="config.js"></script>
 	<script src="js/constructor.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -588,28 +583,7 @@
 	let cpi = 0;
 	let players;
 	
-	$(function() {
-		createcalamnsielement();
-
-		Calamansi.autoload();
-						
-		CalamansiEvents.on('initialized', function (player) {
-			players = player;
-		});
-		
-		CalamansiEvents.on('trackEnded', function (player) {
-			nextsongs();
-		});
-		
-		CalamansiEvents.on('play', function (player) {
-			$("#playindicator").addClass("rotating-spin");
-		});
-		
-		CalamansiEvents.on('pause', function (player) {
-			$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-			$("#playindicator").removeClass("rotating-spin");
-		});
-		
+	$(function() {		
 		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 			swallAskName(showEnvelope);
 		}else{

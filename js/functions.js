@@ -139,9 +139,6 @@ async function getVisitorIP() {
 }
 
 
-
-// Initialize the agent at application startup.
-const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
 let visitorId = '';
 async function getVisitorId() {
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
@@ -244,6 +241,35 @@ const showInvitation = function(){
 			drawMessages();
 		}
 	}, 1000);
+	
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">');
+	$('head').append('<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">');
+	$('head').append('<link rel="stylesheet" href="calamansi-js/dist/calamansi.min.css">');
+	$('head').append('<link rel="stylesheet" href="qrcode-reader/dist/css/qrcode-reader.min.css">');
+	
+	getVisitorIP();
+	getVisitorId();
+	
+	createcalamnsielement();
+
+	Calamansi.autoload();
+					
+	CalamansiEvents.on('initialized', function (player) {
+		players = player;
+	});
+	
+	CalamansiEvents.on('trackEnded', function (player) {
+		nextsongs();
+	});
+	
+	CalamansiEvents.on('play', function (player) {
+		$("#playindicator").addClass("rotating-spin");
+	});
+	
+	CalamansiEvents.on('pause', function (player) {
+		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+		$("#playindicator").removeClass("rotating-spin");
+	});
 }
 
 const generateQrBukuTamu = function(){

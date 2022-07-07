@@ -129,9 +129,11 @@ $(function() {
 		$(this).parent().addClass("d-none");
 		drawMessages({loadnew : false});
 	});
+	
+	// Initialize the agent at application startup.
+	const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
 });
 
 $( window ).on("load", function() {
-	getVisitorIP();
-	getVisitorId();
+	
 });
