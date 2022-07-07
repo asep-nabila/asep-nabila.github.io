@@ -278,6 +278,11 @@ const showInvitation = function(){
     recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
     recaptchaScript.defer = true;
     document.body.appendChild(recaptchaScript);
+	
+	let calamansiScript = document.createElement('script');
+    calamansiScript.src = 'calamansi-js/dist/calamansi.min.js';
+    calamansiScript.defer = true;
+    document.body.appendChild(calamansiScript);
 }
 
 const generateQrBukuTamu = function(){
