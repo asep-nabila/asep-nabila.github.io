@@ -255,37 +255,26 @@ const showInvitation = function(){
 		$("body>div.xhidden").each((i,obj) => {
 			$container = $(obj);
 			if($container.isInViewport()){
-				var elementTop = $("#player-elem").offset().top;
-				var elementBottom = elementTop + $("#player-elem").outerHeight();
+				var elementTop = parseInt($("#player-elem").offset().top);
+				var elementBottom = parseInt(elementTop + $("#player-elem").outerHeight());
 
-				var viewContainerTop = $container.offset().top;
-				var viewContainerBottom = viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight();;
+				var viewContainerTop = parseInt($container.offset().top);
+				var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
 				
-				var viewportTop = $(window).scrollTop();
-				var viewportBottom = viewportTop + $(window).height();
-				
-				if(viewContainerTop > elementTop && elementBottom < viewContainerBottom){
-					console.log($container);
-					console.log('elem top :'+elementTop);
-					console.log('elem bottom :'+elementBottom);
-					console.log('container top :'+viewContainerTop);
-					console.log('container bottom :'+viewContainerBottom);
-					console.log('viewport top :'+viewportTop);
-					console.log('viewport bottom :'+viewportBottom);
-					
+				if(viewContainerTop > elementTop || elementBottom < viewContainerBottom){					
 					$("#player-elem").find("a[class*=btn-outline-]").each((i,obj) => {
 						var containerColor = $container.css("background-color");
 						if(containerColor == 'rgba(0, 0, 0, 0)'){
 							containerColor = $("body").css("background-color");
 						}
-						
-						console.log(containerColor);
-						console.log(isDark(containerColor));
+
 						$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
 						$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-						$(obj).css("color", isDark(containerColor) ? 'white' : 'black');
+						$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
 						$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
 					});
+					
+					return false;
 				}
 			}
 		});
