@@ -398,7 +398,7 @@ const swallAskFrom = function(){
 			inputAttributes: {
 				autocapitalize: 'off'
 			},
-			color: "#404040",
+			color: "#FFFFFF",
 			showCancelButton: false,
 			confirmButtonText: 'Lanjut',
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
@@ -439,7 +439,7 @@ const swallAskName = function(functiontoCall){
 		inputAttributes: {
 			autocapitalize: 'off'
 		},
-		color: "#404040",
+		color: "#FFFFFF",
 		showCancelButton: false,
 		confirmButtonText: 'Lanjut',
 		confirmButtonColor: '#991188', //Warna kesukaan Nabila
