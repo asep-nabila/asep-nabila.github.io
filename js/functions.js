@@ -393,12 +393,12 @@ const swalConfirmBackSound = function(){
 const swallAskFrom = function(){
 	if(typeof dari == 'undefined' || dari == ''){
 		Swal.fire({
-			html: '<span style="color:white;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>',
+			html: '<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>',
 			input: 'text',
 			inputAttributes: {
 				autocapitalize: 'off'
 			},
-			color: "white",
+			color: "#404040",
 			showCancelButton: false,
 			confirmButtonText: 'Lanjut',
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
@@ -433,12 +433,12 @@ const swallAskFrom = function(){
 
 const swallAskName = function(functiontoCall){
 	Swal.fire({
-		html: '<span style="color:white;"><h1><i class="bi bi-person-bounding-box"></i></h1>Masukkan nama kamu!</span>',
+		html: '<span style="color:#404040;"><h1><i class="bi bi-person-bounding-box"></i></h1>Masukkan nama kamu!</span>',
 		input: 'text',
 		inputAttributes: {
 			autocapitalize: 'off'
 		},
-		color: "white",
+		color: "#404040",
 		showCancelButton: false,
 		confirmButtonText: 'Lanjut',
 		confirmButtonColor: '#991188', //Warna kesukaan Nabila
