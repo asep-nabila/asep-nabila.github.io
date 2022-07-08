@@ -78,7 +78,7 @@ $(function() {
 								"Content-Type": "application/x-www-form-urlencoded",
 							},
 							"redirect": "follow",
-							"data": submitedform.serialize()
+							"data": submitedform.serialize() + "&visitorId=" + visitorId
 						};
 
 						$.ajax(settings).done((response) => {
