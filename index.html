@@ -472,10 +472,10 @@
 		</div>
 	</div>
 	
-	<div class="xhidden container container-section">
+	<div class="xhidden container" style="margin-bottom:3rem;">
 		<div class="row">
 			<div id="footer" style="background-color:rgba(255,255,255,0.5);box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="container-fluid pt-5 mb-2">
-				<nav style="background:none!important;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pe-2 bg-body">
+				<nav style="background:none!important;padding-top:0.25rem;padding-bottom:3rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pe-2 bg-body">
 					<div class="row">
 						<div class="col-12 text-center mb-2">
 							<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
@@ -545,7 +545,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-	<script src="qrcode-reader/dist/js/qrcode-reader.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.4/dist/jquery.validate.min.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/app.js"></script>
@@ -738,17 +737,6 @@
 					generateQrBukuTamu();
 				}
 			}).catch(swal.noop)
-		});
-		
-		$.qrCodeReader.jsQRpath = "qrcode-reader/dist/js/jsQR/jsQR.min.js";
-		$.qrCodeReader.beepPath = "qrcode-reader/dist/audio/beep.mp3";
-	
-		$("#scan-attenderqrcode").qrCodeReader({
-			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
-			audioFeedback: true,
-			callback: function(code) {
-				alert(code);
-			}
 		});
 
 	});

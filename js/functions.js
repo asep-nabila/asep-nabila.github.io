@@ -291,6 +291,24 @@ const showInvitation = function(){
     bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
     bootstrapBundleScript.defer = true;
     document.body.appendChild(bootstrapBundleScript);
+	
+	let qrcodeReaderScript = document.createElement('script');
+    qrcodeReaderScript.src = 'qrcode-reader/dist/js/qrcode-reader.min.js';
+    qrcodeReaderScript.defer = true;
+    document.body.appendChild(qrcodeReaderScript);
+	
+	qrcodeReaderScript.onload = function() {
+		$.qrCodeReader.jsQRpath = "qrcode-reader/dist/js/jsQR/jsQR.min.js";
+		$.qrCodeReader.beepPath = "qrcode-reader/dist/audio/beep.mp3";
+		
+		$("#scan-attenderqrcode").qrCodeReader({
+			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
+			audioFeedback: true,
+			callback: function(code) {
+				alert(code);
+			}
+		});
+	}
 }
 
 const generateQrBukuTamu = function(){
