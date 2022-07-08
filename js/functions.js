@@ -1,3 +1,7 @@
+const cdnjsbaseurl = "https://cdnjs.cloudflare.com/ajax/libs";
+const cdnjsdlvr = "https://cdn.jsdelivr.net";
+const gfonts = "https://fonts.googleapis.com";
+
 const queryParams = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
@@ -123,6 +127,15 @@ function capitalizing(string) {
 	return splitStr.join(' '); 
 }
 
+
+function isDark( color ) {
+    var match = /rgba?\((\d+).*?(\d+).*?(\d+)\)/.exec(color);
+    return parseFloat(match[1])
+         + parseFloat(match[2])
+         + parseFloat(match[3])
+           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
+}
+
 let visitorIP = '';
 async function getVisitorIP() {
     let response = await fetch('https://ifconfig.me/ip');
@@ -239,7 +252,14 @@ const showInvitation = function(){
 		$(this).css('visibility', 'visible');
 	});
 	
-	$(window).on('resize scroll', function() {
+	$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
+	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
+	$(window).on('resize', () => {
+		$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
+		$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
+	});
+	
+	$(window).on('resize scroll', () => {
 		if ($('#messagesfromvisitor').isInViewport()) {
 			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
 		}
@@ -255,14 +275,15 @@ const showInvitation = function(){
 		$("body>div.xhidden").each((i,obj) => {
 			$container = $(obj);
 			if($container.isInViewport()){
-				var elementTop = parseInt($("#player-elem").offset().top);
-				var elementBottom = parseInt(elementTop + $("#player-elem").outerHeight());
+				$plyrElem = $("#player-elem>#player-control-panel");
+				var elementTop = parseInt($plyrElem.offset().top);
+				var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
 
 				var viewContainerTop = parseInt($container.offset().top);
 				var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
 				
-				if(viewContainerTop > elementTop || elementBottom < viewContainerBottom){					
-					$("#player-elem").find("a[class*=btn-outline-]").each((i,obj) => {
+				if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){					
+					$plyrElem.find("a[class*=btn-outline-]").each((i,obj) => {
 						var containerColor = $container.css("background-color");
 						if(containerColor == 'rgba(0, 0, 0, 0)'){
 							containerColor = $("body").css("background-color");
@@ -293,13 +314,14 @@ const showInvitation = function(){
 		}
 	}, 1000);
 	
-	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">');
-	$('head').append('<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">');
-	$('head').append('<link rel="stylesheet" href="calamansi-js/dist/calamansi.min.css">');
-	$('head').append('<link rel="stylesheet" href="qrcode-reader/dist/css/qrcode-reader.min.css">');
-	$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />');
-	$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />');
-	$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />');
+	$('head')
+	.append(`<link href="${gfonts}/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">`)
+	.append(`<link href="${cdnjsdlvr}/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
+	.append('<link rel="stylesheet" href="calamansi-js/dist/calamansi.min.css">')
+	.append('<link rel="stylesheet" href="qrcode-reader/dist/css/qrcode-reader.min.css">')
+	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`);
 	
 	getVisitorIP();
 	getVisitorId();
@@ -339,7 +361,7 @@ const showInvitation = function(){
     document.body.appendChild(recaptchaScript);
 	
 	let bootstrapBundleScript = document.createElement('script');
-    bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
+    bootstrapBundleScript.src = `${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js`;
     bootstrapBundleScript.defer = true;
     document.body.appendChild(bootstrapBundleScript);
 	
@@ -736,12 +758,4 @@ const saveMessages = function(messagesData){
 	  }, 
 	  {}
 	);
-}
-
-function isDark( color ) {
-    var match = /rgba?\((\d+).*?(\d+).*?(\d+)\)/.exec(color);
-    return parseFloat(match[1])
-         + parseFloat(match[2])
-         + parseFloat(match[3])
-           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
 }

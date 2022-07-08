@@ -161,10 +161,10 @@
 		display: block;
 	}
 	
-	#player-elem>div>div>.music-controler{
+	#player-elem>.music-controler{
 		opacity: 0.4;
 	}
-	#player-elem>div>div>.music-controler:hover{
+	#player-elem>.music-controler:hover{
 		opacity: 1;
 	}
 	
@@ -275,6 +275,20 @@
 	.is-coleague-of:hover > .is-coleague-of-text {
 		display: inline;
 	}
+	.player-panel{
+		position: fixed;
+		bottom: 0;z-index: 1030;
+		margin-bottom: 4.6rem;
+	}
+	
+	#player-title-panel {
+		left: 0;
+	}
+	
+	#player-control-panel {
+		right: 0;
+		transform: scale(0.9);
+	}
 	</style>
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -288,26 +302,20 @@
 	</script>
   </head>
   <body data-background="img/bg-japanese-wave.png">
-	<nav style="position:fixed;margin-bottom:4.2rem;" class="xhidden navbar navbar-expand fixed-bottom">
-		<div id="player-elem" class="container">
-			<div class="row" style="width: 100%">
-				<div class="col-6 align-bottom" style="display: flex; align-items: center; white-space: nowrap; transform: scale(0.9);">
-					<small class="d-none animate__animated animate__fadeInLeft" style="padding: .25rem "><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
-				</div>
-				<div class="col-6">
-					<div class="music-controler text-end" style="transform: scale(0.9);"> 
-						<span id="calamansiplaycontroler"></span>
-						<a id="nextsongs" class="btn btn-sm btn-outline-dark">	
-							<span><i class="bi bi-skip-forward-fill"></i></span>
-						</a>
-					</div>
-				</div>
-			</div>
+	<span id="player-elem" class="xhidden">
+		<div id="player-title-panel" class="player-panel">
+			<small class="d-none animate__animated animate__fadeInLeft" style="padding: .25rem "><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
 		</div>
-	</nav>
+		<div id="player-control-panel" class="music-controler player-panel"> 
+			<span id="calamansiplaycontroler"></span>
+			<a id="nextsongs" class="btn btn-sm btn-outline-dark">	
+				<span><i class="bi bi-skip-forward-fill"></i></span>
+			</a>
+		</div>
+	</span>
 	<nav style="position:fixed;" class="xhidden navbar navbar-expand fixed-bottom">
 		<div class="container">
-			<ul class="navbar-nav nav-justified w-100 bg-light shadow ms-2 me-2 bg-body rounded-3 navbotomfloating">
+			<ul id="navigation-link" class="navbar-nav nav-justified w-100 bg-light shadow ms-2 me-2 bg-body rounded-3 navbotomfloating">
 				<li class="nav-item">
 				<a href="#beranda" class="nav-link"><i class="fa-solid fa-gopuram"></i><br/><small>Beranda</small></a>
 				</li>

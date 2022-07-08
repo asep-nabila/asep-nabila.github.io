@@ -1,7 +1,7 @@
 $(function() {
-	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> ');
-	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
-	$('head').append('<link rel="stylesheet" rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">');
+	$('head').append(`<link href="${gfonts}/css2?family=Playball&display=swap" rel="stylesheet">`);
+	$('head').append(`<link href="${gfonts}/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">`);
+	$('head').append(`<link rel="stylesheet" rel="preload" as="font" href="${cdnjsdlvr}/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">`);
 	
 	$.fn.isInViewport = function() {
 		var elementTop = $(this).offset().top;
@@ -14,16 +14,16 @@ $(function() {
 	};
 	
 	let playercontrolertimeout;
-	$("#player-elem").on("click touchend", function(){
+	$("#player-control-panel").on("click touchend", function(){
 		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
 		
 		$playsbutton = $(this);
 		$playsbutton.css('opacity', '1');
-		$("#player-elem>div>div>small").removeClass('d-none');
+		$("#player-elem>#player-title-panel>small").removeClass('d-none');
 		playercontrolertimeout = setTimeout(function(){
 			$playsbutton.css('opacity', '0.5');
 			$playsbutton.blur();
-			$("#player-elem>div>div>small").addClass('d-none');
+			$("#player-elem>#player-title-panel>small").addClass('d-none');
 			playercontrolertimeout = undefined;
 		}, 5000);
 	});
@@ -123,6 +123,6 @@ $(function() {
 });
 
 $( window ).on("load", function() {	
-	$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="preload" as="style" crossorigin="anonymous">');
-	$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="preload" as="style" media="(prefers-reduced-motion: no-preference)"/>');
+	$('head').append(`<link href="${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="preload" as="style" crossorigin="anonymous">`);
+	$('head').append(`<link rel="stylesheet" href="${cdnjsbaseurl}/animate.css/4.1.1/animate.min.css" rel="preload" as="style" media="(prefers-reduced-motion: no-preference)"/>`);
 });
