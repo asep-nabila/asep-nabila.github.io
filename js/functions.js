@@ -280,6 +280,12 @@ const showInvitation = function(){
 			$("#playindicator").removeClass("rotating-spin");
 		});
     };
+	
+	
+	let recaptchaScript = document.createElement('script');
+    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
+    recaptchaScript.defer = true;
+    document.body.appendChild(recaptchaScript);
 }
 
 const generateQrBukuTamu = function(){
