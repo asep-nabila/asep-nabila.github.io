@@ -1,6 +1,6 @@
 $(function() {
-	$('head').append('<link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> ');
-	$('head').append('<link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> ');
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
 	$('head').append('<link rel="stylesheet" rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">');
 	
 	$.fn.isInViewport = function() {
