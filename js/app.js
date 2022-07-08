@@ -13,27 +13,6 @@ $(function() {
 		return elementBottom > viewportTop && elementTop < viewportBottom;
 	};
 	
-	$(window).on('resize scroll', function() {
-		if ($('#messagesfromvisitor').isInViewport()) {
-			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
-		}
-		
-		$(".lazyload:not([src])").each((i,obj) => {
-			lazyimg = $(obj);
-			if(lazyimg.isInViewport()){
-				lazyimg.addClass("animate__animated animate__fadeInDown");
-				lazyimg.attr("src", lazyimg.data("src"));
-			}
-		});
-	});
-	
-	function drawMessagesOnScroll(){
-	   if($("#messagesfromvisitor").scrollTop() > $("#messagesfromvisitor>.messagesfromvisitor-container").height() - $("#messagesfromvisitor").height()-100) {
-			drawMessages();
-	   }
-	}
-	$("#messagesfromvisitor").on('touchmove scroll', function(){drawMessagesOnScroll();});
-	
 	let playercontrolertimeout;
 	$("#player-elem").on("click touchend", function(){
 		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
