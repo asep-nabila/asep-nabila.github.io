@@ -139,11 +139,10 @@ async function getVisitorIP() {
 }
 
 
+// Initialize the agent at application startup.
+const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
 let visitorId = '';
-async function getVisitorId() {
-	// Initialize the agent at application startup.
-	if(typeof fpPromise == "undefined") const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
-	
+async function getVisitorId() {	
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 		visitorId = localStorage.visitorId;
 	}else{
