@@ -286,6 +286,11 @@ const showInvitation = function(){
     recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
     recaptchaScript.defer = true;
     document.body.appendChild(recaptchaScript);
+	
+	let bootstrapBundleScript = document.createElement('script');
+    bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
+    bootstrapBundleScript.defer = true;
+    document.body.appendChild(bootstrapBundleScript);
 }
 
 const generateQrBukuTamu = function(){

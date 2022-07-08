@@ -136,11 +136,6 @@ $(function() {
 	
 	// Initialize the agent at application startup.
 	const fpPromise = import(`${config.fingerprintjs.url}`).then(FingerprintJS => FingerprintJS.load());
-	
-	let bootstrapBundleScript = document.createElement('script');
-    bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
-    bootstrapBundleScript.defer = true;
-    document.body.appendChild(bootstrapBundleScript);
 });
 
 $( window ).on("load", function() {	
