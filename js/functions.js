@@ -208,7 +208,6 @@ const showEnvelope = function(){
 		html: receiverhtml,
 		footer: '<small class="envelopefooter fw-lighter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
 		confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
-		confirmButtonColor: '#991188', //Warna kesukaan Nabila
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
@@ -217,6 +216,7 @@ const showEnvelope = function(){
 		customClass : {
 			popup: 'close-envelope-popup',
 			image: 'close-envelope-popup-img-bridegroom',
+			confirmButton: 'btn btn-primary'
 		},
 		showClass: {
 			popup: '',// disable icon animation
