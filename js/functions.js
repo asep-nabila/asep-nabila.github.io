@@ -211,7 +211,7 @@ const showEnvelope = function(){
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
-		background: '#FFFFFF',
+		background: '#FFFAFF',
 		backdrop: '#643A5D',
 		customClass : {
 			popup: 'close-envelope-popup',
