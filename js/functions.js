@@ -153,6 +153,7 @@ async function getVisitorIP() {
 
 
 // Initialize the agent at application startup.
+const fpPromise = import('https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro/dist/fp.min.js').then(FingerprintJS => FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`}));
 let visitorId = '';
 async function getVisitorId() {	
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
@@ -323,14 +324,7 @@ const showInvitation = function(){
 	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`);
 	
 	getVisitorIP();
-	
-	let sidikramoScript = document.createElement('script');
-    sidikramoScript.src = 'js/sidikramo.js';
-    sidikramoScript.defer = true;
-    document.body.appendChild(sidikramoScript);
-	sidikramoScript.onload = function() {
-		getVisitorId();
-	};
+	getVisitorId();
 	
 	let calamansiScript = document.createElement('script');
     calamansiScript.src = 'calamansi-js/dist/calamansi.min.js';
