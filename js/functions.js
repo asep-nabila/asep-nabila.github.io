@@ -245,7 +245,7 @@ const showEnvelope = function(){
 
 const showInvitation = function(){
 	window.history.pushState('', '', window.location.pathname);
-	$("body").css("background-image", 'url('+$("body").data("background")+')');
+	//$("body").css("background-image", 'url('+$("body").data("background")+')');
 	
 	$('.xhidden').each(function() {
 		$(this).addClass('animate__animated animate__slideInUp');
@@ -268,7 +268,7 @@ const showInvitation = function(){
 			lazyimg = $(obj);
 			if(lazyimg.isInViewport()){
 				lazyimg.addClass("animate__animated animate__fadeInDown");
-				lazyimg.attr("src", lazyimg.data("src")+'?lazyloaded');
+				lazyimg.attr("src", lazyimg.data("src"));
 			}
 		});
 		
