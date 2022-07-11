@@ -17,7 +17,6 @@ let theConfigs = {
 		}
 	},
 	"pagedomain": "asepnabila.link",
-	,
 	"grecaptchasitekey": "6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU",
 	"appscript": {
 		"baseurl": "https://script.google.com/macros/s/",
