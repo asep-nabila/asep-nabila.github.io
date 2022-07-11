@@ -153,7 +153,7 @@ async function getVisitorIP() {
 
 
 // Initialize the agent at application startup.
-const fpPromise = import('./module/sidikramo.js').then(FingerprintJS => FingerprintJS.load({apiKey: `${configs.fingerprintjs.publictoken}`, endpoint: `https://${configs.fingerprintjs.customendpoint}.${configs.pagedomain}`}));
+const fpPromise = import('./module/sidikramo.js').then(FingerprintJS => FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`}));
 let visitorId = '';
 async function getVisitorId() {	
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
