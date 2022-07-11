@@ -268,7 +268,7 @@ const showInvitation = function(){
 			lazyimg = $(obj);
 			if(lazyimg.isInViewport()){
 				lazyimg.addClass("animate__animated animate__fadeInDown");
-				lazyimg.attr("src", lazyimg.data("src"));
+				lazyimg.attr("src", lazyimg.data("src")+'?lazyloaded');
 			}
 		});
 		
