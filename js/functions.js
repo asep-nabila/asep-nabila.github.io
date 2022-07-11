@@ -321,7 +321,6 @@ const showInvitation = function(){
 	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`);
 	
 	getVisitorIP();
-	getVisitorId();
 	
 	let calamansiScript = document.createElement('script');
     calamansiScript.src = 'calamansi-js/dist/calamansi.min.js';
