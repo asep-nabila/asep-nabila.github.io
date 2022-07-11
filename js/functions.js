@@ -455,7 +455,7 @@ const swallAskFrom = function(){
 			customClass : {
 				popup: 'close-envelope-popup',
 				image: 'close-envelope-popup-img-bridegroom',
-				input: 'swall-input-ask'
+				input: 'swall-input-ask text-center'
 			},
 			allowOutsideClick: false,
 			allowEscapeKey: false,
@@ -496,7 +496,7 @@ const swallAskName = function(functiontoCall){
 		customClass : {
 			popup: 'close-envelope-popup',
 			image: 'close-envelope-popup-img-bridegroom',
-			input: 'swall-input-ask'
+			input: 'swall-input-ask text-center'
 		},
 		allowOutsideClick: false,
 		allowEscapeKey: false,
