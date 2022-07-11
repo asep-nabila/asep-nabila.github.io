@@ -174,7 +174,7 @@ async function getVisitorId() {
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	$("#calamansiplaycontroler").empty();
-	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="m.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
+	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="m.asepnabila.link/calamansi/skins/in-text/" data-source="music/'+p.file+'"></span>');
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	
 	if ($(".marquee").width() >= $("nav").width()/100*65) {
