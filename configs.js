@@ -16,13 +16,16 @@ let theConfigs = {
 			"time": "09:00"
 		}
 	},
+	"pagedomain": "asepnabila.link",
+	,
 	"grecaptchasitekey": "6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU",
 	"appscript": {
 		"baseurl": "https://script.google.com/macros/s/",
 		"deploymentid": "AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic"
 	},
 	"fingerprintjs": {
-		"publictoken": "OS3SLXNyklDNGY2qQcMy"
+		"publictoken": "OS3SLXNyklDNGY2qQcMy",
+		"customendpoint": "sr"
 	}
 };
 
