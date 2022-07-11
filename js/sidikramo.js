@@ -2,7 +2,7 @@
 (function (global){(function (){
 const FingerprintJS = require('@fingerprintjs/fingerprintjs-pro');
 // Initialize an agent at application startup.
-const fpPromise = FingerprintJS.load({ apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: 'https://sr.asepnabila.link' });
+const fpPromise = FingerprintJS.load({apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: 'https://sr.asepnabila.link'});
 global.window.fpPromise = fpPromise;
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"@fingerprintjs/fingerprintjs-pro":2}],2:[function(require,module,exports){
