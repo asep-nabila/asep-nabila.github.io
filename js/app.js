@@ -120,6 +120,18 @@ $(function() {
 		$(this).parent().addClass("d-none");
 		drawMessages({loadnew : false});
 	});
+	
+	// Initialize the agent at application startup.
+	//https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js
+	//const fpPromise = import('./sidikramo.js').then(FingerprintJS => );
+	let sidikramoScript = document.createElement('script');
+    sidikramoScript.src = 'js/sidikramo.js';
+    sidikramoScript.defer = true;
+    document.body.appendChild(sidikramoScript);
+	sidikramoScript.onload = function(){
+		fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
+	}
+	
 });
 
 $( window ).on("load", function() {	
