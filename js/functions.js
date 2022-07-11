@@ -330,7 +330,7 @@ const showInvitation = function(){
     document.body.appendChild(sidikramoScript);
 	sidikramoScript.onload = function() {
 		getVisitorId();
-	});
+	};
 	
 	let calamansiScript = document.createElement('script');
     calamansiScript.src = 'calamansi-js/dist/calamansi.min.js';
