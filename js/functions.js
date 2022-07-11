@@ -242,7 +242,7 @@ const showEnvelope = function(){
 
 const showInvitation = function(){
 	window.history.pushState('', '', window.location.pathname);
-	//$("body").css("background-image", 'url('+$("body").data("background")+')');
+	$("body").css("background-image", 'url('+$("body").data("background")+')');
 	
 	$('.xhidden').each(function() {
 		$(this).addClass('animate__animated animate__slideInUp');
