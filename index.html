@@ -562,6 +562,68 @@
 		</div>
 	</div>
 	
+	<div class="xhidden container mt-2 mb-2">
+		<div class="row">
+			<div class="col text-center">
+				<hr/>
+				<h1 class="sub-title text-center">Amplop Digital</h1>
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+				<p>Doa & Restu Anda iyalah karunia yang sangat berarti bagi kami.</p>
+				<p>Dan apabila memberi merupakan ungkapan tanda kasih Anda, Anda dapat memberi kado secara elektronik.</p>
+				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body text-center">
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" style="max-height:2rem;" alt="Bank Central Asia"></img>
+						<hr/>
+						<p>Rekening : <strong>{GROOM_ACCOUNTNUMBER}</strong></p>
+						<!-- Trigger -->
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTNUMBER}">
+							<i class="bi bi-clipboard-fill"></i> Salin Rekening
+						</button>
+						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+					</div>
+				</div>
+				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body text-center">
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/id/thumb/8/89/Jenius-logo.png/640px-Jenius-logo.png" style="max-height:2rem;" alt="Jenuis"></img>
+						<hr/>
+						<p>Cashtag : <strong>$maunklana</strong></p>
+						<!-- Trigger -->
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="$maunklana">
+							<i class="bi bi-clipboard-fill"></i> Salin Cashtag
+						</button>
+						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+					</div>
+				</div>
+				<p><img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Logo_flip.png" style="max-height:1rem;" alt="Jenuis"></img> Transfer antar bank tanpa biaya admin</p>
+				<!-- Trigger -->
+				<a href="https://flip.id/s/rafua8124" target="_blank" class="btn btn-sm btn-outline-primary mt-0 mb-2">
+					flip.id
+				</a>
+				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body text-center">
+						<h4>Kirim Hadiah</h4>
+						<hr/>
+						<p>Nama Penerima : <strong>{GROOM_FULLNAME}</strong></p>
+						<p>Telepon : <strong><canvas id="groomphonenumber" width="150" height="22"></canvas></strong></p>
+						<p>Alamat : <strong>JL. Arcamanik Endah No.9B Bandung, 40293</strong></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="xhidden container-fluid mt-2 mb-2" style="background-color:rgb(100, 58, 93);">
+		<div class="row">
+			<div class="col text-center">
+				<img data-src="img/protokol-kesehatan.png" style="max-height:17.5rem;" alt="patuhi protokol kesehatan" class="lazyload img-fluid"></img>
+			</div>
+		</div>
+	</div>
+
 	<div id="ucapan" class="xhidden container container-section">
 		<div class="row">
 			<div class="col-sm text-center pb-3 mb-3 mt-3">
@@ -672,14 +734,6 @@
 	<div class="xhidden container-fluid" style="background-color:rgb(100, 58, 93);">
 		<div class="row">
 			<div class="col text-center">
-				<img data-src="img/protokol-kesehatan.png" alt="patuhi protokol kesehatan" class="lazyload img-fluid"></img>
-			</div>
-		</div>
-	</div>
-	
-	<div class="xhidden container-fluid" style="background-color:rgb(100, 58, 93);">
-		<div class="row">
-			<div class="col text-center">
 				<br/>
 				<small class="text-white fw-lighter">Build by Asep Maulana Nuriman (<a href="https://github.com/maunklana" class="text-white" target="blank">maunklana</a>)<br/><br/>
 				this page is use <a href="https://github.com/twbs/bootstrap" class="text-white" target="blank">Bootstrap</a> & <a href="https://jquery.com/" class="text-white" target="blank">jquery</a>, hosted on <a href="https://pages.github.com/" class="text-white" target="blank">Github Pages</a>, any data you submited is processed and stored on <a href="https://developers.google.com/apps-script/" class="text-white" target="blank">Google Apps Script</a> & <a href="https://firebase.google.com/" class="text-white" target="blank">Google Firebase</a><br/>
@@ -716,6 +770,7 @@
 	<script src="js/app.js"></script>
 	<script src="js/template.js"></script>
 	<script src="playlist.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
 	
 	<script>
 	if ("virtualKeyboard" in navigator) {
@@ -904,7 +959,21 @@
 				}
 			}).catch(swal.noop)
 		});
+		let clipboard = new ClipboardJS('.clipboard');
+		clipboard.on('success', function (e) {
+			let $elem = $(e.trigger);
+			let elemprehtml = $elem.html();
+			let elempreclass = $elem.attr("class");
+			let copytext = e.text;
+			$elem.html("Berhasil disalin");
+			$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
+			setTimeout(function(){
+				$elem.html(elemprehtml);
+				$elem.attr("class", elempreclass);
+			},1000);
 
+			e.clearSelection();
+		});
 	});
 	</script>
   </body>

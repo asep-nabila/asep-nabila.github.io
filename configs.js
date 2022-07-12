@@ -1,7 +1,9 @@
 let theConfigs = {
 	"groom": {
 		"fullname": "Asep Maulana Nuriman",
-		"nickname": "Maunklana"
+		"nickname": "Maunklana",
+		"accountnumber": "3790608240",
+		"phonenumber": "08999-333-855"
 	},
 	"bride": {
 		"fullname": "Nabila Dea Santika",
@@ -387,6 +389,9 @@ class Config {
 		
 		document.title = `The Wedding of ${this.groom.firstname} & ${this.bride.firstname}`;
 		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan online ${this.groom.fullname} (${this.groom.nickname}) & ${this.groom.fullname} (${this.bride.nickname})`);
+		var ctx = document.getElementById('groomphonenumber').getContext('2d');
+		ctx.font = "0.9rem Arial";
+		ctx.strokeText(this.groom.phonenumber, 0, 20);
 	}
 }
 
