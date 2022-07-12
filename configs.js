@@ -146,7 +146,9 @@ class Config {
 				console.log(conf);
 				for (let index = 0; index < this[conf].length; ++index) {
 					let img = this[conf][index];
-					document.getElementById("gallery-prewed").innerHTML = document.getElementById("gallery-prewed").innerHTML + `<div class="grid-item"><a href="${img.href}?${index}"><img class="lazyload img-fluid" data-src="${img.src}?${index}"></img></a></div>`;
+					if(document.getElementById("gallery-prewed") !== null){
+						document.getElementById("gallery-prewed").innerHTML = document.getElementById("gallery-prewed").innerHTML + `<div class="grid-item"><a href="${img.href}?${index}"><img class="lazyload img-fluid" data-src="${img.src}?${index}"></img></a></div>`;
+					}
 				}
 			}
 		}
@@ -155,9 +157,11 @@ class Config {
 		
 		document.title = `The Wedding of ${this.groom.firstname} & ${this.bride.firstname}`;
 		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan online ${this.groom.fullname} (${this.groom.nickname}) & ${this.groom.fullname} (${this.bride.nickname})`);
-		var ctx = document.getElementById('groomphonenumber').getContext('2d');
-		ctx.font = "0.9rem Arial";
-		ctx.strokeText(this.groom.phonenumber, 0, 20);
+		if(document.getElementById("groomphonenumber") !== null){
+			var ctx = document.getElementById('groomphonenumber').getContext('2d');
+			ctx.font = "0.9rem Arial";
+			ctx.strokeText(this.groom.phonenumber, 0, 20);
+		}
 	}
 }
 
