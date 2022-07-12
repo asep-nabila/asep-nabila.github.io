@@ -393,9 +393,9 @@ const showInvitation = function(){
 	Fancybox.bind("#gallery-prewed > div.grid-item > a", {
 		groupAll : true, // Group all items
 		on : {
-		ready : (fancybox) => {
-			console.log(`fancybox #${fancybox.id} is ready!`);
-		}
+			ready : (fancybox) => {
+				console.log(`fancybox #${fancybox.id} is ready!`);
+			}
 		}
 	});
 }

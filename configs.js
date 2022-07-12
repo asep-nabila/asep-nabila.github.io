@@ -10,10 +10,12 @@ let theConfigs = {
 	"events": {
 		"date": "2023-03-11",
 		"reception": {
-			"time": "10:00"
+			"time": "10:00",
+			"location": "Jl. Raya Lembang No.KM 12,1, RT.01/RW.03, Gudangkahuripan, Lembang"
 		},
 		"akad": {
-			"time": "09:00"
+			"time": "09:00",
+			"location": "Jl. Raya Lembang No.KM 12,1, RT.01/RW.03, Gudangkahuripan, Lembang"
 		}
 	},
 	"pagedomain": "asepnabila.link",
@@ -362,7 +364,8 @@ class Config {
 						let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}}`,"g");
 						document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key]);
 					}
-					if(typeof this[conf][key] == "Object"){
+					
+					if(typeof this[conf][key] == "object"){
 						for (var keys in this[conf][key]) {
 							let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}_${keys.toUpperCase()}}`,"g");
 							document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key][keys]);

@@ -150,8 +150,6 @@ $(function() {
 			document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 			
 			$("#progress-bar-thedate").css("width", `${ Math.floor((((day * 360) - (countDown - now)) / (day * 360)) * 100) }%`);
-			console.log(`${ (((day * 360) - (countDown - now)) / (day * 360)) * 100 }%`)
-			//$("#progress-bar-thedate").css("width", `${ (360 - 180) / 360 * 100 }%`);
 			
 			//do something later when date is reached
 			if (distance < 0) {

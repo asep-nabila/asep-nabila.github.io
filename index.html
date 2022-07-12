@@ -82,6 +82,22 @@
 		box-shadow: 0 0 0 3px rgba(174,59,160,.5) !important;
 	}
 	
+	.btn-outline-primary{
+		--bs-btn-color: #991188 !important;
+		--bs-btn-border-color: #991188 !important;
+		--bs-btn-hover-bg: #991188 !important;
+		--bs-btn-hover-border-color: #991188 !important;
+		--bs-btn-focus-shadow-rgb: #991188 !important;
+		--bs-btn-active-bg: #991188 !important;
+		--bs-btn-active-border-color: #991188 !important;
+		--bs-btn-disabled-color: #991188 !important;
+	}
+	
+	.btn-outline-primary:focus{
+		background-color: #991188 !important;
+		border-color: #991188 !important;
+	}
+	
 	.swal2-input{
 		text-transform: uppercase;
 	}
@@ -229,6 +245,12 @@
 		font-family: 'Tangerine', cursive;
 		font-weight: 700;
 		font-size: 3rem;
+	}
+	
+	.sub-title{
+		font-family: 'Tangerine', cursive;
+		font-weight: 700;
+		font-size: 2rem;
 	}
 	
 	.marquee {
@@ -438,7 +460,7 @@
 			<svg style="color: #643a5d; max-width: 50rem;" width="300" viewBox="0 0 687 155" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="7" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M20 58c27-13.33333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.66666667 80.5 20" opacity=".1"></path><path d="M20 78c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".2"></path><path d="M20 98c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".6"></path><path d="M20 118c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20"></path></g></svg>
 		</div>
 	</div>
-	<div id="acara" class="xhidden container-fluid container-section pb-1 mb-3">
+	<div id="acara" class="xhidden container-fluid pb-1 mb-3">
 		<div class="row">
 			<div class="col-sm text-center pb-3 mb-3 mt-3">
 				<h2 class="title-section">Hari Yang Dinanti</h2>
@@ -461,9 +483,55 @@
 				  <div id="progress-bar-thedate" class="progress-bar progress-bar-animated" role="progressbar" style="width: 25%;background-color: #643a5d"></div>
 				</div>
 			</div>
-			<div class="col-sm">
+		</div>
+	</div>
+	<div class="xhidden container container-section pb-1 mb-3">
+		<div class="row">
+			<div class="col-sm-12 p-1">
+				<figure class="text-center">
+					<blockquote class="blockquote">
+						<p class="fw-lighter fs-6">Dan nikahkanlah orang-orang yang masih membujang di antara kamu, dan juga orang-orang yang layak (menikah) dari hamba-hamba sahayamu yang laki-laki dan perempuan. Jika mereka miskin, Allah akan memberi kemampuan kepada mereka dengan karunia-Nya. Dan Allah Mahaluas (pemberian-Nya), Maha Mengetahui.</p>
+					</blockquote>
+					<figcaption class="blockquote-footer">
+						QS <cite title="Source Title">An Nur:32</cite>
+					</figcaption>
+				</figure>
 			</div>
-			<div class="col-sm">
+		</div>
+		<div class="row">
+			<div class="col m-2">
+				<div class="card" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body">
+						<h1 class="sub-title text-center">Akad</h1>
+						<hr/>
+						Waktu : {EVENTS_AKAD_TIME} WIB
+						<br/>
+						Tempat : {EVENTS_AKAD_LOCATION}
+					</div>
+				</div>
+			</div>
+			<div class="col m-2">
+				<div class="card" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body">
+						<h1 class="sub-title text-center">Resepsi</h1>
+						<hr/>
+						Waktu : {EVENTS_RECEPTION_TIME} WIB
+						<br/>
+						Tempat : {EVENTS_RECEPTION_LOCATION}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col m-2">
+				<div class="card p-0" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d660.9893173487699!2d107.60035079812914!3d-6.8353407965687785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e1624bc3a5f7%3A0xf154fb1a62376b03!2sMasjid%20Al%20-%20Hidayah!5e0!3m2!1sen!2sid!4v1657617288559!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+				</div>
+			</div>
+			<div class="d-grid gap-1">
+			  <a href="https://goo.gl/maps/HLKLmcgdbErYgD5i7" target="_blank" class="btn btn-outline-primary" type="button">Buka Maps</a>
 			</div>
 		</div>
 	</div>
