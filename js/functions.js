@@ -264,6 +264,16 @@ const showInvitation = function(){
 		$(".lazyload:not([src])").each((i,obj) => {
 			lazyimg = $(obj);
 			if(lazyimg.isInViewport()){
+				lazyimg.one("load", () => {
+					$('.grid').masonry({
+						// set itemSelector so .grid-sizer is not used in layout
+						itemSelector: '.grid-item',
+						// use element for option
+						columnWidth: '.grid-sizer',
+						percentPosition: true
+					});
+				});
+				
 				lazyimg.addClass("animate__animated animate__fadeInDown");
 				lazyimg.attr("src", lazyimg.data("src"));
 			}
@@ -318,7 +328,8 @@ const showInvitation = function(){
 	.append('<link rel="stylesheet" href="qrcode-reader/dist/css/qrcode-reader.min.css">')
 	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
 	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
-	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`);
+	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+	.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
 	
 	getVisitorIP();
 	
@@ -378,6 +389,15 @@ const showInvitation = function(){
 			}
 		});
 	}
+	
+	Fancybox.bind("#gallery-prewed > div.grid-item > a", {
+		groupAll : true, // Group all items
+		on : {
+		ready : (fancybox) => {
+			console.log(`fancybox #${fancybox.id} is ready!`);
+		}
+		}
+	});
 }
 
 const generateQrBukuTamu = function(){

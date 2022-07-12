@@ -293,6 +293,20 @@
 		right: 0;
 		transform: scale(0.9);
 	}
+
+	/* fluid 5 columns */
+	.grid-sizer,
+	.grid-item { height: auto; width: 20%; }
+	/* 2 columns */
+	.grid-item--width2 { height: auto; width: 40%; }
+	
+	@media (max-width:450px)  {
+		/* fluid 2 columns */
+		.grid-sizer,
+		.grid-item { height: auto; width: 50%; }
+		/* 1 columns */
+		.grid-item--width2 { height: auto; width: 100%; }
+	}
 	</style>
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -339,7 +353,7 @@
 		</div>
 	</nav>
 	
-	<div id="beranda" class="xhidden container-fluid container-section" style="background-image: url(img/grain-violet.svg); background-repeat: no-repeat; background-position: top center; background-origin: border-box; background-size: auto 100%;">
+	<div id="beranda" class="xhidden container-fluid container-section">
 		<div class="row">
 			<div class="col-sm text-center pb-2 pt-2 mt-3">
 				<h1 class="title-section">The Wedding Of</h1>
@@ -370,7 +384,7 @@
 			</div>
 		</div>
 	</div>	
-	<div id="mempelai" class="xhidden container-fluid container-section pb-1 mb-3" style="color: #643A5D !important; background-image: url(img/grain-violet-reverse.svg); background-repeat: no-repeat; background-position: top center; background-origin: border-box; background-size: auto 100%;">
+	<div id="mempelai" class="xhidden container-fluid container-section pb-1 mb-3" style="color: #643A5D !important;">
 		<div class="row">
 			<div class="col-sm text-center pb-2 mb-3 mt-3">
 				<h1 class="in-the-name-of-allah">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</h1>
@@ -397,8 +411,8 @@
 		</div>
 	</div>
 	<div id="background-waves" class="xhidden container-fluid">
-		<div class="row">
-			<svg style="color: #643a5d;" width="300" viewBox="0 0 687 155" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="7" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M20 58c27-13.33333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.66666667 80.5 20" opacity=".1"></path><path d="M20 78c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".2"></path><path d="M20 98c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".6"></path><path d="M20 118c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20"></path></g></svg>
+		<div class="row text-center" style="display: block;">
+			<svg style="color: #643a5d; max-width: 50rem;" width="300" viewBox="0 0 687 155" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="7" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M20 58c27-13.33333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.66666667 80.5 20" opacity=".1"></path><path d="M20 78c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".2"></path><path d="M20 98c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20" opacity=".6"></path><path d="M20 118c27-13.3333333 54-20 81-20 40.5 0 40.5 20 81 20s40.626917-20 81-20 40.123083 20 80.5 20 40.5-20 81-20 40.5 20 81 20 40.626917-20 81-20c26.915389 0 53.748722 6.6666667 80.5 20"></path></g></svg>
 		</div>
 	</div>
 	<div id="acara" class="xhidden container container-section pb-1 mb-3">
@@ -417,7 +431,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="background-waves" class="xhidden container-fluid">
+	<div class="xhidden container-fluid">
 		<div class="row">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="p-0 mb-0">
 			  <path fill="#643a5d" fill-opacity="1" d="M0,256L48,229.3C96,203,192,149,288,149.3C384,149,480,203,576,213.3C672,224,768,192,864,165.3C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -432,35 +446,14 @@
 		<div class="row">
 			<div class="col-sm pb-3 mb-3 mt-3">
 				<h2 class="title-section">Galeri Foto</h2>
-				<h5>Tangkapan momen-momen berbahagia kedua mempelai</h5>
+				<h6>Tangkapan momen-momen berbahagia kedua mempelai</h6>
 			</div>
 		</div>
-		<div class="row m-1">
+		<div class="row m-0">
 			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-		</div>
-		<div class="row m-1">
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
-			</div>
-			<div class="col-sm">
-				<img src="https://picsum.photos/seed/picsum/250/150"></img>
+				<div id="gallery-prewed" class="grid text-center">
+					<div class="grid-sizer"></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -469,11 +462,11 @@
 		<div class="row">
 			<div class="col-sm text-center pb-3 mb-3 mt-3">
 				<h2 class="title-section">Ucapan & Doa</h2>
-				<h5>Berikan Ucapan & Doa untuk ke dua mempelai</h5>
+				<h6>Berikan Ucapan & Doa untuk ke dua mempelai</h6>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm border-start border-end border-top rounded-top p-3 bg-light">
+			<div class="col-sm border-start border-end border-top rounded-top p-3" style="background-color:rgba(255, 250, 255, .5)">
 				<form id="messagesfromvisitor-submit-form" novalidate>
 					<div class="mb-3">
 						<label for="messagesfromvisitor-name" class="form-label">Nama</label>
@@ -507,7 +500,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3 bg-light">
+			<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3" style="background-color:rgba(255, 250, 255, .5)">
 				<div class="text-center d-grid gap-2 animate__animated animate__fadeInDown d-none messagesfromvisitor-gotnew">
 					<button type="button" class="btn btn-outline-secondary btn-sm">Lihat pesan baru</button>
 				</div>
@@ -614,6 +607,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 	<script src="https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.4/dist/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/template.js"></script>
