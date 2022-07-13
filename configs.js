@@ -162,7 +162,6 @@ class Config {
 		let groomphonenumbershow = document.getElementsByClassName("groomphonenumbershow");
 		if(groomphonenumbershow.length > 0){
 			for (var i = 0; i < groomphonenumbershow.length; i++) {
-				console.log(groomphonenumbershow.item(i));
 				let c = groomphonenumbershow.item(i);
 				let ctx = c.getContext('2d');
 				ctx.lineWidth = 0.5;
