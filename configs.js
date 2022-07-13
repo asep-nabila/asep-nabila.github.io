@@ -165,12 +165,12 @@ class Config {
 				console.log(groomphonenumbershow.item(i));
 				let c = groomphonenumbershow.item(i);
 				let ctx = c.getContext('2d');
-				ctx.lineWidth = 0.7;
+				ctx.lineWidth = 0.5;
 				ctx.textBaseline = 'top';
 				
 				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width + ctx.measureText("_ _").width;
 				
-				ctx.font = "0.9rem Arial";
+				ctx.font = ".85rem Arial";
 				ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
 				ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
 			}
