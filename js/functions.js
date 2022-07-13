@@ -382,7 +382,7 @@ const showInvitation = function(){
 	
 	qrcodeReaderScript.onload = function() {
 		$.qrCodeReader.jsQRpath = "qrcode-reader/dist/js/jsQR/jsQR.min.js";
-		$.qrCodeReader.beepPath = "qrcode-reader/dist/audio/beep.mp3";
+		$.qrCodeReader.beepPath = "sound/plucky-564.mp3";
 		
 		$("#scan-attenderqrcode").qrCodeReader({
 			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
