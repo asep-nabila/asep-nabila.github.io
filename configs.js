@@ -176,9 +176,7 @@ class Config {
 				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width + ctx.measureText(__Str).width;
 				
 				ctx.font = ".9rem Arial";
-				ctx.fillStyle = "#991188";
 				ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-				ctx.strokeStyle = "#991188";
 				ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
 			}
 		}
