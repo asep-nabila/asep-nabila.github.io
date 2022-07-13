@@ -243,6 +243,9 @@ const showEnvelope = function(){
 const showInvitation = function(){
 	window.history.pushState('', '', window.location.pathname);
 	$("body").css("background-image", 'url('+$("body").data("background")+')');
+	$("iframe").each(function() {
+        $(this).attr("src", $(this).data("src"));  
+    });
 	
 	$('.xhidden').each(function() {
 		$(this).addClass('animate__animated animate__slideInUp');
@@ -393,13 +396,35 @@ const showInvitation = function(){
 		});
 	}
 	
-	Fancybox.bind("#gallery-prewed > div.grid-item > a", {
-		groupAll : true, // Group all items
-		on : {
-			ready : (fancybox) => {
-				console.log(`fancybox #${fancybox.id} is ready!`);
+	let fancyboxScript = document.createElement('script');
+    fancyboxScript.src = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js';
+    fancyboxScript.defer = true;
+    document.body.appendChild(fancyboxScript);
+	
+	fancyboxScript.onload = function() {
+		Fancybox.bind("#gallery-prewed > div.grid-item > a", {
+			groupAll : true, // Group all items
+			on : {
+				ready : (fancybox) => {
+					console.log(`fancybox #${fancybox.id} is ready!`);
+				}
 			}
-		}
+		});
+	}
+	
+	$(".lazyload:not([src])").each((i,obj) => {
+		lazyimg = $(obj),
+		obj = $(document.createElement("img")),
+		img = new Image();
+		
+		obj.addClass("d-none");
+		
+		img.onload = function(){
+			obj.attr("src",this.src);
+			obj.appendTo("body");
+		} 
+		
+		img.src = lazyimg.data("src");
 	});
 }
 
