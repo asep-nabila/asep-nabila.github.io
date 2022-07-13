@@ -472,16 +472,16 @@
 			<div class="col-sm-12 text-center">
 				<div id="countdown">
 					<ul class="p-0">
-						<li><span id="days"></span>hari</li>
-						<li><span id="hours"></span>jam</li>
-						<li><span id="minutes"></span>menit</li>
-						<li><span id="seconds"></span>detik</li>
+						<li><span id="countdowndays">00</span>hari</li>
+						<li><span id="countdownhours">00</span>jam</li>
+						<li><span id="countdownminutes">00</span>menit</li>
+						<li><span id="countdownseconds">00</span>detik</li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-sm-12 text-center">
 				<div class="progress" style="height: .7rem;">
-				  <div id="progress-bar-thedate" class="progress-bar progress-bar-animated" role="progressbar" style="width: 25%;background-color: #643a5d"></div>
+				  <div id="progress-bar-thedate" class="progress-bar progress-bar-animated" role="progressbar" style="width: 0%;background-color: #643a5d"></div>
 				</div>
 			</div>
 		</div>
@@ -997,6 +997,11 @@
 			e.clearSelection();
 		});
 	});
+	
+	window.onload = function () {
+		window.scrollTo(0,0);
+		document.documentElement.scrollTop = 0; 
+	};
 	</script>
   </body>
 </html>

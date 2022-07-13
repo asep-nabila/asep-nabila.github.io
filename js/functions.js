@@ -260,6 +260,9 @@ const showInvitation = function(){
 		if ($('#messagesfromvisitor').isInViewport()) {
 			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
 		}
+		if ($('#acara').isInViewport()) {
+			startCountdown();
+		}
 		
 		$(".lazyload:not([src])").each((i,obj) => {
 			lazyimg = $(obj);
@@ -398,6 +401,50 @@ const showInvitation = function(){
 			}
 		}
 	});
+}
+
+const startCountdown = function(){
+	const second = 1000,
+		minute = second * 60,
+		hour = minute * 60,
+		day = hour * 24;
+		
+	const countDown = new Date(config.events.date).getTime(),
+	x = setInterval(function() {    
+
+		const now = new Date().getTime(),
+			distance = countDown - now;
+		if($("#countdowndays").text() == '00'){
+			animeteCount($("#countdowndays"), Math.floor(distance / (day)));
+			animeteCount($("#countdownhours"), Math.floor((distance % (day)) / (hour)));
+			animeteCount($("#countdownminutes"), Math.floor((distance % (hour)) / (minute)));
+			animeteCount($("#countdownseconds"), Math.floor((distance % (minute)) / (second)));
+		}else{
+			$("#countdowndays").text(Math.floor(distance / (day))),
+			$("#countdownhours").text(Math.floor((distance % (day)) / (hour))),
+			$("#countdownminutes").text(Math.floor((distance % (hour)) / (minute))),
+			$("#countdownseconds").text(Math.floor((distance % (minute)) / second));
+		}
+		
+		
+		$("#progress-bar-thedate").css("width", `${ Math.floor((((day * 360) - (countDown - now)) / (day * 360)) * 100) }%`);
+		
+		//do something later when date is reached
+		if (distance < 0) {
+			clearInterval(x);
+		}
+		//seconds
+	}, 0);
+}
+
+const animeteCount = function(el, to){
+	el.prop('counter',0).animate({
+        counter: `+=${to}`
+    }, {
+        step: function (now) {
+            el.text(Math.ceil(now))
+        }
+    });
 }
 
 const generateQrBukuTamu = function(){
