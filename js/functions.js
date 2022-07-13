@@ -426,6 +426,8 @@ const showInvitation = function(){
 		
 		img.src = lazyimg.data("src");
 	});
+	
+	drawMessages();
 }
 
 const startCountdown = function(){
