@@ -998,19 +998,16 @@
 
 			e.clearSelection();
 		});
-		
-		$(document).ready(function(){
-			$(this).scrollTop(0);
-		});
 	});
 	
-	window.onload = function () {
-		window.scrollTo(0,0);
-		document.documentElement.scrollTop = 0; 
-	};
-	window.onbeforeunload = function () {
-		location.href = location.href;
-	};
+	if (history.scrollRestoration) {
+		history.scrollRestoration = 'manual';
+	} else {
+		window.onbeforeunload = function () {
+			location.href = location.href;
+		};
+	}
+	
 	</script>
   </body>
 </html>
