@@ -462,7 +462,8 @@ const generateQrBukuTamu = function(){
 	
 	let bukutamudata = {
 		"A": kepada,
-		"D": dari
+		"D": dari,
+		"V": visitorId,
 	};
 	
 	let qrstrbukutamu = JSON.stringify(bukutamudata);
