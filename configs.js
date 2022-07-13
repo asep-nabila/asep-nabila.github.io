@@ -2,8 +2,9 @@ let theConfigs = {
 	"groom": {
 		"fullname": "Asep Maulana Nuriman",
 		"nickname": "Maunklana",
-		"accountnumber": "3790608240",
-		"phonenumber": "08999-333-855"
+		"accountnumber": "3790761757",
+		"accountusername": "maunklana",
+		"phonenumber": "08999333855"
 	},
 	"bride": {
 		"fullname": "Nabila Dea Santika",
@@ -157,10 +158,22 @@ class Config {
 		
 		document.title = `The Wedding of ${this.groom.firstname} & ${this.bride.firstname}`;
 		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan online ${this.groom.fullname} (${this.groom.nickname}) & ${this.groom.fullname} (${this.bride.nickname})`);
-		if(document.getElementById("groomphonenumber") !== null){
-			var ctx = document.getElementById('groomphonenumber').getContext('2d');
-			ctx.font = "0.9rem Arial";
-			ctx.strokeText(this.groom.phonenumber, 0, 20);
+		
+		let groomphonenumbershow = document.getElementsByClassName("groomphonenumbershow");
+		if(groomphonenumbershow.length > 0){
+			for (var i = 0; i < groomphonenumbershow.length; i++) {
+				console.log(groomphonenumbershow.item(i));
+				let c = groomphonenumbershow.item(i);
+				let ctx = c.getContext('2d');
+				ctx.lineWidth = 0.7;
+				ctx.textBaseline = 'top';
+				
+				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width+2;
+				
+				ctx.font = "0.9rem Arial";
+				ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
+				ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
+			}
 		}
 	}
 }

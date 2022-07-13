@@ -352,6 +352,7 @@
 		font-size: calc(2.5rem * var(--smaller));
 	  }
 	}
+	.groomphonenumbershow{margin-bottom: -1px;}
 	</style>
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -588,16 +589,37 @@
 				</div>
 				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
-						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/id/thumb/8/89/Jenius-logo.png/640px-Jenius-logo.png" style="max-height:2rem;" alt="Jenuis"></img>
+						<img class="lazyload" data-src="https://shopeepay.co.id/src/pages/home/assets/images/2-shopeepay-rectangle-orange2.png" alt="ShopeePay" style="max-height:1rem;"></img>
+						<span class="vr"></span>
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/id/thumb/8/89/Jenius-logo.png/640px-Jenius-logo.png" alt="Jenuis" style="max-height:2rem;"></img>
 						<hr/>
-						<p>Cashtag : <strong>$maunklana</strong></p>
+						<p>username : <strong>{GROOM_ACCOUNTUSERNAME}</strong></p>
 						<!-- Trigger -->
-						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="$maunklana">
-							<i class="bi bi-clipboard-fill"></i> Salin Cashtag
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTUSERNAME}">
+							<i class="bi bi-clipboard-fill"></i> Salin Username
 						</button>
 						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
 					</div>
 				</div>
+				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
+					<div class="card-body text-center">
+						<img class="lazyload" data-src="https://d2v6npc8wmnkqk.cloudfront.net/storage/639/conversions/favicon-small.png" alt="GoPay" style="max-height:1.5rem;"></img>
+						<span class="vr"></span>
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO" style="max-height:1rem;"></img>
+						<span class="vr"></span>
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" style="max-height:1rem;"></img>
+						<span class="vr"></span>
+						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/8/85/LinkAja.svg" alt="LinkAja" style="max-height:1.5rem;"></img>
+						<hr/>
+						<p>nomor handphone : <strong><canvas class="groomphonenumbershow" height="22"></canvas></strong></p>
+						<!-- Trigger -->
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_PHONENUMBER}">
+							<i class="bi bi-clipboard-fill"></i> Salin nomor handphone
+						</button>
+						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+					</div>
+				</div>
+				
 				<p><img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Logo_flip.png" style="max-height:1rem;" alt="Jenuis"></img> Transfer antar bank tanpa biaya admin</p>
 				<!-- Trigger -->
 				<a href="https://flip.id/s/rafua8124" target="_blank" class="btn btn-sm btn-outline-primary mt-0 mb-2">
@@ -608,7 +630,7 @@
 						<h4>Kirim Hadiah</h4>
 						<hr/>
 						<p>Nama Penerima : <strong>{GROOM_FULLNAME}</strong></p>
-						<p>Telepon : <strong><canvas id="groomphonenumber" width="150" height="22"></canvas></strong></p>
+						<p>Telepon : <strong><canvas class="groomphonenumbershow" height="22"></canvas></strong></p>
 						<p>Alamat : <strong>JL. Arcamanik Endah No.9B Bandung, 40293</strong></p>
 					</div>
 				</div>
