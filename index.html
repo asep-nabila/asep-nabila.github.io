@@ -58,6 +58,7 @@
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
 		background-color: #FFFAFF !important;
+		color: #991188 !important;
 	}
 	
 	.grecaptcha-badge { visibility: hidden; }
@@ -70,6 +71,17 @@
 	}
 	.form-select:focus {
 		box-shadow: 0 0 0 .25rem rgba(174,59,160,.25) !important;
+	}
+	
+	.card {
+		border-color: #991188 !important
+	}
+	.gold {
+		color: #C79F6D !important;
+	}
+	
+	.purple {
+		color: #991188 !important;
 	}
 	
 	.btn-primary{
@@ -435,11 +447,11 @@
 			<div class="col-sm text-center pb-3 mb-3 mt-3">
 				<a href="#acara" class="navigate-link btn btn-primary" type="button">Lihat detail acara</a>
 				<span class="vr"></span>
-				<a href="#bukutamu" class="navigate-link btn btn-sm btn-outline-secondary"><i class="bi bi-qr-code-scan"></i></a>
+				<a href="#bukutamu" class="navigate-link btn btn-sm btn-outline-primary"><i class="bi bi-qr-code-scan"></i></a>
 			</div>
 		</div>
 	</div>	
-	<div id="mempelai" class="xhidden container-fluid container-section pb-1 mb-3" style="color: #643A5D !important;">
+	<div id="mempelai" class="xhidden container-fluid container-section pb-1 mb-3">
 		<div class="row">
 			<div class="col-sm text-center pb-2 mb-3 mt-3">
 				<h1 class="in-the-name-of-allah">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</h1>
@@ -473,14 +485,14 @@
 	<div id="acara" class="xhidden container-fluid pb-1 mb-3">
 		<div class="row">
 			<div class="col-sm text-center pb-3 mb-3 mt-3">
-				<h2 class="title-section">Hari Yang Dinanti</h2>
+				<h2 class="title-section" style="rgb(100, 58, 93) !important;">Hari Yang Dinanti</h2>
 				<h5></h5>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<div id="countdown">
-					<ul class="p-0">
+					<ul class="p-0 gold">
 						<li><span id="countdowndays">00</span>hari</li>
 						<li><span id="countdownhours">00</span>jam</li>
 						<li><span id="countdownminutes">00</span>menit</li>
@@ -500,9 +512,9 @@
 			<div class="col-12 p-1">
 				<figure class="text-center">
 					<blockquote class="blockquote">
-						<p class="fw-lighter fs-6">Dan nikahkanlah orang-orang yang masih membujang di antara kamu, dan juga orang-orang yang layak (menikah) dari hamba-hamba sahayamu yang laki-laki dan perempuan. Jika mereka miskin, Allah akan memberi kemampuan kepada mereka dengan karunia-Nya. Dan Allah Mahaluas (pemberian-Nya), Maha Mengetahui.</p>
+						<p style="text-align: justify;" class="fw-lighter text-justify fs-6 ms-2 me-2">Dan nikahkanlah orang-orang yang masih membujang di antara kamu, dan juga orang-orang yang layak (menikah) dari hamba-hamba sahayamu yang laki-laki dan perempuan. Jika mereka miskin, Allah akan memberi kemampuan kepada mereka dengan karunia-Nya. Dan Allah Mahaluas (pemberian-Nya), Maha Mengetahui.</p>
 					</blockquote>
-					<figcaption class="blockquote-footer">
+					<figcaption class="blockquote-footer gold">
 						QS <cite title="Source Title">An Nur:32</cite>
 					</figcaption>
 				</figure>
@@ -512,8 +524,8 @@
 			<div class="col-md-6 mt-2 mb-2">
 				<div class="card" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body">
-						<h1 class="sub-title text-center">Akad</h1>
-						<hr/>
+						<h1 class="sub-title text-center gold" style="-webkit-text-stroke: 1px #C79F6D; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: rgb(199, 159, 109);">Akad</h1>
+						<hr class="purple"/>
 						Waktu : {EVENTS_AKAD_TIME} WIB
 						<br/>
 						Tempat : {EVENTS_AKAD_LOCATION}
@@ -523,8 +535,8 @@
 			<div class="col-md-6 mt-2 mb-2">
 				<div class="card" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body">
-						<h1 class="sub-title text-center">Resepsi</h1>
-						<hr/>
+						<h1 class="sub-title text-center gold" style="-webkit-text-stroke: 1px #C79F6D; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: rgb(199, 159, 109);">Resepsi</h1>
+						<hr class="purple"/>
 						Waktu : {EVENTS_RECEPTION_TIME} WIB
 						<br/>
 						Tempat : {EVENTS_RECEPTION_LOCATION}
@@ -576,9 +588,9 @@
 	<div class="xhidden container mt-2 mb-2">
 		<div class="row">
 			<div class="col text-center">
-				<hr/>
+				<hr color="purple"/>
 				<h1 class="sub-title text-center">Amplop Digital</h1>
-				<hr/>
+				<hr color="purple"/>
 			</div>
 		</div>
 		<div class="row">
@@ -588,7 +600,7 @@
 				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" style="max-height:2rem;" alt="Bank Central Asia"></img>
-						<hr/>
+						<hr class="purple"/>
 						<p>Rekening : <strong>{GROOM_ACCOUNTNUMBER}</strong></p>
 						<!-- Trigger -->
 						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTNUMBER}">
@@ -605,9 +617,9 @@
 				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<img class="lazyload" data-src="https://shopeepay.co.id/src/pages/home/assets/images/2-shopeepay-rectangle-orange2.png" alt="ShopeePay" style="max-height:1rem;"></img>
-						<span class="vr"></span>
+						<span class="vr purple"></span>
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/id/thumb/8/89/Jenius-logo.png/640px-Jenius-logo.png" alt="Jenuis" style="max-height:2rem;"></img>
-						<hr/>
+						<hr class="purple"/>
 						<p>username : <strong>{GROOM_ACCOUNTUSERNAME}</strong></p>
 						<!-- Trigger -->
 						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTUSERNAME}">
@@ -619,13 +631,13 @@
 				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<img class="lazyload" data-src="https://d2v6npc8wmnkqk.cloudfront.net/storage/639/conversions/favicon-small.png" alt="GoPay" style="max-height:1.5rem;"></img>
-						<span class="vr"></span>
+						<span class="vr purple"></span>
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO" style="max-height:1rem;"></img>
-						<span class="vr"></span>
+						<span class="vr purple"></span>
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" style="max-height:1rem;"></img>
-						<span class="vr"></span>
+						<span class="vr purple"></span>
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/8/85/LinkAja.svg" alt="LinkAja" style="max-height:1.5rem;"></img>
-						<hr/>
+						<hr class="purple"/>
 						<p>nomor handphone : <strong><canvas class="groomphonenumbershow" height="22"></canvas></strong></p>
 						<!-- Trigger -->
 						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_PHONENUMBER}">
@@ -662,8 +674,8 @@
 				<h6>Berikan Ucapan & Doa untuk ke dua mempelai</h6>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm border-start border-end border-top rounded-top p-3" style="background-color:rgba(255, 250, 255, .5)">
+		<div class="row ms-1 me-1">
+			<div class="col-sm border-start border-end border-top rounded-top p-3" style="background-color:rgba(255, 250, 255, .5); border-color: #991188 !important;">
 				<form id="messagesfromvisitor-submit-form" novalidate>
 					<div class="mb-3">
 						<label for="messagesfromvisitor-name" class="form-label">Nama</label>
@@ -696,8 +708,8 @@
 				</form>
 			</div>
 		</div>
-		<div class="row">
-			<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3" style="background-color:rgba(255, 250, 255, .5)">
+		<div class="row ms-1 me-1">
+			<div id="messagesfromvisitor" class="col-sm-12 border-start border-end border-bottom rounded-bottom p-3" style="background-color:rgba(255, 250, 255, .5); border-color: #991188 !important;">
 				<div class="text-center d-grid gap-2 animate__animated animate__fadeInDown d-none messagesfromvisitor-gotnew">
 					<button type="button" class="btn btn-outline-secondary btn-sm">Lihat pesan baru</button>
 				</div>
