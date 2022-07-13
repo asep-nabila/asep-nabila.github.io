@@ -168,7 +168,7 @@ class Config {
 				ctx.lineWidth = 0.5;
 				ctx.textBaseline = 'top';
 				
-				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width + ctx.measureText("_ _").width;
+				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width + ctx.measureText("__").width;
 				
 				ctx.font = ".85rem Arial";
 				ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
