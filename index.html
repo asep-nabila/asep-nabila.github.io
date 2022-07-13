@@ -331,26 +331,33 @@
 	}
 
 	#countdown > ul > li {
-	  display: inline-block;
-	  font-size: 1.5em;
-	  list-style-type: none;
-	  padding: 0 1em;
-	  text-transform: uppercase;
+		display: inline-block;
+		font-size: 1.5em;
+		list-style-type: none;
+		padding: 0 1em;
+		text-transform: uppercase;
 	}
 
 	#countdown > ul > li > span {
-	  display: block;
-	  font-size: 2.5rem;
+		display: block;
+		font-size: 2.5rem;
 	}
-
+	
+	.min-m-on-desktop-5rem{
+		margin-bottom: -5.2rem !important;
+	}
+	
 	@media all and (max-width: 768px) {	  
-	  #countdown > ul > li {
-		font-size: calc(1.5rem * var(--smaller));
-	  }
-	  
-	  #countdown > ul > li > span {
-		font-size: calc(2.5rem * var(--smaller));
-	  }
+		#countdown > ul > li {
+			font-size: calc(1.5rem * var(--smaller));
+		}
+		
+		#countdown > ul > li > span {
+			font-size: calc(2.5rem * var(--smaller));
+		}
+		.min-m-on-desktop-5rem{
+			0
+		}
 	}
 	.groomphonenumbershow{margin-bottom: -1px;}
 	</style>
@@ -482,13 +489,13 @@
 				</div>
 			</div>
 			<div class="col-sm-12 text-center">
-				<div class="progress" style="height: .7rem;">
+				<div class="progress" style="height: .7rem;background-color: #e9ecefa6; box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.75) inset; -webkit-box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.75) inset; -moz-box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.75) inset;">
 				  <div id="progress-bar-thedate" class="progress-bar progress-bar-animated" role="progressbar" style="width: 0%;background-color: #643a5d"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="xhidden container container-section pb-1 mb-3">
+	<div class="xhidden container pb-1 mb-3">
 		<div class="row">
 			<div class="col-12 p-1">
 				<figure class="text-center">
@@ -540,7 +547,7 @@
 	</div>
 	<div class="xhidden container-fluid" style="background-color:rgba(100, 58, 93, 0);">
 		<div class="row">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="p-0 mb-0">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="p-0 mb-0 min-m-on-desktop-5rem">
 			  <path fill="#643a5d" fill-opacity="1" d="M0,256L48,229.3C96,203,192,149,288,149.3C384,149,480,203,576,213.3C672,224,768,192,864,165.3C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
 			</svg>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="p-0 mb-0" style="margin-top:-1px;">
@@ -589,6 +596,11 @@
 						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
 					</div>
 				</div>
+				<p><img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Logo_flip.png" style="max-height:1rem;" alt="Jenuis"></img> Transfer antar bank tanpa biaya admin</p>
+				<!-- Trigger -->
+				<a href="https://flip.id/s/rafua8124" target="_blank" class="btn btn-sm btn-outline-primary mt-0 mb-2">
+					flip.id
+				</a>
 				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<img class="lazyload" data-src="https://shopeepay.co.id/src/pages/home/assets/images/2-shopeepay-rectangle-orange2.png" alt="ShopeePay" style="max-height:1rem;"></img>
@@ -621,13 +633,7 @@
 						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
 					</div>
 				</div>
-				
-				<p><img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Logo_flip.png" style="max-height:1rem;" alt="Jenuis"></img> Transfer antar bank tanpa biaya admin</p>
-				<!-- Trigger -->
-				<a href="https://flip.id/s/rafua8124" target="_blank" class="btn btn-sm btn-outline-primary mt-0 mb-2">
-					flip.id
-				</a>
-				<div class="card mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
+				<div class="card mt-5 mb-2" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<h4>Kirim Hadiah</h4>
 						<hr/>
