@@ -373,11 +373,8 @@
 	.groomphonenumbershow{margin-bottom: -1px;}
 	</style>
 	<script>
-		if (typeof(sw) == "undefined") {
-			if ('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('/firebase-messaging-sw.js').then(registration => {
-					firebase.messaging().useServiceWorker(registration);
-				})
+		if ('serviceWorker' in navigator) {
+			if (typeof(sw) == "undefined") {
 				sw = new Worker("serviceworker.js");
 				sw.onmessage = function(event) {
 					console.log(event.data);
