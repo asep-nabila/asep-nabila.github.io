@@ -6,7 +6,7 @@
 	<meta name="description" content="Undangan online Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)">
 	<meta name="author" content="Asep Maulana Nuriman (Maunklana)">
 	
-    <title>The Wedding of {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}</title>
+    <title>The Wedding of Asep & Nabila</title>
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
@@ -425,21 +425,21 @@
 		</div>
 		<div class="row">
 			<div class="col-sm text-center pb-2 mb-2 mt-2">
-				<img class="close-envelope-popup-img-bridegroom" src="img/asepdila.png" alt="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" title="{GROOM_FULLNAME} ({GROOM_NICKNAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" style="width: 100%; max-width: 18.5rem; height: auto;">
+				<img class="close-envelope-popup-img-bridegroom" src="img/asepdila.png" alt="Asep Maulana Nuriman (Maunklana) &amp; Nabila Dea Santika (Dila)" title="Asep Maulana Nuriman (Maunklana) ({Maunklana}) &amp; Nabila Dea Santika (Dila)" style="width: 100%; max-width: 18.5rem; height: auto;">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm text-center pb-2 mb-2 mt-2">
 				<h1 style="font-family: 'Playball', cursive;">
-					<sup style="font-size:2.5rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FIRSTNAME}</sup>
+					<sup class="groom-firstname" style="font-size:2.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top"></sup>
 					<small>&amp;</small>
-					<sub style="font-size:2.5rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FIRSTNAME}</sub>
+					<sub class="bride-firstname" style="font-size:2.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top"></sub>
 				</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm text-center pb-2 mb-2 mt-2">
-				{EVENTS_DAYS}, {EVENTS_DATEHUMAN}
+				<span class="EVENTS_DAYS"></span>, <span class="EVENTS_DATEHUMAN"></span>
 			</div>
 		</div>
 		<div class="row">
@@ -468,11 +468,11 @@
 		</div>
 		<div class="row">
 			<div class="col-sm text-center">
-				<img class="m-0 close-envelope-popup-img-bridegroom lazyload" data-src="https://www.w3schools.com/howto/img_avatar.png" alt="{GROOM_FULLNAME} ({GROOM_NICKNAME})" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" style="width: 100%; max-width: 12.5rem; height: auto;">
-				<h1 class="pt-2" style="font-family: 'Playball', cursive;font-size:2rem" title="{GROOM_FULLNAME} ({GROOM_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{GROOM_FULLNAME}</h1>
+				<img class="m-0 close-envelope-popup-img-bridegroom lazyload" data-src="https://www.w3schools.com/howto/img_avatar.png" alt="Asep Maulana Nuriman (Maunklana)" title="Asep Maulana Nuriman (Maunklana)" style="width: 100%; max-width: 12.5rem; height: auto;">
+				<h1 class="pt-2 groom-fullname" style="font-family: 'Playball', cursive;font-size:2rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep Maulana Nuriman</h1>
 				<h2 class="m-3" style="font-family: 'Playball', cursive;">&amp;</h2>
-				<img class="m-0 close-envelope-popup-img-bridegroom lazyload" data-src="https://www.w3schools.com/howto/img_avatar2.png" alt="NAME}) &amp; {BRIDE_FULLNAME} ({BRIDE_NICKNAME})" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" style="width: 100%; max-width: 12.5rem; height: auto;">
-				<h1 class="pt-2" style="font-family: 'Playball', cursive;font-size:2rem" title="{BRIDE_FULLNAME} ({BRIDE_NICKNAME})" data-bs-toggle="tooltip" data-bs-placement="top">{BRIDE_FULLNAME}</h1>
+				<img class="m-0 close-envelope-popup-img-bridegroom lazyload" data-src="https://www.w3schools.com/howto/img_avatar2.png" alt="Nabila Dea Santika (Dila)" title="Nabila Dea Santika (Dila)" style="width: 100%; max-width: 12.5rem; height: auto;">
+				<h1 class="pt-2 bride-fullname" style="font-family: 'Playball', cursive;font-size:2rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila Dea Santika</h1>
 			</div>
 		</div>
 	</div>
@@ -525,9 +525,9 @@
 					<div class="card-body text-muted">
 						<h1 class="sub-title text-center gold" style="-webkit-text-stroke: 1px #C79F6D; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: rgb(199, 159, 109);">Akad</h1>
 						<hr class="purple"/>
-						Waktu : {EVENTS_AKAD_TIME} WIB
+						Waktu : <span class="events-reception-time"></span> WIB
 						<br/>
-						Tempat : {EVENTS_AKAD_LOCATION}
+						Tempat : <span class="events-akad-location"></span>
 					</div>
 				</div>
 			</div>
@@ -536,9 +536,9 @@
 					<div class="card-body text-muted">
 						<h1 class="sub-title text-center gold" style="-webkit-text-stroke: 1px #C79F6D; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: rgb(199, 159, 109);">Resepsi</h1>
 						<hr class="purple"/>
-						Waktu : {EVENTS_RECEPTION_TIME} WIB
+						Waktu : <span class="events-reception-time"></span> WIB
 						<br/>
-						Tempat : {EVENTS_RECEPTION_LOCATION}
+						Tempat : <span class="events-reception-location"></span>
 					</div>
 				</div>
 			</div>
@@ -600,12 +600,12 @@
 					<div class="card-body text-center">
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" style="max-height:2rem;" alt="Bank Central Asia"></img>
 						<hr class="purple"/>
-						<p>Rekening : <strong>{GROOM_ACCOUNTNUMBER}</strong></p>
+						<p>Rekening : <strong class="groom-accountnumber">3790761757</strong></p>
 						<!-- Trigger -->
-						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTNUMBER}">
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-var="groom-accountnumber">
 							<i class="bi bi-clipboard-fill"></i> Salin Rekening
 						</button>
-						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+						<p>A.N : <strong class="groom-fullname">Asep Maulana Nuriman</strong></p>
 					</div>
 				</div>
 				<p><img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Logo_flip.png" style="max-height:1rem;" alt="Jenuis"></img> Transfer antar bank tanpa biaya admin</p>
@@ -619,12 +619,12 @@
 						<span class="vr purple"></span>
 						<img class="lazyload" data-src="https://upload.wikimedia.org/wikipedia/id/thumb/8/89/Jenius-logo.png/640px-Jenius-logo.png" alt="Jenuis" style="max-height:2rem;"></img>
 						<hr class="purple"/>
-						<p>username : <strong>{GROOM_ACCOUNTUSERNAME}</strong></p>
+						<p>username : <strong class="groom-accountusername">maunklana</strong></p>
 						<!-- Trigger -->
-						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_ACCOUNTUSERNAME}">
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-var="groom-accountusername">
 							<i class="bi bi-clipboard-fill"></i> Salin Username
 						</button>
-						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+						<p>A.N : <strong class="groom-fullname">Asep Maulana Nuriman</strong></p>
 					</div>
 				</div>
 				<div class="card card-purple mt-2 mb-2" style="background-color:rgba(255, 250, 255, .5)">
@@ -639,17 +639,17 @@
 						<hr class="purple"/>
 						<p>nomor handphone : <strong><canvas class="groomphonenumbershow" height="22"></canvas></strong></p>
 						<!-- Trigger -->
-						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-text="{GROOM_PHONENUMBER}">
+						<button class="btn btn-sm btn-primary mt-0 mb-2 clipboard" data-clipboard-var="groom-phonenumber">
 							<i class="bi bi-clipboard-fill"></i> Salin nomor handphone
 						</button>
-						<p>A.N : <strong>{GROOM_FULLNAME}</strong></p>
+						<p>A.N : <strong class="groom-fullname">Asep Maulana Nuriman</strong></p>
 					</div>
 				</div>
 				<div class="card card-purple mt-5 mb-2 d-none" style="background-color:rgba(255, 250, 255, .5)">
 					<div class="card-body text-center">
 						<h4>Kirim Hadiah</h4>
 						<hr/>
-						<p>Nama Penerima : <strong>{GROOM_FULLNAME}</strong></p>
+						<p>Nama Penerima : <strong class="groom-fullname">Asep Maulana Nuriman</strong></p>
 						<p>Telepon : <strong><canvas class="groomphonenumbershow" height="22"></canvas></strong></p>
 						<p>Alamat : <strong>JL. Arcamanik Endah No.9B Bandung, 40293</strong></p>
 					</div>
@@ -782,7 +782,7 @@
 				<br/>
 				<small class="text-white fw-lighter">Thanks for visiting our wedding page</small>
 				<br/>
-				<small class="text-white fw-lighter">Regrads, {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}</small>
+				<small class="text-white fw-lighter">Regrads, <span class="groom-firstname">Asep</span> & <span class="bride-firstname">Nabila</span></small>
 				<br/>
 			</div>
 		</div>
@@ -842,6 +842,11 @@
 	
 	$(function() {
 		config.initializing();
+		
+		$(".clipboard[data-clipboard-var]").each(function(i, obj){
+			let clipboardVar = $(this).data("clipboard-var").split("-");
+			$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);
+		});
 		
 		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 			swallAskName(showEnvelope);

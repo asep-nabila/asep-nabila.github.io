@@ -130,19 +130,31 @@ class Config {
 		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan online ${this.groom.fullname} (${this.groom.nickname}) & ${this.groom.fullname} (${this.bride.nickname})`);
 	}
 	
-	initializing(){
+	initializing(txtreplace = true){
 		for (var conf in this) {
 			if(['groom','bride','events'].indexOf(conf) !== -1){
 				for (var key in this[conf]) {
 					if(typeof this[conf][key] == "string"){
-						let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}}`,"g");
-						document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key]);
+						let theClassName = document.getElementsByClassName(`${conf}-${key}`);
+						if(txtreplace){
+							if(theClassName.length > 0){
+								for (var i = 0; i < theClassName.length; i++) {
+									theClassName.item(i).innerText = this[conf][key];
+								}
+							}
+						}
 					}
 					
 					if(typeof this[conf][key] == "object"){
 						for (var keys in this[conf][key]) {
-							let re = new RegExp(`{${conf.toUpperCase()}_${key.toUpperCase()}_${keys.toUpperCase()}}`,"g");
-							document.body.innerHTML = document.body.innerHTML.replace(re, this[conf][key][keys]);
+							let theClassName = document.getElementsByClassName(`${conf}-${key}-${keys}`);
+							if(txtreplace){
+								if(theClassName.length > 0){
+									for (var i = 0; i < theClassName.length; i++) {
+										theClassName.item(i).innerText = this[conf][key][keys];
+									}
+								}
+							}
 						}
 					}
 				}
