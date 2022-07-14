@@ -145,3 +145,12 @@ if ('serviceWorker' in navigator) {
 		console.log(event.data);
 	});
 }
+
+if (typeof(sw) == "undefined") {
+	if ('serviceWorker' in navigator) {
+		sw = new Worker("serviceworker.js");
+		sw.onmessage = function(event) {
+			console.log(event.data);
+		};
+	}
+}
