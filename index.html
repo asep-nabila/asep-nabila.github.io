@@ -373,6 +373,16 @@
 	.groomphonenumbershow{margin-bottom: -1px;}
 	</style>
 	<script src="serviceworker.js"></script>
+	<script>
+		if (typeof(sw) == "undefined") {
+			if ('serviceWorker' in navigator) {
+				sw = new Worker("serviceworker.js");
+				sw.onmessage = function(event) {
+					console.log(event.data);
+				};
+			}
+		}
+	</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-77YBSBL6PY"></script>
 	<script>

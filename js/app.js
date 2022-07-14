@@ -138,12 +138,3 @@ $( window ).on("load", function() {
 	$('head').append(`<link href="${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="preload" as="style" crossorigin="anonymous">`);
 	$('head').append(`<link rel="stylesheet" href="${cdnjsbaseurl}/animate.css/4.1.1/animate.min.css" rel="preload" as="style" media="(prefers-reduced-motion: no-preference)"/>`);
 });
-
-if (typeof(sw) == "undefined") {
-	if ('serviceWorker' in navigator) {
-		sw = new Worker("serviceworker.js");
-		sw.onmessage = function(event) {
-			console.log(event.data);
-		};
-	}
-}
