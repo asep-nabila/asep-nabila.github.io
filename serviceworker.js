@@ -1,4 +1,4 @@
-import { workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js';
+import { workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/6.5.2/workbox-sw.js';
 // Import and configure the Firebase SDK
 // These scripts are made available when the app is served or deployed on Firebase Hosting
 // If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup
