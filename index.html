@@ -841,7 +841,7 @@
 	let players;
 	
 	$(function() {
-		config.initializing();
+		config.initializing(false);
 		
 		$(".clipboard[data-clipboard-var]").each(function(i, obj){
 			let clipboardVar = $(this).data("clipboard-var").split("-");
