@@ -25,8 +25,8 @@ getToken(messaging, { vapidKey: 'BFW5T47GqIr7Sc5zU2L5gG-98hN23hlbgQH3zIQOOhT9rUE
 		let tokenMessages = {
 			eventType: "token",
 			token: currentToken
-		}
-		sendMessage();
+		};
+		sendMessage(tokenMessages);
 	} else {
 		console.log('No registration token available. Request permission to generate one.');
 	}
@@ -36,7 +36,11 @@ getToken(messaging, { vapidKey: 'BFW5T47GqIr7Sc5zU2L5gG-98hN23hlbgQH3zIQOOhT9rUE
 
 onMessage(messaging, (payload) => {
 	console.log('Message received. ', payload);
-	sendMessage(payload);
+	let msgMessages = {
+		eventType: "pushmsg",
+		payload: payload
+	};
+	sendMessage(msgMessages);
 });
 
 function sendMessage(message) {
