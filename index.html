@@ -375,6 +375,9 @@
 	<script>
 		if (typeof(sw) == "undefined") {
 			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js').then(registration => {
+					firebase.messaging().useServiceWorker(registration);
+				})
 				sw = new Worker("serviceworker.js");
 				sw.onmessage = function(event) {
 					console.log(event.data);
