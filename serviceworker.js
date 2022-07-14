@@ -16,7 +16,7 @@ firebase.initializeApp({
 	measurementId: "G-77YBSBL6PY"
 });
 
-const messaging = firebase.getMessaging();
+const messaging = firebase.messaging();
 
 messaging.getToken({ vapidKey: 'BFW5T47GqIr7Sc5zU2L5gG-98hN23hlbgQH3zIQOOhT9rUEe8evsw3L9Dg7K_awzsulDvnujCrWiRoB7aKbE860' }).then((currentToken) => {
 	if (currentToken) {
