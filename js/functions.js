@@ -429,6 +429,10 @@ const showInvitation = function(){
 		
 		img.src = lazyimg.data("src");
 	});
+	$(".lazyload-n-anime:not([src])").each((i,obj) => {
+		lazyimg = $(obj),
+		lazyimg.attr("src", lazyimg.data("src"));
+	});
 }
 
 const startCountdown = function(){
