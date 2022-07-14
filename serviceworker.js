@@ -18,20 +18,20 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-//messaging.getToken({ vapidKey: 'BFW5T47GqIr7Sc5zU2L5gG-98hN23hlbgQH3zIQOOhT9rUEe8evsw3L9Dg7K_awzsulDvnujCrWiRoB7aKbE860' }).then((currentToken) => {
-//	if (currentToken) {
-//		console.log(currentToken);
-//		let tokenMessages = {
-//			eventType: "token",
-//			token: currentToken
-//		};
-//		sendMessage(tokenMessages);
-//	} else {
-//		console.log('No registration token available. Request permission to generate one.');
-//	}
-//}).catch((err) => {
-//	console.log('An error occurred while retrieving token. ', err);
-//});
+messaging.getToken({ vapidKey: 'BFW5T47GqIr7Sc5zU2L5gG-98hN23hlbgQH3zIQOOhT9rUEe8evsw3L9Dg7K_awzsulDvnujCrWiRoB7aKbE860' }).then((currentToken) => {
+	if (currentToken) {
+		console.log(currentToken);
+		let tokenMessages = {
+			eventType: "token",
+			token: currentToken
+		};
+		sendMessage(tokenMessages);
+	} else {
+		console.log('No registration token available. Request permission to generate one.');
+	}
+}).catch((err) => {
+	console.log('An error occurred while retrieving token. ', err);
+});
 
 messaging.onMessage((payload) => {
 	console.log('Message received. ', payload);
