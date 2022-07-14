@@ -225,7 +225,7 @@ const showEnvelope = function(){
 		allowOutsideClick: false,
 		allowEscapeKey: false,
 		allowEnterKey: false,
-		imageUrl: 'img/asepdila.png',
+		imageUrl: 'img/asepdila.webp',
 		imageWidth: "auto",
 		imageHeight: 250,
 		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`
