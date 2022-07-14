@@ -840,7 +840,9 @@
 	let cpi = 0;
 	let players;
 	
-	$(function() {		
+	$(function() {
+		config.initializing();
+		
 		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 			swallAskName(showEnvelope);
 		}else{
