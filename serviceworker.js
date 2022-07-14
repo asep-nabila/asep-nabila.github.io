@@ -1,3 +1,4 @@
+import { workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js';
 // Import and configure the Firebase SDK
 // These scripts are made available when the app is served or deployed on Firebase Hosting
 // If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup
@@ -50,3 +51,44 @@ function sendMessage(message) {
 	});
 });
 }
+
+const {CacheableResponsePlugin} = workbox.cacheableResponse;
+const {ExpirationPlugin} = workbox.expiration;
+const {registerRoute} = workbox.routing;
+const {StaleWhileRevalidate} = workbox.strategies;
+
+// Cache Google Fonts with a stale-while-revalidate strategy, with
+// a maximum number of entries.
+registerRoute(
+  ({url}) => url.origin === 'https://fonts.googleapis.com' ||
+             url.origin === 'https://fonts.gstatic.com',
+  new StaleWhileRevalidate({
+    cacheName: 'google-fonts',
+    plugins: [
+      new ExpirationPlugin({maxEntries: 20}),
+    ],
+  }),
+);
+
+registerRoute(
+  ({request}) => request.destination === 'script' ||
+                 request.destination === 'style' ||
+				 request.destination === 'html',
+  new StaleWhileRevalidate()
+);
+
+registerRoute(
+  ({request}) => request.destination === 'image',
+  new StaleWhileRevalidate({
+    cacheName: 'images',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
+    ],
+  }),
+);
