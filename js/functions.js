@@ -263,7 +263,7 @@ const showInvitation = function(){
 		if ($('#messagesfromvisitor').isInViewport()) {
 			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
 		}
-		if ($('#acara').isInViewport()) {
+		if ($('#progress-countdown').isInViewport()) {
 			startCountdown();
 		}
 		
