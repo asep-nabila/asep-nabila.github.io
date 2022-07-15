@@ -834,7 +834,7 @@
 			return "";
 		}
 
-		if (getCookie('currentVisitorId') !== ''){
+		if (getCookie('currentVisitorId') !== '' && typeof localStorage.visitorId == 'undefined'){
 			localStorage.visitorId = getCookie('currentVisitorId');
 		}
 	</script>
