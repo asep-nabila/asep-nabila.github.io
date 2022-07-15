@@ -375,6 +375,11 @@
 	<script>
 		if ('serviceWorker' in navigator) {
 			if (typeof(sw) == "undefined") {
+				gsw = new Worker("sw.js");
+				gsw.onmessage = function(event) {
+					console.log(event.data);
+				};
+				
 				sw = new Worker("serviceworker.js");
 				sw.onmessage = function(event) {
 					console.log(event.data);
