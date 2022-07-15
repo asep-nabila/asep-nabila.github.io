@@ -821,16 +821,7 @@
 	<script src="js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js" defer></script>
 	
-	<script>
-	if(window.self !== window.top){
-		window.addEventListener("message", receiveMessageVisitorId, false);
-		function receiveMessageVisitorId(event){
-			if (event.origin !== 'https://i.asepnabila.link/') return;
-		  
-			if(typeof event.data.currentVisitorId !== 'undefined' && typeof localStorage.visitorId == 'undefined') localStorage.visitorId = event.data.currentVisitorId;
-		}
-	}
-	
+	<script>	
 	if ("virtualKeyboard" in navigator) {
 		navigator.virtualKeyboard.overlaysContent = true;
 	}

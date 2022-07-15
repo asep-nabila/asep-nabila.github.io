@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Undangan online Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)">
+<meta name="author" content="Asep Maulana Nuriman (Maunklana)">
+<head>
+<script>
+if(window.self !== window.top){
+	window.addEventListener("message", receiveMessageVisitorId, false);
+	function receiveMessageVisitorId(event){
+		if (event.origin !== 'https://i.asepnabila.link/') return;
+	  
+		if(typeof event.data.currentVisitorId !== 'undefined' && typeof localStorage.visitorId == 'undefined') localStorage.visitorId = event.data.currentVisitorId;
+	}
+}
+</script>
+</head>
+<body>
+Wedding of Asep Maulana Nuriman & Nabila Dea Santika
+</body>
+</html>
