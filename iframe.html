@@ -10,10 +10,8 @@
 if(window.self !== window.top){
 	window.addEventListener("message", receiveMessageVisitorId, false);
 	function receiveMessageVisitorId(event){
-		console.log(event);
 		if (event.origin !== "https://i.asepnabila.link") return;
-		expireAfter = new Date();
-		if(typeof event.data.currentVisitorId !== 'undefined') document.cookie=`currentVisitorId=${event.data.currentVisitorId}; domain=asepnabila.link; expires=${expireAfter}; path=/`;
+		console.log(event);
 	}
 }
 </script>
