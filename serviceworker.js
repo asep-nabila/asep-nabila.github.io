@@ -3,14 +3,14 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.5.3/workbox
 const {CacheableResponsePlugin} = workbox.cacheableResponse;
 const {ExpirationPlugin} = workbox.expiration;
 const {registerRoute} = workbox.routing;
-const {StaleWhileRevalidate} = workbox.strategies;
+const {StaleWhileRevalidate,CacheFirst} = workbox.strategies;
 
 // Cache Google Fonts with a stale-while-revalidate strategy, with
 // a maximum number of entries.
 registerRoute(
   ({url}) => url.origin === 'https://fonts.googleapis.com' ||
              url.origin === 'https://fonts.gstatic.com',
-  new StaleWhileRevalidate({
+  new CacheFirst({
     cacheName: 'google-fonts',
     plugins: [
       new ExpirationPlugin({maxEntries: 20}),
@@ -27,7 +27,7 @@ registerRoute(
 
 registerRoute(
   ({request}) => request.destination === 'image',
-  new StaleWhileRevalidate({
+  new CacheFirst({
     cacheName: 'images',
     plugins: [
       new CacheableResponsePlugin({
