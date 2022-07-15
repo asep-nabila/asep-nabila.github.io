@@ -339,18 +339,6 @@ const showInvitation = function(){
 	
 	getVisitorIP();
 	
-	let gTagScript = document.createElement('script');
-    gTagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-77YBSBL6PY';
-    gTagScript.async = true;
-    document.body.appendChild(gTagScript);
-	gTagScript.onload = function(){
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'G-77YBSBL6PY');
-	}
-	
 	let calamansiScript = document.createElement('script');
     calamansiScript.src = 'calamansi-js/dist/calamansi.min.js';
     calamansiScript.defer = true;
