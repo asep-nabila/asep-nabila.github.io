@@ -21,14 +21,14 @@ registerRoute(
 registerRoute(
   ({url}) => url.origin === 'https://cdnjs.cloudflare.com' ||
              url.origin === 'https://cdn.jsdelivr.net',
-  new StaleWhileRevalidate();
+  new StaleWhileRevalidate(),
 );
   
 registerRoute(
   ({request}) => request.destination === 'script' ||
                  request.destination === 'style' ||
 				 request.destination === 'html',
-  new StaleWhileRevalidate()
+  new StaleWhileRevalidate(),
 );
 
 registerRoute(
