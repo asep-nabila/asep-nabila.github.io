@@ -21,7 +21,7 @@ registerRoute(
 registerRoute(
   ({url}) => url.origin === 'https://cdnjs.cloudflare.com' ||
              url.origin === 'https://cdn.jsdelivr.net',
-  new CacheFirst();
+  new StaleWhileRevalidate();
 );
   
 registerRoute(
