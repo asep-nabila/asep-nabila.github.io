@@ -534,6 +534,9 @@ async function getVisitorId(functionCallbak) {
 	if(window.self === window.top){
 		if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 			visitorId = localStorage.visitorId;
+			if(typeof functionCallbak == "function"){
+				functionCallbak();
+			}
 		}else{
 			// Get the visitor identifier when you need it.
 			fpPromise.then(fp => fp.get()).then(result => {
@@ -547,6 +550,9 @@ async function getVisitorId(functionCallbak) {
 				}
 			}).catch(error => {
 				localStorage.visitorId = localStorage["randid"];
+				if(typeof functionCallbak == "function"){
+					functionCallbak();
+				}
 			});
 		}
 	}
