@@ -527,7 +527,7 @@ async function getVisitorIP() {
 }
 
 let visitorId;
-async function getVisitorId() {	
+async function getVisitorId(functionCallbak) {	
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 		visitorId = localStorage.visitorId;
 	}else{
@@ -540,6 +540,10 @@ async function getVisitorId() {
 		}).catch(error => {
 			localStorage.visitorId = localStorage["randid"];
 		});
+	}
+	
+	if(typeof functionCallbak == "function"){
+		functionCallbak();
 	}
 }
 
