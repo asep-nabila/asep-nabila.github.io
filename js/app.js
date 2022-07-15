@@ -526,7 +526,7 @@ async function getVisitorIP() {
 	}
 }
 
-let visitorId = '';
+let visitorId;
 async function getVisitorId() {	
 	if(typeof localStorage.visitorId != "undefined" && localStorage.visitorId != ''){
 		visitorId = localStorage.visitorId;
