@@ -363,6 +363,7 @@ $(function() {
     document.body.appendChild(sidikramoScript);
 	sidikramoScript.onload = function(){
 		fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
+		console.log(typeof goToInvitation);
 		if(typeof goToInvitation !== "undefined"){
 			getVisitorId(goToInvitation);		
 		}else{	
