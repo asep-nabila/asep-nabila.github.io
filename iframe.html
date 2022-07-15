@@ -11,7 +11,7 @@ if(window.self !== window.top){
 	window.addEventListener("message", receiveMessageVisitorId, false);
 	function receiveMessageVisitorId(event){
 		console.log(event);
-		if (event.origin !== 'https://i.asepnabila.link/') return;
+		if (event.origin !== "https://i.asepnabila.link") return;
 	  
 		if(typeof event.data.currentVisitorId !== 'undefined' && typeof localStorage.visitorId == 'undefined') localStorage.visitorId = event.data.currentVisitorId;
 	}

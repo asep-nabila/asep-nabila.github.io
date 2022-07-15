@@ -543,13 +543,13 @@ async function getVisitorId(functionCallbak) {
 				visitorId = result.visitorId;
 				// save it on localStorage
 				localStorage.visitorId = visitorId;
+				
+				if(typeof functionCallbak == "function"){
+					functionCallbak();
+				}
 			}).catch(error => {
 				localStorage.visitorId = localStorage["randid"];
 			});
-		}
-		
-		if(typeof functionCallbak == "function"){
-			functionCallbak();
 		}
 	}
 }
