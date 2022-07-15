@@ -299,7 +299,6 @@ $(function() {
 			
 				grecaptcha.ready(() => {
 					grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
-						console.log(token);
 						
 						getInsertMessageParams = new getData({}, {"action":"insertComments", "grespon":token});
 						
@@ -363,7 +362,6 @@ $(function() {
     document.body.appendChild(sidikramoScript);
 	sidikramoScript.onload = function(){
 		fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
-		console.log(typeof goToInvitation);
 		if(typeof goToInvitation !== "undefined"){
 			getVisitorId(goToInvitation);		
 		}else{	
