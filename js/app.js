@@ -653,7 +653,7 @@ const showInvitation = function(){
 		if ($('#messagesfromvisitor').isInViewport()) {
 			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
 		}
-		if ($('#progress-countdown').isInViewport()) {
+		if ($('#detail-acara').isInViewport()) {
 			startCountdown();
 		}
 		
@@ -836,16 +836,16 @@ const startCountdown = function(){
 
 		const now = new Date().getTime(),
 			distance = countDown - now;
-		if($("#countdowndays").text() == '00'){
-			animeteCount($("#countdowndays"), Math.floor(distance / (day)));
-			animeteCount($("#countdownhours"), Math.floor((distance % (day)) / (hour)));
-			animeteCount($("#countdownminutes"), Math.floor((distance % (hour)) / (minute)));
-			animeteCount($("#countdownseconds"), Math.floor((distance % (minute)) / (second)));
+		if($("#cdd").text() == '00'){
+			animeteCount($("#cdd"), Math.floor(distance / (day)));
+			animeteCount($("#cdh"), Math.floor((distance % (day)) / (hour)));
+			animeteCount($("#cdm"), Math.floor((distance % (hour)) / (minute)));
+			animeteCount($("#cds"), Math.floor((distance % (minute)) / (second)));
 		}else{
-			$("#countdowndays").text(Math.floor(distance / (day))),
-			$("#countdownhours").text(Math.floor((distance % (day)) / (hour))),
-			$("#countdownminutes").text(Math.floor((distance % (hour)) / (minute))),
-			$("#countdownseconds").text(Math.floor((distance % (minute)) / second));
+			$("#cdd").text(Math.floor(distance / (day))),
+			$("#cdh").text(Math.floor((distance % (day)) / (hour))),
+			$("#cdm").text(Math.floor((distance % (hour)) / (minute))),
+			$("#cds").text(Math.floor((distance % (minute)) / second));
 		}
 		
 		
