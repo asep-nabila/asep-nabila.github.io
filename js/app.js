@@ -125,8 +125,9 @@ class Config {
 	}
 	
 	preinit(){	
-		document.title = `The Wedding of ${this.groom.firstname} & ${this.bride.firstname}`;
-		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan online ${this.groom.fullname} (${this.groom.nickname}) & ${this.groom.fullname} (${this.bride.nickname})`);
+		document.title = `Undangan Pernikahan ${this.groom.firstname} & ${this.bride.firstname}`;
+		document.querySelector('meta[name="description"]').setAttribute("content", `Undangan Pernikahan ${this.groom.fullname} (${this.groom.nickname}) & ${this.bride.fullname} (${this.bride.nickname}), kami mengundang anda untuk hadir di acara pernikahan kami.`);
+		document.querySelector('meta[name="keywords"]').setAttribute("content", `Undangan, Pernikahan, ${this.groom.firstname}, ${this.bride.firstname}, ${this.groom.nickname}, ${this.bride.nickname}, ${this.groom.fullname}, ${this.bride.fullname}, ${this.groom.firstname} & ${this.bride.firstname}, ${this.groom.firstname} & ${this.bride.nickname}, Undangan ${this.groom.firstname} & ${this.bride.nickname}, Undangan ${this.groom.firstname} & Bila`);
 	}
 	
 	init(iTxt = true){
