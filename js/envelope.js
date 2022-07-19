@@ -807,3 +807,5 @@ $(".lazyload-n-anime:not([src])").each((i,obj) => {
 	lazyimg = $(obj),
 	lazyimg.attr("src", lazyimg.data("src"));
 });
+
+generateQrBukuTamu();

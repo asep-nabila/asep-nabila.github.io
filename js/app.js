@@ -513,7 +513,6 @@ const showInvitation = function(){
 			document.body.appendChild(envelopeScript);
 			envelopeScript.onload = function(){
 				console.log("envelope ready");
-				generateQrBukuTamu();
 			}
 		}
 	});
