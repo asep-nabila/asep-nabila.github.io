@@ -513,6 +513,7 @@ const showInvitation = function(){
 			document.body.appendChild(envelopeScript);
 			envelopeScript.onload = function(){
 				console.log("envelope ready");
+				generateQrBukuTamu();
 			}
 		}
 	});
@@ -569,14 +570,12 @@ const swallAskFrom = function(){
 			if (result.isConfirmed) {
 				dari = result.value.toUpperCase();
 				localStorage.dari = dari;
-				if(typeof dari !== 'undefined' && dari !== ''){
-					generateQrBukuTamu();
+				if(typeof dari !== 'undefined' && dari !== ''){					
 					swalConfirmBackSound();
 				}
 			}
 		});
 	}else{
-		generateQrBukuTamu();
 		swalConfirmBackSound();
 	}
 }
