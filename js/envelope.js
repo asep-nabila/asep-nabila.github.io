@@ -392,6 +392,9 @@ calamansiScript.onload = function() {
 					
 	CalamansiEvents.on('initialized', function (player) {
 		players = player;
+		if (localStorage.backsound) {
+			players.audio.play();
+		}
 	});
 	
 	CalamansiEvents.on('trackEnded', function (player) {

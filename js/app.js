@@ -542,7 +542,6 @@ const swalConfirmBackSound = function(){
 			reverseButtons: true,
 		}).then((result) => {					
 			if (result.isConfirmed) {
-				players.audio.play();
 				localStorage.backsound = true;
 			}else{
 				localStorage.backsound = false;
