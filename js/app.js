@@ -586,7 +586,7 @@ const nextsongs = function(){
 
 const showEnvelope = function(){
 	Swal.fire({
-		title: '' +
+		title: '<small class="envelopefooter fw-lighter" style="color: #0000000f;">Undangan Pernikahan</small><br/>' +
 			'<h1 class="envelope">' +
 				`<sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup>` +
 				'<small>&</small>' + 
@@ -594,8 +594,8 @@ const showEnvelope = function(){
 			'</h1>',
 		html: receiverhtml,		
 		confirmButtonText: `<i title="Bukan Undangan ${config.groom.fullname} & ${config.bride.fullname}" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan`,
-		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of ${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})<br/>
-				Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Bila</small>`,
+		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of<br/>${config.groom.fullname} & ${config.bride.fullname}<br/><br/>
+				Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
