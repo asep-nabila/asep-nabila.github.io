@@ -621,11 +621,6 @@ $("iframe").each(function() {
 	$(this).attr("src", $(this).data("src"));  
 });
 
-$('.xhidden').each(function() {
-	$(this).addClass('animate__animated animate__slideInUp');
-	$(this).css('visibility', 'visible');
-});
-
 $("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
 $("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
 $(window).on('resize', () => {
