@@ -1,5 +1,5 @@
 # [asep-nabila.github.io](https://asep-nabila.github.io)
-| [asepnabila.link](https://asepnabila.link)
+temporary accessible via custom domain [asepnabila.link](https://asepnabila.link)
 
 Wedding page of Asep Maulana Nuriman (Maunklana) &amp; Nabila Dea Santika (Dila) 
 
