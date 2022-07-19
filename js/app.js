@@ -508,11 +508,15 @@ const showInvitation = function(){
 			$( "#envelope" ).html( msg + xhr.status + " " + xhr.statusText );
 		}else{
 			let envelopeScript = document.createElement('script');
-			envelopeScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
+			envelopeScript.src = 'js/envelope.js';
 			envelopeScript.defer = true;
 			document.body.appendChild(envelopeScript);
 			envelopeScript.onload = function(){
 				console.log("envelope ready");
+				let envelopeMainScript = document.createElement('script');
+				envelopeMainScript.src = 'js/envelope.js';
+				envelopeMainScript.defer = true;
+				document.body.appendChild(envelopeMainScript);
 			}
 		}
 	});
