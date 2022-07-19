@@ -654,7 +654,7 @@ $(window).on('resize scroll', () => {
 		}
 	});
 	
-	$("body>div.xhidden").each((i,obj) => {
+	$("body>div#envelope>div").each((i,obj) => {
 		$container = $(obj);
 		if($container.isInViewport()){
 			$plyrElem = $("#player-elem>#player-control-panel");
