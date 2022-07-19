@@ -505,7 +505,7 @@
 	<script src="js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js" defer></script>
 	
-	<script>	
+	<script>
 	if ("virtualKeyboard" in navigator) {
 		navigator.virtualKeyboard.overlaysContent = true;
 	}
@@ -528,6 +528,11 @@
 	
 	if(queryParams.group !== null && queryParams.group !== ""){
 		group = encodeHTML(queryParams.group).toUpperCase();
+	}
+	
+	if(isCrawler){
+		kepada = "Elon Musk";
+		dari = "Tesla, Inc";
 	}
 	
 	playlist = shuffle(playlist);
