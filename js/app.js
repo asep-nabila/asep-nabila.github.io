@@ -586,7 +586,7 @@ const nextsongs = function(){
 
 const showEnvelope = function(){
 	Swal.fire({
-		title: '<small class="envelopefooter fw-lighter" style="color: #0000000f;">Undangan Pernikahan</small><br/>' +
+		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small><br/>' +
 			'<h1 class="envelope">' +
 				`<sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup>` +
 				'<small>&</small>' + 
