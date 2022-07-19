@@ -31,9 +31,7 @@ if ("virtualKeyboard" in navigator) {
 	let cpi = 0;
 	let players;
 	
-	$(function() {
-		config.init(false);
-		
+	$(function() {		
 		$(".clipboard[data-clipboard-var]").each(function(i, obj){
 			let clipboardVar = $(this).data("clipboard-var").split("-");
 			$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);

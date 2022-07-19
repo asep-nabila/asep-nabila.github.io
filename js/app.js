@@ -190,6 +190,8 @@ class Config {
 				ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
 			}
 		}
+		
+		config.init(false);
 	}
 }
 
