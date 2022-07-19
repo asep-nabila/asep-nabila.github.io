@@ -562,7 +562,7 @@ const createcalamnsielement = function(){
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	
 	if ($(".marquee").width() >= $("nav").width()/100*65) {
-		$('.marquee').css('width', $("nav").width() - ( ($("#calamansiplaycontroler").width() + $("#nextsongs").width() )) - 100);
+		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
 		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
 	}
 }
@@ -576,7 +576,7 @@ const nextsongs = function(){
 	players.audio.play();
 	
 	if ($(".marquee").width() >= $("nav").width()/100*65) {
-		$('.marquee').css('width', $("nav").width() - ( ($("#calamansiplaycontroler").width() + $("#nextsongs").width() )) - 100);
+		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
 		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
 	}
 }
@@ -1140,10 +1140,10 @@ const drawMessages = function({ sort = "oldest", loadnew = true} = {}){
 	let maxMessagesDraw = 5, messagesCount = 0;
 	
 	if($messagesPanel.children().length <= 0){
-		for (var key in $messages) {
+		for (var i in $messages) {
 			if(messagesCount>=maxMessagesDraw) break;
-			if ($messages.hasOwnProperty(key)) {
-				$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[key]));
+			if ($messages.hasOwnProperty(i)) {
+				$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[i]));
 				messagesCount++;
 			}
 		}
@@ -1155,14 +1155,14 @@ const drawMessages = function({ sort = "oldest", loadnew = true} = {}){
 			||
 			parseInt($messages[Object.keys($messages)[0]]["timestamp"]) !== $($messagesElement[0]).data("timestamp")
 		){
-			for (var key in $messages) {
-				if ($messages.hasOwnProperty(key)) {
-					if($messages[key]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp") || $messages[key]["timestamp"] > $($messagesElement[0]).data("timestamp")){
+			for (var i in $messages) {
+				if ($messages.hasOwnProperty(i)) {
+					if($messages[i]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp") || $messages[i]["timestamp"] > $($messagesElement[0]).data("timestamp")){
 						if($messages[Object.keys($messages)[Object.keys($messages).length - 1]]["timestamp"] < $($messagesElement[$messagesElement.length -1]).data("timestamp")){
-							$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[key]));
+							$messagesPanel.append(isMessagesVisitorGetItemHTML($messages[i]));
 						}
 						if($messages[Object.keys($messages)[0]]["timestamp"] > $($messagesElement[0]).data("timestamp")){
-							$messagesPanel.prepend(isMessagesVisitorGetItemHTML($messages[key]));
+							$messagesPanel.prepend(isMessagesVisitorGetItemHTML($messages[i]));
 						}
 					}
 				}
