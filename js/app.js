@@ -512,7 +512,7 @@ const showInvitation = function(){
 			envelopeScript.onload = function(){
 				console.log("envelope ready");
 				let envelopeMainScript = document.createElement('script');
-				envelopeMainScript.src = 'js/envelope.js';
+				envelopeMainScript.src = 'js/envelope.main.js';
 				envelopeMainScript.defer = true;
 				document.body.appendChild(envelopeMainScript);
 			}
