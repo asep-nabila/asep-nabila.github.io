@@ -633,197 +633,204 @@ const showEnvelope = function(){
 }
 
 const showInvitation = function(){
-	window.history.pushState('', '', window.location.pathname);
-	$("body").css("background-image", 'url('+$("body").data("background")+')');
-	$("iframe").each(function() {
-        $(this).attr("src", $(this).data("src"));  
-    });
-	
-	$('.xhidden').each(function() {
-		$(this).addClass('animate__animated animate__slideInUp');
-		$(this).css('visibility', 'visible');
-	});
-	
-	$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
-	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
-	$(window).on('resize', () => {
-		$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
-		$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
-	});
-	
-	$(window).on('resize scroll', () => {
-		if ($('#messagesfromvisitor').isInViewport()) {
-			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
-		}
-		if ($('#detail-acara').isInViewport()) {
-			startCountdown();
-		}
-		
-		$(".lazyload:not([src])").each((i,obj) => {
-			lazyimg = $(obj);
-			if(lazyimg.isInViewport()){
-				lazyimg.one("load", () => {
-					$('.grid').masonry({
-						// set itemSelector so .grid-sizer is not used in layout
-						itemSelector: '.grid-item',
-						// use element for option
-						columnWidth: '.grid-sizer',
-						percentPosition: true
-					});
+	$('#envelope').load('envelope.html', function( response, status, xhr ) {
+		if ( status == "error" ) {
+			var msg = "Sorry but there was an error: ";
+			$( "#envelope" ).html( msg + xhr.status + " " + xhr.statusText );
+		}else{
+			window.history.pushState('', '', window.location.pathname);
+			$("body").css("background-image", 'url('+$("body").data("background")+')');
+			$("iframe").each(function() {
+				$(this).attr("src", $(this).data("src"));  
+			});
+			
+			$('.xhidden').each(function() {
+				$(this).addClass('animate__animated animate__slideInUp');
+				$(this).css('visibility', 'visible');
+			});
+			
+			$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
+			$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
+			$(window).on('resize', () => {
+				$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
+				$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
+			});
+			
+			$(window).on('resize scroll', () => {
+				if ($('#messagesfromvisitor').isInViewport()) {
+					if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
+				}
+				if ($('#detail-acara').isInViewport()) {
+					startCountdown();
+				}
+				
+				$(".lazyload:not([src])").each((i,obj) => {
+					lazyimg = $(obj);
+					if(lazyimg.isInViewport()){
+						lazyimg.one("load", () => {
+							$('.grid').masonry({
+								// set itemSelector so .grid-sizer is not used in layout
+								itemSelector: '.grid-item',
+								// use element for option
+								columnWidth: '.grid-sizer',
+								percentPosition: true
+							});
+						});
+						
+						lazyimg.addClass("animate__animated animate__fadeInDown");
+						lazyimg.attr("src", lazyimg.data("src"));
+					}
 				});
 				
-				lazyimg.addClass("animate__animated animate__fadeInDown");
-				lazyimg.attr("src", lazyimg.data("src"));
-			}
-		});
-		
-		$("body>div.xhidden").each((i,obj) => {
-			$container = $(obj);
-			if($container.isInViewport()){
-				$plyrElem = $("#player-elem>#player-control-panel");
-				var elementTop = parseInt($plyrElem.offset().top);
-				var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
+				$("body>div.xhidden").each((i,obj) => {
+					$container = $(obj);
+					if($container.isInViewport()){
+						$plyrElem = $("#player-elem>#player-control-panel");
+						var elementTop = parseInt($plyrElem.offset().top);
+						var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
 
-				var viewContainerTop = parseInt($container.offset().top);
-				var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
-				
-				if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){					
-					$plyrElem.find("a[class*=btn-outline-]").each((i,obj) => {
-						var containerColor = $container.css("background-color");
-						if(containerColor == 'rgba(0, 0, 0, 0)'){
-							containerColor = $("body").css("background-color");
-						}
-
-						$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
-						$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-						$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
-						$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
-					});
-					
-					return false;
-				}
-			}
-		});
-	});
-	
-	function drawMessagesOnScroll(){
-	   if($("#messagesfromvisitor").scrollTop() > $("#messagesfromvisitor>.messagesfromvisitor-container").height() - $("#messagesfromvisitor").height()-100) {
-			drawMessages();
-	   }
-	}
-	$("#messagesfromvisitor").on('touchmove scroll', function(){drawMessagesOnScroll();});
-	
-	setTimeout(function() {
-		if ($('#messagesfromvisitor').isInViewport()) {
-			drawMessages();
-		}
-	}, 1000);
-	
-	$('head')
-	.append(`<link href="${gfonts}/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">`)
-	.append(`<link href="${cdnjsdlvr}/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
-	.append('<link rel="stylesheet" href="//asepnabila.link/calamansi-js/dist/calamansi.min.css">')
-	.append('<link rel="stylesheet" href="//asepnabila.link/qrcode-reader/dist/css/qrcode-reader.min.css">')
-	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
-	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
-	.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
-	.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
-	
-	getVisitorIP();
-	
-	let calamansiScript = document.createElement('script');
-    calamansiScript.src = '//asepnabila.link/calamansi-js/dist/calamansi.min.js';
-    calamansiScript.defer = true;
-    document.body.appendChild(calamansiScript);
-	
-	calamansiScript.onload = function() {
-		createcalamnsielement();
-
-		Calamansi.autoload();
+						var viewContainerTop = parseInt($container.offset().top);
+						var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
 						
-		CalamansiEvents.on('initialized', function (player) {
-			players = player;
-		});
-		
-		CalamansiEvents.on('trackEnded', function (player) {
-			nextsongs();
-		});
-		
-		CalamansiEvents.on('play', function (player) {
-			$("#playindicator").addClass("rotating-spin");
-		});
-		
-		CalamansiEvents.on('pause', function (player) {
-			$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-			$("#playindicator").removeClass("rotating-spin");
-		});
-    };
-	
-	
-	let recaptchaScript = document.createElement('script');
-    recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
-    recaptchaScript.defer = true;
-    document.body.appendChild(recaptchaScript);
-	recaptchaScript.onload = function(){
-		drawMessages();
-	}
-	
-	let bootstrapBundleScript = document.createElement('script');
-    bootstrapBundleScript.src = `${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js`;
-    bootstrapBundleScript.defer = true;
-    document.body.appendChild(bootstrapBundleScript);
-	
-	let qrcodeReaderScript = document.createElement('script');
-    qrcodeReaderScript.src = '//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js';
-    qrcodeReaderScript.defer = true;
-    document.body.appendChild(qrcodeReaderScript);
-	
-	qrcodeReaderScript.onload = function() {
-		$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
-		$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
-		
-		$("#scan-attenderqrcode").qrCodeReader({
-			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
-			audioFeedback: true,
-			callback: function(code) {
-				alert(code);
+						if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){					
+							$plyrElem.find("a[class*=btn-outline-]").each((i,obj) => {
+								var containerColor = $container.css("background-color");
+								if(containerColor == 'rgba(0, 0, 0, 0)'){
+									containerColor = $("body").css("background-color");
+								}
+
+								$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
+								$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
+								$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
+								$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
+							});
+							
+							return false;
+						}
+					}
+				});
+			});
+			
+			function drawMessagesOnScroll(){
+			   if($("#messagesfromvisitor").scrollTop() > $("#messagesfromvisitor>.messagesfromvisitor-container").height() - $("#messagesfromvisitor").height()-100) {
+					drawMessages();
+			   }
 			}
-		});
-	}
-	
-	let fancyboxScript = document.createElement('script');
-    fancyboxScript.src = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js';
-    fancyboxScript.defer = true;
-    document.body.appendChild(fancyboxScript);
-	
-	fancyboxScript.onload = function() {
-		Fancybox.bind("#gallery-prewed > div.grid-item > a", {
-			groupAll : true, // Group all items
-			on : {
-				ready : (fancybox) => {
-					console.log(`fancybox #${fancybox.id} is ready!`);
+			$("#messagesfromvisitor").on('touchmove scroll', function(){drawMessagesOnScroll();});
+			
+			setTimeout(function() {
+				if ($('#messagesfromvisitor').isInViewport()) {
+					drawMessages();
 				}
+			}, 1000);
+			
+			$('head')
+			.append(`<link href="${gfonts}/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">`)
+			.append(`<link href="${cdnjsdlvr}/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
+			.append('<link rel="stylesheet" href="//asepnabila.link/calamansi-js/dist/calamansi.min.css">')
+			.append('<link rel="stylesheet" href="//asepnabila.link/qrcode-reader/dist/css/qrcode-reader.min.css">')
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />`)
+			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
+			
+			getVisitorIP();
+			
+			let calamansiScript = document.createElement('script');
+			calamansiScript.src = '//asepnabila.link/calamansi-js/dist/calamansi.min.js';
+			calamansiScript.defer = true;
+			document.body.appendChild(calamansiScript);
+			
+			calamansiScript.onload = function() {
+				createcalamnsielement();
+
+				Calamansi.autoload();
+								
+				CalamansiEvents.on('initialized', function (player) {
+					players = player;
+				});
+				
+				CalamansiEvents.on('trackEnded', function (player) {
+					nextsongs();
+				});
+				
+				CalamansiEvents.on('play', function (player) {
+					$("#playindicator").addClass("rotating-spin");
+				});
+				
+				CalamansiEvents.on('pause', function (player) {
+					$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+					$("#playindicator").removeClass("rotating-spin");
+				});
+			};
+			
+			
+			let recaptchaScript = document.createElement('script');
+			recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
+			recaptchaScript.defer = true;
+			document.body.appendChild(recaptchaScript);
+			recaptchaScript.onload = function(){
+				drawMessages();
 			}
-		});
-	}
-	
-	$(".lazyload:not([src])").each((i,obj) => {
-		lazyimg = $(obj),
-		obj = $(document.createElement("img")),
-		img = new Image();
-		
-		obj.addClass("d-none");
-		
-		img.onload = function(){
-			obj.attr("src",this.src);
-			obj.appendTo("body");
-		} 
-		
-		img.src = lazyimg.data("src");
-	});
-	$(".lazyload-n-anime:not([src])").each((i,obj) => {
-		lazyimg = $(obj),
-		lazyimg.attr("src", lazyimg.data("src"));
+			
+			let bootstrapBundleScript = document.createElement('script');
+			bootstrapBundleScript.src = `${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js`;
+			bootstrapBundleScript.defer = true;
+			document.body.appendChild(bootstrapBundleScript);
+			
+			let qrcodeReaderScript = document.createElement('script');
+			qrcodeReaderScript.src = '//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js';
+			qrcodeReaderScript.defer = true;
+			document.body.appendChild(qrcodeReaderScript);
+			
+			qrcodeReaderScript.onload = function() {
+				$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
+				$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
+				
+				$("#scan-attenderqrcode").qrCodeReader({
+					qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
+					audioFeedback: true,
+					callback: function(code) {
+						alert(code);
+					}
+				});
+			}
+			
+			let fancyboxScript = document.createElement('script');
+			fancyboxScript.src = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js';
+			fancyboxScript.defer = true;
+			document.body.appendChild(fancyboxScript);
+			
+			fancyboxScript.onload = function() {
+				Fancybox.bind("#gallery-prewed > div.grid-item > a", {
+					groupAll : true, // Group all items
+					on : {
+						ready : (fancybox) => {
+							console.log(`fancybox #${fancybox.id} is ready!`);
+						}
+					}
+				});
+			}
+			
+			$(".lazyload:not([src])").each((i,obj) => {
+				lazyimg = $(obj),
+				obj = $(document.createElement("img")),
+				img = new Image();
+				
+				obj.addClass("d-none");
+				
+				img.onload = function(){
+					obj.attr("src",this.src);
+					obj.appendTo("body");
+				} 
+				
+				img.src = lazyimg.data("src");
+			});
+			$(".lazyload-n-anime:not([src])").each((i,obj) => {
+				lazyimg = $(obj),
+				lazyimg.attr("src", lazyimg.data("src"));
+			});
+		}
 	});
 }
 
