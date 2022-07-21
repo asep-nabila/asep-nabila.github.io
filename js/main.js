@@ -31,7 +31,9 @@ playlist = shuffle(playlist);
 let cpi = 0;
 let players;
 
-$(function() {	
+$(function() {
+	createcalamnsielement();
+	
 	CalamansiEvents.on('initialized', function (player) {
 		players = player;
 	});
