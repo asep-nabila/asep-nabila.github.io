@@ -499,36 +499,29 @@ const showInvitation = function(){
 			}
 		}
 		
-		let calamansiScript = document.createElement('script');
-		calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
-		calamansiScript.defer = true;
-		document.body.appendChild(calamansiScript);
-
-		calamansiScript.onload = function() {
-			createcalamnsielement();
+		createcalamnsielement();
 			
-			Calamansi.autoload();
-							
-			CalamansiEvents.on('initialized', function (player) {
-				players = player;
-				if (localStorage.backsound) {
-					players.audio.play();
-				}
-			});
-			
-			CalamansiEvents.on('trackEnded', function (player) {
-				nextsongs();
-			});
-			
-			CalamansiEvents.on('play', function (player) {
-				$("#playindicator").addClass("rotating-spin");
-			});
-			
-			CalamansiEvents.on('pause', function (player) {
-				$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-				$("#playindicator").removeClass("rotating-spin");
-			});
-		};
+		Calamansi.autoload();
+						
+		CalamansiEvents.on('initialized', function (player) {
+			players = player;
+			if (localStorage.backsound) {
+				players.audio.play();
+			}
+		});
+		
+		CalamansiEvents.on('trackEnded', function (player) {
+			nextsongs();
+		});
+		
+		CalamansiEvents.on('play', function (player) {
+			$("#playindicator").addClass("rotating-spin");
+		});
+		
+		CalamansiEvents.on('pause', function (player) {
+			$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+			$("#playindicator").removeClass("rotating-spin");
+		});
 	});
 }
 
