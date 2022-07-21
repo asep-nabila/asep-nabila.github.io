@@ -363,7 +363,9 @@ clipboardScript.onload = function(){
 		$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);
 	});
 	
-	Calamansi.autoload();
+	setTimeout(function(){
+		Calamansi.autoload();
+	}, 1000);
 						
 	CalamansiEvents.on('initialized', function (player) {
 		players = player;
