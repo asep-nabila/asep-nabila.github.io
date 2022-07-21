@@ -1,7 +1,7 @@
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	$("#calamansiplaycontroler").empty();
-	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="https://asepnabila.link/music/'+p.file+'"></span>');
+	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	
 	if ($(".marquee").width() >= $("nav").width()/100*65) {
@@ -14,7 +14,7 @@ const nextsongs = function(){
 	cpi = cpi+1;
 	if(cpi >= playlist.length ) cpi = 0;
 	let p = playlist[cpi];
-	players.audio.load('https://asepnabila.link/music/'+p.file);
+	players.audio.load('music/'+p.file);
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	players.audio.play();
 	
