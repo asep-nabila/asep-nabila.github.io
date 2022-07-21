@@ -24,6 +24,34 @@ const nextsongs = function(){
 	}
 }
 
+function timeDifference(c, p) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = c - p;
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' detik';   
+    }
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' menit';   
+    }
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' jam';   
+    }
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' hari';   
+    }
+    else if (elapsed < msPerYear) {
+        return + Math.round(elapsed/msPerMonth) + ' bulan';   
+    }
+    else {
+        return Math.round(elapsed/msPerYear ) + ' tahun';   
+    }
+}
+
 const startCountdown = function(){
 	const second = 1000,
 		minute = second * 60,
@@ -66,6 +94,14 @@ const animeteCount = function(el, to){
             el.text(Math.ceil(now))
         }
     });
+}
+
+function isDark( c ) {
+    var match = /rgba?\((\d+).*?(\d+).*?(\d+)\)/.exec(c);
+    return parseFloat(match[1])
+         + parseFloat(match[2])
+         + parseFloat(match[3])
+           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
 }
 
 const generateQrBukuTamu = function(){

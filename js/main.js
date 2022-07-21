@@ -32,7 +32,6 @@ let cpi = 0;
 let players;
 
 $(function() {
-	$("#main-css").prop("disabled", false);
 	if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 		swallAskName(showEnvelope);
 	}else{

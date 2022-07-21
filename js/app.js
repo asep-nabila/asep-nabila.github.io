@@ -233,6 +233,7 @@ class getData {
 
 //app.js
 $(function() {
+	$("#main-css").prop("disabled", false);
 	$('head').append(`<link href="${gfonts}/css2?family=Playball&display=swap" rel="stylesheet">`);
 	$('head').append(`<link href="${gfonts}/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">`);
 	$('head').append(`<link rel="stylesheet" rel="preload" as="font" href="${cdnjsdlvr}/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">`);
@@ -278,22 +279,8 @@ const queryParams = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-const shuffle = function(array) {
-  let currentIndex = array.length,  randomIndex;
-
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
-
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
+const shuffle = function(ar) {
+	let cI = ar.length,  rI;while (cI != 0) {rI = Math.floor(Math.random() * cI);cI--;[ar[cI], ar[rI]] = [ar[rI], ar[cI]];}return ar;
 }
 
 const encodeHTML = function(s) {
@@ -352,41 +339,6 @@ const addURLParameter = function(key, value) {
 	window.history.pushState('', '', document.location.pathname+'?'+params);
 }
 
-function timeDifference(current, previous) {
-
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
-
-    var elapsed = current - previous;
-
-    if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' detik';   
-    }
-
-    else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' menit';   
-    }
-
-    else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' jam';   
-    }
-
-    else if (elapsed < msPerMonth) {
-        return Math.round(elapsed/msPerDay) + ' hari';   
-    }
-
-    else if (elapsed < msPerYear) {
-        return + Math.round(elapsed/msPerMonth) + ' bulan';   
-    }
-
-    else {
-        return Math.round(elapsed/msPerYear ) + ' tahun';   
-    }
-}
-
 function capitalizing(string) {
 	string = string.toLowerCase();
 	var splitStr = string.toLowerCase().split(' ');
@@ -397,15 +349,6 @@ function capitalizing(string) {
 	}
 	// Directly return the joined string
 	return splitStr.join(' '); 
-}
-
-
-function isDark( color ) {
-    var match = /rgba?\((\d+).*?(\d+).*?(\d+)\)/.exec(color);
-    return parseFloat(match[1])
-         + parseFloat(match[2])
-         + parseFloat(match[3])
-           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
 }
 
 let visitorIP = '';
