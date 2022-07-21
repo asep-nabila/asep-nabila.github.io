@@ -31,25 +31,9 @@ playlist = shuffle(playlist);
 let cpi = 0;
 let players;
 
-$(function() {
-	if(typeof kepada == 'undefined' && typeof group == 'undefined'){
-		swallAskName(showEnvelope);
-	}else{
-		if(typeof kepada == 'undefined'){
-			receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, encodeHTML(group));
-		}else{
-			receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, encodeHTML(kepada).toLowerCase());
-		}
-		
-		showEnvelope();
-	}
-	
+$(function() {	
 	CalamansiEvents.on('initialized', function (player) {
 		players = player;
-		console.log(players);
-		if (localStorage.backsound) {
-			players.audio.play();
-		}
 	});
 
 	CalamansiEvents.on('trackEnded', function (player) {
@@ -64,6 +48,20 @@ $(function() {
 		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
 		$("#playindicator").removeClass("rotating-spin");
 	});
+	
+	Calamansi.autoload();
+	
+	if(typeof kepada == 'undefined' && typeof group == 'undefined'){
+		swallAskName(showEnvelope);
+	}else{
+		if(typeof kepada == 'undefined'){
+			receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, encodeHTML(group));
+		}else{
+			receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, encodeHTML(kepada).toLowerCase());
+		}
+		
+		showEnvelope();
+	}
 });
 
 if (history.scrollRestoration) {
