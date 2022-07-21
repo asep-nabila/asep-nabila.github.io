@@ -309,38 +309,38 @@ const removeURLParameter = function(url, parameter) {
 	window.history.pushState('', '', url);
 }
 
-const addURLParameter = function(key, value) {	
-    key = encodeURIComponent(key);
-    value = encodeURIComponent(value);
+const addURLParameter = function(k, v) {	
+    k = encodeURIComponent(k);
+    v = encodeURIComponent(v);
 
     // kvp looks like ['key1=value1', 'key2=value2', ...]
     var kvp = document.location.search.substr(1).split('&');
     let i=0;
 
     for(; i<kvp.length; i++){
-        if (kvp[i].startsWith(key + '=')) {
+        if (kvp[i].startsWith(k + '=')) {
             let pair = kvp[i].split('=');
-            pair[1] = value;
+            pair[1] = v;
             kvp[i] = pair.join('=');
             break;
         }
     }
 
     if(i >= kvp.length){
-        kvp[kvp.length] = [key,value].join('=');
+        kvp[kvp.length] = [k,v].join('=');
     }
 
     // can return this or...
-    let params = kvp.join('&');
-    params = params.replace(/^\&+|\&+$/g, '');
+    let prms = kvp.join('&');
+    prms = prms.replace(/^\&+|\&+$/g, '');
 
     // reload page with new params
-	window.history.pushState('', '', document.location.pathname+'?'+params);
+	window.history.pushState('', '', document.location.pathname+'?'+prms);
 }
 
-function capitalizing(string) {
-	string = string.toLowerCase();
-	var splitStr = string.toLowerCase().split(' ');
+function capitalizing(str) {
+	str = str.toLowerCase();
+	var splitStr = str.toLowerCase().split(' ');
 	for (var i = 0; i < splitStr.length; i++) {
 		// You do not need to check if i is larger than splitStr length, as your for does that for you
 		// Assign it back to the array
