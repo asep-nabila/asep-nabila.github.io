@@ -1,29 +1,3 @@
-const createcalamnsielement = function(){
-	let p = playlist[cpi];
-	$("#calamansiplaycontroler").empty();
-	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
-	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-	
-	if ($(".marquee").width() >= $("nav").width()/100*65) {
-		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
-		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-	}
-}
-
-const nextsongs = function(){
-	cpi = cpi+1;
-	if(cpi >= playlist.length ) cpi = 0;
-	let p = playlist[cpi];
-	players.audio.load('music/'+p.file);
-	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-	players.audio.play();
-	
-	if ($(".marquee").width() >= $("nav").width()/100*65) {
-		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
-		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-	}
-}
-
 function timeDifference(c, p) {
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
@@ -398,39 +372,6 @@ window.history.pushState('', '', window.location.pathname);
 $("body").css("background-image", 'url('+$("body").data("background")+')');
 
 getVisitorIP();
-
-
-createcalamnsielement();
-
-let calamansiScript = document.createElement('script');
-calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
-calamansiScript.defer = true;
-document.body.appendChild(calamansiScript);
-
-calamansiScript.onload = function() {	
-	Calamansi.autoload();
-					
-	CalamansiEvents.on('initialized', function (player) {
-		players = player;
-		if (localStorage.backsound) {
-			players.audio.play();
-		}
-	});
-	
-	CalamansiEvents.on('trackEnded', function (player) {
-		nextsongs();
-	});
-	
-	CalamansiEvents.on('play', function (player) {
-		$("#playindicator").addClass("rotating-spin");
-	});
-	
-	CalamansiEvents.on('pause', function (player) {
-		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-		$("#playindicator").removeClass("rotating-spin");
-	});
-};
-
 
 let recaptchaScript = document.createElement('script');
 recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
