@@ -27,10 +27,6 @@ if(isCrawler){
 	dari = "Tesla, Inc";
 }
 
-playlist = shuffle(playlist);
-let cpi = 0;
-let players;
-
 $(function() {
 	createcalamnsielement();
 	
