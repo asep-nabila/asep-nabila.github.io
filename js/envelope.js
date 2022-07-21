@@ -400,14 +400,14 @@ $("body").css("background-image", 'url('+$("body").data("background")+')');
 getVisitorIP();
 
 
+createcalamnsielement();
+
 let calamansiScript = document.createElement('script');
 calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
 calamansiScript.defer = true;
 document.body.appendChild(calamansiScript);
 
-calamansiScript.onload = function() {
-	createcalamnsielement();
-	
+calamansiScript.onload = function() {	
 	Calamansi.autoload();
 					
 	CalamansiEvents.on('initialized', function (player) {
