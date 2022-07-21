@@ -27,28 +27,7 @@ if(isCrawler){
 	dari = "Tesla, Inc";
 }
 
-$(function() {
-	createcalamnsielement();
-	
-	CalamansiEvents.on('initialized', function (player) {
-		players = player;
-	});
-
-	CalamansiEvents.on('trackEnded', function (player) {
-		nextsongs();
-	});
-
-	CalamansiEvents.on('play', function (player) {
-		$("#playindicator").addClass("rotating-spin");
-	});
-
-	CalamansiEvents.on('pause', function (player) {
-		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-		$("#playindicator").removeClass("rotating-spin");
-	});
-	
-	Calamansi.autoload();
-	
+$(function() {	
 	if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 		swallAskName(showEnvelope);
 	}else{
