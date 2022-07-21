@@ -63,6 +63,17 @@
 	</script>
   </head>
   <body data-background="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@masterimg/llleaves.svg" class="text-muted">
+	<span id="player-elem">
+		<div id="player-title-panel" class="player-panel">
+			<small class="d-none animate__animated animate__fadeInLeft" style="padding: .25rem "><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
+		</div>
+		<div id="player-control-panel" class="music-controler player-panel"> 
+			<span id="calamansiplaycontroler"></span>
+			<a id="nextsongs" class="btn btn-sm btn-outline-dark" rel="noindex nofollow">	
+				<span><i class="bi bi-skip-forward-fill"></i></span>
+			</a>
+		</div>
+	</span>
 	<div id="envelope"></div>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="playlist.js"></script>
