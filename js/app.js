@@ -445,6 +445,7 @@ const showEnvelope = function(){
 }
 
 const showInvitation = function(){
+	createcalamnsielement();
 	$('#envelope').load('envelope.html', function( response, status, xhr ) {
 		if ( status == "error" ) {
 			var msg = "Sorry but there was an error: ";
@@ -495,35 +496,33 @@ const showInvitation = function(){
 				document.body.appendChild(envelopeMainScript);
 			}
 		}
-		
-		const createcalamnsielement = function(){
-			let p = playlist[cpi];
-			$("#calamansiplaycontroler").empty();
-			$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
-			$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-			
-			if ($(".marquee").width() >= $("nav").width()/100*65) {
-				$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
-				$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-			}
-		}
-
-		const nextsongs = function(){
-			cpi = cpi+1;
-			if(cpi >= playlist.length ) cpi = 0;
-			let p = playlist[cpi];
-			players.audio.load('music/'+p.file);
-			$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-			players.audio.play();
-			
-			if ($(".marquee").width() >= $("nav").width()/100*65) {
-				$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
-				$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-			}
-		}
-		
-		createcalamnsielement();
 	});
+}
+
+const createcalamnsielement = function(){
+	let p = playlist[cpi];
+	$("#calamansiplaycontroler").empty();
+	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
+	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
+	
+	if ($(".marquee").width() >= $("nav").width()/100*65) {
+		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
+		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
+	}
+}
+
+const nextsongs = function(){
+	cpi = cpi+1;
+	if(cpi >= playlist.length ) cpi = 0;
+	let p = playlist[cpi];
+	players.audio.load('music/'+p.file);
+	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
+	players.audio.play();
+	
+	if ($(".marquee").width() >= $("nav").width()/100*65) {
+		$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
+		$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
+	}
 }
 
 const swalConfirmBackSound = function(){
