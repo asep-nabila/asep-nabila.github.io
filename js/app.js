@@ -469,6 +469,7 @@ const showInvitation = function(){
 						
 				CalamansiEvents.on('initialized', function (player) {
 					players = player;
+					console.log(players);
 					if (localStorage.backsound) {
 						players.audio.play();
 					}
