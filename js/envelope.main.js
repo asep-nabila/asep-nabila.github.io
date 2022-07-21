@@ -1,8 +1,3 @@
-$(".clipboard[data-clipboard-var]").each(function(i, obj){
-	let clipboardVar = $(this).data("clipboard-var").split("-");
-	$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);
-});
-
 $('.nav-link, .navigate-link').each(function() {
 	$(this).on('click', function(event) {
 		event.preventDefault();
@@ -341,5 +336,32 @@ $(".lazyload-n-anime:not([src])").each((i,obj) => {
 });
 
 config.init(false);
+
+let clipboardScript = document.createElement('script');
+clipboardScript.src = 'https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js;
+clipboardScript.defer = true;
+document.body.appendChild(clipboardScript);
+clipboardScript.onload = function(){
+	let clipboard = new ClipboardJS('.clipboard');
+	clipboard.on('success', function (e) {
+		let $elem = $(e.trigger);
+		let elemprehtml = $elem.html();
+		let elempreclass = $elem.attr("class");
+		let copytext = e.text;
+		$elem.html("Berhasil disalin");
+		$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
+		setTimeout(function(){
+			$elem.html(elemprehtml);
+			$elem.attr("class", elempreclass);
+		},1000);
+
+		e.clearSelection();
+	});
+	
+	$(".clipboard[data-clipboard-var]").each(function(i, obj){
+		let clipboardVar = $(this).data("clipboard-var").split("-");
+		$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);
+	});
+}
 
 generateQrBukuTamu();
