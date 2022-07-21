@@ -394,6 +394,10 @@ async function getVisitorId(functionCallbak) {
 	}
 }
 
+playlist = shuffle(playlist);
+let cpi = 0;
+let players;
+
 const showEnvelope = function(){
 	Swal.fire({
 		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small>' +
