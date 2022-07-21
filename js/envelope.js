@@ -36,7 +36,7 @@ const nextsongs = function(){
 	cpi = cpi+1;
 	if(cpi >= playlist.length ) cpi = 0;
 	let p = playlist[cpi];
-	players.audio.load('//asepnabila.link/music/'+p.file);
+	players.audio.load('https://asepnabila.link/music/'+p.file);
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
 	players.audio.play();
 	
