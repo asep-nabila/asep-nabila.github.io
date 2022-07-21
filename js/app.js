@@ -236,7 +236,6 @@ $(function() {
 	$("#main-css").prop("disabled", false);
 	$('head').append(`<link href="${gfonts}/css2?family=Playball&display=swap" rel="stylesheet">`);
 	$('head').append(`<link href="${gfonts}/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">`);
-	$('head').append(`<link rel="stylesheet" rel="preload" as="font" href="${cdnjsdlvr}/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">`);
 	
 	$.fn.isInViewport = function() {
 		var elementTop = $(this).offset().top;
@@ -430,7 +429,10 @@ const showEnvelope = function(){
 		imageUrl: 'https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/asepdila.webp',
 		imageWidth: 250,
 		imageHeight: 250,
-		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`
+		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`,
+		didOpen: () => {
+			$('head').append(`<link rel="stylesheet" as="font" href="${cdnjsdlvr}/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">`);
+		}
 	}).then((result) => {
 		showInvitation();
 		if(typeof kepada == 'undefined' || kepada == ''){
