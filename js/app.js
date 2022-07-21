@@ -1,7 +1,3 @@
-playlist = shuffle(playlist);
-let cpi = 0;
-let players;
-
 let _tCfs = {
 	"groom": {
 		"fullname": "Asep Maulana Nuriman",
