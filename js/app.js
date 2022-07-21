@@ -488,6 +488,7 @@ const createcalamnsielement = function(){
 	}
 }
 
+let players;
 const nextsongs = function(){
 	cpi = cpi+1;
 	if(cpi >= playlist.length ) cpi = 0;
