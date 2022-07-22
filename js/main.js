@@ -41,6 +41,7 @@ $(function() {
 	}
 });
 
+
 if (history.scrollRestoration) {
 	history.scrollRestoration = 'manual';
 } else {

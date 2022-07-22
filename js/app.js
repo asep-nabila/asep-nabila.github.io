@@ -257,11 +257,6 @@ $(function() {
 	}
 });
 
-$( window ).on("load", function() {	
-	$('head').append(`<link href="${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="preload" as="style" crossorigin="anonymous">`);
-	$('head').append(`<link rel="stylesheet" href="${cdnjsbaseurl}/animate.css/4.1.1/animate.min.css" rel="preload" as="style" media="(prefers-reduced-motion: no-preference)"/>`);
-});
-
 //functions.js
 const cdnjsbaseurl = "https://cdnjs.cloudflare.com/ajax/libs";
 const cdnjsdlvr = "https://cdn.jsdelivr.net";
