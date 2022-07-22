@@ -3,7 +3,7 @@ playlist = [
 		"title": "Baby I'm Yours",
 		"artis": "Arctic Monkeys",
 		"explicit": false,
-		"file": "Arctic Monkeys - Baby I'm Yours.mp3"
+		"file": "Arctic Monkeys - Baby Im Yours.mp3"
 	},
 	{
 		"title": "Menikahimu",
