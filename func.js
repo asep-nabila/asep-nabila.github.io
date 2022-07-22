@@ -73,8 +73,7 @@ const showEnvelope = function(){
 			'</h1>',
 		html: receiverhtml,		
 		confirmButtonText: '<i title="Bukan Undangan Asep Maulana Nuriman & Nabila Dea Santika" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
-		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>
-				Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
+		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
