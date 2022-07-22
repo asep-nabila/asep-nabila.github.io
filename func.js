@@ -63,13 +63,13 @@ const showEnvelope = function(){
 	Swal.fire({
 		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small>' +
 			'<h1 class="envelope">' +
-				`<sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup>` +
+				`<sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep</sup>` +
 				'<small>&</small>' + 
-				`<sub style="font-size:3.5rem" title="${config.bride.fullname} (${config.bride.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.bride.firstname}</sub>` +
+				`<sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub>` +
 			'</h1>',
 		html: receiverhtml,		
-		confirmButtonText: `<i title="Bukan Undangan ${config.groom.fullname} & ${config.bride.fullname}" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan`,
-		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of ${config.groom.fullname} & ${config.bride.fullname}<br/>
+		confirmButtonText: `<i title="Bukan Undangan Asep Maulana Nuriman & Nabila Dea Santika" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan`,
+		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>
 				Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
 		width: 'auto',
 		height: '100%',
