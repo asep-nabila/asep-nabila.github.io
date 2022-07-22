@@ -99,7 +99,7 @@ const showEnvelope = function(){
 		imageWidth: 250,
 		imageHeight: 250,
 		imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)',
-		didOpen: () => {
+		didRender: () => {
 			$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">');
 			$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">');
 		}
