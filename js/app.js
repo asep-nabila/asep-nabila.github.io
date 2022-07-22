@@ -455,6 +455,7 @@ const showInvitation = function(){
 		players = player;
 		if (localStorage.backsound) {
 			setTimeout(function(){
+				console.log("play backsound...");
 				players.audio.play();
 			}, 2000)
 		}
