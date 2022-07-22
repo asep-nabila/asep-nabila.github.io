@@ -448,16 +448,16 @@ const showEnvelope = function(){
 	})
 }
 
+let playersPlayTimeout;
 const showInvitation = function(){
 	createcalamnsielement();
 	
 	CalamansiEvents.on('initialized', function (player) {
 		players = player;
 		if (localStorage.backsound == "true") {
-			setTimeout(function(){
-				console.log("play backsound...");
+			playersPlayTimeout = setTimeout(function(){
 				players.audio.play();
-			}, 2000)
+			}, 2000);
 		}
 	});
 
@@ -545,6 +545,10 @@ const swalConfirmBackSound = function(){
 		}).then((result) => {					
 			if (result.isConfirmed) {
 				localStorage.backsound = true;
+				if(typeof players.audio == 'object'){
+					clearTimeout(playersPlayTimeout);
+					players.audio.play();
+				}
 			}else{
 				localStorage.backsound = false;
 			}
