@@ -61,7 +61,7 @@ const swallAskName = function(functiontoCall){
 
 const showEnvelope = function(){
 	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">';
-	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">';
+	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap-utilities.min.css" rel="stylesheet">';
 	
 	Swal.fire({
 		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small>' +
@@ -99,6 +99,8 @@ const showEnvelope = function(){
 		imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)',
 		didRender: () => {
 			document.head.innerHTML += '<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>';
+			document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap-grid.min.css" rel="stylesheet">';
+			document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap-reboot.min.css" rel="stylesheet">';
 		}
 	}).then((result) => {
 		showInvitation();
