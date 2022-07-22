@@ -369,7 +369,7 @@ $("#player-control-panel").on("click touchend", function(){
 
 window.history.pushState('', '', window.location.pathname);
 
-$("body").css("background-image", 'url('+$("body").data("background")+')');
+//$("body").css("background-image", 'url('+$("body").data("background")+')');
 
 getVisitorIP();
 
