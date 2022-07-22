@@ -57,3 +57,54 @@ const swallAskName = function(functiontoCall){
 		}
 	});
 }
+
+
+const showEnvelope = function(){
+	Swal.fire({
+		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small>' +
+			'<h1 class="envelope">' +
+				`<sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup>` +
+				'<small>&</small>' + 
+				`<sub style="font-size:3.5rem" title="${config.bride.fullname} (${config.bride.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.bride.firstname}</sub>` +
+			'</h1>',
+		html: receiverhtml,		
+		confirmButtonText: `<i title="Bukan Undangan ${config.groom.fullname} & ${config.bride.fullname}" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan`,
+		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of ${config.groom.fullname} & ${config.bride.fullname}<br/>
+				Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
+		width: 'auto',
+		height: '100%',
+		grow: 'fullscreen',
+		background: '#FFFAFF',
+		backdrop: '#643A5D',
+		customClass : {
+			popup: 'close-envelope-popup',
+			image: 'close-envelope-popup-img-bridegroom',
+			confirmButton: 'btn btn-primary'
+		},
+		showClass: {
+			popup: '',// disable icon animation
+		},
+		hideClass: {
+			popup: 'animate__animated animate__slideOutUp',
+			backdrop: 'animate__animated animate__slideOutUp',
+		},
+		allowOutsideClick: false,
+		allowEscapeKey: false,
+		allowEnterKey: false,
+		imageUrl: 'https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/asepdila.webp',
+		imageWidth: 250,
+		imageHeight: 250,
+		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`,
+		didOpen: () => {
+			$('head').append(`<link rel="stylesheet" as="font" href="${cdnjsdlvr}/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">`);
+		}
+	}).then((result) => {
+		showInvitation();
+		if(typeof kepada == 'undefined' || kepada == ''){
+			swallAskName(swallAskFrom);
+		}else{
+			localStorage.kepada = kepada.toUpperCase();
+			swallAskFrom();
+		}
+	})
+}
