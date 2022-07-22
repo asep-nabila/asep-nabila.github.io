@@ -100,7 +100,8 @@ const showEnvelope = function(){
 		imageHeight: 250,
 		imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)',
 		didOpen: () => {
-			$('head').append('<link rel="stylesheet" as="font" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">');
+			$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">');
+			$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">');
 		}
 	}).then((result) => {
 		showInvitation();
@@ -110,7 +111,5 @@ const showEnvelope = function(){
 			localStorage.kepada = kepada.toUpperCase();
 			swallAskFrom();
 		}
-		
-		$('head').append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">');
 	})
 }
