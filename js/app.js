@@ -452,29 +452,35 @@ let playersPlayTimeout;
 const showInvitation = function(){
 	createcalamnsielement();
 	
-	CalamansiEvents.on('initialized', function (player) {
-		players = player;
-		if (localStorage.backsound == "true") {
-			playersPlayTimeout = setTimeout(function(){
-				players.audio.play();
-			}, 2000);
-		}
-	});
+	let calamansiScript = document.createElement('script');
+	calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
+	calamansiScript.defer = true;
+	document.body.appendChild(calamansiScript);
+	calamansiScript.onload = function(){		
+		CalamansiEvents.on('initialized', function (player) {
+			players = player;
+			if (localStorage.backsound == "true") {
+				playersPlayTimeout = setTimeout(function(){
+					players.audio.play();
+				}, 2000);
+			}
+		});
 
-	CalamansiEvents.on('trackEnded', function (player) {
-		nextsongs();
-	});
+		CalamansiEvents.on('trackEnded', function (player) {
+			nextsongs();
+		});
 
-	CalamansiEvents.on('play', function (player) {
-		$("#playindicator").addClass("rotating-spin");
-	});
+		CalamansiEvents.on('play', function (player) {
+			$("#playindicator").addClass("rotating-spin");
+		});
 
-	CalamansiEvents.on('pause', function (player) {
-		$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-		$("#playindicator").removeClass("rotating-spin");
-	});
-	
-	Calamansi.autoload();
+		CalamansiEvents.on('pause', function (player) {
+			$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+			$("#playindicator").removeClass("rotating-spin");
+		});
+		
+		Calamansi.autoload();
+	}
 	
 	$('#envelope').load('envelope.html', function( response, status, xhr ) {
 		if ( status == "error" ) {
