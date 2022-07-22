@@ -417,9 +417,9 @@ const showInvitation = function(){
 			.append(`<link href="${cdnjsdlvr}/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
 			.append('<link rel="stylesheet" href="//asepnabila.link/calamansi-js/dist/calamansi.min.css">')
 			.append('<link rel="stylesheet" href="//asepnabila.link/qrcode-reader/dist/css/qrcode-reader.min.css">')
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css"/>`)
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css"/>`)
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css"/>`)
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
 			
 			let envelopeScript = document.createElement('script');
