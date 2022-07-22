@@ -369,7 +369,7 @@ async function getVisitorId(functionCallbak) {
 	}
 }
 
-playlist = shuffle(playlist);
+if(typeof playlist !== 'undefined') playlist = shuffle(playlist);
 let cpi = 0;
 let players;
 
