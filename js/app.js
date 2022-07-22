@@ -252,7 +252,7 @@ $(function() {
 	//const fpPromise = import('./sidikramo.js').then(FingerprintJS => );
 	let sidikramoScript = document.createElement('script');
     sidikramoScript.src = '//asepnabila.link/js/sidikramo.js';
-    sidikramoScript.defer = true;
+    sidikramoScript.async = true;
     document.body.appendChild(sidikramoScript);
 	sidikramoScript.onload = function(){
 		fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
@@ -454,7 +454,7 @@ const showInvitation = function(){
 	
 	let calamansiScript = document.createElement('script');
 	calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
-	calamansiScript.defer = true;
+	calamansiScript.async = true;
 	document.body.appendChild(calamansiScript);
 	calamansiScript.onload = function(){		
 		CalamansiEvents.on('initialized', function (player) {
@@ -499,13 +499,13 @@ const showInvitation = function(){
 			
 			let envelopeScript = document.createElement('script');
 			envelopeScript.src = 'js/envelope.js';
-			envelopeScript.defer = true;
+			envelopeScript.async = true;
 			document.body.appendChild(envelopeScript);
 			envelopeScript.onload = function(){				
 				console.log("envelope ready");
 				let envelopeMainScript = document.createElement('script');
 				envelopeMainScript.src = 'js/envelope.main.js';
-				envelopeMainScript.defer = true;
+				envelopeMainScript.async = true;
 				document.body.appendChild(envelopeMainScript);
 			}
 		}
