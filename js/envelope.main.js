@@ -1,3 +1,72 @@
+let prewedimgs = [{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	},
+	{
+		"href": "https://picsum.photos/600/400",
+		"src": "https://picsum.photos/300/200",
+		"title": "",
+		"alt": ""
+	}
+];
+
+for (let i = 0; i < prewedimgs.length; ++i) {
+	let img = prewedimgs[i];
+	if($("#gallery-prewed") !== null){
+		$("#gallery-prewed").innerHTML = document.getElementById("gallery-prewed").innerHTML + `<div class="grid-item"><a href="${img.href}?${i}"><img class="lazyload img-fluid" data-src="${img.src}?${i}"></img></a></div>`;
+	}
+}
+
 $('.nav-link, .navigate-link').each(function() {
 	$(this).on('click', function(event) {
 		event.preventDefault();
@@ -181,12 +250,12 @@ $("#messagesfromvisitor-submit-form").on("submit", function(e){
 			submitmessagebtn.prop('disabled', true);
 		
 			grecaptcha.ready(() => {
-				grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then(function(token) {
+				grecaptcha.execute('6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', {action: 'submit'}).then(function(token) {
 					
 					getInsertMessageParams = new getData({}, {"action":"insertComments", "grespon":token});
 					
 					var settings = {
-						"url": `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getInsertMessageParams.params()}`,
+						"url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?${getInsertMessageParams.params()}`,
 						"method": "POST",
 						"timeout": 0,
 						"headers": {

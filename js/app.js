@@ -1,201 +1,3 @@
-let _tCfs = {
-	"groom": {
-		"fullname": "Asep Maulana Nuriman",
-		"nickname": "Maunklana",
-		"accountnumber": "3790761757",
-		"accountusername": "maunklana",
-		"phonenumber": "08999333855"
-	},
-	"bride": {
-		"fullname": "Nabila Dea Santika",
-		"nickname": "Dila"
-	},
-	"events": {
-		"date": "2023-03-11",
-		"reception": {
-			"time": "10:00",
-			"location": "Jl. Raya Lembang No.KM 12,1, RT.01/RW.03, Gudangkahuripan, Lembang"
-		},
-		"akad": {
-			"time": "09:00",
-			"location": "Jl. Raya Lembang No.KM 12,1, RT.01/RW.03, Gudangkahuripan, Lembang"
-		}
-	},
-	"pagedomain": "asepnabila.link",
-	"grecaptchasitekey": "6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU",
-	"appscript": {
-		"baseurl": "https://script.google.com/macros/s/",
-		"deploymentid": "AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic"
-	},
-	"fingerprintjs": {
-		"publictoken": "OS3SLXNyklDNGY2qQcMy",
-		"customendpoint": "sr"
-	},
-	"galleryprewed": [{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		},
-		{
-			"href": "https://picsum.photos/600/400",
-			"src": "https://picsum.photos/300/200",
-			"title": "",
-			"alt": ""
-		}
-	]
-};
-
-class Config {
-	constructor(cfgs) {  // Constructor
-		if(typeof cfgs.fingerprintjs == 'undefined'){
-			 cfgs.fingerprintjs = {};
-		}
-		
-		cfgs.fingerprintjs.url = 'https://openfpcdn.io/fingerprintjs/v3';
-		if(typeof cfgs.fingerprintjs.publictoken != 'undefined'){
-			cfgs.fingerprintjs.url = `https://fpcdn.io/v3/${cfgs.fingerprintjs.publictoken}`;
-		}
-		
-		let dateObj = new Date(cfgs.events.date),
-		month = dateObj.getUTCMonth() + 1,
-		day = dateObj.getUTCDate(),
-		year = dateObj.getUTCFullYear(),
-		daysNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'],
-		monthsNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-
-		cfgs.events.datehuman = day + " " + monthsNames[month-1] + " " + year;
-		cfgs.events.days = daysNames[dateObj.getDay()];
-		
-		for (var conf in cfgs) {
-			this[conf] = cfgs[conf];
-			if(typeof this[conf]['fullname'] != 'undefined'){
-				this[conf]['firstname'] = this[conf]['fullname'].substring(0, this[conf]['fullname'].indexOf(' '));
-				this[conf]['lastname'] = this[conf]['fullname'].substring(this[conf]['fullname'].indexOf(' ') + 1);
-			}
-		}
-	}
-	
-	preinit(d = true){
-		if(d){
-			document.title = `Undangan Pernikahan ${this.groom.firstname} & ${this.bride.firstname}`;
-			document.querySelector('meta[name="description"]').setAttribute("content", `Undangan Pernikahan ${this.groom.fullname} (${this.groom.nickname}) & ${this.bride.fullname} (${this.bride.nickname}), kami mengundang anda untuk hadir di acara pernikahan kami.`);
-			document.querySelector('meta[name="keywords"]').setAttribute("content", `Undangan, Pernikahan, ${this.groom.firstname}, ${this.bride.firstname}, ${this.groom.nickname}, ${this.bride.nickname}, ${this.groom.fullname}, ${this.bride.fullname}, ${this.groom.firstname} & ${this.bride.firstname}, ${this.groom.firstname} & ${this.bride.nickname}, Undangan ${this.groom.firstname} & ${this.bride.nickname}, Undangan ${this.groom.firstname} & Bila`);
-		}
-	}
-	
-	init(iTxt = true){
-		for (var conf in this) {
-			if(iTxt){
-				if(['groom','bride','events'].indexOf(conf) !== -1){
-					for (var key in this[conf]) {
-						if(typeof this[conf][key] == "string"){
-							let theClsName = document.getElementsByClassName(`${conf}-${key}`);
-							if(theClsName.length > 0){
-								for (var i = 0; i < theClsName.length; i++) {
-									theClsName.item(i).innerText = this[conf][key];
-								}
-							}
-						}
-						
-						if(typeof this[conf][key] == "object"){
-							for (var keys in this[conf][key]) {
-								let theClsName = document.getElementsByClassName(`${conf}-${key}-${keys}`);
-								if(theClsName.length > 0){
-									for (var i = 0; i < theClsName.length; i++) {
-										theClsName.item(i).innerText = this[conf][key][keys];
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			
-			if(conf == "galleryprewed"){
-				for (let index = 0; index < this[conf].length; ++index) {
-					let img = this[conf][index];
-					if(document.getElementById("gallery-prewed") !== null){
-						document.getElementById("gallery-prewed").innerHTML = document.getElementById("gallery-prewed").innerHTML + `<div class="grid-item"><a href="${img.href}?${index}"><img class="lazyload img-fluid" data-src="${img.src}?${index}"></img></a></div>`;
-					}
-				}
-			}
-		}
-		
-		let grmph = document.getElementsByClassName("groomphonenumbershow");
-		if(grmph.length > 0){
-			for (var i = 0; i < grmph.length; i++) {
-				let c = grmph.item(i);
-				let ctx = c.getContext('2d');
-				ctx.lineWidth = 0.5;
-				ctx.textBaseline = 'top';
-				
-				let __Str = "__";
-				if(isMobile){
-					__Str = "____";
-				}
-				
-				c.width = ctx.measureText(this.groom.phonenumber.split('').join(" ")).width + ctx.measureText(__Str).width;
-				
-				ctx.font = ".9rem Arial";
-				ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-				ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-			}
-		}
-	}
-}
-
-const config = new Config(_tCfs);
-config.preinit(false);
-
 //Constructor.js
 class postData {
 	constructor(datas) {  // Constructor
@@ -227,8 +29,8 @@ class getData {
 //app.js
 $(function() {
 	$("#main-css").prop("disabled", false);
-	$('head').append(`<link href="${gfonts}/css2?family=Playball&display=swap" rel="stylesheet">`);
-	$('head').append(`<link href="${gfonts}/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">`);
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">');
+	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
 	
 	$.fn.isInViewport = function() {
 		var elementTop = $(this).offset().top;
@@ -248,7 +50,7 @@ $(function() {
     sidikramoScript.async = true;
     document.body.appendChild(sidikramoScript);
 	sidikramoScript.onload = function(){
-		fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
+		fpPromise = FingerprintJS.load({apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: `https://sr.asepnabila.link`});
 		if(typeof goToInvitation !== "undefined"){
 			getVisitorId(goToInvitation);		
 		}else{	
@@ -258,10 +60,6 @@ $(function() {
 });
 
 //functions.js
-const cdnjsbaseurl = "https://cdnjs.cloudflare.com/ajax/libs";
-const cdnjsdlvr = "https://cdn.jsdelivr.net";
-const gfonts = "https://fonts.googleapis.com";
-
 const removeURLParameter = function(url, parameter) {
 	//prefer to use l.search if you have a location/link object
 	var urlparts = url.split('?');
@@ -413,13 +211,13 @@ const showInvitation = function(){
 			$( "#envelope" ).html( msg + xhr.status + " " + xhr.statusText );
 		}else{
 			$('head')
-			.append(`<link href="${gfonts}/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">`)
-			.append(`<link href="${cdnjsdlvr}/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
+			.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
+			.append(`<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
 			.append('<link rel="stylesheet" href="//asepnabila.link/calamansi-js/dist/calamansi.min.css">')
 			.append('<link rel="stylesheet" href="//asepnabila.link/qrcode-reader/dist/css/qrcode-reader.min.css">')
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
-			.append(`<link rel="stylesheet" href="${cdnjsbaseurl}/font-awesome/6.1.1/css/regular.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libshttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/regular.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
 			
 			let envelopeScript = document.createElement('script');

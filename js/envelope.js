@@ -1,3 +1,24 @@
+let grmph = $(".groomphonenumbershow");
+if(grmph.length > 0){
+	for (var i = 0; i < grmph.length; i++) {
+		let c = grmph.item(i);
+		let ctx = c.getContext('2d');
+		ctx.lineWidth = 0.5;
+		ctx.textBaseline = 'top';
+		
+		let __Str = "__";
+		if(isMobile){
+			__Str = "____";
+		}
+		
+		c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
+		
+		ctx.font = ".9rem Arial";
+		ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
+		ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
+	}
+}
+		
 function timeDifference(c, p) {
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
@@ -147,9 +168,9 @@ const loadNewMessages = function(params = {}, functionCallbak) {
 			
 			grecaptcha.ready(() => {
 				if(typeof params.functionrepeat == "undefined") loadNewMessagesXhr = "waiting grespon";
-				grecaptcha.execute(config.grecaptchasitekey, {action: 'submit'}).then((token) => {
+				grecaptcha.execute('6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', {action: 'submit'}).then((token) => {
 					getCommentsParams = new getData(params, {"action":"getComments","limit":limitget,"grespon":token});
-					commentsUrl = `${config.appscript.baseurl}${config.appscript.deploymentid}/exec?${getCommentsParams.params()}`;
+					commentsUrl = `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?${getCommentsParams.params()}`;
 					$.getJSON( commentsUrl ).done((response) => {
 						if(response.statusCode == 1){
 							$messages = getSavedMessages();
@@ -382,7 +403,7 @@ recaptchaScript.onload = function(){
 }
 
 let bootstrapBundleScript = document.createElement('script');
-bootstrapBundleScript.src = `${cdnjsdlvr}/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js`;
+bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
 bootstrapBundleScript.defer = true;
 document.body.appendChild(bootstrapBundleScript);
 
