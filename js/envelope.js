@@ -104,7 +104,7 @@ const generateQrBukuTamu = function(){
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: `BUKUTAMU-${config.groom.firstname}&${config.bride.firstname} : ${qrstrbukutamu}`,
+		text: `BUKUTAMU-Asep&Nabila : ${qrstrbukutamu}`,
 		size: 200,
 		render: 'svg',
 		crisp: true,

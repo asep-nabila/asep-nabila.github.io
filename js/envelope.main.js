@@ -448,11 +448,6 @@ clipboardScript.onload = function(){
 
 		e.clearSelection();
 	});
-	
-	$(".clipboard[data-clipboard-var]").each(function(i, obj){
-		let clipboardVar = $(this).data("clipboard-var").split("-");
-		$(this).attr("data-clipboard-text", config[clipboardVar[0]][clipboardVar[1]]);
-	});
 }
 
 generateQrBukuTamu();
