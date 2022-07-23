@@ -1,3 +1,5 @@
+let theweddingdays = '2023-03-11';
+
 let grmph = $(".groomphonenumbershow");
 if(grmph.length > 0){
 	for (var i = 0; i < grmph.length; i++) {
@@ -53,7 +55,7 @@ const startCountdown = function(){
 		hour = minute * 60,
 		day = hour * 24;
 		
-	const countDown = new Date(config.events.date).getTime(),
+	const countDown = new Date(theweddingdays).getTime(),
 	x = setInterval(function() {    
 
 		const now = new Date().getTime(),
