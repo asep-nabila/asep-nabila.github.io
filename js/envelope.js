@@ -1,25 +1,4 @@
 let theweddingdays = '2023-03-11';
-
-let grmph = $(".groomphonenumbershow");
-if(grmph.length > 0){
-	for (var i = 0; i < grmph.length; i++) {
-		let c = grmph.item(i);
-		let ctx = c.getContext('2d');
-		ctx.lineWidth = 0.5;
-		ctx.textBaseline = 'top';
-		
-		let __Str = "__";
-		if(isMobile){
-			__Str = "____";
-		}
-		
-		c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
-		
-		ctx.font = ".9rem Arial";
-		ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-		ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-	}
-}
 		
 function timeDifference(c, p) {
     var msPerMinute = 60 * 1000;
