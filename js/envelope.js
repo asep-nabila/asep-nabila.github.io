@@ -1,5 +1,33 @@
 let theweddingdays = '2023-03-11';
+
+//Constructor.js
+class postData {
+	constructor(datas) {  // Constructor
+		for (let data in datas) {
+			this[data] = datas[data];
+		}
+		this["visitorIP"] = visitorIP;
+		this["visitorId"] = visitorId;
+	}
+}
+
+class getData {
+	constructor(datas, additionalParams = {}) {  // Constructor
+		datas = Object.assign({}, datas, additionalParams);
+		for (let data in datas) {
+			this[data] = datas[data];
+		}
+		if(typeof this["message"] !== "undefined") delete this["message"];
+		if(typeof this["name"] !== "undefined") delete this["name"];
 		
+		this["visitorIP"] = visitorIP;
+		this["visitorId"] = visitorId;
+	}
+	params(){
+		return $.param(this);
+	}
+}
+
 function timeDifference(c, p) {
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
