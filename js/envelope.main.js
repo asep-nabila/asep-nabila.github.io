@@ -63,7 +63,7 @@ let prewedimgs = [{
 for (let i = 0; i < prewedimgs.length; ++i) {
 	let img = prewedimgs[i];
 	if($("#gallery-prewed") !== null){
-		$("#gallery-prewed").innerHTML = document.getElementById("gallery-prewed").innerHTML + `<div class="grid-item"><a href="${img.href}?${i}"><img class="lazyload img-fluid" data-src="${img.src}?${i}"></img></a></div>`;
+		$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}"><img class="lazyload img-fluid" data-src="${img.src}?${i}"></img></a></div>`);
 	}
 }
 
