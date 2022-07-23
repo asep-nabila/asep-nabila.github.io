@@ -70,8 +70,8 @@ for (let i = 0; i < prewedimgs.length; ++i) {
 
 let grmph = $(".groomphonenumbershow");
 if(grmph.length > 0){
-	for (var i = 0; i < grmph.length; i++) {
-		let c = grmph.item(i);
+	grmph.each(function(i, obj) {
+		let c = this;
 		let ctx = c.getContext('2d');
 		ctx.lineWidth = 0.5;
 		ctx.textBaseline = 'top';
@@ -84,9 +84,9 @@ if(grmph.length > 0){
 		c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
 		
 		ctx.font = ".9rem Arial";
-		ctx.fillText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-		ctx.strokeText(this.groom.phonenumber.split('').join(String.fromCharCode(8202)), 0, 21);
-	}
+		ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+		ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+	});
 }
 
 $('.nav-link, .navigate-link').each(function() {
