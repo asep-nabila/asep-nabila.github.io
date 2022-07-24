@@ -104,6 +104,7 @@ const showEnvelope = function(){
 			document.head.innerHTML += '<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>';
 		}
 	}).then((result) => {
+		document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">';
 		document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">';
 		showInvitation();
 		if(typeof kepada == 'undefined' || kepada == ''){
