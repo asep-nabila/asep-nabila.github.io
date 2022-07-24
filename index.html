@@ -56,11 +56,18 @@
 	</script>	
 	<!-- Google Tag Manager -->
 	<script>
-	let gtag;(function(w,d,s,l,i){
+	let gtag;
+	(function(w,d,s,l,i){
 		let f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtag/js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		j.onload = function(){console.log("gtag loaded");w[l]=w[l]||[];gtag = function(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'i');}
+		j.onload = function(){
+			console.log("gtag loaded");
+			w[l]=w[l]||[];
+			gtag = function(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'i');
+		}
 	})(window,document,'script','dataLayer','G-77YBSBL6PY');</script>
 	<!-- End Google Tag Manager -->
 
