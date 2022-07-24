@@ -60,7 +60,6 @@ const swallAskName = function(functiontoCall){
 
 
 const showEnvelope = function(){
-	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">';
 	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">';
 	
 	Swal.fire({
@@ -71,8 +70,13 @@ const showEnvelope = function(){
 				'<sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub>' +
 			'</h1>',
 		html: receiverhtml,		
-		confirmButtonText: '<i title="Bukan Undangan Asep Maulana Nuriman & Nabila Dea Santika" class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
-		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>Build with <i class="bi bi-suit-heart-fill" title="love" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Maunk under kukulutus of Bila</small>`,
+		confirmButtonText: `<svg alt="Amplop" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-envelope-paper-fill" viewBox="0 0 1em 1em">
+				<path fill-rule="evenodd" d="M6.5 9.5 3 7.5v-6A1.5 1.5 0 0 1 4.5 0h7A1.5 1.5 0 0 1 13 1.5v6l-3.5 2L8 8.75l-1.5.75ZM1.059 3.635 2 3.133v3.753L0 5.713V5.4a2 2 0 0 1 1.059-1.765ZM16 5.713l-2 1.173V3.133l.941.502A2 2 0 0 1 16 5.4v.313Zm0 1.16-5.693 3.337L16 13.372v-6.5Zm-8 3.199 7.941 4.412A2 2 0 0 1 14 16H2a2 2 0 0 1-1.941-1.516L8 10.072Zm-8 3.3 5.693-3.162L0 6.873v6.5Z"/>
+			</svg>&nbsp;&nbsp;Buka Undangan`,
+		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>Build with 
+			<svg xmlns="http://www.w3.org/2000/svg" width=".75em" height=".75em" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+				<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+			</svg> in Bandung by Maunk under kukulutus of Bila</small>`,
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
@@ -101,7 +105,8 @@ const showEnvelope = function(){
 			document.getElementsByClassName("close-envelope-popup-img-bridegroom")[0].src='https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/asepdila.webp';
 			document.head.innerHTML += '<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>';
 		}
-	}).then((result) => {			
+	}).then((result) => {
+		document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" as="font">';
 		showInvitation();
 		if(typeof kepada == 'undefined' || kepada == ''){
 			swallAskName(swallAskFrom);
