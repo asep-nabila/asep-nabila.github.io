@@ -59,9 +59,7 @@ const swallAskName = function(functiontoCall){
 }
 
 
-const showEnvelope = function(){
-	document.head.innerHTML += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">';
-	
+const showEnvelope = function(){	
 	Swal.fire({
 		title: '<small class="envelopefooter fw-lighter" style="color: #00000000;">Undangan Pernikahan</small>' +
 			'<h1 class="envelope">' +
