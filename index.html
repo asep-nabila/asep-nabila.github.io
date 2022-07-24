@@ -64,9 +64,9 @@
 		j.onload = function(){
 			console.log("gtag loaded");
 			w[l]=w[l]||[];
-			gtag = function(){dataLayer.push(arguments);}
+			gtag = function(){console.log(arguments);dataLayer.push(arguments);}
 			gtag('js', new Date());
-			gtag('config', 'i');
+			gtag('config', i);
 		}
 	})(window,document,'script','dataLayer','G-77YBSBL6PY');</script>
 	<!-- End Google Tag Manager -->
