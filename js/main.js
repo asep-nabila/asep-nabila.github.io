@@ -32,9 +32,9 @@ $(function() {
 		swallAskName(showEnvelope);
 	}else{
 		if(typeof kepada == 'undefined'){
-			receiverhtml = `<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">${encodeHTML(group).toLowerCase()}</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>`;
+			receiverhtml = ggtmp.replace(/{NM}/ig, encodeHTML(group));
 		}else{
-			receiverhtml = `<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">${encodeHTML(kepada).toLowerCase()}</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>`;
+			receiverhtml = kgtmp.replace(/{NM}/ig, encodeHTML(kepada).toLowerCase());
 		}
 		
 		showEnvelope();
