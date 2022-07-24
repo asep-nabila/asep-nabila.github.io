@@ -62,9 +62,8 @@
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtag/js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		j.onload = function(){
-			console.log("gtag loaded");
 			w[l]=w[l]||[];
-			gtag = function(){console.log(arguments);dataLayer.push(arguments);}
+			gtag = function(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', i);
 		}
