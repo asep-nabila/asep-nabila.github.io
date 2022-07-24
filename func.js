@@ -68,13 +68,11 @@ const showEnvelope = function(){
 				'<sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub>' +
 			'</h1>',
 		html: receiverhtml,		
-		confirmButtonText: `<svg alt="Amplop" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-envelope-paper-fill" viewBox="0 0 1em 1em">
-				<path fill-rule="evenodd" d="M6.5 9.5 3 7.5v-6A1.5 1.5 0 0 1 4.5 0h7A1.5 1.5 0 0 1 13 1.5v6l-3.5 2L8 8.75l-1.5.75ZM1.059 3.635 2 3.133v3.753L0 5.713V5.4a2 2 0 0 1 1.059-1.765ZM16 5.713l-2 1.173V3.133l.941.502A2 2 0 0 1 16 5.4v.313Zm0 1.16-5.693 3.337L16 13.372v-6.5Zm-8 3.199 7.941 4.412A2 2 0 0 1 14 16H2a2 2 0 0 1-1.941-1.516L8 10.072Zm-8 3.3 5.693-3.162L0 6.873v6.5Z"/>
-			</svg>&nbsp;&nbsp;Buka Undangan`,
+		confirmButtonText: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="prefix__bi prefix__bi-envelope-paper-fill"><path fill-rule="evenodd" d="M6.5 9.5 3 7.5v-6A1.5 1.5 0 0 1 4.5 0h7A1.5 1.5 0 0 1 13 1.5v6l-3.5 2L8 8.7l-1.5.8ZM1.1 3.6l.9-.5V7L0 5.7v-.3a2 2 0 0 1 1-1.8ZM16 5.7 14 7V3l1 .5a2 2 0 0 1 1 1.8v.3ZM16 7l-5.7 3.3 5.7 3.2V6.9ZM8 10l8 4.4a2 2 0 0 1-2 1.5H2a2 2 0 0 1-2-1.5L8 10Zm-8 3.3 5.7-3.2L0 7v6.5Z"/></svg>
+		&nbsp;&nbsp;Buka Undangan`,
 		footer: `<small class="envelopefooter fw-lighter text-center">The Wedding of Asep Maulana Nuriman & Nabila Dea Santika<br/>Build with 
-			<svg xmlns="http://www.w3.org/2000/svg" width=".75em" height=".75em" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-				<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-			</svg> in Bandung by Maunk under kukulutus of Bila</small>`,
+			<svg xmlns="http://www.w3.org/2000/svg" width=".8em" height=".8em" fill="currentColor" class="prefix__bi prefix__bi-suit-heart-fill" viewBox="0 0 16 16"><path d="M4 1a4 4 0 0 1 4 4c0-2.2 1.8-4 4-4s4 1.8 4 4c0 3.2-3.2 4.3-7.6 9.5a.5.5 0 0 1-.8 0C3.2 9.3 0 8.2 0 5A4 4 0 0 1 4 1z"/></svg>
+			in Bandung by Maunk under kukulutus of Bila</small>`,
 		width: 'auto',
 		height: '100%',
 		grow: 'fullscreen',
