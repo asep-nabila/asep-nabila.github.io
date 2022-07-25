@@ -20,7 +20,7 @@ const kgtmp = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="re
 const appendscript = function(url, method = ''){
 	let s = document.createElement('script');
 	s.src = url;
-	if(method == 'defer'){
+	if(['defer', 'async'].indexOf(method)){
 		s[method] = true;
 	}
 	
