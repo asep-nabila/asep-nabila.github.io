@@ -10,8 +10,9 @@ const appendscript = function(url, method = ''){
 
 //app.js
 $(function() {
-	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">');
-	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
+	$('head')
+	.append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">')
+	.append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
 	
 	$.fn.isInViewport = function() {
 		var elementTop = $(this).offset().top;
@@ -193,16 +194,8 @@ const showInvitation = function(){
 			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libshttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/regular.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
 			
-			let envelopeScript = document.createElement('script');
-			envelopeScript.src = 'js/envelope.js';
-			envelopeScript.async = true;
-			document.body.appendChild(envelopeScript);
-			envelopeScript.onload = function(){				
-				console.log("envelope ready");
-				let envelopeMainScript = document.createElement('script');
-				envelopeMainScript.src = 'js/envelope.main.js';
-				envelopeMainScript.async = true;
-				document.body.appendChild(envelopeMainScript);
+			appendscript('js/envelope.js', 'async').onload = function(){
+				appendscript('js/envelope.main.js', 'async');
 			}
 		}
 	});
