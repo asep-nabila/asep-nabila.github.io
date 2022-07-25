@@ -25,7 +25,7 @@ const appendscript = function(url, method = ''){
 	}
 	
 	document.body.appendChild(s);
-	return s;
+	return Promise.resolve(s);
 }
 
 const swallAskName = function(functiontoCall){
