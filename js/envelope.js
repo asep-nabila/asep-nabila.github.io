@@ -407,25 +407,12 @@ appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.
 	console.log('jquery.validate.min.js Loaded');
 }
 
-let recaptchaScript = document.createElement('script');
-recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
-recaptchaScript.defer = true;
-document.body.appendChild(recaptchaScript);
-recaptchaScript.onload = function(){
+appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
 	drawMessages();
 }
 
-let bootstrapBundleScript = document.createElement('script');
-bootstrapBundleScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js';
-bootstrapBundleScript.defer = true;
-document.body.appendChild(bootstrapBundleScript);
-
-let qrcodeReaderScript = document.createElement('script');
-qrcodeReaderScript.src = '//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js';
-qrcodeReaderScript.defer = true;
-document.body.appendChild(qrcodeReaderScript);
-
-qrcodeReaderScript.onload = function() {
+appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
+appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
 	$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
 	$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
 	
@@ -438,12 +425,7 @@ qrcodeReaderScript.onload = function() {
 	});
 }
 
-let fancyboxScript = document.createElement('script');
-fancyboxScript.src = 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js';
-fancyboxScript.defer = true;
-document.body.appendChild(fancyboxScript);
-
-fancyboxScript.onload = function() {
+appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
 	Fancybox.bind("#gallery-prewed > div.grid-item > a", {
 		groupAll : true, // Group all items
 		on : {

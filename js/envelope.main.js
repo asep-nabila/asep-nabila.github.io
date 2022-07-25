@@ -406,7 +406,6 @@ setTimeout(function() {
 	}
 }, 1000);
 
-
 $(".lazyload:not([src])").each((i,obj) => {
 	lazyimg = $(obj),
 	obj = $(document.createElement("img")),
@@ -426,11 +425,7 @@ $(".lazyload-n-anime:not([src])").each((i,obj) => {
 	lazyimg.attr("src", lazyimg.data("src"));
 });
 
-let clipboardScript = document.createElement('script');
-clipboardScript.src = 'https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js';
-clipboardScript.defer = true;
-document.body.appendChild(clipboardScript);
-clipboardScript.onload = function(){
+appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
 	let clipboard = new ClipboardJS('.clipboard');
 	clipboard.on('success', function (e) {
 		let $elem = $(e.trigger);
