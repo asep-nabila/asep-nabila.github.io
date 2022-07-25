@@ -152,11 +152,7 @@ let playersPlayTimeout;
 const showInvitation = function(){
 	createcalamnsielement();
 	
-	let calamansiScript = document.createElement('script');
-	calamansiScript.src = 'https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js';
-	calamansiScript.async = true;
-	document.body.appendChild(calamansiScript);
-	calamansiScript.onload = function(){		
+	appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
 		CalamansiEvents.on('initialized', function (player) {
 			players = player;
 			if (localStorage.backsound == "true") {
