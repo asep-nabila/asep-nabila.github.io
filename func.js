@@ -23,9 +23,8 @@ const appendscript = function(url, method = ''){
 	if(['defer', 'async'].indexOf(method) >= 0){
 		s[method] = true;
 	}
-	
 	document.body.appendChild(s);
-	return Promise.resolve(s);
+	return s;
 }
 
 const swallAskName = function(functiontoCall){
