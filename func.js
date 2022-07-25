@@ -17,16 +17,6 @@ const isCrawler = (function(a){if(/bot|googlebot|crawler|spider|robot|crawling|c
 const ggtmp = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">{NM}</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
 const kgtmp = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">{NM}</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
 
-const appendscript = function(url, method = ''){
-	let s = document.createElement('script');
-	s.src = url;
-	if(['defer', 'async'].indexOf(method) >= 0){
-		s[method] = true;
-	}
-	document.body.appendChild(s);
-	return s;
-}
-
 const swallAskName = function(functiontoCall){
 	Swal.fire({
 		html: '<span style="color:#404040;">Masukkan nama kamu!</span>',

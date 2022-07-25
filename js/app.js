@@ -1,3 +1,13 @@
+const appendscript = function(url, method = ''){
+	let s = document.createElement('script');
+	s.src = url;
+	if(['defer', 'async'].indexOf(method) >= 0){
+		s[method] = true;
+	}
+	document.body.appendChild(s);
+	return s;
+}
+
 //app.js
 $(function() {
 	$('head').append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">');
@@ -16,11 +26,7 @@ $(function() {
 	// Initialize the agent at application startup.
 	//https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js
 	//const fpPromise = import('./sidikramo.js').then(FingerprintJS => );
-	let sidikramoScript = document.createElement('script');
-    sidikramoScript.src = '//asepnabila.link/js/sidikramo.js';
-    sidikramoScript.async = true;
-    document.body.appendChild(sidikramoScript);
-	sidikramoScript.onload = function(){
+	appendscript('//asepnabila.link/js/sidikramo.js', 'async').onload = () => {
 		fpPromise = FingerprintJS.load({apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: `https://sr.asepnabila.link`});
 		if(typeof goToInvitation !== "undefined"){
 			getVisitorId(goToInvitation);		
