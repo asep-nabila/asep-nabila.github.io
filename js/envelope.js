@@ -403,6 +403,10 @@ window.history.pushState('', '', window.location.pathname);
 
 getVisitorIP();
 
+appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer').onload = function(){
+	console.log("jquery-validation loaded");
+}
+
 let recaptchaScript = document.createElement('script');
 recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU';
 recaptchaScript.defer = true;
