@@ -338,14 +338,6 @@ $(window).on('resize', () => {
 	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
 });
 
-let bgMustVH = $("#beranda, #mempelai");
-function resizeBackground() {
-	bgMustVH.height($(window).height() + 60);
-}
-
-$(window).resize(resizeBackground);
-resizeBackground();
-
 $(window).on('resize scroll', () => {
 	if ($('#messagesfromvisitor').isInViewport()) {
 		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
