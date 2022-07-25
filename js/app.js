@@ -271,7 +271,7 @@ const swallAskFrom = function(){
 			confirmButtonText: 'Lanjut',
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
 			background: '#FFFFFF',
-			backdrop: '#643A5D',
+			backdrop: '#730f66',
 			customClass : {
 				popup: 'close-envelope-popup',
 				image: 'close-envelope-popup-img-bridegroom',
