@@ -338,9 +338,9 @@ $(window).on('resize', () => {
 	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
 });
 
-var bg = $("#beranda, #mempelai");
+let bgMustVH = $("#beranda, #mempelai");
 function resizeBackground() {
-	bg.height( $(window).height() + 60);
+	bgMustVH.height($(window).height() + 60);
 }
 	
 $(window).on('resize scroll', () => {
