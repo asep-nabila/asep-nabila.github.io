@@ -342,7 +342,10 @@ let bgMustVH = $("#beranda, #mempelai");
 function resizeBackground() {
 	bgMustVH.height($(window).height() + 60);
 }
-	
+
+$(window).resize(resizeBackground);
+resizeBackground();
+
 $(window).on('resize scroll', () => {
 	if ($('#messagesfromvisitor').isInViewport()) {
 		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
@@ -350,8 +353,6 @@ $(window).on('resize scroll', () => {
 	if ($('#detail-acara').isInViewport()) {
 		startCountdown();
 	}
-	
-	resizeBackground();
 	
 	$(".lazyload:not([src])").each((i,obj) => {
 		lazyimg = $(obj);
