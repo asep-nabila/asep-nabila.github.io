@@ -60,6 +60,10 @@ let prewedimgs = [{
 	}
 ];
 
+$(function() {
+	console.log("script loaded");
+});
+
 for (let i = 0; i < prewedimgs.length; ++i) {
 	let img = prewedimgs[i];
 	if($("#gallery-prewed") !== null){
