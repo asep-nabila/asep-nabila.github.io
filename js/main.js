@@ -37,7 +37,11 @@ $(function() {
 			receiverhtml = kgtmp.replace(/{NM}/ig, encodeHTML(kepada).toLowerCase());
 		}
 		
-		showEnvelope();
+		if(isCrawler){
+			showInvitation();
+		}else{
+			showEnvelope();
+		}
 	}
 });
 
