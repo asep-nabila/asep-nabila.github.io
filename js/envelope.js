@@ -410,17 +410,6 @@ $(function() {
 		});
 	}
 
-	appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
-		Fancybox.bind("#gallery-prewed > div.grid-item > a", {
-			groupAll : true, // Group all items
-			on : {
-				ready : (fancybox) => {
-					console.log(`fancybox #${fancybox.id} is ready!`);
-				}
-			}
-		});
-	}
-
 	$("#player-control-panel").on("click touchend", function(){
 		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
 		

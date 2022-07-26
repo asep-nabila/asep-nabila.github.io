@@ -66,6 +66,19 @@ $(function() {
 		if($("#gallery-prewed") !== null){
 			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" data-src="${img.src}?${i}"></img></a></div>`);
 		}
+		
+		if(i == (prewedimgs.length - 1)){
+			appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
+				Fancybox.bind("#gallery-prewed > div.grid-item > a", {
+					groupAll : true, // Group all items
+					on : {
+						ready : (fancybox) => {
+							console.log(`fancybox #${fancybox.id} is ready!`);
+						}
+					}
+				});
+			}
+		}
 	}
 	
 	let grmph = $(".groomphonenumbershow");
