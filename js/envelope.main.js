@@ -2,68 +2,68 @@ let prewedimgs = [{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 1"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 2"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 3"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 4"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 5"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 6"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 7"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 8"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 9"
 	},
 	{
 		"href": "https://picsum.photos/600/400",
 		"src": "https://picsum.photos/300/200",
 		"title": "",
-		"alt": ""
+		"alt": "Picsum 10"
 	}
 ];
 
 for (let i = 0; i < prewedimgs.length; ++i) {
 	let img = prewedimgs[i];
 	if($("#gallery-prewed") !== null){
-		$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}"><img class="lazyload img-fluid" data-src="${img.src}?${i}"></img></a></div>`);
+		$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" alt="${img.alt}" aria-label="${img.alt}"><img class="lazyload img-fluid" data-src="${img.src}?${i}"></img></a></div>`);
 	}
 }
 
