@@ -64,7 +64,7 @@ $(function() {
 	for (let i = 0; i < prewedimgs.length; ++i) {
 		let img = prewedimgs[i];
 		if($("#gallery-prewed") !== null){
-			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" data-src="${img.src}?${i}"></img></a></div>`);
+			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" style="height:10.8rem;width:16.2rem;" data-src="${img.src}?${i}"></img></a></div>`);
 		}
 		
 		if(i == (prewedimgs.length - 1)){
