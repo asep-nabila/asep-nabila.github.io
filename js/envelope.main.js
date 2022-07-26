@@ -61,277 +61,276 @@ let prewedimgs = [{
 ];
 
 $(function() {
-	console.log("script loaded");
-});
-
-for (let i = 0; i < prewedimgs.length; ++i) {
-	let img = prewedimgs[i];
-	if($("#gallery-prewed") !== null){
-		$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" data-src="${img.src}?${i}"></img></a></div>`);
-	}
-}
-
-let grmph = $(".groomphonenumbershow");
-if(grmph.length > 0){
-	grmph.each(function(i, obj) {
-		let c = this;
-		let ctx = c.getContext('2d');
-		ctx.lineWidth = 0.5;
-		ctx.textBaseline = 'top';
-		
-		let __Str = "__";
-		if(isMobile){
-			__Str = "____";
-		}
-		
-		c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
-		
-		ctx.font = ".9rem Arial";
-		ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-		ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-	});
-}
-
-$('.nav-link, .navigate-link').each(function() {
-	$(this).on('click', function(event) {
-		event.preventDefault();
-		$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
-	});
-});
-
-$("#nextsongs").on('click', function(event) {
-	nextsongs();
-});
-
-if($("body").width()>1024){
-	$("#qr-kepada, #qr-dari").each(function(){
-		$(this).on("click focus", function(){
-			$(this).css("visibility", "hidden");
-			
-			let totalWidth = $(this).parents("div").width();
-			totalWidth += parseInt($(this).parents("div").css("padding-left"), 10) + parseInt($(this).parents("div").css("padding-right"), 10); //Total Padding Width
-			totalWidth += parseInt($(this).parents("div").css("margin-left"), 10) + parseInt($(this).parents("div").css("margin-right"), 10); //Total Margin Width
-			totalWidth += parseInt($(this).parents("div").css("borderLeftWidth"), 10) + parseInt($(this).parents("div").css("borderRightWidth"), 10); //Total Border Width
-			
-			let totalHeight = $(this).height()+10;
-			totalHeight += parseInt($(this).css("padding-top"), 10) + parseInt($(this).css("padding-bottom"), 10); //Total Padding Width
-			totalHeight += parseInt($(this).css("margin-top"), 10) + parseInt($(this).css("margin-bottom"), 10); //Total Margin Width
-			totalHeight += parseInt($(this).css("borderTopWidth"), 10) + parseInt($(this).css("borderBottomWidth"), 10); //Total Border Width
-			
-			let inlinedit = $('<input></input>').css({
-				"top" : $(this).parents("div").offset().top-$(window).scrollTop(),
-				"left" : $(this).parents("div").offset().left,
-				"height" : totalHeight-5,
-				"width" : totalWidth-1,
-				"position" : "fixed",
-				"text-align" : "center"
-			})
-			.val($(this).text().toUpperCase())
-			.data("elemid", $(this).attr("id"))
-			.css('font-size', $(this).parent().css('font-size'))
-			.addClass("inlineinput");
-			
-			inlinedit.keyup(function(e){
-				if(e.keyCode === 27){
-					$("#"+$(this).data("elemid")).css("visibility", "visible");
-					$(this).remove();
-				}
-			});
 	
-			inlinedit.focusout(function() {
-				$("#"+$(this).data("elemid")).text($(this).val().toUpperCase());
-				generateQrBukuTamu();
-				$("#"+$(this).data("elemid")).css("visibility", "visible");
-				$(this).remove();
-			});
+	for (let i = 0; i < prewedimgs.length; ++i) {
+		let img = prewedimgs[i];
+		if($("#gallery-prewed") !== null){
+			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" data-src="${img.src}?${i}"></img></a></div>`);
+		}
+	}
+	
+	let grmph = $(".groomphonenumbershow");
+	if(grmph.length > 0){
+		grmph.each(function(i, obj) {
+			let c = this;
+			let ctx = c.getContext('2d');
+			ctx.lineWidth = 0.5;
+			ctx.textBaseline = 'top';
 			
-			inlinedit.keypress(function(e){
-				if(e.which == 13 || e.which == 27){
+			let __Str = "__";
+			if(isMobile){
+				__Str = "____";
+			}
+			
+			c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
+			
+			ctx.font = ".9rem Arial";
+			ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+			ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+		});
+	}
+
+	$('.nav-link, .navigate-link').each(function() {
+		$(this).on('click', function(event) {
+			event.preventDefault();
+			$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
+		});
+	});
+	
+	$("#nextsongs").on('click', function(event) {
+		nextsongs();
+	});
+	
+	if($("body").width()>1024){
+		$("#qr-kepada, #qr-dari").each(function(){
+			$(this).on("click focus", function(){
+				$(this).css("visibility", "hidden");
+				
+				let totalWidth = $(this).parents("div").width();
+				totalWidth += parseInt($(this).parents("div").css("padding-left"), 10) + parseInt($(this).parents("div").css("padding-right"), 10); //Total Padding Width
+				totalWidth += parseInt($(this).parents("div").css("margin-left"), 10) + parseInt($(this).parents("div").css("margin-right"), 10); //Total Margin Width
+				totalWidth += parseInt($(this).parents("div").css("borderLeftWidth"), 10) + parseInt($(this).parents("div").css("borderRightWidth"), 10); //Total Border Width
+				
+				let totalHeight = $(this).height()+10;
+				totalHeight += parseInt($(this).css("padding-top"), 10) + parseInt($(this).css("padding-bottom"), 10); //Total Padding Width
+				totalHeight += parseInt($(this).css("margin-top"), 10) + parseInt($(this).css("margin-bottom"), 10); //Total Margin Width
+				totalHeight += parseInt($(this).css("borderTopWidth"), 10) + parseInt($(this).css("borderBottomWidth"), 10); //Total Border Width
+				
+				let inlinedit = $('<input></input>').css({
+					"top" : $(this).parents("div").offset().top-$(window).scrollTop(),
+					"left" : $(this).parents("div").offset().left,
+					"height" : totalHeight-5,
+					"width" : totalWidth-1,
+					"position" : "fixed",
+					"text-align" : "center"
+				})
+				.val($(this).text().toUpperCase())
+				.data("elemid", $(this).attr("id"))
+				.css('font-size', $(this).parent().css('font-size'))
+				.addClass("inlineinput");
+				
+				inlinedit.keyup(function(e){
+					if(e.keyCode === 27){
+						$("#"+$(this).data("elemid")).css("visibility", "visible");
+						$(this).remove();
+					}
+				});
+		
+				inlinedit.focusout(function() {
 					$("#"+$(this).data("elemid")).text($(this).val().toUpperCase());
 					generateQrBukuTamu();
 					$("#"+$(this).data("elemid")).css("visibility", "visible");
 					$(this).remove();
-				}
-			});
-			
-			$("body").append(inlinedit);
-			
-			inlinedit.focus();
-			
-			$(window).scroll(function(){
-				$("#"+$(this).data("elemid")).css("visibility", "visible");
-				inlinedit.remove();
-			});
-		});
-	});
-}
-
-$("#reset-attenderdata").click(function(){
-	Swal.fire({
-		html: '<h1><i class="bi bi-arrow-clockwise"></i></h1>Reset data kamu?',
-		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		showCancelButton: true,
-		confirmButtonText: 'Ya, reset',
-		cancelButtonText: 'Tidak',
-		reverseButtons: true,
-	}).then((result) => {
-		if (result.isConfirmed) {
-			["kepada", "dari", "backsound"].forEach(
-				k => localStorage.removeItem(k)
-			);
-			location.reload();
-		}
-	})
-});
-
-$("#edit-attenderdata").click(function(){
-	Swal.fire({
-		html:
-			'<div style="max-width:25rem;">' +
-			'<h1><i class="bi bi-person-bounding-box"></i></h1>Ubah data tamu?' +
-			'<div class="mt-2 text-start row">' +
-			'<label for="attenderdata-kepada" class="col-sm-4 col-form-label">Nama</label>' +
-			'<div class="col-sm-8">' +
-			'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control text-uppercase">' +
-			'</div>' +
-			'</div>' +
-			'<div class="mb-1 text-start row">' +
-			'<label for="attenderdata-dari" class="col-sm-4 col-form-label">Domisili</label>' +
-			'<div class="col-sm-8">' +
-			'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control text-uppercase">' +
-			'</div>' +
-			'</div>' +
-			'</div>',
-		showCancelButton: true,
-		width: '25rem',
-		confirmButtonColor: '#991188', //Warna kesukaan Nabila
-		reverseButtons: true,
-		preConfirm: function () {
-			return new Promise(function (resolve) {
-				// Validate input
-				if ($('#attenderdata-kepada').val() == '' || $('#attenderdata-dari').val() == '') {
-					swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
-					swal.enableConfirmButton(); // Enable the confirm button again.
-				} else {
-					swal.resetValidationMessage(); // Reset the validation message.
-					resolve([
-						$('#attenderdata-kepada').val(),
-						$('#attenderdata-dari').val()
-					]);
-				}
-			})
-		},
-		didOpen: (popupedit) => {
-			console.log($(popupedit));
-			console.log($(popupedit).children(".swal2-html-container")[0]);
-			$($(popupedit).children(".swal2-html-container")[0]).css("overflow-x","hidden");
-			$('#attenderdata-kepada').val($('#qr-kepada').text().toUpperCase());
-			$('#attenderdata-dari').val($('#qr-dari').text().toUpperCase());
-			$('#attenderdata-kepada').focus()
-		}
-	}).then(function (result) {
-		if (result.isConfirmed) {
-			$("#qr-kepada").text($('#attenderdata-kepada').val());
-			$("#qr-dari").text($('#attenderdata-dari').val());
-			generateQrBukuTamu();
-		}
-	}).catch(swal.noop)
-});
-
-$("#messagesfromvisitor-submit-form").on("submit", function(e){
-	e.preventDefault();
-	submitedform = $(this);
-	$(this).validate({
-		highlight: function(element, errorClass, validClass) {
-			$(element).addClass("is-invalid");
-		},
-		unhighlight: function(element, errorClass, validClass) {
-			$(element).removeClass("is-invalid");
-		},
-		errorClass: "invalid-feedback visible",
-		errorElement: "div",
-		rules: {
-			name: "required",
-			message: {
-				required: true,
-				minlength: 10
-			}
-		},
-		messages: {
-			name: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan nama',
-			message: {
-				required: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan ucapan & doa',
-				minlength: '<i class="bi bi-exclamation-circle"></i> Isikan minimal 10 karakter'
-			}
-		}
-	});
-	if($(this).valid()) {
-		if(typeof grecaptcha !== "undefined"){
-			submitVisitorMessagesError = [];
-		
-			submitmessageform = $(this);
-			submitmessagebtn = submitmessageform.find("button[type=submit]");
-			submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
-			submitmessagebtn.prop('disabled', true);
-		
-			grecaptcha.ready(() => {
-				grecaptcha.execute('6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', {action: 'submit'}).then(function(token) {
-					
-					getInsertMessageParams = new getData({}, {"action":"insertComments", "grespon":token});
-					
-					var settings = {
-						"url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?${getInsertMessageParams.params()}`,
-						"method": "POST",
-						"timeout": 0,
-						"headers": {
-							"Content-Type": "application/x-www-form-urlencoded",
-						},
-						"redirect": "follow",
-						"data": submitedform.serialize() + "&visitorId=" + visitorId
-					};
-
-					$.ajax(settings).done((response) => {
-						if(response.statusCode == 1){
-							submitmessageform.trigger("reset");
-							submitmessageform.find("input[name=name]").val(capitalizing(kepada));
-							saveMessages(response.data);
-							drawMessages({loadnew : false});
-						}else{
-							submitVisitorMessagesError.push(response.statusText);
-						}
-					}).fail((jqXHR, textStatus) => {
-						submitVisitorMessagesError.push(`${textStatus}: Tidak dapat terhubung, pastikan perangkat terhubung dan Internet stabil.`);
-					}).always(() => {
-						if(submitVisitorMessagesError.length>0){
-							Swal.fire({
-								icon: 'error',
-								text: submitVisitorMessagesError.join(),
-								confirmButtonColor: '#991188', //Warna kesukaan Nabila
-							});
-						}
-						
-						submitmessagebtn.html('Kirim');
-						submitmessagebtn.prop('disabled', false);
-					});
+				});
+				
+				inlinedit.keypress(function(e){
+					if(e.which == 13 || e.which == 27){
+						$("#"+$(this).data("elemid")).text($(this).val().toUpperCase());
+						generateQrBukuTamu();
+						$("#"+$(this).data("elemid")).css("visibility", "visible");
+						$(this).remove();
+					}
+				});
+				
+				$("body").append(inlinedit);
+				
+				inlinedit.focus();
+				
+				$(window).scroll(function(){
+					$("#"+$(this).data("elemid")).css("visibility", "visible");
+					inlinedit.remove();
 				});
 			});
-		}else{
-			Swal.fire({
-				icon: 'error',
-				text: `Error: Tidak dapat terhubung ke Google, pastikan perangkat terhubung dan Internet stabil.`,
-				confirmButtonColor: '#991188', //Warna kesukaan Nabila
-			});
-		}
+		});
 	}
-});
 
-$(".messagesfromvisitor-gotnew").find("button").on("click", function(){
-	$(this).parent().addClass("d-none");
-	drawMessages({loadnew : false});
-});
+	$("#reset-attenderdata").click(function(){
+		Swal.fire({
+			html: '<h1><i class="bi bi-arrow-clockwise"></i></h1>Reset data kamu?',
+			confirmButtonColor: '#991188', //Warna kesukaan Nabila
+			showCancelButton: true,
+			confirmButtonText: 'Ya, reset',
+			cancelButtonText: 'Tidak',
+			reverseButtons: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				["kepada", "dari", "backsound"].forEach(
+					k => localStorage.removeItem(k)
+				);
+				location.reload();
+			}
+		})
+	});
 
-$("iframe").each(function() {
-	$(this).attr("src", $(this).data("src"));  
+	$("#edit-attenderdata").click(function(){
+		Swal.fire({
+			html:
+				'<div style="max-width:25rem;">' +
+				'<h1><i class="bi bi-person-bounding-box"></i></h1>Ubah data tamu?' +
+				'<div class="mt-2 text-start row">' +
+				'<label for="attenderdata-kepada" class="col-sm-4 col-form-label">Nama</label>' +
+				'<div class="col-sm-8">' +
+				'<input id="attenderdata-kepada" type="text" aria-label="Nama" class="form-control text-uppercase">' +
+				'</div>' +
+				'</div>' +
+				'<div class="mb-1 text-start row">' +
+				'<label for="attenderdata-dari" class="col-sm-4 col-form-label">Domisili</label>' +
+				'<div class="col-sm-8">' +
+				'<input id="attenderdata-dari" type="text" aria-label="Domisili" class="form-control text-uppercase">' +
+				'</div>' +
+				'</div>' +
+				'</div>',
+			showCancelButton: true,
+			width: '25rem',
+			confirmButtonColor: '#991188', //Warna kesukaan Nabila
+			reverseButtons: true,
+			preConfirm: function () {
+				return new Promise(function (resolve) {
+					// Validate input
+					if ($('#attenderdata-kepada').val() == '' || $('#attenderdata-dari').val() == '') {
+						swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
+						swal.enableConfirmButton(); // Enable the confirm button again.
+					} else {
+						swal.resetValidationMessage(); // Reset the validation message.
+						resolve([
+							$('#attenderdata-kepada').val(),
+							$('#attenderdata-dari').val()
+						]);
+					}
+				})
+			},
+			didOpen: (popupedit) => {
+				console.log($(popupedit));
+				console.log($(popupedit).children(".swal2-html-container")[0]);
+				$($(popupedit).children(".swal2-html-container")[0]).css("overflow-x","hidden");
+				$('#attenderdata-kepada').val($('#qr-kepada').text().toUpperCase());
+				$('#attenderdata-dari').val($('#qr-dari').text().toUpperCase());
+				$('#attenderdata-kepada').focus()
+			}
+		}).then(function (result) {
+			if (result.isConfirmed) {
+				$("#qr-kepada").text($('#attenderdata-kepada').val());
+				$("#qr-dari").text($('#attenderdata-dari').val());
+				generateQrBukuTamu();
+			}
+		}).catch(swal.noop)
+	});
+
+	$("#messagesfromvisitor-submit-form").on("submit", function(e){
+		e.preventDefault();
+		submitedform = $(this);
+		$(this).validate({
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass("is-invalid");
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass("is-invalid");
+			},
+			errorClass: "invalid-feedback visible",
+			errorElement: "div",
+			rules: {
+				name: "required",
+				message: {
+					required: true,
+					minlength: 10
+				}
+			},
+			messages: {
+				name: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan nama',
+				message: {
+					required: '<i class="bi bi-exclamation-circle"></i> Silahkan isikan ucapan & doa',
+					minlength: '<i class="bi bi-exclamation-circle"></i> Isikan minimal 10 karakter'
+				}
+			}
+		});
+		if($(this).valid()) {
+			if(typeof grecaptcha !== "undefined"){
+				submitVisitorMessagesError = [];
+			
+				submitmessageform = $(this);
+				submitmessagebtn = submitmessageform.find("button[type=submit]");
+				submitmessagebtn.html('<span class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> loading...');
+				submitmessagebtn.prop('disabled', true);
+			
+				grecaptcha.ready(() => {
+					grecaptcha.execute('6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', {action: 'submit'}).then(function(token) {
+						
+						getInsertMessageParams = new getData({}, {"action":"insertComments", "grespon":token});
+						
+						var settings = {
+							"url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?${getInsertMessageParams.params()}`,
+							"method": "POST",
+							"timeout": 0,
+							"headers": {
+								"Content-Type": "application/x-www-form-urlencoded",
+							},
+							"redirect": "follow",
+							"data": submitedform.serialize() + "&visitorId=" + visitorId
+						};
+
+						$.ajax(settings).done((response) => {
+							if(response.statusCode == 1){
+								submitmessageform.trigger("reset");
+								submitmessageform.find("input[name=name]").val(capitalizing(kepada));
+								saveMessages(response.data);
+								drawMessages({loadnew : false});
+							}else{
+								submitVisitorMessagesError.push(response.statusText);
+							}
+						}).fail((jqXHR, textStatus) => {
+							submitVisitorMessagesError.push(`${textStatus}: Tidak dapat terhubung, pastikan perangkat terhubung dan Internet stabil.`);
+						}).always(() => {
+							if(submitVisitorMessagesError.length>0){
+								Swal.fire({
+									icon: 'error',
+									text: submitVisitorMessagesError.join(),
+									confirmButtonColor: '#991188', //Warna kesukaan Nabila
+								});
+							}
+							
+							submitmessagebtn.html('Kirim');
+							submitmessagebtn.prop('disabled', false);
+						});
+					});
+				});
+			}else{
+				Swal.fire({
+					icon: 'error',
+					text: `Error: Tidak dapat terhubung ke Google, pastikan perangkat terhubung dan Internet stabil.`,
+					confirmButtonColor: '#991188', //Warna kesukaan Nabila
+				});
+			}
+		}
+	});
+
+	$(".messagesfromvisitor-gotnew").find("button").on("click", function(){
+		$(this).parent().addClass("d-none");
+		drawMessages({loadnew : false});
+	});
+
+	$("iframe").each(function() {
+		$(this).attr("src", $(this).data("src"));  
+	});
 });
 
 $("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);

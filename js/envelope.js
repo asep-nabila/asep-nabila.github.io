@@ -381,57 +381,58 @@ const saveMessages = function(messagesData){
 	);
 }
 
-let playercontrolertimeout;
-$("#player-control-panel").on("click touchend", function(){
-	if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
-	
-	$playsbutton = $(this);
-	$playsbutton.css('opacity', '1');
-	$("#player-elem>#player-title-panel>small").removeClass('d-none');
-	playercontrolertimeout = setTimeout(function(){
-		$playsbutton.css('opacity', '0.5');
-		$playsbutton.blur();
-		$("#player-elem>#player-title-panel>small").addClass('d-none');
-		playercontrolertimeout = undefined;
-	}, 5000);
-});
-
-
 window.history.pushState('', '', window.location.pathname);
 
+let playercontrolertimeout;
+
 //$("body").css("background-image", 'url('+$("body").data("background")+')');
+$(function() {
+	getVisitorIP();
 
-getVisitorIP();
+	appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer').onload = () => {
+		console.log('jquery.validate.min.js Loaded');
+	}
 
-appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer').onload = () => {
-	console.log('jquery.validate.min.js Loaded');
-}
+	appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
+		drawMessages();
+	}
 
-appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
-	drawMessages();
-}
-
-appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
-appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
-	$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
-	$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
-	
-	$("#scan-attenderqrcode").qrCodeReader({
-		qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
-		audioFeedback: true,
-		callback: function(code) {
-			alert(code);
-		}
-	});
-}
-
-appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
-	Fancybox.bind("#gallery-prewed > div.grid-item > a", {
-		groupAll : true, // Group all items
-		on : {
-			ready : (fancybox) => {
-				console.log(`fancybox #${fancybox.id} is ready!`);
+	appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
+	appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
+		$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
+		$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
+		
+		$("#scan-attenderqrcode").qrCodeReader({
+			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
+			audioFeedback: true,
+			callback: function(code) {
+				alert(code);
 			}
-		}
+		});
+	}
+
+	appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
+		Fancybox.bind("#gallery-prewed > div.grid-item > a", {
+			groupAll : true, // Group all items
+			on : {
+				ready : (fancybox) => {
+					console.log(`fancybox #${fancybox.id} is ready!`);
+				}
+			}
+		});
+	}
+
+	$("#player-control-panel").on("click touchend", function(){
+		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
+		
+		$playsbutton = $(this);
+		$playsbutton.css('opacity', '1');
+		$("#player-elem>#player-title-panel>small").removeClass('d-none');
+		playercontrolertimeout = setTimeout(function(){
+			$playsbutton.css('opacity', '0.5');
+			$playsbutton.blur();
+			$("#player-elem>#player-title-panel>small").addClass('d-none');
+			playercontrolertimeout = undefined;
+		}, 5000);
 	});
-}
+});
