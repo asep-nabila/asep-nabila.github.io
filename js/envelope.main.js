@@ -67,7 +67,6 @@ for (let i = 0; i < prewedimgs.length; ++i) {
 	}
 }
 
-
 let grmph = $(".groomphonenumbershow");
 if(grmph.length > 0){
 	grmph.each(function(i, obj) {
@@ -375,7 +374,7 @@ $(window).on('resize scroll', () => {
 			var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
 			
 			if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){					
-				$plyrElem.find("a[class*=btn-outline-]").each((i,obj) => {
+				$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
 					var containerColor = $container.css("background-color");
 					if(containerColor == 'rgba(0, 0, 0, 0)'){
 						containerColor = $("body").css("background-color");
