@@ -61,7 +61,6 @@ let prewedimgs = [{
 ];
 
 $(function() {
-	
 	for (let i = 0; i < prewedimgs.length; ++i) {
 		let img = prewedimgs[i];
 		if($("#gallery-prewed") !== null){
@@ -331,6 +330,51 @@ $(function() {
 	$("iframe").each(function() {
 		$(this).attr("src", $(this).data("src"));  
 	});
+	
+	appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
+		let clipboard = new ClipboardJS('.clipboard');
+		clipboard.on('success', function (e) {
+			let $elem = $(e.trigger);
+			let elemprehtml = $elem.html();
+			let elempreclass = $elem.attr("class");
+			let copytext = e.text;
+			$elem.html("Berhasil disalin");
+			$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
+			setTimeout(function(){
+				$elem.html(elemprehtml);
+				$elem.attr("class", elempreclass);
+			},1000);
+
+			e.clearSelection();
+		});
+	}
+	
+	$(".lazyload:not([src])").each((i,obj) => {
+		lazyimg = $(obj),
+		obj = $(document.createElement("img")),
+		img = new Image();
+		
+		obj.addClass("d-none");
+		
+		img.onload = function(){
+			obj.attr("src",this.src);
+			obj.appendTo("body");
+		} 
+		
+		img.src = lazyimg.data("src");
+	});
+	$(".lazyload-n-anime:not([src])").each((i,obj) => {
+		lazyimg = $(obj),
+		lazyimg.attr("src", lazyimg.data("src"));
+	});
+	
+	setTimeout(function() {
+		if ($('#messagesfromvisitor').isInViewport()) {
+			drawMessages();
+		}
+	}, 1000);
+	
+	generateQrBukuTamu();
 });
 
 $("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
@@ -401,48 +445,3 @@ function drawMessagesOnScroll(){
    }
 }
 $("#messagesfromvisitor").on('touchmove scroll', function(){drawMessagesOnScroll();});
-
-setTimeout(function() {
-	if ($('#messagesfromvisitor').isInViewport()) {
-		drawMessages();
-	}
-}, 1000);
-
-$(".lazyload:not([src])").each((i,obj) => {
-	lazyimg = $(obj),
-	obj = $(document.createElement("img")),
-	img = new Image();
-	
-	obj.addClass("d-none");
-	
-	img.onload = function(){
-		obj.attr("src",this.src);
-		obj.appendTo("body");
-	} 
-	
-	img.src = lazyimg.data("src");
-});
-$(".lazyload-n-anime:not([src])").each((i,obj) => {
-	lazyimg = $(obj),
-	lazyimg.attr("src", lazyimg.data("src"));
-});
-
-appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
-	let clipboard = new ClipboardJS('.clipboard');
-	clipboard.on('success', function (e) {
-		let $elem = $(e.trigger);
-		let elemprehtml = $elem.html();
-		let elempreclass = $elem.attr("class");
-		let copytext = e.text;
-		$elem.html("Berhasil disalin");
-		$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
-		setTimeout(function(){
-			$elem.html(elemprehtml);
-			$elem.attr("class", elempreclass);
-		},1000);
-
-		e.clearSelection();
-	});
-}
-
-generateQrBukuTamu();
