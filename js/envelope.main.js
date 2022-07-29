@@ -371,7 +371,7 @@ let showLazyImg = function(){
 	});
 }
 
-$(window).on('resize scroll load', () => {
+$(window).on('resize scroll', () => {
 	showLazyImg()
 	
 	if ($('#ucapan').isInViewport()) {
