@@ -180,7 +180,7 @@ const showInvitation = function(){
 								if (localStorage.backsound == "true") {
 									playersPlayTimeout = setTimeout(function(){
 										players.audio.play();
-									}, 1000);
+									}, 500);
 								}
 							});
 
