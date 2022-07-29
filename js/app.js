@@ -195,8 +195,32 @@ const showInvitation = function(){
 			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
 			
 			appendscript('js/envelope.js', 'async').onload = function(){
-				appendscript('js/envelope.main.js', 'async');
+				appendscript('js/envelope.main.js', 'async').onload() = function(){
+					showLazyImg();
+				}
 			}
+		}
+	});
+}
+
+let showLazyImg = function(){
+	$(".lazyload:not([src])").each((i,obj) => {
+		lazyimg = $(obj);
+		if(lazyimg.isInViewport()){
+			if(lazyimg.hasClass( "grid-img" )){
+				lazyimg.one("load", () => {
+					$('.grid').masonry({
+						// set itemSelector so .grid-sizer is not used in layout
+						itemSelector: '.grid-item',
+						// use element for option
+						columnWidth: '.grid-sizer',
+						percentPosition: true
+					});
+				});
+			}
+			
+			lazyimg.addClass("animate__animated animate__fadeInDown");
+			lazyimg.attr("src", lazyimg.data("src"));
 		}
 	});
 }

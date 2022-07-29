@@ -349,30 +349,8 @@ $(window).on('resize', () => {
 	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
 });
 
-let showLazyImg = function(){
-	$(".lazyload:not([src])").each((i,obj) => {
-		lazyimg = $(obj);
-		if(lazyimg.isInViewport()){
-			if(lazyimg.hasClass( "grid-img" )){
-				lazyimg.one("load", () => {
-					$('.grid').masonry({
-						// set itemSelector so .grid-sizer is not used in layout
-						itemSelector: '.grid-item',
-						// use element for option
-						columnWidth: '.grid-sizer',
-						percentPosition: true
-					});
-				});
-			}
-			
-			lazyimg.addClass("animate__animated animate__fadeInDown");
-			lazyimg.attr("src", lazyimg.data("src"));
-		}
-	});
-}
-
 $(window).on('resize scroll', () => {
-	showLazyImg()
+	showLazyImg();
 	
 	if ($('#ucapan').isInViewport()) {
 		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1){
