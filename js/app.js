@@ -153,32 +153,6 @@ let playersPlayTimeout;
 const showInvitation = function(){
 	createcalamnsielement();
 	
-	appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
-		CalamansiEvents.on('initialized', function (player) {
-			players = player;
-			if (localStorage.backsound == "true") {
-				playersPlayTimeout = setTimeout(function(){
-					players.audio.play();
-				}, 2000);
-			}
-		});
-
-		CalamansiEvents.on('trackEnded', function (player) {
-			nextsongs();
-		});
-
-		CalamansiEvents.on('play', function (player) {
-			$("#playindicator").addClass("rotating-spin");
-		});
-
-		CalamansiEvents.on('pause', function (player) {
-			$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-			$("#playindicator").removeClass("rotating-spin");
-		});
-		
-		Calamansi.autoload();
-	}
-	
 	$('#envelope').load('envelope.html', function( response, status, xhr ) {
 		if ( status == "error" ) {
 			var msg = "Sorry but there was an error: ";
@@ -248,6 +222,32 @@ const createcalamnsielement = function(){
 		if ($(".marquee").width() >= $("nav").width()/100*65) {
 			$('.marquee').css('width', $("nav").width() - ( $("#calamansiplaycontroler").width() + $("#nextsongs").width() ) - 100);
 			$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
+		}
+		
+		appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
+			CalamansiEvents.on('initialized', function (player) {
+				players = player;
+				if (localStorage.backsound == "true") {
+					playersPlayTimeout = setTimeout(function(){
+						players.audio.play();
+					}, 2000);
+				}
+			});
+
+			CalamansiEvents.on('trackEnded', function (player) {
+				nextsongs();
+			});
+
+			CalamansiEvents.on('play', function (player) {
+				$("#playindicator").addClass("rotating-spin");
+			});
+
+			CalamansiEvents.on('pause', function (player) {
+				$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+				$("#playindicator").removeClass("rotating-spin");
+			});
+			
+			Calamansi.autoload();
 		}
 	}
 }
