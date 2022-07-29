@@ -389,34 +389,35 @@ let playercontrolertimeout;
 $(function() {
 	if(!isCrawler){
 		getVisitorIP();
-	}
-	appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer');
-	
-	//appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
-	appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
-		$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
-		$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
 		
-		$("#scan-attenderqrcode").qrCodeReader({
-			qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
-			audioFeedback: true,
-			callback: function(code) {
-				alert(code);
-			}
+		appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer');
+	
+		//appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
+		appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
+			$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
+			$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
+			
+			$("#scan-attenderqrcode").qrCodeReader({
+				qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
+				audioFeedback: true,
+				callback: function(code) {
+					alert(code);
+				}
+			});
+		}
+
+		$("#player-control-panel").on("click touchend", function(){
+			if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
+			
+			$playsbutton = $(this);
+			$playsbutton.css('opacity', '1');
+			$("#player-elem>#player-title-panel>small").removeClass('d-none');
+			playercontrolertimeout = setTimeout(function(){
+				$playsbutton.css('opacity', '0.5');
+				$playsbutton.blur();
+				$("#player-elem>#player-title-panel>small").addClass('d-none');
+				playercontrolertimeout = undefined;
+			}, 5000);
 		});
 	}
-
-	$("#player-control-panel").on("click touchend", function(){
-		if(typeof playercontrolertimeout !== "undefined") window.clearTimeout(playercontrolertimeout);
-		
-		$playsbutton = $(this);
-		$playsbutton.css('opacity', '1');
-		$("#player-elem>#player-title-panel>small").removeClass('d-none');
-		playercontrolertimeout = setTimeout(function(){
-			$playsbutton.css('opacity', '0.5');
-			$playsbutton.blur();
-			$("#player-elem>#player-title-panel>small").addClass('d-none');
-			playercontrolertimeout = undefined;
-		}, 5000);
-	});
 });
