@@ -151,7 +151,7 @@ players,
 p = playlist[cpi],
 playersPlayTimeout;
 const showInvitation = function(){
-	preloadSound('music/'+p.file).onload = function(){
+	preloadSound('music/'+p.file).oncanplaythrough = function(){
 		console.log("music loaded");
 	}
 	createcalamnsielement();
