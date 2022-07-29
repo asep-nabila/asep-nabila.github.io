@@ -186,9 +186,9 @@ const showInvitation = function(){
 		}else{
 			$('head')
 			.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
-			.append(`<link href="https://cdn.jsdelivr.net/npm/kfgqpc-uthmanic-script-hafs-regular@1.0.0/index.css" rel="stylesheet">`)
-			.append('<link rel="stylesheet" href="//asepnabila.link/calamansi-js/dist/calamansi.min.css">')
-			.append('<link rel="stylesheet" href="//asepnabila.link/qrcode-reader/dist/css/qrcode-reader.min.css">')
+			.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
+			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.css">')
+			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/qrcode-reader@master/dist/css/qrcode-reader.min.css">')
 			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 			.append(`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/regular.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
