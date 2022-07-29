@@ -170,37 +170,36 @@ const showInvitation = function(){
 			appendscript('js/envelope.js', 'async').onload = function(){
 				appendscript('js/envelope.main.js', 'async').onload = function(){
 					showLazyImg();
-				}
-			}
-			
-			
-			preloadSound('music/'+playlist[cpi].file).oncanplaythrough = function(){
-				console.log("music loaded");
-				createcalamnsielement();
-				appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
-					CalamansiEvents.on('initialized', function (player) {
-						players = player;
-						if (localStorage.backsound == "true") {
-							playersPlayTimeout = setTimeout(function(){
-								players.audio.play();
-							}, 1000);
-						}
-					});
-
-					CalamansiEvents.on('trackEnded', function (player) {
-						nextsongs();
-					});
-
-					CalamansiEvents.on('play', function (player) {
-						$("#playindicator").addClass("rotating-spin");
-					});
-
-					CalamansiEvents.on('pause', function (player) {
-						$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-						$("#playindicator").removeClass("rotating-spin");
-					});
 					
-					Calamansi.autoload();
+					preloadSound('music/'+playlist[cpi].file).oncanplaythrough = function(){
+						console.log("music loaded");
+						createcalamnsielement();
+						appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
+							CalamansiEvents.on('initialized', function (player) {
+								players = player;
+								if (localStorage.backsound == "true") {
+									playersPlayTimeout = setTimeout(function(){
+										players.audio.play();
+									}, 1000);
+								}
+							});
+
+							CalamansiEvents.on('trackEnded', function (player) {
+								nextsongs();
+							});
+
+							CalamansiEvents.on('play', function (player) {
+								$("#playindicator").addClass("rotating-spin");
+							});
+
+							CalamansiEvents.on('pause', function (player) {
+								$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+								$("#playindicator").removeClass("rotating-spin");
+							});
+							
+							Calamansi.autoload();
+						}
+					}
 				}
 			}
 		}
