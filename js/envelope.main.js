@@ -339,10 +339,6 @@ $(function() {
 		$(this).parent().addClass("d-none");
 		drawMessages({loadnew : false});
 	});
-
-	$("iframe").each(function() {
-		$(this).attr("src", $(this).data("src"));  
-	});
 	
 	appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
 		let clipboard = new ClipboardJS('.clipboard');
@@ -387,9 +383,16 @@ $(window).on('resize scroll', () => {
 	if ($('#messagesfromvisitor').isInViewport()) {
 		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
 	}
+	
 	if ($('#detail-acara').isInViewport()) {
 		startCountdown();
 	}
+	
+	$("iframe:not([src])").each(function() {
+		if ($(this).isInViewport()) {
+			$(this).attr("src", $(this).data("src"));
+		}
+	});
 	
 	$(".lazyload:not([src])").each((i,obj) => {
 		lazyimg = $(obj);
