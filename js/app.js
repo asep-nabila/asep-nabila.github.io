@@ -27,12 +27,14 @@ $(function() {
 	// Initialize the agent at application startup.
 	//https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js
 	//const fpPromise = import('./sidikramo.js').then(FingerprintJS => );
-	appendscript('//asepnabila.link/js/sidikramo.js', 'async').onload = () => {
-		fpPromise = FingerprintJS.load({apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: `https://sr.asepnabila.link`});
-		if(typeof goToInvitation !== "undefined"){
-			getVisitorId(goToInvitation);		
-		}else{	
-			getVisitorId();
+	if(!isCrawler){
+		appendscript('//asepnabila.link/js/sidikramo.js', 'async').onload = () => {
+			fpPromise = FingerprintJS.load({apiKey: 'OS3SLXNyklDNGY2qQcMy', endpoint: `https://sr.asepnabila.link`});
+			if(typeof goToInvitation !== "undefined"){
+				getVisitorId(goToInvitation);		
+			}else{	
+				getVisitorId();
+			}
 		}
 	}
 });
