@@ -387,11 +387,10 @@ let playercontrolertimeout;
 
 //$("body").css("background-image", 'url('+$("body").data("background")+')');
 $(function() {
-	getVisitorIP();
-
-	appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer').onload = () => {
-		console.log('jquery.validate.min.js Loaded');
+	if(!isCrawler){
+		getVisitorIP();
 	}
+	appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer');
 	
 	//appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
 	appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {

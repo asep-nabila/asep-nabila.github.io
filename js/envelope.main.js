@@ -319,22 +319,24 @@ $(function() {
 		drawMessages({loadnew : false});
 	});
 	
-	appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
-		let clipboard = new ClipboardJS('.clipboard');
-		clipboard.on('success', function (e) {
-			let $elem = $(e.trigger);
-			let elemprehtml = $elem.html();
-			let elempreclass = $elem.attr("class");
-			let copytext = e.text;
-			$elem.html("Berhasil disalin");
-			$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
-			setTimeout(function(){
-				$elem.html(elemprehtml);
-				$elem.attr("class", elempreclass);
-			},1000);
+	if(!isCrawler){
+		appendscript('https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js', 'defer').onload = () => {
+			let clipboard = new ClipboardJS('.clipboard');
+			clipboard.on('success', function (e) {
+				let $elem = $(e.trigger);
+				let elemprehtml = $elem.html();
+				let elempreclass = $elem.attr("class");
+				let copytext = e.text;
+				$elem.html("Berhasil disalin");
+				$elem.attr("class", elempreclass.replace(/primary/g, 'warning'));
+				setTimeout(function(){
+					$elem.html(elemprehtml);
+					$elem.attr("class", elempreclass);
+				},1000);
 
-			e.clearSelection();
-		});
+				e.clearSelection();
+			});
+		}
 	}
 	
 	generateQrBukuTamu();
