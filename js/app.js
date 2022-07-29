@@ -148,10 +148,9 @@ async function getVisitorId(functionCallbak) {
 if(typeof playlist !== 'undefined') playlist = shuffle(playlist);
 let cpi = 0,
 players,
-p = playlist[cpi],
 playersPlayTimeout;
 const showInvitation = function(){
-	preloadSound('music/'+p.file).oncanplaythrough = function(){
+	preloadSound('music/'+playlist[cpi].file).oncanplaythrough = function(){
 		console.log("music loaded");
 	}
 	createcalamnsielement();
@@ -240,6 +239,9 @@ function preloadSound(src) {
 }
 
 const createcalamnsielement = function(){
+	let p = playlist[cpi];
+	console.log('creating calamansi...');
+	console.log(p.file);
 	$("#calamansiplaycontroler").empty();
 	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
