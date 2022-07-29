@@ -344,13 +344,14 @@ $(function() {
 	showLazyImg();
 });
 
-$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
-$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
-$(window).on('resize', () => {
+if(!isCrawler){
 	$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
 	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
-});
-
+	$(window).on('resize', () => {
+		$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
+		$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
+	});
+}
 $(window).on('resize scroll', () => {
 	showLazyImg();
 	
