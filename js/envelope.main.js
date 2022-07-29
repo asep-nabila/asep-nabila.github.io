@@ -363,12 +363,6 @@ $(function() {
 		lazyimg.attr("src", lazyimg.data("src"));
 	});
 	
-	setTimeout(function() {
-		if ($('#messagesfromvisitor').isInViewport()) {
-			drawMessages();
-		}
-	}, 1000);
-	
 	generateQrBukuTamu();
 });
 
@@ -381,7 +375,11 @@ $(window).on('resize', () => {
 
 $(window).on('resize scroll', () => {
 	if ($('#messagesfromvisitor').isInViewport()) {
-		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1) drawMessages();
+		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1){
+			appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
+				drawMessages();
+			}
+		}
 	}
 	
 	if ($('#detail-acara').isInViewport()) {
