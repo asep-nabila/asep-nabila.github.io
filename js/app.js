@@ -227,19 +227,6 @@ let showLazyImg = function(){
 	});
 }
 
-function preloadSound(src) {
-    var s = document.createElement("audio");
-    if ("src" in s) {
-        s.autoPlay = false;
-    } else {
-        s = document.createElement("bgsound");
-        s.volume = -10000;
-    }
-    s.src = src;
-    document.body.appendChild(s);
-    return s;
-}
-
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
 	console.log('creating calamansi...');
