@@ -362,20 +362,6 @@ $(function() {
 		});
 	}
 	
-	$(".lazyload:not([src])").each((i,obj) => {
-		lazyimg = $(obj),
-		obj = $(document.createElement("img")),
-		img = new Image();
-		
-		obj.addClass("d-none");
-		
-		img.onload = function(){
-			obj.attr("src",this.src);
-			obj.appendTo("body");
-		} 
-		
-		img.src = lazyimg.data("src");
-	});
 	$(".lazyload-n-anime:not([src])").each((i,obj) => {
 		lazyimg = $(obj),
 		lazyimg.attr("src", lazyimg.data("src"));
