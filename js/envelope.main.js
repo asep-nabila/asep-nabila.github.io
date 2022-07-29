@@ -64,7 +64,7 @@ $(function() {
 	for (let i = 0; i < prewedimgs.length; ++i) {
 		let img = prewedimgs[i];
 		if($("#gallery-prewed") !== null){
-			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload img-fluid" alt="${img.alt}" style="height:10.8rem;width:16.2rem;" data-src="${img.src}?${i}"></img></a></div>`);
+			$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload grid-img img-fluid" alt="${img.alt}" style="height:10.8rem;width:16.2rem;" data-src="${img.src}?${i}"></img></a></div>`);
 		}
 		
 		if(i == (prewedimgs.length - 1)){
@@ -394,15 +394,17 @@ $(window).on('resize scroll load', () => {
 	$(".lazyload:not([src])").each((i,obj) => {
 		lazyimg = $(obj);
 		if(lazyimg.isInViewport()){
-			lazyimg.one("load", () => {
-				$('.grid').masonry({
-					// set itemSelector so .grid-sizer is not used in layout
-					itemSelector: '.grid-item',
-					// use element for option
-					columnWidth: '.grid-sizer',
-					percentPosition: true
+			if(lazyimg.hasClass( "grid-img" )){
+				lazyimg.one("load", () => {
+					$('.grid').masonry({
+						// set itemSelector so .grid-sizer is not used in layout
+						itemSelector: '.grid-item',
+						// use element for option
+						columnWidth: '.grid-sizer',
+						percentPosition: true
+					});
 				});
-			});
+			}
 			
 			lazyimg.addClass("animate__animated animate__fadeInDown");
 			lazyimg.attr("src", lazyimg.data("src"));
