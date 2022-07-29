@@ -230,7 +230,7 @@ const createcalamnsielement = function(){
 				if (localStorage.backsound == "true") {
 					playersPlayTimeout = setTimeout(function(){
 						players.audio.play();
-					}, 2000);
+					}, 1000);
 				}
 			});
 
