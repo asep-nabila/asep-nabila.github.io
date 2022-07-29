@@ -229,8 +229,6 @@ let showLazyImg = function(){
 
 const createcalamnsielement = function(){
 	let p = playlist[cpi];
-	console.log('creating calamansi...');
-	console.log(p.file);
 	$("#calamansiplaycontroler").empty();
 	$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="//i.asepnabila.link/calamansi/skins/in-text" data-source="music/'+p.file+'"></span>');
 	$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
