@@ -80,32 +80,11 @@ $(function() {
 			}
 		}
 	}
-	
-	let grmph = $(".groomphonenumbershow");
-	if(grmph.length > 0){
-		grmph.each(function(i, obj) {
-			let c = this;
-			let ctx = c.getContext('2d');
-			ctx.lineWidth = 0.5;
-			ctx.textBaseline = 'top';
-			
-			let __Str = "__";
-			if(isMobile){
-				__Str = "____";
-			}
-			
-			c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
-			
-			ctx.font = ".9rem Arial";
-			ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-			ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-		});
-	}
 
 	$('.nav-link, .navigate-link').each(function() {
 		$(this).on('click', function(event) {
 			event.preventDefault();
-			$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
+			$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 250);
 		});
 	});
 	
@@ -391,6 +370,31 @@ $(window).on('resize scroll', () => {
 			$(this).attr("src", $(this).data("src"));
 		}
 	});
+	
+	if ($('#amplop-digital').isInViewport()) {
+		let grmph = $(".groomphonenumbershow");
+		if(grmph.length > 0){
+			grmph.each(function(i, obj) {
+				let c = this;
+				let ctx = c.getContext('2d');
+				ctx.lineWidth = 0.5;
+				ctx.textBaseline = 'top';
+				
+				let __Str = "__";
+				if(isMobile){
+					__Str = "____";
+				}
+				
+				c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
+				
+				ctx.font = ".9rem Arial";
+				ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+				ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+				
+				$(c).removeClass("groomphonenumbershow");
+			});
+		}
+	}
 	
 	$(".lazyload:not([src])").each((i,obj) => {
 		lazyimg = $(obj);
