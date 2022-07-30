@@ -10,6 +10,15 @@ const appendscript = function(url, method = ''){
 
 //app.js
 $(function() {
+	if(!isCrawler){
+		appendscript('https://www.googletagmanager.com/gtag/js?id=G-77YBSBL6PY', 'async').onload = () => {
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-77YBSBL6PY');
+		}
+	}
+	
 	$('head')
 	.append('<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">')
 	.append('<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">');
