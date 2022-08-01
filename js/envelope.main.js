@@ -68,7 +68,7 @@ $(function() {
 				$("#gallery-prewed").append(`<div class="grid-item"><a href="${img.href}?${i}" aria-label="${img.alt}"><img class="lazyload grid-img img-fluid" alt="${img.alt}" style="display:unset;" data-src="${img.src}?${i}"></img></a></div>`);
 			}
 			
-			if(i == (prewedimgs.length - 1) && !isCrawler){
+			if(i == (prewedimgs.length - 1)){
 				appendscript('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', 'defer').onload = () => {
 					Fancybox.bind("#gallery-prewed > div.grid-item > a", {
 						groupAll : true, // Group all items
