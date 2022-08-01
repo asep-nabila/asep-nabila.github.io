@@ -161,58 +161,58 @@ let cpi = 0,
 players,
 playersPlayTimeout;
 const showInvitation = function(){
-	$('#envelope').load('envelope.html', function( response, status, xhr ) {
-		if ( status == "error" ) {
-			var msg = "Sorry but there was an error: ";
-			$( "#envelope" ).html( msg + xhr.status + " " + xhr.statusText );
-		}else{
+	$.get("envelope.html", function(data){
+		$("body").prepend(data);
+	}).done(function() {
+		$('head')
+		.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
+		.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
+		.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+		.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
+		if(!isCrawler){
 			$('head')
-			.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
-			.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
-			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
-			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
-			if(!isCrawler){
-				$('head')
-				.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.css">')
-				.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/qrcode-reader@master/dist/css/qrcode-reader.min.css">')
-				.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
-			}
-			
-			appendscript('js/envelope.js', 'async').onload = function(){
-				appendscript('js/envelope.main.js', 'async').onload = function(){
-					showLazyImg();
-					
-					if(!isCrawler){
-						createcalamnsielement();
-						appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
-							CalamansiEvents.on('initialized', function (player) {
-								players = player;
-								if (localStorage.backsound == "true") {
-									playersPlayTimeout = setTimeout(function(){
-										players.audio.play();
-									}, 500);
-								}
-							});
+			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.css">')
+			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/qrcode-reader@master/dist/css/qrcode-reader.min.css">')
+			.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>`);
+		}
+		
+		appendscript('js/envelope.js', 'async').onload = function(){
+			appendscript('js/envelope.main.js', 'async').onload = function(){
+				showLazyImg();
+				
+				if(!isCrawler){
+					createcalamnsielement();
+					appendscript('https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.js', 'async').onload = function(){		
+						CalamansiEvents.on('initialized', function (player) {
+							players = player;
+							if (localStorage.backsound == "true") {
+								playersPlayTimeout = setTimeout(function(){
+									players.audio.play();
+								}, 500);
+							}
+						});
 
-							CalamansiEvents.on('trackEnded', function (player) {
-								nextsongs();
-							});
+						CalamansiEvents.on('trackEnded', function (player) {
+							nextsongs();
+						});
 
-							CalamansiEvents.on('play', function (player) {
-								$("#playindicator").addClass("rotating-spin");
-							});
+						CalamansiEvents.on('play', function (player) {
+							$("#playindicator").addClass("rotating-spin");
+						});
 
-							CalamansiEvents.on('pause', function (player) {
-								$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
-								$("#playindicator").removeClass("rotating-spin");
-							});
-							
-							Calamansi.autoload();
-						}
+						CalamansiEvents.on('pause', function (player) {
+							$("a.clmns--control-resume").css("padding", "0.35rem 0.5rem");
+							$("#playindicator").removeClass("rotating-spin");
+						});
+						
+						Calamansi.autoload();
 					}
 				}
 			}
 		}
+	})
+	.fail(function() {
+		$( "body" ).prepend('<div class="container-fluid text-center mt-5"><p>Maaf, terjadi kendala saat mengabil undangan, silahkan coba refresh halaman.</p><button class="btn btn-primary" onClick="window.location.href=window.location.href">Refresh</button></div>');
 	});
 }
 
