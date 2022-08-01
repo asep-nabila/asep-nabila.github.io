@@ -1,0 +1,7 @@
+/*!
+ * Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2022 Fonticons, Inc.
+ */
+.fa {font-family: var(--fa-style-family, "Font Awesome 6 Free");font-weight: var(--fa-style, 900); }.fa,.fas,.fa-solid,.far,.fa-regular,.fal,.fa-light,.fat,.fa-thin,.fad,.fa-duotone,.fab,.fa-brands {-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;display: var(--fa-display, inline-block);font-style: normal;font-variant: normal;line-height: 1;text-rendering: auto; }
+.fa-gopuram::before{content: "\f664";}.fa-children::before{content: "\e4e1";}.fa-calendar-days::before{content: "\f073";}.fa-images::before{content: "\f302";}.fa-comment-alt::before{content: "\f27a";}
