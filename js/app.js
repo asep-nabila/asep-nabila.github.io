@@ -161,7 +161,7 @@ let cpi = 0,
 players,
 playersPlayTimeout;
 const showInvitation = function(){
-	$.get("https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/envelope.html", function(data){
+	$.get("https://asepnabila.link/envelope.html", function(data){
 		$("body").prepend(data);
 	}).done(function() {
 		$('head')
