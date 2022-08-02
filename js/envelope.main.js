@@ -426,6 +426,12 @@ $(window).on('resize scroll', () => {
 			$plyrElem = $("#player-elem>#player-control-panel");
 			var elementTop = parseInt($plyrElem.offset().top);
 			var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
+			
+			var $plyrElemC = $("#player-elem>#player-control-panel")[0].getBoundingClientRect();
+			
+			html2canvas($container, {x:plyrElemC.x,scrollX:plyrElemC.x+plyrElemC.height,y:elementTop,scrollY:elementBottom,height:elementBottom-$plyrElem.height()}).then(function(canvas) {
+				document.body.appendChild(canvas);
+			});
 
 			var viewContainerTop = parseInt($container.offset().top);
 			var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
