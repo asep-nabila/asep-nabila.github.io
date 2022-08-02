@@ -416,9 +416,9 @@ function getAverageRGB(imgEl) {
     }
 
     // ~~ used to floor values
-    rgb.r = ~~(rgb.r/count);
-    rgb.g = ~~(rgb.g/count);
-    rgb.b = ~~(rgb.b/count);
+    rgb.r = Math.floor(rgb.r/count);
+    rgb.g = Math.floor(rgb.g/count);
+    rgb.b = Math.floor(rgb.b/count);
 
    return 'rgba('+rgb.r+', 'rgb.g', 'rgb.b', 1)';
 }
