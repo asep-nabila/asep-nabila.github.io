@@ -429,7 +429,7 @@ $(window).on('resize scroll', () => {
 			
 			var $plyrElemC = $("#player-elem>#player-control-panel")[0].getBoundingClientRect();
 			
-			html2canvas($container[0], {x:$plyrElemC.x,scrollX:$plyrElemC.x+$plyrElemC.height,y:elementTop,scrollY:elementBottom,height:elementBottom-$plyrElem.height()}).then(function(canvas) {
+			html2canvas($container[0], {x:$plyrElemC.x,scrollX:$plyrElemC.x+$plyrElemC.height,y:elementTop,scrollY:elementBottom,height:elementBottom-elementTop,width:$plyrElemC.width}).then(function(canvas) {
 				document.body.appendChild(canvas);
 			});
 
