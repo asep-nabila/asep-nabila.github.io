@@ -521,7 +521,7 @@ $(window).on('resize scroll', () => {
 				}
 				
 				if(containerColor == 'rgba(0, 0, 0, 0)'){
-					 containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
+					containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
 				}
 			}
 			if(containerColor == 'rgba(0, 0, 0, 0)'){
