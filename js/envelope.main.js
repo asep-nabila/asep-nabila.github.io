@@ -99,8 +99,6 @@ $(function() {
 			  }
 			);
 		});
-		
-		appendscript('https://html2canvas.hertzen.com/dist/html2canvas.min.js');
 	}
 
 	$('.nav-link, .navigate-link').each(function() {
