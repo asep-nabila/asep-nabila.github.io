@@ -471,6 +471,9 @@ $(window).on('resize scroll', () => {
 				hexToRgbA($(document.elementFromPoint($plyrElemC.x, $plyrElemC.y)).attr("fill"))
 			}else{
 				containerColor = $container.parent().css("background-color");
+				if(containerColor == 'rgba(0, 0, 0, 0)'){
+					 containerColor = $container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1].css("background-color");
+				}
 			}
 			if(containerColor == 'rgba(0, 0, 0, 0)'){
 				containerColor = $("body").css("background-color");
