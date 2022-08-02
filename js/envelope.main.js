@@ -420,7 +420,7 @@ function getAverageRGB(imgEl) {
     rgb.g = Math.floor(rgb.g/count);
     rgb.b = Math.floor(rgb.b/count);
 
-   return 'rgba('+rgb.r+', 'rgb.g', 'rgb.b', 1)';
+   return 'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', 1)';
 }
 
 if(!isCrawler){
