@@ -379,7 +379,7 @@ function hexToRgbA(hex){
 
 function getAverageRGB(imgEl) {
     var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = 'rgba(0, 0, 0, 0)', // for non-supporting envs
+        defaultRGB = 'rgba(0, 0, 0, 1)', // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
