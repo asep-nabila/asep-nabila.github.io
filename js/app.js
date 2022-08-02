@@ -163,7 +163,7 @@ playersPlayTimeout;
 const showInvitation = function(){
 	let baseURL = 'https://asepnabila.link';
 	if(location.protocol.includes("http")){
-		baseURL = `https//${window.location.hostname}`;
+		baseURL = `https://${window.location.hostname}`;
 	}
 	$.get(`${baseURL}/envelope.html`, function(data){
 		$("body").prepend(data);
