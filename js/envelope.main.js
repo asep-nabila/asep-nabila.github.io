@@ -467,8 +467,8 @@ $(window).on('resize scroll', () => {
 	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
 		var containerColor = $container.css("background-color");
 		if(containerColor == 'rgba(0, 0, 0, 0)'){
-			if(typeof $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y)).attr("fill") !== 'undefined'){
-				hexToRgbA($(document.elementFromPoint($plyrElemC.x, $plyrElemC.y)).attr("fill"))
+			if(typeof $container.attr("fill") !== 'undefined'){
+				containerColor = hexToRgbA($container.attr("fill"));
 			}else{
 				containerColor = $container.parent().css("background-color");
 				if(containerColor == 'rgba(0, 0, 0, 0)'){
