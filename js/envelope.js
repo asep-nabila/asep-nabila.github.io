@@ -142,6 +142,8 @@ const generateQrBukuTamu = function(){
 		back: 'rgba(255,255,255, 1)'
 	});
 	
+	$('#qrbukutamu').append('<div id="isqrscanned" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: none;color: #fff; background: rgba(255, 255, 255, 0.9);"></div>');
+	
 	$('#qr-kepada').text(kepada.toUpperCase());
 	$('#qr-dari').text(dari.toUpperCase());
 }
