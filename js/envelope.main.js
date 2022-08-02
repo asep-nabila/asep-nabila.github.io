@@ -428,15 +428,15 @@ $(window).on('resize scroll', () => {
 			var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
 			
 			var $plyrElemC = $("#player-elem>#player-control-panel")[0].getBoundingClientRect();
-			
-			html2canvas($container[0], {x:$plyrElemC.x,scrollX:$plyrElemC.x+$plyrElemC.height,y:elementTop,scrollY:elementBottom,height:elementBottom-elementTop,width:$plyrElemC.width}).then(function(canvas) {
-				document.body.appendChild(canvas);
-			});
 
 			var viewContainerTop = parseInt($container.offset().top);
 			var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
 			
-			if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){					
+			if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){			
+				html2canvas($container[0], {x:$plyrElemC.x,scrollX:$plyrElemC.x+$plyrElemC.height,y:elementTop,scrollY:elementBottom,height:elementBottom-elementTop,width:$plyrElemC.width}).then(function(canvas) {
+					document.body.appendChild(canvas);
+				});
+				
 				$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
 					var containerColor = $container.css("background-color");
 					if(containerColor == 'rgba(0, 0, 0, 0)'){
