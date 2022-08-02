@@ -366,6 +366,19 @@ $(function() {
 	showLazyImg();
 });
 
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+    }
+    return 'rgba(0, 0, 0, 0)';
+}
+
 if(!isCrawler){
 	$("#player-title-panel").css("margin-left", $("#navigation-link").offset().left);
 	$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
@@ -420,32 +433,54 @@ $(window).on('resize scroll', () => {
 		}
 	}
 	
-	$("body>div").each((i,obj) => {
-		$container = $(obj);
-		if($container.isInViewport()){
-			$plyrElem = $("#player-elem>#player-control-panel");
-			var elementTop = parseInt($plyrElem.offset().top);
-			var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
-
-			var viewContainerTop = parseInt($container.offset().top);
-			var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
-			
-			if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){
-				$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
-					var containerColor = $container.css("background-color");
-					if(containerColor == 'rgba(0, 0, 0, 0)'){
-						containerColor = $("body").css("background-color");
-					}
-
-					$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
-					$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-					$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
-					$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
-				});
-				
-				return false;
+	//$("body>div").each((i,obj) => {
+	//	$container = $(obj);
+	//	if($container.isInViewport()){
+	//		$plyrElem = $("#player-elem>#player-control-panel");
+	//		var elementTop = parseInt($plyrElem.offset().top);
+	//		var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
+    //
+	//		var viewContainerTop = parseInt($container.offset().top);
+	//		var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
+	//		
+	//		if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){
+	//			$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
+	//				var containerColor = $container.css("background-color");
+	//				if(containerColor == 'rgba(0, 0, 0, 0)'){
+	//					containerColor = $("body").css("background-color");
+	//				}
+	//				
+	//				$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
+	//				$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
+	//				$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
+	//				$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
+	//			});
+	//			
+	//			return false;
+	//		}
+	//	}
+	//});
+	
+	$plyrElem = $("#player-elem>#player-control-panel");
+	$plyrElemC = $("#player-elem>#player-control-panel")[0].getBoundingClientRect();
+	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
+	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
+		var containerColor = $container.css("background-color");
+		if(containerColor == 'rgba(0, 0, 0, 0)'){
+			if($(document.elementFromPoint($plyrElemC.x, $plyrElemC.y)).attr("fill") !== undefined){
+				hexToRgbA($(document.elementFromPoint($plyrElemC.x, $plyrElemC.y)).attr("fill"))
+			}else{
+				containerColor = $container.parent().css("background-color");
+			}
+			if(containerColor == 'rgba(0, 0, 0, 0)'){
+				containerColor = $("body").css("background-color");
 			}
 		}
+		
+		$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
+		$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
+		$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
+		$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
 	});
 });
 
