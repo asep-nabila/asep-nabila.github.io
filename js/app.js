@@ -161,7 +161,7 @@ let cpi = 0,
 players,
 playersPlayTimeout;
 const showInvitation = function(){
-	let baseURL = 'https://asep-nabila.github.io';
+	let baseURL = 'https://asepnabila.link';
 	if(location.protocol.includes("http")){
 		baseURL = `https//${window.location.hostname}`;
 	}
