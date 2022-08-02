@@ -161,14 +161,18 @@ let cpi = 0,
 players,
 playersPlayTimeout;
 const showInvitation = function(){
-	$.get("https://asepnabila.link/envelope.html", function(data){
+	let baseURL = 'https://asep-nabila.github.io';
+	if(location.protocol.includes("http")){
+		baseURL = `https//${window.location.hostname}`;
+	}
+	$.get(`${baseURL}/envelope.html`, function(data){
 		$("body").prepend(data);
 	}).done(function() {
 		$('head')
 		.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
 		.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
-		.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
-		.append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
+		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
+		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
 		if(!isCrawler){
 			$('head')
 			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.css">')
