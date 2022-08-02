@@ -418,7 +418,7 @@ $(window).on('resize scroll', () => {
 		}
 	}
 	
-	$("body>div#envelope>div").each((i,obj) => {
+	$("body>div").each((i,obj) => {
 		$container = $(obj);
 		if($container.isInViewport()){
 			$plyrElem = $("#player-elem>#player-control-panel");
