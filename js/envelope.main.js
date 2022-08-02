@@ -506,8 +506,10 @@ $(window).on('resize scroll', () => {
 	//});
 	
 	$plyrElem = $("#player-elem>#player-control-panel");
-	$plyrElemC = $("#player-elem>#player-control-panel")[0].getBoundingClientRect();
+	$plyrElemC = $plyrElem[0].getBoundingClientRect();
+	$plyrElem.hide();
 	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
+	$plyrElem.show();
 	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
 		var containerColor = $container.css("background-color");
 		if(containerColor == 'rgba(0, 0, 0, 0)'){
