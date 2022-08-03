@@ -181,6 +181,13 @@ const showInvitation = function(){
 		}
 		
 		appendscript('js/envelope.js', 'async').onload = function(){
+			if(typeof kepada == 'undefined' || kepada == ''){
+				swallAskName(swallAskFrom);
+			}else{
+				localStorage.kepada = kepada.toUpperCase();
+				swallAskFrom();
+			}
+			
 			appendscript('js/envelope.main.js', 'async').onload = function(){
 				showLazyImg();
 				
