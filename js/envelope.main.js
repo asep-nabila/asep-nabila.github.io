@@ -1,60 +1,60 @@
 let prewedimgs = [{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 1"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 2"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 3"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 4"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 5"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 6"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 7"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 8"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 9"
 	},
 	{
-		"href": "https://picsum.photos/600/400",
-		"src": "https://picsum.photos/300/200",
+		"href": "https://picsum.photos/1200/800",
+		"src": "https://picsum.photos/260/173",
 		"title": "",
 		"alt": "Picsum 10"
 	}
