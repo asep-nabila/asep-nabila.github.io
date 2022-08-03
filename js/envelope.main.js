@@ -82,7 +82,7 @@ $(function() {
 			}
 		}
 		
-		$("#qrbukutamu").on("click", function(){
+		$("#qrbukutamu > svg").on("click", function(){
 			new Fancybox(
 				[
 					{
