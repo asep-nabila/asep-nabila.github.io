@@ -82,7 +82,7 @@ $(function() {
 			}
 		}
 		
-		$("#qrbukutamu").on("click touchend", function(){
+		$("#qrbukutamu").on("click", function(){
 			new Fancybox(
 				[
 					{
