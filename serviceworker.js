@@ -17,6 +17,12 @@ registerRoute(
     ],
   }),
 );
+
+registerRoute(
+  ({url}) => url.origin === 'https://cdnjs.cloudflare.com' ||
+             url.origin === 'https://cdn.jsdelivr.net',
+  new StaleWhileRevalidate(),
+);
   
 registerRoute(
   ({request}) => request.destination === 'script' ||
@@ -29,6 +35,15 @@ registerRoute(
 registerRoute(
   ({request}) => request.destination === 'image',
   new StaleWhileRevalidate({
-    cacheName: 'images-cache'
+    cacheName: 'images',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
+    ],
   }),
 );
