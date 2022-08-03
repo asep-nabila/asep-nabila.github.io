@@ -81,24 +81,6 @@ $(function() {
 				}
 			}
 		}
-		
-		$("#qrbukutamu > svg").on("click", function(){
-			new Fancybox(
-				[
-					{
-						src: $("#qrbukutamu > svg").clone().attr({height:1000,width:1000}).css({height:'auto',width:'100%'}).prop('outerHTML'),
-						type: "html"
-					},
-				],
-			  {
-				on: {
-					done: (fancybox) => {
-						console.log(fancybox);
-					},
-				},
-			  }
-			);
-		});
 	}
 
 	$('.nav-link, .navigate-link').each(function() {

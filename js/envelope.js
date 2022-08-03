@@ -142,6 +142,24 @@ const generateQrBukuTamu = function(){
 		back: 'rgba(255,255,255, 1)'
 	});
 	
+	$("#qrbukutamu > svg").on("click", function(){
+		new Fancybox(
+			[
+				{
+					src: $("#qrbukutamu > svg").clone().attr({height:1000,width:1000}).css({height:'auto',width:'100%'}).prop('outerHTML'),
+					type: "html"
+				},
+			],
+		  {
+			on: {
+				done: (fancybox) => {
+					console.log(fancybox);
+				},
+			},
+		  }
+		);
+	});
+	
 	$('#qrbukutamu').append('<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: block;color: #730f66; background: rgba(255, 255, 255, 0.9);" id="isqrscanned" class="text-center"><i style="font-size: 6.7em;display: block;" class="bi bi-check-circle"></i><b>Scanned</b></div>');
 	
 	$('#qr-kepada').text(kepada.toUpperCase());
