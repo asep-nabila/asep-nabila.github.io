@@ -497,7 +497,6 @@ $(window).on('resize scroll', (e) => {
 					if($container[0] instanceof HTMLImageElement){
 						$container.attr("crossorigin", ""); 
 						containerColor = getAverageRGB($container[0]);
-						$container.removeAttr("crossorigin");
 					}else{
 						containerColor = $container.parent().css("background-color");
 					}
