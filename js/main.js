@@ -25,6 +25,7 @@ if(queryParams.group !== null && queryParams.group !== ""){
 if(isCrawler){
 	kepada = "Elon Musk";
 	dari = "Tesla, Inc";
+	localStorage.backsound = false;
 }
 
 $(function() {	
