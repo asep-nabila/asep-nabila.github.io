@@ -142,7 +142,7 @@ const generateQrBukuTamu = function(){
 		back: 'rgba(255,255,255, 1)'
 	});
 	
-	$('#qrbukutamu').append('<div id="isqrscanned" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: none;color: #fff; background: rgba(255, 255, 255, 0.9);"></div>');
+	$('#qrbukutamu').append('<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: block;color: #730f66; background: rgba(255, 255, 255, 0.9);" id="isqrscanned" class="text-center"><i style="font-size: 6em;display: block;" class="bi bi-check-circle"></i><b>Scanned</b></div>');
 	
 	$('#qr-kepada').text(kepada.toUpperCase());
 	$('#qr-dari').text(dari.toUpperCase());
