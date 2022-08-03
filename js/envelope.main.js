@@ -379,7 +379,7 @@ function hexToRgbA(hex){
 
 function getAverageRGB(imgEl) {
     var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = 'rgba(0, 0, 0, 1)', // for non-supporting envs
+        defaultRGB = 'rgba(255, 255, 255, 1)', // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
@@ -476,34 +476,6 @@ $(window).on('resize scroll', () => {
 			});
 		}
 	}
-	
-	//$("body>div").each((i,obj) => {
-	//	$container = $(obj);
-	//	if($container.isInViewport()){
-	//		$plyrElem = $("#player-elem>#player-control-panel");
-	//		var elementTop = parseInt($plyrElem.offset().top);
-	//		var elementBottom = parseInt(elementTop + $plyrElem.outerHeight());
-    //
-	//		var viewContainerTop = parseInt($container.offset().top);
-	//		var viewContainerBottom = parseInt(viewContainerTop + parseInt($container.css('margin-top'), 10) + parseInt($container.css('margin-bottom'), 10) + $container.outerHeight());
-	//		
-	//		if(viewContainerTop+$plyrElem.height()/2 > elementTop || elementBottom-$plyrElem.height()/2 < viewContainerBottom){
-	//			$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
-	//				var containerColor = $container.css("background-color");
-	//				if(containerColor == 'rgba(0, 0, 0, 0)'){
-	//					containerColor = $("body").css("background-color");
-	//				}
-	//				
-	//				$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
-	//				$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-	//				$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
-	//				$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
-	//			});
-	//			
-	//			return false;
-	//		}
-	//	}
-	//});
 	
 	$plyrElem = $("#player-elem>#player-control-panel");
 	$plyrElemC = $plyrElem[0].getBoundingClientRect();
