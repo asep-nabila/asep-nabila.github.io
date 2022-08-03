@@ -429,6 +429,8 @@ if(!isCrawler){
 		$("#player-control-panel").css("margin-right", $("#navigation-link").offset().left);
 	});
 }
+
+let containerColor;
 $(window).on('resize scroll', () => {
 	showLazyImg();
 	
@@ -508,27 +510,28 @@ $(window).on('resize scroll', () => {
 	$plyrElem.hide();
 	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
 	$plyrElem.show();
-	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {
-		var containerColor = $container.css("background-color");
-		if(containerColor == 'rgba(0, 0, 0, 0)'){
-			if(typeof $container.attr("fill") !== 'undefined'){
-				containerColor = hexToRgbA($container.attr("fill"));
+	
+	var containerColor = $container.css("background-color");
+	if(containerColor == 'rgba(0, 0, 0, 0)'){
+		if(typeof $container.attr("fill") !== 'undefined'){
+			containerColor = hexToRgbA($container.attr("fill"));
+		}else{
+			if($container[0] instanceof HTMLImageElement){
+				containerColor = getAverageRGB($container[0]);
 			}else{
-				if($container[0] instanceof HTMLImageElement){
-					containerColor = getAverageRGB($container[0]);
-				}else{
-					containerColor = $container.parent().css("background-color");
-				}
-				
-				if(containerColor == 'rgba(0, 0, 0, 0)'){
-					containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
-				}
+				containerColor = $container.parent().css("background-color");
 			}
+			
 			if(containerColor == 'rgba(0, 0, 0, 0)'){
-				containerColor = $("body").css("background-color");
+				containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
 			}
 		}
-		
+		if(containerColor == 'rgba(0, 0, 0, 0)'){
+			containerColor = $("body").css("background-color");
+		}
+	}
+	
+	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {		
 		$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
 		$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
 		$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
