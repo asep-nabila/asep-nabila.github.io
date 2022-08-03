@@ -430,7 +430,7 @@ if(!isCrawler){
 	});
 }
 
-let containerColor;
+let containerColor,$currentContainer;
 $(window).on('resize scroll', () => {
 	showLazyImg();
 	
@@ -511,32 +511,36 @@ $(window).on('resize scroll', () => {
 	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
 	$plyrElem.show();
 	
-	var containerColor = $container.css("background-color");
-	if(containerColor == 'rgba(0, 0, 0, 0)'){
-		if(typeof $container.attr("fill") !== 'undefined'){
-			containerColor = hexToRgbA($container.attr("fill"));
-		}else{
-			if($container[0] instanceof HTMLImageElement){
-				containerColor = getAverageRGB($container[0]);
-			}else{
-				containerColor = $container.parent().css("background-color");
-			}
-			
-			if(containerColor == 'rgba(0, 0, 0, 0)'){
-				containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
-			}
-		}
+	if(!$container.is($currentContainer)){
+		containerColor = $container.css("background-color");
 		if(containerColor == 'rgba(0, 0, 0, 0)'){
-			containerColor = $("body").css("background-color");
+			if(typeof $container.attr("fill") !== 'undefined'){
+				containerColor = hexToRgbA($container.attr("fill"));
+			}else{
+				if($container[0] instanceof HTMLImageElement){
+					containerColor = getAverageRGB($container[0]);
+				}else{
+					containerColor = $container.parent().css("background-color");
+				}
+				
+				if(containerColor == 'rgba(0, 0, 0, 0)'){
+					containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
+				}
+			}
+			if(containerColor == 'rgba(0, 0, 0, 0)'){
+				containerColor = $("body").css("background-color");
+			}
 		}
+		
+		$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {		
+			$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
+			$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
+			$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
+			$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
+		});
+		
+		$currentContainer = $container;
 	}
-	
-	$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {		
-		$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
-		$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-		$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
-		$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
-	});
 });
 
 function drawMessagesOnScroll(){
