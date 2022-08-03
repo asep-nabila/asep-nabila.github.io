@@ -430,7 +430,7 @@ if(!isCrawler){
 	});
 }
 
-let containerColor,$currentContainer;
+let $plyrElem = $("#player-elem>#player-control-panel"),containerColor,$currentContainer;
 $(window).on('resize scroll', () => {
 	showLazyImg();
 	
@@ -477,14 +477,12 @@ $(window).on('resize scroll', () => {
 		}
 	}
 	
-	$plyrElem = $("#player-elem>#player-control-panel");
 	$plyrElemC = $plyrElem[0].getBoundingClientRect();
 	$plyrElem.hide();
 	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
 	$plyrElem.show();
 	
 	if(!$container.is($currentContainer)){
-		console.log("Updating color players...");
 		containerColor = $container.css("background-color");
 		if(containerColor == 'rgba(0, 0, 0, 0)'){
 			if(typeof $container.attr("fill") !== 'undefined'){
