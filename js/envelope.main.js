@@ -430,87 +430,94 @@ if(!isCrawler){
 	});
 }
 
-let $plyrElem = $("#player-elem>#player-control-panel"),containerColor,$currentContainer;
-$(window).on('resize scroll', () => {
-	showLazyImg();
-	
-	if ($('#ucapan').isInViewport()) {
-		if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1){
-			appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
-				drawMessages();
-			}
+let $plyrElem = $("#player-elem>#player-control-panel"),containerColor,$currentContainer,scrollTimer = null;
+$(window).on('resize scroll', (e) => {
+	if(e.type == 'scroll'){
+		if (scrollTimer) {
+			clearTimeout(scrollTimer);   // clear any previous pending timer
 		}
-	}
-	
-	if ($('#detail-acara').isInViewport()) {
-		startCountdown();
-	}
-	
-	$("iframe:not([src])").each(function() {
-		if ($(this).isInViewport()) {
-			$(this).attr("src", $(this).data("src"));
-		}
-	});
-	
-	if ($('#amplop-digital').isInViewport()) {
-		let grmph = $(".groomphonenumbershow");
-		if(grmph.length > 0){
-			grmph.each(function(i, obj) {
-				let c = this;
-				let ctx = c.getContext('2d');
-				ctx.lineWidth = 0.5;
-				ctx.textBaseline = 'top';
-				
-				let __Str = "__";
-				if(isMobile){
-					__Str = "____";
+		scrollTimer = setTimeout(window.dispatchEvent(new Event('resize')), 500);   // set new timer
+	}else{
+		showLazyImg();
+		
+		if ($('#ucapan').isInViewport()) {
+			if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1){
+				appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
+					drawMessages();
 				}
-				
-				c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
-				
-				ctx.font = ".9rem Arial";
-				ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-				ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
-				
-				$(c).removeClass("groomphonenumbershow");
-			});
-		}
-	}
-	
-	$plyrElemC = $plyrElem[0].getBoundingClientRect();
-	$plyrElem.hide();
-	$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
-	$plyrElem.show();
-	
-	if(!$container.is($currentContainer)){
-		containerColor = $container.css("background-color");
-		if(containerColor == 'rgba(0, 0, 0, 0)'){
-			if(typeof $container.attr("fill") !== 'undefined'){
-				containerColor = hexToRgbA($container.attr("fill"));
-			}else{
-				if($container[0] instanceof HTMLImageElement){
-					containerColor = getAverageRGB($container[0]);
-				}else{
-					containerColor = $container.parent().css("background-color");
-				}
-				
-				if(containerColor == 'rgba(0, 0, 0, 0)'){
-					containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
-				}
-			}
-			if(containerColor == 'rgba(0, 0, 0, 0)'){
-				containerColor = $("body").css("background-color");
 			}
 		}
 		
-		$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {		
-			$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
-			$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
-			$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
-			$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
+		if ($('#detail-acara').isInViewport()) {
+			startCountdown();
+		}
+		
+		$("iframe:not([src])").each(function() {
+			if ($(this).isInViewport()) {
+				$(this).attr("src", $(this).data("src"));
+			}
 		});
 		
-		$currentContainer = $container;
+		if ($('#amplop-digital').isInViewport()) {
+			let grmph = $(".groomphonenumbershow");
+			if(grmph.length > 0){
+				grmph.each(function(i, obj) {
+					let c = this;
+					let ctx = c.getContext('2d');
+					ctx.lineWidth = 0.5;
+					ctx.textBaseline = 'top';
+					
+					let __Str = "__";
+					if(isMobile){
+						__Str = "____";
+					}
+					
+					c.width = ctx.measureText('08999333855'.split('').join(" ")).width + ctx.measureText(__Str).width;
+					
+					ctx.font = ".9rem Arial";
+					ctx.fillText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+					ctx.strokeText('08999333855'.split('').join(String.fromCharCode(8202)), 0, 21);
+					
+					$(c).removeClass("groomphonenumbershow");
+				});
+			}
+		}
+		
+		$plyrElemC = $plyrElem[0].getBoundingClientRect();
+		$plyrElem.hide();
+		$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
+		$plyrElem.show();
+		
+		if(!$container.is($currentContainer)){
+			containerColor = $container.css("background-color");
+			if(containerColor == 'rgba(0, 0, 0, 0)'){
+				if(typeof $container.attr("fill") !== 'undefined'){
+					containerColor = hexToRgbA($container.attr("fill"));
+				}else{
+					if($container[0] instanceof HTMLImageElement){
+						containerColor = getAverageRGB($container[0]);
+					}else{
+						containerColor = $container.parent().css("background-color");
+					}
+					
+					if(containerColor == 'rgba(0, 0, 0, 0)'){
+						containerColor = $($container.parents(":not(body,html)")[$container.parents(":not(body,html)").length-1]).css("background-color");
+					}
+				}
+				if(containerColor == 'rgba(0, 0, 0, 0)'){
+					containerColor = $("body").css("background-color");
+				}
+			}
+			
+			$plyrElem.find("[class*=btn-outline-]").each((i,obj) => {		
+				$(obj).removeClass(isDark(containerColor) ? 'btn-outline-dark' : 'btn-outline-light');
+				$(obj).addClass(isDark(containerColor) ? 'btn-outline-light' : 'btn-outline-dark');
+				$(obj).css("color", isDark(containerColor) ? '' : 'white inherit');
+				$("#player-elem").css("color", isDark(containerColor) ? 'white' : 'black');
+			});
+			
+			$currentContainer = $container;
+		}
 	}
 });
 
