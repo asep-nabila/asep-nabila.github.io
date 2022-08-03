@@ -484,6 +484,7 @@ $(window).on('resize scroll', () => {
 	$plyrElem.show();
 	
 	if(!$container.is($currentContainer)){
+		console.log("Updating color players...");
 		containerColor = $container.css("background-color");
 		if(containerColor == 'rgba(0, 0, 0, 0)'){
 			if(typeof $container.attr("fill") !== 'undefined'){
