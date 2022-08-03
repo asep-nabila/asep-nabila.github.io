@@ -495,7 +495,9 @@ $(window).on('resize scroll', (e) => {
 					containerColor = hexToRgbA($container.attr("fill"));
 				}else{
 					if($container[0] instanceof HTMLImageElement){
+						$container[0].crossorigin = "";
 						containerColor = getAverageRGB($container[0]);
+						$container[0].crossorigin = null;
 					}else{
 						containerColor = $container.parent().css("background-color");
 					}

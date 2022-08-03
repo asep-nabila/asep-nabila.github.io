@@ -231,7 +231,6 @@ let showLazyImg = function(){
 	$(".lazyload:not([src])").each((i,obj) => {
 		lazyimg = $(obj);
 		if(lazyimg.isInViewport()){
-			lazyimg.attr("crossOrigin", "");
 			if(lazyimg.hasClass( "grid-img" )){
 				lazyimg.one("load", () => {
 					$('.grid').masonry({
