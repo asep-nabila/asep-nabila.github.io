@@ -477,7 +477,7 @@ $(window).on('resize scroll', (e) => {
 					if(typeof $container.attr("fill") !== 'undefined'){
 						containerColor = hexToRgbA($container.attr("fill"));
 					}else{
-						if($container[0] instanceof HTMLImageElement){
+						if($container[0] instanceof HTMLImageElement && typeof $container.data('ignore-color') == 'undefined'){
 							$container.attr("crossorigin", ""); 
 							containerColor = getAverageRGB($container[0]);
 						}else{
