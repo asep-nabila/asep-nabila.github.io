@@ -468,7 +468,7 @@ $(window).on('resize scroll', (e) => {
 			
 			$plyrElemC = $plyrElem[0].getBoundingClientRect();
 			$plyrElem.hide();
-			$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y));
+			$container = $(document.elementFromPoint($plyrElemC.x, $plyrElemC.y+10));
 			$plyrElem.show();
 			
 			if(!$container.is($currentContainer)){
