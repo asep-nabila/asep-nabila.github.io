@@ -418,10 +418,12 @@ $(function() {
 			$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
 			
 			$("#scan-attenderqrcode").qrCodeReader({
-				qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"[a-zA-Z]+":"[a-zA-Z]+","[a-zA-Z]+":"\w+"}/,
+				qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"action":"[a-zA-Z]+","token":"\w+"}/,
 				audioFeedback: true,
 				callback: function(code) {
-					alert(code);
+					code = code.replace("BUKUTAMU-Asep&Nabila|", "");
+					qrcodeParams = JSON.parse(code);
+					alert("action: " + qrcodeParams.action + "token: " + qrcodeParams.token);
 				}
 			});
 		}
