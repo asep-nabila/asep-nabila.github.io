@@ -132,7 +132,7 @@ const generateQrBukuTamu = function(){
 	$('#qrbukutamu').empty();
 	
 	$('#qrbukutamu').kjua({
-		text: `BUKUTAMU-Asep&Nabila : ${qrstrbukutamu}`,
+		text: `${qrstrbukutamu}`,
 		size: 200,
 		render: 'svg',
 		crisp: true,
