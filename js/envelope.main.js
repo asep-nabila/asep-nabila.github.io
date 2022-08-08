@@ -412,7 +412,8 @@ if(!isCrawler){
 	});
 }
 
-let $plyrElem = $("#player-elem>#player-control-panel"),containerColor,$currentContainer,scrollTimer = null;
+
+let $plyrElem = $("#player-elem>#player-control-panel"),containerColor,appendscriptGrecaptcha,$currentContainer,scrollTimer = null;
 $(window).on('resize scroll', (e) => {
 	if(!isCrawler){
 		if(e.type == 'scroll'){
@@ -424,8 +425,8 @@ $(window).on('resize scroll', (e) => {
 			showLazyImg();
 			
 			if ($('#ucapan').isInViewport()) {
-				if($("#messagesfromvisitor>.messagesfromvisitor-container").children().length < 1 && $("#messagesfromvisitor").find(".messagesfromvisitor-error.d-none").length == 1){
-					appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
+				if(typeof appendscriptGrecaptcha == 'undefined'){
+					appendscriptGrecaptcha = appendscript('https://www.google.com/recaptcha/api.js?render=6LfhB5wgAAAAAE2vZtWH91E7daPM-KMjdem0uptU', 'defer').onload = () => {
 						drawMessages();
 					}
 				}
