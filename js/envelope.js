@@ -459,9 +459,21 @@ $(function() {
 				qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"action":"[a-zA-Z]+","token":"\w+"}/,
 				audioFeedback: true,
 				callback: function(code) {
+					Swal.fire({
+						html: '<div class="container-fluid text-center" style="overflow: hidden;"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>',
+						width: '100%',
+						height: '100%',
+						background: 'transparent',
+						showConfirmButton: false,
+						showCloseButton: false,
+						showCancelButton: false,
+						allowOutsideClick: false,
+						allowEscapeKey: false,
+						allowEnterKey: false,
+					})
+					
 					code = code.replace("BUKUTAMU-Asep&Nabila|", "");
 					qrcodeParams = JSON.parse(code);
-					alert("action: " + qrcodeParams.action + "token: " + qrcodeParams.token);
 					submitQRurl = `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?action=${qrcodeParams.action}&${qrcodeParams.token}`;
 					
 					var settings = {
@@ -499,10 +511,6 @@ $(function() {
 								title: 'Oops...',
 								text: rsp.statusText,
 								confirmButtonColor: '#991188'
-							}).then((result) => {
-								if (result.isConfirmed) {
-									location.reload();
-								}
 							});
 						}
 					});
