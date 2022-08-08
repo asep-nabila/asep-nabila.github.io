@@ -199,7 +199,7 @@ const generateQrBukuTamu = function(){
 	
 	let theDays = new Date(theweddingdays),
 	compareDays = new Date();
-	compareDays.setDate(compareDays.getDate() + 2);
+	compareDays.setDate(compareDays.getDate() + 215);
 	if(compareDays > theDays){
 		checkIsQrScanned();
 	}
