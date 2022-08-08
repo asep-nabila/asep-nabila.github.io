@@ -108,6 +108,36 @@ function isDark( c ) {
            < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
 }
 
+let checkIsQrScannedTimeout;
+const checkIsQrScanned = function(){
+	var settings = {
+	  "url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?action=isScanned&visitorid=${visitorId}`,
+	  "method": "GET",
+	  "timeout": 0,
+	};
+
+	$.ajax(settings).done(function (response) {
+		if(response.statusCode == 1){
+			scannedIcon = 'bi-check-circle';
+			if(response.exclusive == 0){
+				scannedIcon = 'bi-patch-check';
+			}
+			$('#qrbukutamu').append(`<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: block;color: #730f66; background: rgba(255, 255, 255, 0.9);" id="isqrscanned" class="text-center"><i style="font-size: 6.7em;display: block;" class="bi ${scannedIcon}"></i><b>Scanned</b></div>`);
+			$('#reset-attenderdata, #edit-attenderdata, #scan-attenderqrcode').prop('disabled', true);
+			
+			var filterVal = 'blur(1px)';
+			$('#qrbukutamu > svg')
+			  .css('filter',filterVal)
+			  .css('webkitFilter',filterVal)
+			  .css('mozFilter',filterVal)
+			  .css('oFilter',filterVal)
+			  .css('msFilter',filterVal);
+		}else{
+			checkIsQrScannedTimeout = setTimeout(checkIsQrScanned, 1000);
+		}
+	});
+}
+
 const generateQrBukuTamu = function(){
 	if($('#qr-kepada').text() !== ""){
 		kepada = $('#qr-kepada').text().toUpperCase();
@@ -160,10 +190,15 @@ const generateQrBukuTamu = function(){
 		);
 	});
 	
-	$('#qrbukutamu').append('<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: block;color: #730f66; background: rgba(255, 255, 255, 0.9);" id="isqrscanned" class="text-center"><i style="font-size: 6.7em;display: block;" class="bi bi-check-circle"></i><b>Scanned</b></div>');
-	
 	$('#qr-kepada').text(kepada.toUpperCase());
 	$('#qr-dari').text(dari.toUpperCase());
+	
+	let theDays = new Date(theweddingdays),
+	compareDays = new Date();
+	compareDays.setDate(compareDays.getDate() + 2);
+	if(compareDays > theDays){
+		checkIsQrScanned();
+	}
 }
 
 let getNewestMessagesRunning;
