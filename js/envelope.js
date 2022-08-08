@@ -470,7 +470,7 @@ $(function() {
 					  "timeout": 0,
 					  "headers": {
 						"Content-Type": "application/x-www-form-urlencoded"
-					  }
+					  },
 					  "data": {
 						"guestname": kepada,
 						"guestdomicile": dari,
