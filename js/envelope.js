@@ -156,7 +156,7 @@ const generateQrBukuTamu = function(){
 	localStorage.dari = dari;
 	
 	let bukutamudata = {
-		"A": kepada,
+		"A": capitalizing(kepada),
 		"D": dari,
 		"V": visitorId,
 	};
@@ -484,7 +484,7 @@ $(function() {
 						"Content-Type": "application/x-www-form-urlencoded"
 					  },
 					  "data": {
-						"guestname": kepada,
+						"guestname": capitalizing(kepada),
 						"guestdomicile": dari,
 						"visitorid": visitorId,
 						"insertmethod": "Scanning"
