@@ -117,7 +117,7 @@ const checkIsQrScanned = function(){
 	};
 
 	$.ajax(settings).done(function (rsp) {
-		if(rsp.statusCode == 1){
+		if(rsp.statusCode == 1 && rsp.valid == true){
 			setQRisScanned(rsp.exclusive);
 		}else{
 			checkIsQrScannedTimeout = setTimeout(checkIsQrScanned, 1000);
