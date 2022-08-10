@@ -194,6 +194,7 @@ $(function() {
 				'</div>' +
 				'</div>',
 			showCancelButton: true,
+			allowEnterKey: true,
 			width: '25rem',
 			confirmButtonColor: '#991188', //Warna kesukaan Nabila
 			reverseButtons: true,
