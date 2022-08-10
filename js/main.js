@@ -19,7 +19,11 @@ if(queryParams.to !== null && queryParams.to !== ""){
 }
 
 if(queryParams.group !== null && queryParams.group !== ""){
-	group = encodeHTML(queryParams.group).toUpperCase();
+	dari = encodeHTML(queryParams.group).toUpperCase();
+}else{
+	if(queryParams['from'] !== null && queryParams['from'] !== ""){
+		dari = encodeHTML(queryParams['from']).toUpperCase();
+	}
 }
 
 if(isCrawler){
