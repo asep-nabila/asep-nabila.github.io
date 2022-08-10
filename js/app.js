@@ -285,6 +285,7 @@ const swalConfirmBackSound = function(){
 			confirmButtonText: 'Ya, nyalakan',
 			cancelButtonText: 'Tidak',
 			reverseButtons: true,
+			allowEnterKey: true,
 		}).then((result) => {					
 			if (result.isConfirmed) {
 				localStorage.backsound = true;
@@ -318,6 +319,7 @@ const swallAskFrom = function(){
 				image: 'close-envelope-popup-img-bridegroom',
 				input: 'swall-input-ask text-center'
 			},
+			allowEnterKey: true,
 			allowOutsideClick: false,
 			allowEscapeKey: false,
 			inputValidator: (value) => {
