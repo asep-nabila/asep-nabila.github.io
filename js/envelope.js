@@ -149,6 +149,10 @@ const setQRisScanned = function(exclusive = 0){
 	.css('mozFilter',filterVal)
 	.css('oFilter',filterVal)
 	.css('msFilter',filterVal);
+	
+	$("#qr-kepada, #qr-dari").each(function(){
+		$(this).off("click focus");
+	}
 }
 
 const generateQrBukuTamu = function(){
