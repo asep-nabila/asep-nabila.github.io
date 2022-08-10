@@ -332,6 +332,10 @@ const swallAskFrom = function(){
 				if(typeof dari !== 'undefined' && dari !== ''){					
 					swalConfirmBackSound();
 				}
+				
+				if(typeof generateQrBukuTamu == 'function'){
+					generateQrBukuTamu();
+				}
 			}
 		});
 	}else{
