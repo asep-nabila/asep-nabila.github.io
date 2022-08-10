@@ -24,6 +24,7 @@ const swallAskName = function(functiontoCall){
 		inputAttributes: {
 			autocapitalize: 'off'
 		},
+		allowEnterKey: true,
 		color: "#FFFFFF",
 		showCancelButton: false,
 		confirmButtonText: 'Lanjut',
