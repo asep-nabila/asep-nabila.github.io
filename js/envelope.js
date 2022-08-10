@@ -110,19 +110,28 @@ function isDark( c ) {
 
 let checkIsQrScannedTimeout;
 const checkIsQrScanned = function(){
-	var settings = {
-	  "url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?action=isScanned&visitorid=${visitorId}`,
-	  "method": "GET",
-	  "timeout": 0,
-	};
+	let cachedqrtamuscanned;
+	if(typeof localStorage.qrtamuscanned !== 'undefined'){
+		cachedqrtamuscanned = JSON.parse(localStorage.qrtamuscanned);
+	}
+	if(typeof cachedqrtamuscanned == 'undefined' || (cachedqrtamuscanned.statusCode !== 1 && cachedqrtamuscanned.valid !== true)){
+		var settings = {
+		  "url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?action=isScanned&visitorid=${visitorId}`,
+		  "method": "GET",
+		  "timeout": 0,
+		};
 
-	$.ajax(settings).done(function (rsp) {
-		if(rsp.statusCode == 1 && rsp.valid == true){
-			setQRisScanned(rsp.exclusive);
-		}else{
-			checkIsQrScannedTimeout = setTimeout(checkIsQrScanned, 1000);
-		}
-	});
+		$.ajax(settings).done(function (rsp) {
+			if(rsp.statusCode == 1 && rsp.valid == true){
+				localStorage.qrtamuscanned = JSON.stringify(rsp);
+				setQRisScanned(rsp.exclusive);
+			}else{
+				checkIsQrScannedTimeout = setTimeout(checkIsQrScanned, 1000);
+			}
+		});
+	}else{
+		setQRisScanned(cachedqrtamuscanned.exclusive);
+	}
 }
 
 const setQRisScanned = function(exclusive = 0){
