@@ -301,7 +301,7 @@ const swalConfirmBackSound = function(){
 }
 
 const swallAskFrom = function(){
-	if(typeof dari == 'undefined' || dari == ''){
+	if((typeof dari == 'undefined' || dari == '') && (typeof kenalan == 'undefined' || kenalan == 0)){
 		Swal.fire({
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
@@ -331,14 +331,14 @@ const swallAskFrom = function(){
 			inputValidator: () => {
 				dari = $("#guestdomisili").val().toUpperCase();
 				kenalan = $("#geustcollegue").val();
-				if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== 0){
+				if((typeof dari == 'undefined' || dari == '') && (typeof kenalan == 'undefined' || kenalan == 0)){
 					return 'Mohon isikan domisili dan kenalan!'
 				}
 			}
 		}).then((result) => {
 			dari = $("#guestdomisili").val().toUpperCase();
 			kenalan = $("#geustcollegue").val();
-			if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== ''){
+			if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== 0){
 				localStorage.dari = dari;					
 				localStorage.kenalan = kenalan;					
 				swalConfirmBackSound();
@@ -346,6 +346,8 @@ const swallAskFrom = function(){
 					generateQrBukuTamu();
 				}
 			}else{
+				dari=undefined; 
+				kenalan=undefined; 
 				swallAskFrom();
 			}
 		});
