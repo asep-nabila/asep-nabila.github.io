@@ -301,7 +301,7 @@ const swalConfirmBackSound = function(){
 }
 
 const swallAskFrom = function(){
-	if((typeof dari == 'undefined' || dari == '') || (typeof kenalan == 'undefined' || kenalan == '')){
+	if(!dari && !kenalan){
 		Swal.fire({
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
@@ -331,7 +331,7 @@ const swallAskFrom = function(){
 		}).then((result) => {
 			dari = $("#guestdomisili").val().toUpperCase();
 			kenalan = $("#geustcollegue").val();
-			if(typeof dari !== 'undefined' || dari !== '' || typeof kenalan !== 'undefined' || kenalan !== ''){
+			if(dari && kenalan){
 				localStorage.dari = dari;					
 				localStorage.kenalan = kenalan;					
 				swalConfirmBackSound();
