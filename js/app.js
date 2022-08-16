@@ -336,21 +336,23 @@ const swallAskFrom = function(){
 				}
 			}
 		}).then((result) => {
-			if (result.isConfirmed) {
-				dari = $("#guestdomisili").val().toUpperCase();
-				kenalan = $("#geustcollegue").val();
-				if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== ''){
-					localStorage.dari = dari;					
-					localStorage.kenalan = kenalan;					
-					swalConfirmBackSound();
-				}
-				
+			dari = $("#guestdomisili").val().toUpperCase();
+			kenalan = $("#geustcollegue").val();
+			if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== ''){
+				localStorage.dari = dari;					
+				localStorage.kenalan = kenalan;					
+				swalConfirmBackSound();
 				if(typeof generateQrBukuTamu == 'function'){
 					generateQrBukuTamu();
 				}
+			}else{
+				swallAskFrom();
 			}
 		});
 	}else{
 		swalConfirmBackSound();
+		if(typeof generateQrBukuTamu == 'function'){
+			generateQrBukuTamu();
+		}
 	}
 }
