@@ -306,10 +306,10 @@ const swallAskFrom = function(){
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
 				<label for="guestdomisili" class="form-label">Domisili</label>
-				<input type="email" class="form-control swall-input-ask" id="guestdomisili" placeholder="Domisili/Alamat" required>
+				<input type="text" class="form-control swall-input-ask" id="guestdomisili" placeholder="Domisili/Alamat" required>
 			</div>
 			<select id="geustcollegue" class="form-select" aria-label="Default select Kenalan" required>
-				<option selected="">Kenalan/Dari dari ?</option>
+				<option selected="">Kenalan/Teman dari?</option>
 				<option value="1">Mempelai pria</option>
 				<option value="2">Mempelai wanita</option>
 				<option value="3">Orang tua mempelai Pria</option>
@@ -328,16 +328,20 @@ const swallAskFrom = function(){
 			allowEnterKey: true,
 			allowOutsideClick: false,
 			allowEscapeKey: false,
-			inputValidator: (value) => {
-				if (!value) {
-					return 'Mohon masukkan domisili!'
+			inputValidator: () => {
+				dari = $("#guestdomisili").val().toUpperCase();
+				kenalan = $("#geustcollegue").val();
+				if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== 0){
+					return 'Mohon isikan domisili dan kenalan!'
 				}
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {
-				dari = result.value.toUpperCase();
-				localStorage.dari = dari;
-				if(typeof dari !== 'undefined' && dari !== ''){					
+				dari = $("#guestdomisili").val().toUpperCase();
+				kenalan = $("#geustcollegue").val();
+				if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== ''){
+					localStorage.dari = dari;					
+					localStorage.kenalan = kenalan;					
 					swalConfirmBackSound();
 				}
 				
