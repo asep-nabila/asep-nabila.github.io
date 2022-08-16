@@ -2,10 +2,14 @@ if ("virtualKeyboard" in navigator) {
 	navigator.virtualKeyboard.overlaysContent = true;
 }
    
-let kepada,dari,group,receiverhtml;
+let kepada,dari,kenalan,group,receiverhtml;
    
 if(typeof localStorage.kepada != "undefined" && localStorage.kepada != ''){
 	kepada = localStorage.kepada.toUpperCase();
+}
+
+if(typeof localStorage.kenalan != "undefined" && localStorage.kenalan != ''){
+	kenalan = localStorage.kenalan;
 }
    
 if(typeof localStorage.dari != "undefined" && localStorage.dari != ''){
