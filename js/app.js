@@ -332,6 +332,8 @@ const swallAskFrom = function(){
 				dari = $("#guestdomisili").val().toUpperCase();
 				kenalan = $("#geustcollegue").val();
 				if((typeof dari == 'undefined' || dari == '') && (typeof kenalan == 'undefined' || kenalan == 0)){
+					dari=undefined; 
+					kenalan=undefined; 
 					return 'Mohon isikan domisili dan kenalan!'
 				}
 			}
