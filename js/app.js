@@ -306,9 +306,9 @@ const swallAskFrom = function(){
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
 				<label for="guestdomisili" class="form-label">Domisili</label>
-				<input type="email" class="form-control" id="guestdomisili" placeholder="Domisili/Alamat" required>
+				<input type="email" class="form-control swall-input-ask" id="guestdomisili" placeholder="Domisili/Alamat" required>
 			</div>
-			<select class="form-select" aria-label="Default select Kenalan" required>
+			<select id="geustcollegue" class="form-select" aria-label="Default select Kenalan" required>
 				<option selected="">Kenalan/Dari dari ?</option>
 				<option value="1">Mempelai pria</option>
 				<option value="2">Mempelai wanita</option>
@@ -316,10 +316,6 @@ const swallAskFrom = function(){
 				<option value="4">Orang tua mempelai Wanita</option>
 			</select>
 			`,
-			input: 'text',
-			inputAttributes: {
-				autocapitalize: 'off'
-			},
 			color: "#FFFFFF",
 			showCancelButton: false,
 			confirmButtonText: 'Lanjut',
@@ -328,8 +324,6 @@ const swallAskFrom = function(){
 			backdrop: '#730f66',
 			customClass : {
 				popup: 'close-envelope-popup',
-				image: 'close-envelope-popup-img-bridegroom',
-				input: 'swall-input-ask text-center'
 			},
 			allowEnterKey: true,
 			allowOutsideClick: false,
@@ -338,12 +332,6 @@ const swallAskFrom = function(){
 				if (!value) {
 					return 'Mohon masukkan domisili!'
 				}
-			},
-			preConfirm: () => {
-				return [
-				  document.getElementById('swal-input1').value,
-				  document.getElementById('swal-input2').value
-				]
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {
