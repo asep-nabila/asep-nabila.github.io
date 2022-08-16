@@ -306,9 +306,9 @@ const swallAskFrom = function(){
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
 				<label for="guestdomisili" class="form-label">Domisili</label>
-				<input type="text" class="form-control swall-input-ask" id="guestdomisili" placeholder="Domisili/Alamat" required>
+				<input type="text" class="form-control swall-input-ask text-light" id="guestdomisili" placeholder="Domisili/Alamat" style="text-transform: uppercase;" required>
 			</div>
-			<select id="geustcollegue" class="form-select" aria-label="Default select Kenalan" required>
+			<select id="geustcollegue" class="form-select swall-input-ask text-light" aria-label="Default select Kenalan" required>
 				<option selected="">Kenalan/Teman dari?</option>
 				<option value="1">Mempelai pria</option>
 				<option value="2">Mempelai wanita</option>
