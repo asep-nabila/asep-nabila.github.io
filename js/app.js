@@ -303,7 +303,19 @@ const swalConfirmBackSound = function(){
 const swallAskFrom = function(){
 	if(typeof dari == 'undefined' || dari == ''){
 		Swal.fire({
-			html: '<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>',
+			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
+			<div class="mb-3">
+				<label for="guestdomisili" class="form-label">Domisili</label>
+				<input type="email" class="form-control" id="guestdomisili" placeholder="Domisili/Alamat" required>
+			</div>
+			<select class="form-select" aria-label="Default select Kenalan" required>
+				<option selected="">Kenalan/Dari dari ?</option>
+				<option value="1">Mempelai pria</option>
+				<option value="2">Mempelai wanita</option>
+				<option value="3">Orang tua mempelai Pria</option>
+				<option value="4">Orang tua mempelai Wanita</option>
+			</select>
+			`,
 			input: 'text',
 			inputAttributes: {
 				autocapitalize: 'off'
@@ -326,6 +338,12 @@ const swallAskFrom = function(){
 				if (!value) {
 					return 'Mohon masukkan domisili!'
 				}
+			},
+			preConfirm: () => {
+				return [
+				  document.getElementById('swal-input1').value,
+				  document.getElementById('swal-input2').value
+				]
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {

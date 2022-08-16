@@ -340,9 +340,9 @@ $(function() {
 				e.clearSelection();
 			});
 		}
+		
+		generateQrBukuTamu();
 	}
-	
-	generateQrBukuTamu();
 	
 	showLazyImg();
 });
