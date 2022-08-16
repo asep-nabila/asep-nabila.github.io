@@ -4,15 +4,15 @@ if ("virtualKeyboard" in navigator) {
    
 let kepada,dari,kenalan,group,receiverhtml;
    
-if(typeof localStorage.kepada != "undefined" && localStorage.kepada != ''){
+if(localStorage.kepada){
 	kepada = localStorage.kepada.toUpperCase();
 }
 
-if(typeof localStorage.kenalan != "undefined" && localStorage.kenalan != ''){
+if(localStorage.kenalan){
 	kenalan = localStorage.kenalan;
 }
    
-if(typeof localStorage.dari != "undefined" && localStorage.dari != ''){
+if(localStorage.dari){
 	dari = localStorage.dari.toUpperCase();
 }
 
