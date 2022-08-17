@@ -325,24 +325,40 @@ const swallAskFrom = function(){
 			customClass : {
 				popup: 'close-envelope-popup',
 			},
+			didRender: () => {
+				if(dari){
+					$("#guestdomisili").val(dari.toUpperCase());
+				}
+				if(kenalan){
+					
+				}
+			},
+			preConfirm: function () {
+				return new Promise(function (resolve) {
+					// Validate input
+					if(!$("#guestdomisili").val() && !$("#geustcollegue").val()){
+						Swal.showValidationMessage('Mohon isikan domisili dan kenalan!');
+						swal.enableConfirmButton(); // Enable the confirm button again.
+					}else{
+						swal.resetValidationMessage(); // Reset the validation message.
+						resolve([
+							$('#guestdomisili').val(),
+							$('#geustcollegue').val()
+						]);
+					}
+				})
+			},
 			allowEnterKey: true,
 			allowOutsideClick: false,
 			allowEscapeKey: false
 		}).then((result) => {
-			dari = $("#guestdomisili").val().toUpperCase();
-			kenalan = $("#geustcollegue").val();
-			if(dari && kenalan){
-				localStorage.dari = dari;					
-				localStorage.kenalan = kenalan;					
+			if (result.isConfirmed) {
+				localStorage.dari = $("#guestdomisili").val().toUpperCase();					
+				localStorage.kenalan = $("#geustcollegue").val();;					
 				swalConfirmBackSound();
 				if(typeof generateQrBukuTamu == 'function'){
 					generateQrBukuTamu();
 				}
-			}else{
-				dari=undefined; 
-				kenalan=undefined; 
-				swallAskFrom();
-				Swal.showValidationMessage('Mohon isikan domisili dan kenalan!');
 			}
 		});
 	}else{
