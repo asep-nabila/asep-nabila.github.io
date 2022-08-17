@@ -227,6 +227,10 @@ const generateQrBukuTamu = function(){
 	if(compareDays > theDays){
 		if(!checkIsQrScannedisRunning){
 			checkIsQrScanned();
+		}else{
+			if(localStorage.qrtamuscanned){
+				checkIsQrScanned();
+			}
 		}
 	}
 }
