@@ -110,6 +110,7 @@ function isDark( c ) {
 
 let checkIsQrScannedTimeout;
 const checkIsQrScanned = function(){
+	checkIsQrScannedisRunning = true;
 	let cachedqrtamuscanned;
 	if(typeof localStorage.qrtamuscanned !== 'undefined'){
 		cachedqrtamuscanned = JSON.parse(localStorage.qrtamuscanned);
@@ -162,6 +163,7 @@ const setQRisScanned = function(exclusive = 0, attendnum = 0){
 	});
 }
 
+let checkIsQrScannedisRunning = false;
 const generateQrBukuTamu = function(){
 	if($('#qr-kepada').text() !== ""){
 		kepada = $('#qr-kepada').text().toUpperCase();
@@ -223,7 +225,9 @@ const generateQrBukuTamu = function(){
 	compareDays = new Date();
 	compareDays.setDate(compareDays.getDate() + 215);
 	if(compareDays > theDays){
-		checkIsQrScanned();
+		if(!checkIsQrScannedisRunning){
+			checkIsQrScanned();
+		}
 	}
 }
 
