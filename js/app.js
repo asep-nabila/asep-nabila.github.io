@@ -336,7 +336,7 @@ const swallAskFrom = function(){
 			preConfirm: function () {
 				return new Promise(function (resolve) {
 					// Validate input
-					if(!$("#guestdomisili").val() && !$("#geustcollegue").val()){
+					if(!$("#guestdomisili").val() || !$("#geustcollegue").val()){
 						Swal.showValidationMessage('Mohon isikan domisili dan kenalan!');
 						swal.enableConfirmButton(); // Enable the confirm button again.
 					}else{
