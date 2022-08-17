@@ -202,10 +202,10 @@ $(function() {
 				return new Promise(function (resolve) {
 					// Validate input
 					if ($('#attenderdata-kepada').val() == '' || $('#attenderdata-dari').val() == '') {
-						swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
-						swal.enableConfirmButton(); // Enable the confirm button again.
+						Swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
+						Swal.enableConfirmButton(); // Enable the confirm button again.
 					} else {
-						swal.resetValidationMessage(); // Reset the validation message.
+						Swal.resetValidationMessage(); // Reset the validation message.
 						resolve([
 							$('#attenderdata-kepada').val(),
 							$('#attenderdata-dari').val()
