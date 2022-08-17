@@ -330,7 +330,7 @@ const swallAskFrom = function(){
 					$("#guestdomisili").val(dari.toUpperCase());
 				}
 				if(kenalan){
-					
+					$("#geustcollegue select").val(kenalan).change();
 				}
 			},
 			preConfirm: function () {
