@@ -326,6 +326,7 @@ const swallAskFrom = function(){
 				popup: 'close-envelope-popup',
 			},
 			didRender: () => {
+				$('#guestdomisili, #geustcollegue').on('focus', function(){Swal.resetValidationMessage();});
 				if(dari){
 					$("#guestdomisili").val(dari.toUpperCase());
 				}
@@ -338,7 +339,7 @@ const swallAskFrom = function(){
 					// Validate input
 					if(!$("#guestdomisili").val() || !$("#geustcollegue").val()){
 						Swal.showValidationMessage('Mohon isikan domisili dan kenalan!');
-						Swal.enableConfirmButton(); // Enable the confirm button again.
+						Swal.enableButtons(); // Enable the confirm button again.
 					}else{
 						Swal.resetValidationMessage(); // Reset the validation message.
 						resolve([

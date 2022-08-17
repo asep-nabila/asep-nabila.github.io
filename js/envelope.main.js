@@ -203,7 +203,7 @@ $(function() {
 					// Validate input
 					if ($('#attenderdata-kepada').val() == '' || $('#attenderdata-dari').val() == '') {
 						Swal.showValidationMessage("isikan Nama dan Domisili"); // Show error when validation fails.
-						Swal.enableConfirmButton(); // Enable the confirm button again.
+						Swal.enableButtons(); // Enable the confirm button again.
 					} else {
 						Swal.resetValidationMessage(); // Reset the validation message.
 						resolve([
@@ -213,9 +213,10 @@ $(function() {
 					}
 				})
 			},
+			didRender: () => {
+				$('#attenderdata-kepada, #attenderdata-dari').on('focus', function(){Swal.resetValidationMessage();});
+			},
 			didOpen: (popupedit) => {
-				console.log($(popupedit));
-				console.log($(popupedit).children(".swal2-html-container")[0]);
 				$($(popupedit).children(".swal2-html-container")[0]).css("overflow-x","hidden");
 				$('#attenderdata-kepada').val($('#qr-kepada').text().toUpperCase());
 				$('#attenderdata-dari').val($('#qr-dari').text().toUpperCase());
