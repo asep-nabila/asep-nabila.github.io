@@ -16,7 +16,7 @@ if(localStorage.dari){
 	dari = localStorage.dari.toUpperCase();
 }
 
-if(queryParams.to !== null && queryParams.to !== ""){
+if(queryParams.to){
 	if(typeof kepada == "undefined"){
 		kepada = encodeHTML(queryParams.to).toUpperCase();
 	}

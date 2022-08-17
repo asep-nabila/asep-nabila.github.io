@@ -301,7 +301,7 @@ const swalConfirmBackSound = function(){
 }
 
 const swallAskFrom = function(){
-	if(!dari && !kenalan){
+	if(!dari || !kenalan){
 		Swal.fire({
 			html: `<span style="color:#404040;"><h1><i class="bi bi-geo-alt"></i></h1>Domisili/Kolega?</span>
 			<div class="mb-3">
