@@ -233,6 +233,7 @@ const generateQrBukuTamu = function(){
 			}
 		}
 	}
+	console.log("QR CODE VISITOR GENERATED...");
 }
 
 let getNewestMessagesRunning;
