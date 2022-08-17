@@ -181,7 +181,7 @@ const showInvitation = function(){
 		}
 		
 		appendscript('js/envelope.js', 'async').onload = function(){
-			if(typeof kepada == 'undefined' || kepada == ''){
+			if(!kepada || !kenalan){
 				swallAskName(swallAskFrom);
 			}else{
 				localStorage.kepada = kepada.toUpperCase();
