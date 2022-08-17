@@ -131,7 +131,7 @@ const checkIsQrScanned = function(){
 			}
 		});
 	}else{
-		if(cachedqrtamuscanned.exclusive && cachedqrtamuscanned.guestnumber){
+		if(typeof cachedqrtamuscanned.exclusive !== "undefined" && cachedqrtamuscanned.guestnumber > 0){
 			setQRisScanned(cachedqrtamuscanned.exclusive, cachedqrtamuscanned.guestnumber);
 		}else{
 			localStorage.removeItem('qrtamuscanned');
