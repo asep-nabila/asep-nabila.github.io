@@ -341,7 +341,7 @@ $(function() {
 			});
 		}
 		
-		if(typeof dari !== 'undefined' && dari !== '' && typeof kenalan !== 'undefined' && kenalan !== 0) generateQrBukuTamu();
+		if(dari && kenalan) generateQrBukuTamu();
 	}
 	
 	showLazyImg();
