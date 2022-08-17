@@ -338,9 +338,9 @@ const swallAskFrom = function(){
 					// Validate input
 					if(!$("#guestdomisili").val() || !$("#geustcollegue").val()){
 						Swal.showValidationMessage('Mohon isikan domisili dan kenalan!');
-						swal.enableConfirmButton(); // Enable the confirm button again.
+						Swal.enableConfirmButton(); // Enable the confirm button again.
 					}else{
-						swal.resetValidationMessage(); // Reset the validation message.
+						Swal.resetValidationMessage(); // Reset the validation message.
 						resolve([
 							$('#guestdomisili').val(),
 							$('#geustcollegue').val()
