@@ -501,6 +501,7 @@ $(function() {
 					  "data": {
 						"guestname": capitalizing(kepada),
 						"guestdomicile": dari,
+						"guestcolleague": kenalan,
 						"visitorid": visitorId,
 						"insertmethod": "Scanning"
 					  }
@@ -519,7 +520,7 @@ $(function() {
 								html: `<i class="bi ${scannedIcon}"></i> Berhasil mengisi buku tamu`,
 								confirmButtonColor: '#991188'
 							});
-							setQRisScanned(rsp.exclusive);
+							setQRisScanned(rsp.exclusive, rsp.guestnumber);
 						}else{
 							Swal.fire({
 								icon: 'error',
