@@ -172,6 +172,7 @@ const generateQrBukuTamu = function(){
 	let bukutamudata = {
 		"A": capitalizing(kepada),
 		"D": dari,
+		"K": kenalan,
 		"V": visitorId,
 	};
 	
