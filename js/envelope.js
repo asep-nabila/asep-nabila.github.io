@@ -130,7 +130,12 @@ const checkIsQrScanned = function(){
 			}
 		});
 	}else{
-		setQRisScanned(cachedqrtamuscanned.exclusive, cachedqrtamuscanned.guestnumber);
+		if(cachedqrtamuscanned.exclusive && cachedqrtamuscanned.guestnumber){
+			setQRisScanned(cachedqrtamuscanned.exclusive, cachedqrtamuscanned.guestnumber);
+		}else{
+			localStorage.removeItem('qrtamuscanned');
+			checkIsQrScanned();
+		}
 	}
 }
 
