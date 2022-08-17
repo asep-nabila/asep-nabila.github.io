@@ -140,6 +140,8 @@ const checkIsQrScanned = function(){
 }
 
 const setQRisScanned = function(exclusive = 0, attendnum = 0){
+	clearTimeout(checkIsQrScannedTimeout);
+	
 	scannedIcon = 'bi-check-circle';
 	if(exclusive == 1){
 		scannedIcon = 'bi-patch-check';
