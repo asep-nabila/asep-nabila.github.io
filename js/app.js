@@ -355,7 +355,9 @@ const swallAskFrom = function(){
 		}).then((result) => {
 			if (result.isConfirmed) {
 				localStorage.dari = $("#guestdomisili").val().toUpperCase();					
-				localStorage.kenalan = $("#geustcollegue").val();;					
+				localStorage.kenalan = $("#geustcollegue").val();
+				dari = localStorage.dari;
+				kenalan = localStorage.kenalan;
 				swalConfirmBackSound();
 				if(typeof generateQrBukuTamu == 'function'){
 					generateQrBukuTamu();

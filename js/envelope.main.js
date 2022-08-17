@@ -167,7 +167,7 @@ $(function() {
 			reverseButtons: true,
 		}).then((result) => {
 			if (result.isConfirmed) {
-				["kepada", "dari", "backsound"].forEach(
+				["kepada", "dari", "kenalan", "backsound"].forEach(
 					k => localStorage.removeItem(k)
 				);
 				location.reload();

@@ -166,8 +166,8 @@ const generateQrBukuTamu = function(){
 	$("#messagesfromvisitor-name").val(capitalizing(kepada));
 	$("#messagesfromvisitor-name select").val(kenalan).change();
 	
-	localStorage.kepada = kepada;
-	localStorage.dari = dari;
+	if(kepada) localStorage.kepada = kepada;
+	if(dari) localStorage.dari = dari;
 	
 	let bukutamudata = {
 		"A": capitalizing(kepada),
