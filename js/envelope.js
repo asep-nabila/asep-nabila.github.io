@@ -112,10 +112,10 @@ let checkIsQrScannedTimeout;
 const checkIsQrScanned = function(){
 	checkIsQrScannedisRunning = true;
 	let cachedqrtamuscanned;
-	if(typeof localStorage.qrtamuscanned !== 'undefined'){
+	if(localStorage.qrtamuscanned){
 		cachedqrtamuscanned = JSON.parse(localStorage.qrtamuscanned);
 	}
-	if(typeof cachedqrtamuscanned == 'undefined' || (cachedqrtamuscanned.statusCode !== 1 && cachedqrtamuscanned.valid !== true)){
+	if(!cachedqrtamuscanned || (cachedqrtamuscanned.statusCode !== 1 && cachedqrtamuscanned.valid !== true)){
 		var settings = {
 		  "url": `https://script.google.com/macros/s/AKfycbyFeS9ghi4Cj44eguhffRmT1bqHrI94mYLA3pS6fjXpW5YokJq7GIAojYCp-VIaBKic/exec?action=isScanned&visitorid=${visitorId}`,
 		  "method": "GET",
