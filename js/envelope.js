@@ -174,7 +174,7 @@ const generateQrBukuTamu = function(){
 	}
 	
 	$("#messagesfromvisitor-name").val(capitalizing(kepada));
-	$("#messagesfromvisitor-name select").val(kenalan).change();
+	$("#messagesfromvisitor-colleague").val(kenalan).change();
 	
 	if(kepada) localStorage.kepada = kepada;
 	if(dari) localStorage.dari = dari;
