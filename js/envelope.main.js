@@ -102,9 +102,11 @@ $(function() {
 			}
 		});
 		$("#messagesfromvisitor-colleague").on('change', function(){
-			kenalan = $(this).val();
-			localStorage.kenalan  = kenalan;
-			generateQrBukuTamu();
+			if($(this).val() !== kenalan){
+				kenalan = $(this).val();
+				localStorage.kenalan  = kenalan;
+				generateQrBukuTamu();
+			}
 		});
 	}
 
