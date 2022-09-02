@@ -149,7 +149,10 @@ const setQRisScanned = function(exclusive = 0, attendnum = 0){
 	}
 	$('#qrbukutamu').append(`<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: block;color: #730f66; background: rgba(255, 255, 255, 0.9);" id="isqrscanned" class="text-center"><i style="font-size: 6.7em;display: block;" class="bi ${scannedIcon}"></i><b style="display: block;margin-top: -1em;">Scanned<small style="display: block;margin-top: -.25em;">${attendnum}</small></b></div>`);
 	$('#reset-attenderdata, #edit-attenderdata, #scan-attenderqrcode').prop('disabled', true);
-	$('#messagesfromvisitor-name, #messagesfromvisitor-colleague').prop('readonly', true);
+	$('#messagesfromvisitor-name').prop('readonly', true);
+	$('#messagesfromvisitor-colleague').prop('disabled', true);
+	$('#messagesfromvisitor-colleague').attr("id","messagesfromvisitor-colleague-old");
+	$('#messagesfromvisitor-submit-form').append('<input id="messagesfromvisitor-colleague" value="'+kenalan+'" type="hidden"></input>');
 	
 	var filterVal = 'blur(1px)';
 	$('#qrbukutamu > svg')
