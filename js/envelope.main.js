@@ -81,6 +81,31 @@ $(function() {
 				}
 			}
 		}
+		
+		let messagesfromvisitorName = '';
+		$("#messagesfromvisitor-name").on('focus', function(){
+			messagesfromvisitorName = $(this).val();
+		});
+		$("#messagesfromvisitor-name").on('change', function(){
+			if($(this).val() !== '' && $(this).val() !== messagesfromvisitorName){
+				$("#qr-kepada").text($(this).val().toUpperCase());
+				generateQrBukuTamu();
+			}else{
+				if(messagesfromvisitorName !== ''){
+					$(this).val(messagesfromvisitorName);
+					Swal.fire({
+						icon: 'error',
+						text: 'Nama tidak boleh kosong!',
+						confirmButtonColor: '#991188', //Warna kesukaan Nabila
+					});
+				}
+			}
+		});
+		$("#messagesfromvisitor-colleague").on('change', function(){
+			kenalan = $(this).val();
+			localStorage.kenalan  = kenalan;
+			generateQrBukuTamu();
+		});
 	}
 
 	$('.nav-link, .navigate-link').each(function() {
