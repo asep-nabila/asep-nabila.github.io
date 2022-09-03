@@ -152,7 +152,7 @@ const setQRisScanned = function(exclusive = 0, attendnum = 0){
 	$('#messagesfromvisitor-name').prop('readonly', true);
 	$('#messagesfromvisitor-colleague').prop('disabled', true);
 	$('#messagesfromvisitor-colleague').attr("id","messagesfromvisitor-colleague-old");
-	$('#messagesfromvisitor-submit-form').append('<input id="messagesfromvisitor-colleague" value="'+kenalan+'" type="hidden"></input>');
+	$('#messagesfromvisitor-submit-form').append('<input id="messagesfromvisitor-colleague" name="colleague" value="'+kenalan+'" type="hidden"></input>');
 	
 	var filterVal = 'blur(1px)';
 	$('#qrbukutamu > svg')
