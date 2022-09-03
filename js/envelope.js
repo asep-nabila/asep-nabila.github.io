@@ -151,9 +151,9 @@ const setQRisScanned = function(exclusive = 0, attendnum = 0){
 	$('#reset-attenderdata, #edit-attenderdata, #scan-attenderqrcode').prop('disabled', true);
 	
 	$("#messagesfromvisitor-name, #messagesfromvisitor-colleague").each(function(){
-		let thisId = (this).attr("id");
-		let thisName = (this).attr("name");
-		let thisVal = (this).val();
+		let thisId = $(this).attr("id");
+		let thisName = $(this).attr("name");
+		let thisVal = $(this).val();
 		$(this).prop('disabled', true);
 		$(this).attr("id",`${thisId}-old`);
 		$('#messagesfromvisitor-submit-form').append(`<input id="${thisId}" name="${thisName}" value="${thisVal}" type="hidden"></input>`);
