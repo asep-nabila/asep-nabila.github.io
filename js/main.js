@@ -33,6 +33,7 @@ if(queryParams.group !== null && queryParams.group !== ""){
 if(isCrawler){
 	kepada = "Elon Musk";
 	dari = "Tesla, Inc";
+	kenalan = "1";
 	localStorage.backsound = false;
 }
 
