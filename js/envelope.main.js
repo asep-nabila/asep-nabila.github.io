@@ -118,6 +118,7 @@ $(function() {
 	});
 	
 	$("#nextsongs").on('click', function(event) {
+		event.preventdefault();
 		nextsongs();
 	});
 	
