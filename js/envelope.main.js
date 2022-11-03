@@ -111,14 +111,14 @@ $(function() {
 	}
 
 	$('.nav-link, .navigate-link').each(function() {
-		$(this).on('click', function(event) {
-			event.preventDefault();
+		$(this).on('click', function(e) {
+			e.preventDefault();
 			$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 250);
 		});
 	});
 	
-	$("#nextsongs").on('click', function(event) {
-		event.preventdefault();
+	$("#nextsongs").on('click', function(e) {
+		e.preventDefault();
 		nextsongs();
 	});
 	
