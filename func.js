@@ -14,8 +14,8 @@ const isMobile = (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|b
 const isCrawler = (function(a){if(/bot|googlebot|crawler|spider|robot|crawling|chrome-lighthouse|Google Page Speed Insights/i.test(a))return true; else return false;})(navigator.userAgent||navigator.vendor||window.opera);
 
 //Template.js
-const ggtmp = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">{NM}</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
-const kgtmp = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">{NM}</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
+const ggtmp = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">{NM}</h2><p class="greatings">Turut Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
+const kgtmp = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">{NM}</h2><p class="greatings">Turut Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
 
 const swallAskName = function(functiontoCall){
 	Swal.fire({
