@@ -38,11 +38,11 @@ if(isCrawler){
 }
 
 $(function() {	
-	if(typeof kepada == 'undefined' && typeof group == 'undefined'){
+	if(typeof kepada == 'undefined' && typeof dari == 'undefined'){
 		swallAskName(showEnvelope);
 	}else{
 		if(typeof kepada == 'undefined'){
-			receiverhtml = ggtmp.replace(/{NM}/ig, encodeHTML(group));
+			receiverhtml = ggtmp.replace(/{NM}/ig, encodeHTML(dari));
 		}else{
 			receiverhtml = kgtmp.replace(/{NM}/ig, encodeHTML(kepada).toLowerCase());
 		}
