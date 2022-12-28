@@ -99,7 +99,7 @@ const showEnvelope = function(){
 		imageHeight: 250,
 		imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)',
 		didRender: () => {
-			document.getElementsByClassName("close-envelope-popup-img-bridegroom")[0].src='https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/asepdila.webp';
+			document.getElementsByClassName("close-envelope-popup-img-bridegroom")[0].src='https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/asepdila_front.webp';
 			document.head.innerHTML += '<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>';
 		}
 	}).then((result) => {
