@@ -1,62 +1,62 @@
 let prewedimgs = [{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_01.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_01.jpg",
 		"title": "",
-		"alt": "Picsum 1"
+		"alt": "Asep & Nabila 1"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_02.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_02.jpg",
 		"title": "",
-		"alt": "Picsum 2"
+		"alt": "Asep & Nabila 2"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_03.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_03.jpg",
 		"title": "",
-		"alt": "Picsum 3"
+		"alt": "Asep & Nabila 3"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_04.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_04.jpg",
 		"title": "",
-		"alt": "Picsum 4"
+		"alt": "Asep & Nabila 4"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_05.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_05.jpg",
 		"title": "",
-		"alt": "Picsum 5"
+		"alt": "Asep & Nabila 5"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_06.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_06.jpg",
 		"title": "",
-		"alt": "Picsum 6"
+		"alt": "Asep & Nabila 6"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_07.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_07.jpg",
 		"title": "",
-		"alt": "Picsum 7"
+		"alt": "Asep & Nabila 7"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_08.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_08.jpg",
 		"title": "",
-		"alt": "Picsum 8"
+		"alt": "Asep & Nabila 8"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_09.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_09.jpg",
 		"title": "",
-		"alt": "Picsum 9"
+		"alt": "Asep & Nabila 9"
 	},
 	{
-		"href": "https://picsum.photos/1200/800",
-		"src": "https://picsum.photos/260/173",
+		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_10.jpg",
+		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_10.jpg",
 		"title": "",
-		"alt": "Picsum 10"
+		"alt": "Asep & Nabila 10"
 	}
 ];
 
