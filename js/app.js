@@ -173,6 +173,7 @@ const showInvitation = function(){
 		.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
 		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
+		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
 		if(!isCrawler){
 			$('head')
 			.append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asep-nabila/calamansi-js@master/dist/calamansi.min.css">')
