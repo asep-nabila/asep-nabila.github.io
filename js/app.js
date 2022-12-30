@@ -172,7 +172,7 @@ const showInvitation = function(){
 		.append('<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">')
 		.append('<link href="https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/font/arabic.css" rel="stylesheet">')
 		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/fontawesome-used.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
-		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
+		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`)
 		.append(`<link rel="stylesheet" href="${baseURL}/fontawesome/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>`);
 		if(!isCrawler){
 			$('head')
