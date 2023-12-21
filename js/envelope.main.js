@@ -1,60 +1,60 @@
 let prewedimgs = [{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_01.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_01.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_01.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_01.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 1"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_02.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_02.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_02.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_02.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 2"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_03.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_03.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_03.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_03.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 3"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_04.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_04.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_04.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_04.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 4"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_05.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_05.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_05.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_05.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 5"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_06.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_06.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_06.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_06.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 6"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_07.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_07.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_07.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_07.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 7"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_08.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_08.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_08.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_08.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 8"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_09.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_09.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_09.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_09.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 9"
 	},
 	{
-		"href": "https://asepnabila.link/img/gallery/Asep-Nabila_10.jpg",
-		"src": "https://asepnabila.link/img/gallery/thumbnail/Asep-Nabila_10.jpg",
+		"href": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/Asep-Nabila_10.jpg",
+		"src": "https://cdn.jsdelivr.net/gh/asep-nabila/asep-nabila.github.io@master/img/gallery/thumbnail/Asep-Nabila_10.jpg",
 		"title": "",
 		"alt": "Asep & Nabila 10"
 	}
