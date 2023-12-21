@@ -492,9 +492,9 @@ $(function() {
 		appendscript('https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', 'defer');
 	
 		//appendscript('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', 'defer');
-		appendscript('//asepnabila.link/qrcode-reader/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
-			$.qrCodeReader.jsQRpath = "//asepnabila.link/qrcode-reader/dist/js/jsQR/jsQR.min.js";
-			$.qrCodeReader.beepPath = "//asepnabila.link/sound/meizu_barcode_recognize.ogg";
+		appendscript('//cdn.jsdelivr.net/gh/asep-nabila/qrcode-reader@master/dist/js/qrcode-reader.min.js', 'defer').onload = () => {
+			$.qrCodeReader.jsQRpath = "//cdn.jsdelivr.net/gh/asep-nabila/qrcode-reader@master/dist/js/jsQR/jsQR.min.js";
+			$.qrCodeReader.beepPath = "/sound/meizu_barcode_recognize.ogg";
 			
 			$("#scan-attenderqrcode").qrCodeReader({
 				qrcodeRegexp: /BUKUTAMU-Asep&Nabila\|{"action":"[a-zA-Z]+","token":"\w+"}/,
